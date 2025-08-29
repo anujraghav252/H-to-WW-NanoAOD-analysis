@@ -1,32 +1,25 @@
 cat > .gitignore << 'EOF'
-# Python
 __pycache__/
 *.py[cod]
 *.so
 
-# Virtual environments
+
 .venv/
 venv/
 
-# Jupyter
+
 .ipynb_checkpoints/
 *.ipynb_checkpoints/
 
-# Editors/OS
+
 .DS_Store
 .vscode/
 .idea/
 
-# Data and large files (adjust as needed)
+
 data/
 *.root
-
-# Logs/outputs
 *.log
-# If you don't want to track HTML exports from notebooks, uncomment:
-# *.html
-
-# Env files
 .env
 .env.*
 EOF
