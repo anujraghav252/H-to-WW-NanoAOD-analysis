@@ -32,10 +32,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-url = "root://eospublic.cern.ch//eos/opendata/cms/mc/RunIISummer20UL16NanoAODv9/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v17-v1/40000/751D5714-5507-6343-818A-5DB7797D6632.root"
+# url = "root://eospublic.cern.ch//eos/opendata/cms/mc/RunIISummer20UL16NanoAODv9/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v17-v1/40000/751D5714-5507-6343-818A-5DB7797D6632.root"
 
 
-file = uproot.open(url)
+file = uproot.open("C:\MAIN\HSF-India\H-WW-analysis\Root_files\Dy.root")
 
 
 #call the tree
