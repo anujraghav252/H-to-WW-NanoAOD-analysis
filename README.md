@@ -1,4 +1,7 @@
-# HSF-India Project: Higgs → WW NanoAOD Analysis
+# HSF-India Project: Higgs → WW NanoAOD Analysis*
+
+>**Disclaimer:** This repository is a work in progress. The code, documentation, and data may change frequently as updates and improvements are made.
+
 
 This repository is part of the **HSF-India project**, focusing on the analysis of Higgs boson decays to **W boson pairs (H $\to$ WW)** using CMS NanoAOD data formats. The current work emphasizes **Monte Carlo (MC) simulation studies**, starting with basic kinematic distributions of signal and background events.
 
