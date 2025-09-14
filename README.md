@@ -41,6 +41,7 @@ Future notebooks will expand this to include:
    cd H-to-WW-NanoAOD-analysis
   
 2. Configure a virtual environment:
+
    It is recommended to create a dedicated Python virtual environment to ensure isolation of dependencies.
 
    ```bash
@@ -48,17 +49,20 @@ Future notebooks will expand this to include:
    source .venv/bin/activate  (#Linux)
    .venv\Scripts\activate    (#windows)
 
-3. Install the required dependencies
+3. Install the required dependencies:
+
    All necessary Python packages are listed in the [requirements.txt](requirements.txt) file. Install them using:
 
    ```bash 
    pip install -r requirements.txt
 
-4. Verify the installation
+4. Verify the installation:
+
    A [diagnostic script](scripts/test_uproot.py) is provided to confirm that the environment has been configured correctly. Run:
    ```bash 
    python scripts/test_uproot.py 
 
-5. Begin the Analysis
+5. Begin the Analysis: 
+
    Analysis notebooks are present in [notebooks](notebooks) directory. Users may start with [kinematic_plots.ipynb](notebooks/Kinematic_plots.ipynb) as an introductory example.
  
