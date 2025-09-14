@@ -22,9 +22,9 @@ One of the dominant production mechanisms of the Higgs at the LHC is **gluon-glu
 ## Repository Contents
 
 - **Notebooks/**  
-  - `basic_kinematics.ipynb`: A Jupyter notebook with initial kinematic plots for both signal (H $\to$ WW) and background processes. These include variables such as transverse momentum (pT), pseudorapidity ($\eta$), and invariant masses, serving as a foundation for deeper analysis.  
+  - [Basic_kinematics.ipynb](notebooks/Kinematic_plots.ipynb): A Jupyter notebook with initial kinematic plots for both signal (H $\to$ WW) and background processes. These include variables such as transverse momentum (pT), pseudorapidity ($\eta$), and invariant masses, serving as a foundation for deeper analysis.  
 
-  -  `Global_selections.ipynb`: This jupyter notebook contains event selection criteria (global criteria + criteria for 0-jet category)
+  -  [Global_selections.ipynb](notebooks/Global_selection.ipynb): This jupyter notebook contains event selection criteria (global criteria + criteria for 0-jet category)
 
 Future notebooks will expand this to include:  
 - Event selection strategies.  
@@ -49,13 +49,13 @@ Future notebooks will expand this to include:
    .venv\Scripts\activate    (#windows)
 
 3. Install the required dependencies
-   All necessary Python packages are listed in the `requirements.txt` file. Install them using:
+   All necessary Python packages are listed in the [requirements.txt](requirements.txt) file. Install them using:
 
    ```bash 
    pip install -r requirements.txt
 
 4. Verify the installation
-   A diagnostic script is provided to confirm that the environment has been configured correctly. Run:
+   A [diagnostic script](scripts/test_uproot.py) is provided to confirm that the environment has been configured correctly. Run:
    ```bash 
    python scripts/test_uproot.py 
 
