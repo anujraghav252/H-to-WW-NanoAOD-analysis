@@ -24,6 +24,8 @@ One of the dominant production mechanisms of the Higgs at the LHC is **gluon-glu
 - **Notebooks/**  
   - `basic_kinematics.ipynb`: A Jupyter notebook with initial kinematic plots for both signal (H $\to$ WW) and background processes. These include variables such as transverse momentum (pT), pseudorapidity ($\eta$), and invariant masses, serving as a foundation for deeper analysis.  
 
+  -  `Global_selections.ipynb`: This jupyter notebook contains event selection criteria (global criteria + criteria for 0-jet category)
+
 Future notebooks will expand this to include:  
 - Event selection strategies.  
 - Comparison between different MC samples.  
@@ -37,3 +39,26 @@ Future notebooks will expand this to include:
    ```bash
    git clone https://github.com/anujraghav252/H-to-WW-NanoAOD-analysis.git
    cd H-to-WW-NanoAOD-analysis
+  
+2. Configure a virtual environment:
+   It is recommended to create a dedicated Python virtual environment to ensure isolation of dependencies.
+
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate  (#Linux)
+   .venv\Scripts\activate    (#windows)
+
+3. Install the required dependencies
+   All necessary Python packages are listed in the `requirements.txt` file. Install them using:
+
+   ```bash 
+   pip install -r requirements.txt
+
+4. Verify the installation
+   A diagnostic script is provided to confirm that the environment has been configured correctly. Run:
+   ```bash 
+   python scripts/test_uproot.py 
+
+5. Begin the Analysis
+   Analysis notebooks are present in [notebooks](notebooks) directory. Users may start with [kinematic_plots.ipynb](notebooks/Kinematic_plots.ipynb) as an introductory example.
+ 
