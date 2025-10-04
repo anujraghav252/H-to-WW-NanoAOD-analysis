@@ -25,6 +25,7 @@ One of the dominant production mechanisms of the Higgs at the LHC is **gluon-glu
   - [Basic_kinematics.ipynb](notebooks/Kinematic_plots.ipynb): A Jupyter notebook with initial kinematic plots for both signal (H $\to$ WW) and background processes. These include variables such as transverse momentum (pT), pseudorapidity ($\eta$), and invariant masses, serving as a foundation for deeper analysis.  
 
   -  [Global_selections.ipynb](notebooks/Global_selection.ipynb): This jupyter notebook contains event selection criteria (global criteria + criteria for 0-jet category)
+  -  [Higgs_analysis_working.ipynb](notebooks/Higgs_analysis_working.ipynb): This contains the combined content of previous two notebooks. It is suggested to refer this notebook to follow the work.
 
 Future notebooks will expand this to include:  
 - Event selection strategies.  
