@@ -1,7 +1,3 @@
-# HSF-India Project: Higgs → WW NanoAOD Analysis*
-
-
-
 # H-to-WW NanoAOD Analysis — Coffea-Casa Branch
 
 This branch (`coffea-casa`) contains development work executed on the **Coffea-Casa cloud analysis facility**.  
