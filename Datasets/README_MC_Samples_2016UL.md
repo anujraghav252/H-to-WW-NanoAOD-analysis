@@ -1,4 +1,7 @@
-# Monte Carlo Samples and Cross Sections for 2016 UL Higgs to WW Analysis
+# MC Samples Information
+
+**Last Updated:** 26 October, 2025 
+
 
 Based on [LatinoAnalysis Summer20UL16 configuration](https://github.com/latinos/LatinoAnalysis/blob/UL_production/NanoGardener/python/framework/samples/Summer20UL16_106x_noHIPM_nAODv9.py#L35-L43)
 
@@ -69,8 +72,46 @@ Based on [LatinoAnalysis Summer20UL16 configuration](https://github.com/latinos/
 | ZGToLLG | ZGToLLG_01J_5f_TuneCP5_13TeV-amcatnloFXFX-pythia8 | [Link](https://opendata.cern.ch/record/73904) | 58.83 | 1.000 | Rafael |
 | WGToLNuG | WGToLNuG_TuneCP5_13TeV-madgraphMLM-pythia8 | [Link](https://opendata.cern.ch/record/69577) | 405.271 | 1.000 | E |
 
+---
+
+## Cross Section References
+
+All cross sections are given in **picobarns (pb)**.
+
+| Code | Reference |
+|------|-----------|
+| E | [CMS Summary Table 1G 25ns](https://twiki.cern.ch/twiki/bin/view/CMS/SummaryTable1G25ns) |
+| I | [How To Gen Cross Section Analyzer](https://twiki.cern.ch/twiki/bin/viewauth/CMS/HowToGenXSecAnalyzer) |
+| X | Unknown - Cross section not yet determined |
+| Y | [CERN Yellow Report BSM At 13 TeV](https://twiki.cern.ch/twiki/bin/view/LHCPhysics/CERNYellowReportPageBSMAt13TeV) |
+| Rafael | Private communication / VG theory |
+---
+
 ## Notes
 
-- All samples are in NANOAODSIM format for 2016 collision data (RunIISummer20UL16)
-- Cross sections are given in picobarns (pb)
-- References: E = Standard, Y = Higgs working group, I = ggWW theory, X = DY theory, Rafael = VG theory
+- All samples are in **NANOAODSIM** format for **2016 collision data** (RunIISummer20UL16_106x_noHIPM_nAODv9)
+- Data format: NanoAOD v9
+- Centre-of-mass energy: **13 TeV**
+
+---
+
+## File Locations
+
+Sample file lists are stored in:
+- `VG.txt` - V+gamma samples (ZG and WG)
+- `Higgs.txt` - Signal sample
+- `WW.txt` - WW diboson sample
+- `Fakes.txt` - Fake background samples
+- `VZ.txt` - VZ diboson samples
+- `DYtoLL.txt` - Drell-Yan samples
+- `ggWW.txt` - Gluon-gluon fusion to WW samples
+- `Top.txt` - Top quark samples
+
+All ROOT files are accessed via XRootD protocol from CERN EOS:
+```
+root://eospublic.cern.ch//eos/opendata/cms/mc/RunIISummer20UL16NanoAODv9/...
+```
+
+---
+
+**For questions or updates, contact:** @anujraghav252
