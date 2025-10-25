@@ -1,4 +1,4 @@
-# MC Samples Information
+# Monte Carlo Samples and Cross Sections for 2016 UL Higgs to WW Analysis
 
 **Last Updated:** 26 October, 2025 
 
