@@ -6,14 +6,14 @@
 
 ## Overview
 
-This repository contains a comprehensive analysis framework for studying **Higgs boson decays to W boson pairs (H → WW → ℓνℓν)** using CMS NanoAOD data formats. Developed as part of the **HSF-India project**, this work implements a complete physics analysis pipeline from raw NanoAOD files to final physics results.
+This repository contains a comprehensive analysis framework for studying **Higgs boson decays to W boson pairs $H\ \to WW\ \to e\nu\mu\nu$** using CMS NanoAOD data formats. Developed as part of the **HSF-India project**, this work implements a complete physics analysis pipeline from raw NanoAOD files to final physics results.
 
 ### What This Repository Does
 
 The analysis pipeline performs:
 
 1. **Data Processing**: Reads CMS NanoAOD ROOT files containing collision events
-2. **Event Selection**: Applies physics-based selection criteria to identify Higgs → WW candidate events
+2. **Event Selection**: Applies physics-based selection criteria to identify Higgs $\to$ WW candidate events
 3. **Background Estimation**: Analyzes and distinguishes signal from various Standard Model background processes
 4. **Kinematic Analysis**: Studies particle properties (momentum, energy, angular distributions) to characterize the signal
 5. **Statistical Analysis**: Applies weights, scale factors, and statistical methods to extract physics measurements
@@ -38,7 +38,7 @@ One of the dominant production mechanisms of the Higgs at the LHC is **gluon-glu
 
 ### H → WW Decay Channel
 
-This analysis focuses on the decay channel **H → WW → ℓνℓν**, where:
+This analysis focuses on the decay channel **$H\ \to WW\ \to e\nu\mu\nu$**, where:
 
 - The Higgs boson decays into two W bosons
 - Each W boson subsequently decays into a charged lepton (electron or muon) and a neutrino
@@ -47,7 +47,7 @@ This analysis focuses on the decay channel **H → WW → ℓνℓν**, where:
 This channel provides:
 - **Clean experimental signature**: Two high-quality leptons are easily identifiable in the detector
 - **Good signal-to-background ratio**: Specific kinematic selections can effectively suppress backgrounds
-- **High sensitivity**: Despite the W → ℓν branching fraction being ~10% per lepton flavor, the clean signature compensates for the lower rate
+- **High sensitivity**: Despite the $W\to\ell\nu$ branching fraction being ~10% per lepton flavor, the clean signature compensates for the lower rate
 
 ---
 
@@ -57,7 +57,7 @@ This channel provides:
 H-to-WW-NanoAOD-analysis/
 │
 ├── notebooks/              # Jupyter notebooks containing the analysis code
-│   ├── H_WW_Dask.ipynb    # Main analysis notebook (START HERE)
+│   ├── H_WW_Dask.ipynb     # Main analysis notebook (START HERE)
 │   ├── Kinematic_plots.ipynb
 │   ├── Global_selection.ipynb
 │   ├── xsec_weights.ipynb
@@ -67,10 +67,10 @@ H-to-WW-NanoAOD-analysis/
 │
 ├── Plots/                 # Output directory for generated plots and figures
 │
-├── Auxillary_files/       # Supporting files (cross-sections, scale factors, etc.)
+├── Auxillary_files/       # Supporting files 
 │
 ├── scripts/               # Python utility scripts
-│   └── test_uproot.py    # Environment verification script
+│   └── test_uproot.py     # Environment verification script
 │
 ├── Rollbacks/             # Previous versions and backup notebooks
 │
@@ -78,7 +78,7 @@ H-to-WW-NanoAOD-analysis/
 │
 ├── requirements.txt       # Python package dependencies
 ├── environment.yml        # Conda environment specification
-└── README.md             # This file
+└── README.md              # This file
 ```
 
 ### Directory Descriptions
@@ -148,7 +148,7 @@ Experimental and development space for:
 ### Prerequisites
 
 - Python 3.8 or higher
-- Basic understanding of particle physics (helpful but not required)
+- Basic understanding of particle physics 
 - Familiarity with Jupyter notebooks
 - CMS NanoAOD data files (signal and background samples)
 
@@ -286,7 +286,6 @@ This is an active research project. Contributions, suggestions, and feedback are
 - Standard Model and Higgs Mechanism reviews
 
 ### Technical Documentation
-- [CMS NanoAOD Documentation](https://cms-nanoaod-integration.web.cern.ch/integration/master-102X/mc102X_doc.html)
 - [Uproot Documentation](https://uproot.readthedocs.io/)
 - [Awkward Array Documentation](https://awkward-array.readthedocs.io/)
 - [Dask Documentation](https://docs.dask.org/)
