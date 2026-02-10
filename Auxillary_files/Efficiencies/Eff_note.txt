@@ -1,6 +1,6 @@
 --------------------------Trigger Efficiency: -------------------------
 
-Efficiency: 91.29 %
+Efficiency: 91.29(0.08) %
 
 Triggers used: HLT_Mu12_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ and HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_DZ
 
