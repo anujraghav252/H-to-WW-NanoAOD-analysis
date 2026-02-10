@@ -20,8 +20,8 @@
 * **Leading Lepton $p_T$:** $> 25$ GeV
 * **Subleading Lepton $p_T$:** $> 13$ GeV
     * *Note: This is currently set to 13 GeV in the file, not 15 GeV.*
-* **Pseudorapidity ($\eta$):** $|\eta| < 2.5$ for **both** Electrons and Muons.
-    * *Note: The split cut (Muon < 2.4, Electron < 2.5) is not present in this version of the file.*
+* **Pseudorapidity ($\eta$):** $|\eta| < 2.5$ for Electrons and $|\eta| < 2.4$ for Muons.
+    
 
 **Event Kinematics**
 * **Invariant Mass ($m_{ll}$):** $> 12$ GeV
