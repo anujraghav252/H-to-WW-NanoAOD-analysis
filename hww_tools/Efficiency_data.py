@@ -1,4 +1,13 @@
-# DATA/MC CORRECTIONS
+"""
+Efficiency_data.py
+
+This module contains lookup tables and constants for data/MC corrections.
+It includes:
+- Trigger efficiency scale factors
+- Electron ID scale factors
+- Muon ID and Isolation scale factors
+"""
+
 # Trigger Efficiency 
 TRIGGER_SF_VAL = 0.9129
 TRIGGER_SF_ERR = 0.0008

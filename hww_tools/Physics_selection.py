@@ -1,3 +1,17 @@
+"""
+Physics_selection.py
+
+This module handles the physics object selection and event definitions.
+Functions include:
+- Lepton selection (Tight ID, Isolation)
+- Event selection (e-mu channel, opposite charge)
+- Jet counting and cleaning
+- b-jet categorization for Control Regions
+"""
+
+import awkward as ak
+import numpy as np
+
 def select_tight_leptons(arrays):
     """Apply tight ID and isolation cuts to leptons"""
     # Define selection masks

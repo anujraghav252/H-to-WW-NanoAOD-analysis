@@ -1,10 +1,18 @@
+"""
+Plots_config.py
+
+This module contains configuration for plotting.
+It defines:
+- Color schemes and sample grouping
+- Variable labels (LaTeX formatted)
+- Plot settings (log scale, limits) for Signal and Control regions
+"""
+
 import matplotlib.pyplot as plt
-%matplotlib inline
 import matplotlib.patches as mpatches
 import mplhep as hep
 import hist
 from hist import Hist
-
 
 # STACK ORDER
 # Sample properties (color, signal flag, stacking order)

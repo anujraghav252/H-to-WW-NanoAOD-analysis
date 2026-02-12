@@ -1,10 +1,20 @@
-#==============================================================================
-# ALL DIRECTORIES AND PATH 
-#==============================================================================
+"""
+Config.py
+
+This module defines the global configuration for the analysis.
+It includes:
+- Directory paths (Input, Output, Auxiliary)
+- Project constants (Analysis names)
+- Run periods and Golden JSON paths
+"""
 
 import sys
 import os 
 from pathlib import Path
+
+#==============================================================================
+# ALL DIRECTORIES AND PATH 
+#==============================================================================
 
 # BASE PATHS
 HOME_DIR = Path(os.environ.get("HOME", "/home/cms-jovyan"))

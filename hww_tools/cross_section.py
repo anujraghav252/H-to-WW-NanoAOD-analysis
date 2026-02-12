@@ -1,3 +1,12 @@
+"""
+cross_section.py
+
+This module contains cross-section and luminosity information.
+It includes:
+- Integrated Luminosity for the analysis era
+- Cross-sections and sum of genWeights for MC samples
+"""
+
 LUMINOSITY = 16_150.0 
 
 sample_info_detailed = {

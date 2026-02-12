@@ -1,3 +1,16 @@
+"""
+json_validation.py
+
+This module handles Golden JSON validation for Data.
+It includes:
+- Loading the Golden JSON file
+- Applying the JSON mask to event arrays (filtering good runs/lumis)
+"""
+
+import json
+import numpy as np
+import awkward as ak
+
 def load_golden_json(json_input, run_periods=None):
     """
     Load golden JSON from either a file path (str) or a dict.

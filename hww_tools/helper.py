@@ -1,3 +1,32 @@
+"""
+helper.py
+
+This module contains utility functions for data loading and handling.
+It includes:
+- Parsing text files for XRootD URLs
+- Loading event arrays from ROOT files using Uproot
+- Scale factor application with uncertainty
+- Histogram data extraction helper
+"""
+
+import os
+import time
+import uproot
+import awkward as ak
+import numpy as np
+
+SAMPLE_MAPPING = {
+    'data': 'Data',
+    'higgs': 'ggH_HWW',
+    'dytoll': 'DY_to_Tau_Tau',
+    'top': 'Top_antitop',
+    'fakes': 'Fakes',
+    'vz': 'Diboson',
+    'ggww': 'ggWW',
+    'ww': 'WW',
+    'vg': 'VG'
+}
+
 # function to load urls from text files
 def load_urls_from_file(filepath, max_files=None):
     """Load XRootD URLs from text file"""

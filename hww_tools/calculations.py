@@ -1,3 +1,17 @@
+"""
+calculations.py
+
+This module contains functions for calculating kinematic variables.
+It includes:
+- Helper for vector creation
+- Transverse Mass calculations (Higgs Mt, Lepton2 Mt)
+- DeltaPhi and Invariant Mass (Mjj) calculations
+"""
+
+import numpy as np
+import awkward as ak
+import vector
+
 def wrap_angle_to_pi(angle):
     return (angle + np.pi) % (2 * np.pi) - np.pi
 

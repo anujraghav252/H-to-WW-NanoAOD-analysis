@@ -1,3 +1,15 @@
+"""
+cuts.py
+
+This module contains functions to apply analysis cuts.
+It includes:
+- Global pre-selection cuts (MET, Ptll, Mll)
+- Signal Region definitions (0-jet, 1-jet, 2-jet)
+- Control Region definitions (Top CR, Tau CR)
+"""
+
+import awkward as ak
+
 def apply_global_cuts(leading, subleading, met, mt_higgs, mt_l2_met,ptlls,masses):
     """Apply global selection cuts"""
     # Global cuts
