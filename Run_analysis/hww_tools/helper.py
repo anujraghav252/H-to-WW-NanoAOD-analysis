@@ -14,6 +14,7 @@ import time
 import uproot
 import awkward as ak
 import numpy as np
+import hist
 
 SAMPLE_MAPPING = {
     'data': 'Data',
@@ -143,6 +144,16 @@ def load_events(file_url, batch_size= 1_000_000, timeout=600, max_retries=3, ret
             print(f"     Unexpected error on {file_name}: {str(e)[:100]}")
             raise
 
+def initialize_stage_histograms(stages_list, vars_dict, variations_list):
+    stage_histograms = {}
+    for stage in stages_list:
+        stage_histograms[stage] = {}
+        for var_name, axis in vars_dict.items():
+            stage_histograms[stage][var_name] = {}
+            for syst in variations_list:
+                stage_histograms[stage][var_name][syst] = hist.Hist(axis, storage=hist.storage.Weight())
+    return stage_histograms
+
 def get_sf_with_uncertainty(eta_array, pt_array, lookup_table):
     sf_out = ak.ones_like(eta_array, dtype=float)
     err_out = ak.zeros_like(eta_array, dtype=float)
@@ -171,4 +182,4 @@ def get_histogram_data(hist_data, sample, stage, variable, variation='nominal'):
     try:
         return h.values(), h.variances(), h.axes[0].edges
     except:
-        return None, None, None
+        return None, None, None 
