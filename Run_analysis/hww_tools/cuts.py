@@ -9,6 +9,7 @@ It includes:
 """
 
 import awkward as ak
+from .calculations import apply_mjj_window
 
 def apply_global_cuts(leading, subleading, met, mt_higgs, mt_l2_met,ptlls,masses):
     """Apply global selection cuts"""
