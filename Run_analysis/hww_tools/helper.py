@@ -77,6 +77,21 @@ def load_all_files(data_dir, mc_dir, max_per_sample=None):
     
     return files_dict
 
+def samples_to_process(files_dict):
+    """
+    Prints a formatted summary table of the files to be processed.
+    Pass "files"dictionary as the arguement 
+    """
+    print("\n" + "="*70)
+    print("FILES TO PROCESS")
+    print("="*70)
+    total = 0
+    for label, urls in files_dict.items():
+        print(f"{label:20s}: {len(urls):4d} files")
+        total += len(urls)
+    print("_"*70)
+    print(f"{'TOTAL':20s}: {total:4d} files")
+    print("="*70)
 
 # Loading branches from root files
 def load_events(file_url, batch_size= 1_000_000, timeout=600, max_retries=3, retry_wait=10, is_data = False):
