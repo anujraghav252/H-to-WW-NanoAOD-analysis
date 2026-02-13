@@ -183,3 +183,142 @@ def get_histogram_data(hist_data, sample, stage, variable, variation='nominal'):
         return h.values(), h.variances(), h.axes[0].edges
     except:
         return None, None, None 
+
+def merge_dask_results(results, arg_urls, files_dict, stage_names, cutflow_stages, vars_dict, variations):
+    """
+    Merges results from Dask workers into final aggregated dictionaries.
+    Handles initialization of empty histograms and cutflows.
+    """
+    # 1. Initialize final storage
+    hist_final = {}
+    cutflow_final = {}
+    weighted_cutflow_final = {}
+    
+    # Create structure for all samples (even those not processed yet)
+    for label in files_dict.keys():
+        hist_final[label] = initialize_stage_histograms(stage_names, vars_dict, variations)
+        cutflow_final[label] = {stage: 0 for stage in cutflow_stages}
+        weighted_cutflow_final[label] = {stage: 0.0 for stage in cutflow_stages}
+
+    error_count = 0
+    
+    # 2. Iterate through results
+    for task_idx, result in enumerate(results):
+        if not result: continue # Skip empty/failed results that return None
+        
+        # Unpack result tuple from processor
+        label, stage_histograms, cutflow, weighted_cutflow, error = result
+        
+        # Handle Errors
+        if error:
+            error_count += 1
+            file_url = arg_urls[task_idx]
+            file_name = file_url.split('/')[-1]
+            print(f" ERROR in {label}/{file_name}")
+            print(f"    Reason: {error}")
+            continue
+
+        # A. Merge Cutflows
+        if cutflow:
+            for stage, count in cutflow.items():
+                if stage in cutflow_final[label]:
+                    cutflow_final[label][stage] += count
+        
+        if weighted_cutflow:
+            for stage, count in weighted_cutflow.items():
+                if stage in weighted_cutflow_final[label]:
+                    weighted_cutflow_final[label][stage] += count
+        
+        # B. Merge Histograms
+        if stage_histograms:
+            for stage, vars_dict_res in stage_histograms.items():
+                for var, systs in vars_dict_res.items():
+                    for syst, hist_obj in systs.items():
+                        # Efficiently add histogram objects
+                        hist_final[label][stage][var][syst] += hist_obj
+                        
+    return hist_final, cutflow_final, weighted_cutflow_final, error_count
+
+def save_root_file(hist_data, output_path):
+    """
+    Saves the nested dictionary of histograms to a ROOT file using Uproot.
+    Structure: Sample_Stage_Variable_Variation
+    """
+    import uproot
+    print(f"\nSaving histograms to ROOT file: {output_path.name}...")
+    try:
+        with uproot.recreate(output_path) as root_file:
+            for sample, stages in hist_data.items():
+                for stage, variables in stages.items():
+                    for var_name, variations in variables.items():
+                        for syst_name, hist_obj in variations.items():
+                            
+                            # Create distinct name
+                            hist_name = f"{sample}_{stage}_{var_name}_{syst_name}"
+                            hist_name = hist_name.replace(" ", "_").replace("-", "_")
+                            
+                            # Write to file
+                            root_file[hist_name] = hist_obj
+                            
+        print("  Success! ROOT file saved.")
+    except Exception as e:
+        print(f"  Error saving ROOT file: {e}")
+
+# Append to Run_analysis/hww_tools/helper.py
+
+def restore_histograms(sample_list, stage_names, vars_dict, variations, root_file_path):
+    """
+    Reconstructs the full nested dictionary of histograms from a saved ROOT file.
+    
+    Parameters
+    ----------
+    sample_list : list
+        List of sample names (e.g., files.keys()) to initialize.
+    stage_names : list
+        List of analysis stages (e.g., Config.stage_names).
+    vars_dict : dict
+        Dictionary of variables (e.g., Plots_config.variables_to_plots).
+    variations : list
+        List of systematic variations (e.g., Config.VARIATIONS).
+    root_file_path : str or Path
+        Path to the .root file.
+
+    Returns
+    -------
+    dict
+        The fully populated hist_data dictionary.
+    """
+    import uproot
+    from pathlib import Path
+    
+    path = Path(root_file_path)
+    if not path.exists():
+        print(f"CRITICAL: ROOT file not found at {path}")
+        return {}
+
+    print(f"Restoring histograms from: {path.name}")
+    
+    hist_data = {}
+    
+    # Open file once
+    with uproot.open(path) as file:
+        # Loop through known structure to find matching keys
+        for sample in sample_list:
+            # 1. Initialize empty structure for this sample
+            hist_data[sample] = initialize_stage_histograms(stage_names, vars_dict, variations)
+            
+            # 2. Fill with data from ROOT file
+            for stage in stage_names:
+                for var in vars_dict.keys():
+                    for syst in variations:
+                        # Reconstruct the key name used during saving
+                        # Format: Sample_Stage_Variable_Variation
+                        hist_name = f"{sample}_{stage}_{var}_{syst}"
+                        hist_name = hist_name.replace(" ", "_").replace("-", "_")
+                        
+                        if hist_name in file:
+                            # .to_hist() converts Uproot object back to boost_histogram
+                            hist_data[sample][stage][var][syst] = file[hist_name].to_hist()
+                            
+    print(f"Successfully restored data for {len(hist_data)} samples.")
+    return hist_data

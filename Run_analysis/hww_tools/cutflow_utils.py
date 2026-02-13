@@ -11,7 +11,6 @@ def get_cutflow_rows(cutflow_data, stage_info=None, sample_order=None):
     Generates header and rows for the cutflow table.
     Returns the data as raw numbers (ints or floats).
     """
-    # Use defaults from Config if not provided
     if stage_info is None:
         stage_info = Config.stage_info
     if sample_order is None:
@@ -31,7 +30,6 @@ def get_cutflow_rows(cutflow_data, stage_info=None, sample_order=None):
             
         row = [sample]
         for key in stage_keys:
-            # For Data, 'total' often refers to 'after_json' in this workflow
             if sample == 'Data' and key == 'total':
                 val = cutflow_data[sample].get('after_json', 0)
             else:
@@ -42,7 +40,6 @@ def get_cutflow_rows(cutflow_data, stage_info=None, sample_order=None):
     # 2. Calculate Total MC row
     total_row = ['TOTAL (MC)']
     for idx, key in enumerate(stage_keys):
-        # Summing the values for all MC samples
         total = sum(cutflow_data[s].get(key, 0) for s in mc_samples if s in cutflow_data)
         total_row.append(total)
     rows.append(total_row)
@@ -66,7 +63,6 @@ def save_cutflows(cutflow_final, weighted_cutflow_final, output_dir):
     formatted_rows_raw = []
     for row in rows_raw:
         sample_name = row[0]
-        # "{:.0f}" forces strict integer formatting (e.g., 100000 not 1e+05)
         formatted = [sample_name] + [f"{float(val):.0f}" for val in row[1:]]
         formatted_rows_raw.append(formatted)
     

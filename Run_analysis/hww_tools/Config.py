@@ -70,7 +70,7 @@ stage_names = [
 
 # Stage info: (internal_name, display_name) for cutflow table
 stage_info = [
-    ('total', 'Total (Raw)'),
+    ('total', 'Total'),
     ('e_mu_preselection', 'e-μ Preselect'),
     ('global_cuts', 'Global Cuts'),
     ('0jet', '0-jet'),
@@ -88,13 +88,3 @@ stage_info = [
 ]
 
 VARIATIONS = ['nominal', 'trigger_up', 'trigger_down', 'ele_id_up', 'ele_id_down', 'mu_id_up', 'mu_id_down']
-# PRINT CONFIGURATION
-# print(f"HOME_DIR:        {HOME_DIR}")
-# print(f"PROJECT_DIR:     {PROJECT_DIR}")
-# print(f"DATA_DIR:        {DATA_DIR}")
-# print(f"MC_DIR:          {MC_DIR}")
-# print(f"AUX_DIR:         {AUX_DIR}")
-# print(f"OUTPUT_DIR:      {OUTPUT_DIR}")
-# print(f"PLOTS_DIR:       {PLOTS_DIR}")
-# print(f"JSON exists:     {GOLDEN_JSON_PATH.exists()}")
-# print(f"GOLDEN_JSON:     {GOLDEN_JSON_PATH}")
