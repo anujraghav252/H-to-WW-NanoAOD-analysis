@@ -38,7 +38,56 @@ RUN_PERIODS_2016 = {
     'Run2016G': {'run_min': 278820, 'run_max': 280385},
     'Run2016H': {'run_min': 280919, 'run_max': 284044}
 }
- 
+
+# Sample order for printing (cutflow table)
+sample_order = [
+    'Data',
+    'ggH_HWW',
+    'WW',
+    'Top_antitop',
+    'DY_to_Tau_Tau',
+    'Fakes',
+    'ggWW',
+    'Diboson',
+    'VG',
+]
+
+cutflow_stages = [
+    'total', 'after_json', 'e_mu_preselection', 'global_cuts',
+    '0jet', '1jet', '2jet',
+    'SR_0jet', 'SR_1jet', 'SR_2jet',
+    'CR_top_0jet', 'CR_top_1jet', 'CR_top_2jet',
+    'CR_tau_0jet', 'CR_tau_1jet', 'CR_tau_2jet'
+]
+
+# Stage names for histogram initialization
+stage_names = [
+    'before_cuts', 'global', '0jet', '1jet', '2jet',
+    'SR_0jet', 'SR_1jet', 'SR_2jet',
+    'CR_top_0jet', 'CR_top_1jet', 'CR_top_2jet',
+    'CR_tau_0jet', 'CR_tau_1jet', 'CR_tau_2jet'
+]
+
+# Stage info: (internal_name, display_name) for cutflow table
+stage_info = [
+    ('total', 'Total (Raw)'),
+    ('e_mu_preselection', 'e-μ Preselect'),
+    ('global_cuts', 'Global Cuts'),
+    ('0jet', '0-jet'),
+    ('1jet', '1-jet'),
+    ('2jet', '2-jet'),
+    ('SR_0jet', 'SR 0j'),
+    ('SR_1jet', 'SR 1j'),
+    ('SR_2jet', 'SR 2j'),
+    ('CR_top_0jet', 'CR Top 0j'),
+    ('CR_top_1jet', 'CR Top 1j'),
+    ('CR_top_2jet', 'CR Top 2j'),
+    ('CR_tau_0jet', 'CR Tau 0j'),
+    ('CR_tau_1jet', 'CR Tau 1j'),
+    ('CR_tau_2jet', 'CR Tau 2j'),
+]
+
+VARIATIONS = ['nominal', 'trigger_up', 'trigger_down', 'ele_id_up', 'ele_id_down', 'mu_id_up', 'mu_id_down']
 # PRINT CONFIGURATION
 # print(f"HOME_DIR:        {HOME_DIR}")
 # print(f"PROJECT_DIR:     {PROJECT_DIR}")

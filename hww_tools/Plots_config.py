@@ -13,6 +13,7 @@ import matplotlib.patches as mpatches
 import mplhep as hep
 import hist
 from hist import Hist
+import numpy as np
 
 # STACK ORDER
 # Sample properties (color, signal flag, stacking order)
@@ -97,4 +98,16 @@ PLOT_SETTINGS = {
             "subleading_pt": {"log": True, "xlim": (10, 30),   "ylim": None},
         }
     }
+}
+
+variables_to_plots = {
+    'mass': hist.axis.Regular(20, 0, 200, name="mass", label="m_ll [GeV]"),
+    'met': hist.axis.Regular(20, 0, 200, name="met", label="MET [GeV]"),
+    'dphi': hist.axis.Regular(20, 0, np.pi, name="dphi", label="dphi(l,l)"),
+    'ptll': hist.axis.Regular(20, 0, 200, name="ptll", label="p_T^ll [GeV]"),
+    'mt_higgs': hist.axis.Regular(20, 0, 300, name="mt_higgs", label="m_T^H [GeV]"),
+    'mt_l2_met': hist.axis.Regular(20, 0, 200, name="mt_l2_met", label="m_T(l2,MET) [GeV]"),
+    'mjj': hist.axis.Regular(20, 0, 500, name="mjj", label="m_jj [GeV]"),
+    'leading_pt': hist.axis.Regular(20, 0, 200, name="leading_pt", label="Leading lepton p_T [GeV]"),
+    'subleading_pt': hist.axis.Regular(20, 0, 200, name="subleading_pt", label="Subleading lepton p_T [GeV]"),
 }
