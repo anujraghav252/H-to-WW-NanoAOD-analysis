@@ -3,7 +3,7 @@ import hist
 import os
 import numpy as np
 
-INPUT_FILE = "../Outputs/HWW_analysis_output.root"
+INPUT_FILE = "../../Outputs/HWW_analysis_output.root"
 OUTPUT_ROOT = "../Outputs/combine_input.root"
 OUTPUT_CARD = "../Outputs/hww_datacard.txt"
 
