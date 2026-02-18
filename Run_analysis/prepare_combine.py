@@ -8,10 +8,10 @@ OUTPUT_ROOT = "../Outputs/combine_input.root"
 OUTPUT_CARD = "../Outputs/hww_datacard.txt"
 
 # Variable to fit
-VAR_NAME = "mt_higgs" 
+VAR_NAME = "mass"
 
 PROCESSES = [
-    "ggH_HWW",       # Signal 
+    "ggH_HWW",       # Signal
     "WW",            # Backgrounds
     "Top_antitop",
     "DY_to_Tau_Tau",
@@ -33,7 +33,7 @@ SYSTEMATICS = {
 }
 
 def main():
-    print(f"Opening {INPUT_FILE}...")
+    print(f"Opening {INPUT_FILE}")
     try:
         f_in = uproot.open(INPUT_FILE)
     except Exception as e:
