@@ -126,9 +126,9 @@ For observational data, we must ensure we only analyze luminosity blocks where a
 #### 3.2.2 MC Cross-Section Weighting (Simulation Only)
 
 Monte Carlo (MC) samples are generated with varying numbers of events that do not match the actual integrated luminosity of the data ($L_{int} \approx 16.15 fb^{-1}$). To compare MC with Data, we calculate a weight ($w_{event}$) for every simulated event:
-$$
+$
 w_{event} = genWeight \times \frac{\sigma_{process} \times L_{int}}{\sum w_{gen}}
-$$
+$
 
 
 - **$\sigma_{process}$:** The theoretical cross-section for the physics process (sourced from `hww_tools/cross_section.py` or `Datasets/README_MC_Samples_2016UL.md`).
