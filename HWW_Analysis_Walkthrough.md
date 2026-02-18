@@ -5,9 +5,15 @@
 ### 1.1 The CMS Experiment at the LHC
 The Compact Muon Solenoid (CMS) is one of the two large general-purpose particle physics detectors built on the Large Hadron Collider (LHC) at CERN. It is designed to investigate a wide range of physics, including the study of the [Standard Model](https://home.cern/science/physics/standard-model) (the framework that describes the fundamental particles and their interactions), the search for extra dimensions, and particles that could make up dark matter.
 
+<img src="Images/CMS_logo.png" width="400">
+
+
 
 ### 1.2 What is CMS Open Data? 
 CMS Open Data is the public release of data collected by the CMS experiment. It represents a commitment to scientific transparency and the long-term value of the data collected at the LHC. The data is hosted on the [CERN Open Data Portal](https://opendata.cern.ch).
+
+<img src="Images/opendata_cms.png" width="400">
+
  
  #### 1.2.1 What is the purpose of CMS Open Data?
  The primary goal of the Open Data project is to democratize access to high-energy physics. Traditionally, analyzing LHC data required membership in the collaboration and access to restricted computing grids. By releasing high-level data to the public, CMS enables:
@@ -286,6 +292,11 @@ Traditional High-Energy Physics (HEP) analysis has historically relied on an Eve
 To address this, instead of processing events row-by-row, we treat data as contiguous arrays of properties (columns). For example, rather than looping over every muon in every event to check its transverse momentum ($p_T$), we perform a single operation on the entire $p_T$ array (e.g., `muon_pt > 25`). This approach shifts the computational burden to compiled, highly optimized libraries (like NumPy and C++ kernels), allowing us to exploit modern CPU vectorization and ensuring high-throughput data processing.
 
 ### 4.2 Core Toolset
+
+<p align="center">
+<img src="Images/scikit_logo.png" width="300">
+</p>
+
 The analysis is built upon the modern [Scikit-HEP](https://scikit-hep.org/) scientific Python ecosystem. Each tool in the stack addresses a specific challenge of processing HEP data:
 
 1. **`Uproot`:** To interface with the vast legacy of data stored in ROOT format, we utilize [Uproot](https://pypi.org/project/uproot/). Unlike PyROOT, Uproot is purely Python-based and does not require the massive C++ ROOT software stack. In this analysis, Uproot handles the input/output layer, streaming NanoAOD data directly from remote XRootD servers into local memory buffers.
@@ -293,6 +304,15 @@ The analysis is built upon the modern [Scikit-HEP](https://scikit-hep.org/) scie
 3. **`Vector`:** Calculating physical quantities such as invariant masses ($m_{\ell\ell}$), angular separations ($\Delta R$), and Lorentz boosts is handled by the [Vector](https://vector.readthedocs.io/en/latest/) library. It integrates seamlessly with Awkward Array, allowing us to perform complex 4-vector arithmetic on millions of particles simultaneously with a syntax as simple as `lepton1 + lepton2`.
 4. **`Hist`:** For the final accumulation of yields and distributions, we employ [Hist](https://hist.readthedocs.io/en/latest/). Based on the fast C++ `boost-histogram` library, Hist supports multi-dimensional, sparse, and categorical axes. This is essential for our analysis, which requires simultaneous categorization of events into multiple regions (Signal, Control) and systematic variations within a single object.
 5. **`Mplhep`:** [Mplhep](https://github.com/scikit-hep/mplhep) is a Matplotlib extension for high-energy physics. It provides tools for plotting data in the standard HEP style, including axis formatting, error bar conventions, and legend placement. In this analysis, Mplhep is used to create standardized plots of the signal and control regions.
+<p align="center">
+  <img src="Images/uproot_logo.png" width="17%" style="margin: 0 10px;">
+  <img src="Images/awkward.svg" width="17%" style="margin: 0 10px;">
+  <img src="Images/vector logo.svg" width="17%" style="margin: 0 10px;">
+  <img src="Images/histlogo.png" width="17%" style="margin: 0 10px;">
+  <img src="Images/mplhep_logo.png" width="17%" style="margin: 0 10px;">
+</p>
+
+
 
 ### 4.3 Distributed Computing with Dask
 
