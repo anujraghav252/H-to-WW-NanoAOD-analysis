@@ -1,232 +1,328 @@
-# Search for the Higgs Boson in the H→WW→eμνν Channel Using CMS Open Data
+# CMS Open Data Project: $H \rightarrow W^+W^-$  Analysis
+
+## 1. Introduction to CMS Open Data
+
+### 1.1 The CMS Experiment at the LHC
+The Compact Muon Solenoid (CMS) is one of the two large general-purpose particle physics detectors built on the Large Hadron Collider (LHC) at CERN. It is designed to investigate a wide range of physics, including the study of the [Standard Model](https://home.cern/science/physics/standard-model) (the framework that describes the fundamental particles and their interactions), the search for extra dimensions, and particles that could make up dark matter.
+
+### 1.2 What is CMS Open Data? 
+CMS Open Data is the public release of data collected by the CMS experiment. It represents a commitment to scientific transparency and the long-term value of the data collected at the LHC. The data is hosted on the [CERN Open Data Portal](https://opendata.cern.ch).
+ 
+ #### 1.2.1 What is the purpose of CMS Open Data?
+ The primary goal of the Open Data project is to democratize access to high-energy physics. Traditionally, analyzing LHC data required membership in the collaboration and access to restricted computing grids. By releasing high-level data to the public, CMS enables:
+
+ - **Education**: Students can learn particle physics using real data.
+
+ - **Independent Research**: Theorists and data scientists can test new models or apply novel machine learning techniques to existing datasets.
+
+ - **Reproducibility**: External verification of scientific results strengthens the community's trust in the findings.
+
+ This analysis utilizes the 2016 Ultra Legacy (UL) dataset. In CMS terms, "Legacy" refers to the reprocessing of data after the data-taking run has concluded. "Ultra Legacy" represents the ultimate refinement of the Run 2 data (2016-2018), offering the best possible object reconstruction performance and reduced systematic uncertainties.
+
+ #### 1.2.2 What is NanoAOD? 
+ NanoAOD is a data format developed by the CMS collaboration to adderss the computing challenges of the high-luminosity LHC era. It offer several distinct advantages for open data analysis:
+ - **Size**: It is approximately 20-50 times smaller than its predecessor (MiniAOD), makes it feasible to stored on local machines and processed rapidly in the cloud.
+ - **Portability**: NanoAOD stores simple native types which makes it readable by non-ROOT tools, specifically the **Python scientific ecosystem** (Numpy, Pandas, Awkward Array)
+ 
+ To read more about CMS data formats refer this [twiki](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookAnalysisOverviewIntroduction) and for NanoAOD read this [twiki](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookNanoAOD)
+
+---
+## 2. Physics Framework: Signal and Backgrounds
+
+### 2.1 The Higgs Boson and $e\mu$ channel
+The Standard Model of particle physics was completed with the discovery of the [Higgs boson](https://home.cern/science/physics/higgs-boson) in 2012 at the LHC.  
+This analysis searches for the Higgs boson decaying into a pair of $W$ bosons, which subsequently decay into leptons.
+
+<div align="center">
+
+$gg \to WW \to e\nu_e + \mu\nu_\mu$
+
+</div>
+
+We are specifically focussing on the Opposite sign, Different Flavour (DF) final state.
+
+- **Why this channel?** The $e\mu$ combination eliminates the massive background from Z boson decays ($Z \to \mu\mu$ or $Z \to ee$), providing a much cleaner signal sample than same flavour channels.
+- **The Challenge:** The presence of two neutrinos means the full invariant mass of the Higgs cannot be reconstructed. Instead of a sharp mass peak, we rely on the **Transverse Mass** and lepton kinematics to distinguish the signal from the background.
+
+**So, what does the signal look like?**
+1. **Two isolated leptons** ($e, \mu$) with high transverse momentum ($p_T$).
+2. **opposite electric charge** ($q_e \cdot q_\mu = -1$)
+3. **Missing Transverse Energy** ($E_T^{miss}$) due to escaping neutrinos.
+4. **Spin correlation:** Since the Higgs has spin-0, the two charged leptons tend to be emitted close to each other in the detector (small $\Delta \phi_{\ell\ell}$), unlike many background processes where they are back-to-back.
+
+
+### 2.2 Background Processes
+Several Standard Model processes mimic this signature. Understanding how they differ is crucial for defining our selection cuts.
+
+For better understanding, let us categorize the backgrounds into two categories.
+
+#### 2.2.1 Irreducible Backgrounds
+These processes produce the exact same final state ($e^\pm \mu^\mp + MET$) as the signal and cannot be removed by object selection alone.
+
+1. **$q\bar{q} \to WW$ (Sample: `WW`):**  
+   The dominant irreducible background. It consists of continuum $W$ pair production from quark-antiquark annihilation. Unlike the scalar Higgs (spin-0), these events have different spin correlations, leading to larger opening angles ($\Delta \phi_{\ell\ell}$) between the leptons.
+
+2. **$gg \to WW$ (Sample: `ggWW`):**  
+   A rarer process where gluons fuse to form $W$ pairs via loop diagrams. While kinematically similar to the signal, it is treated as a distinct background component in this analysis.
+
+
+#### 2.2.2 Reducible Backgrounds
+These processes mimic the signal due to lost particles, misidentification, or specific decay chains.
+
+1. **Top Quark Processes (Sample: `Top_antitop`):**
+   - **$t\bar{t}$ Production:** The most abundant background. Top quarks decay as $t\to Wb$. If both W bosons decay leptonically, the final state is $e\mu + MET + 2b$-jets.
+   - **Single Top:** Events where a single top quark is produced, often associated with a W boson ($tW$).  
+   - _Suppression Strategy:_ Since the signal contains no jets (or only gluon radiation jets), these backgrounds are heavinly suppressed by applying a **b-jet veto**.
+
+2. **Drell–Yan to Taus (Sample: `DY_to_Tau_Tau`):**  
+   Produced when a $Z/\gamma^*$ decays into a pair of tau leptons, which subsequently decay into leptons mimicking the electron–muon + neutrinos final state.  
+   - _Supression strategy:_ These events typically have lower $p_T$ leptons and an invariant mass closer to $Z$ peak mass window (50 < $m_{ll}$ < 80 GeV).
+
+3. **Diboson/VZ (Sample: `Diboson`):**
+   - **$WZ \to 3\ell + \nu$:** Mimics the signal if one of the three leptons is faked.
+   - **$ZZ \to 4\ell$:** Mimics the signal if two of the four leptons are faked.  
+   - _Suppression Strategy:_ Events with only two leptons are selected.
+
+4. **Vector Boson + Gamma (Sample: `VG`):**  
+   Includes $W\gamma$ and $Z\gamma$ production.
+   - These mimic the signal if the photon ($\gamma$) converts into an electron–positron pair in the detector material and is misidentfied as a prompt electron.  
+   - _Suppression Strategy:_ Strict electron track quality requirements reduce the rate of photon conversion misidentification.
+
+5. **Fakes (Sample: `Fakes`):**  
+   This category typically covers $W$ + jets and **QCD** multijet events.
+   - A "fake" lepton occurs when a jet is misidentified as a lepton, or a real lepton is produced inside a jet and passes isolation criteria.
+   - _Suppression Strategy:_ Tight identification and isolation cuts are applied to all leptons.
 
 ---
 
-## 1. CMS Open Data
+## 3. Analysis Strategy and Event Selection
 
-### 1.1 What is CMS Open Data?
-### 1.2 The CMS Experiment at the LHC
-### 1.3 Purpose and Philosophy of Open Data in High-Energy Physics
-### 1.4 Available Data Formats: NanoAOD, MiniAOD, and AOD
-### 1.5 The Open Data Portal and Data Preservation
+### 3.1 Overview of the Analysis Workflow
+
+The analysis is implemented using the Scikit-HEP framework, which replaces the traditional event-loop paradigm with columnar processing. The core logic is encapsulated in the processor.py module, which is distributed across a cluster using Dask. This approach allows us to process millions of events in parallel by treating particle properties (like $p_t$, $\eta$, $\phi$) as contiguous arrays rather than individual objects.
+
+The execution flow for each data chunk follows a strict "Cut-and-Count" methodology:
+
+- **Validation:** Quality filtering and weight initialization.
+- **Object Selection:** Constructing valid physics objects (Leptons, Jets).
+- **Pre-Selection:** Isolating the $e^\pm \mu^\mp$ candidate pair.
+- **Corrections:** Applying Scale Factors (SF) to simulation.
+- **Global Cuts:** Baseline kinematic requirements.
+- **Categorization:** Sorting events into orthogonal Signal and Control regions.
+
+
+### 3.2 Step 1: Data Ingestion and Validation
+
+Before any physics selection occurs, the raw events are filtered to ensure data quality and correct normalization.
+
+#### 3.2.1 Golden JSON Masking (Data Only)
+
+For observational data, we must ensure we only analyze luminosity blocks where all CMS sub-detectors were functioning correctly.
+
+- **Implementation:** The `json_validation.apply_json_mask` function filters events against the official CMS Golden JSON file (`Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt`).
+- **Run Periods:** The analysis covers runs 2016G through 2016H.
+
+#### 3.2.2 MC Cross-Section Weighting (Simulation Only)
+
+Monte Carlo (MC) samples are generated with varying numbers of events that do not match the actual integrated luminosity of the data ($L_{int} \approx 16.15 fb^{-1}$). To compare MC with Data, we calculate a weight ($w_{event}$) for every simulated event:
+$$
+w_{event} = genWeight \times \frac{\sigma_{process} \times L_{int}}{\sum w_{gen}}
+$$
+
+
+- **$\sigma_{process}$:** The theoretical cross-section for the physics process (sourced from `hww_tools/cross_section.py` or `Datasets/README_MC_Samples_2016UL.md`).
+- **$\Sigma w_{gen}$:** The sum of generator weights, used to normalize the sample size.
+- **Implementation**: This calculation happens at the start of the event loop in `processor.py`.
+
+
+### 3.3 Step 2: Lepton Definition and Pre-Selection
+
+We will target the fully leptonic decay channel. We explicitly identify "*Tight*" leptons to suppress backgrounds from non-prompt sources (like QCD). These definitions are handled in `hww_tools/Physics_selection.py`.
+
+#### 3.3.1 Object Definitions
+
+- **Electrons**: We select electrons passing the `Electron_mvaFall17V2Iso_WP90` identification. "WP90" implies a working point with 90% signal efficiency, optimized for isolating prompt electrons from $W/Z$ decays.  
+  - Cut: `Electron_mvaFall17V2Iso_WP90 == 1`
+
+- **Muons**: We require Tight ID and strict Particle Flow Isolation.  
+  - ID: `Muon_tightId == 1` (Standard CMS cut for $W/Z$ muons).  
+  - Isolation: `Muon_pfRelIso04_all < 0.15`. This ensures the muon is isolated from other hadronic activity in a cone of $\Delta R < 0.4$.
+
+#### 3.3.2 The eμ Pre-Selection
+
+The `select_e_mu_events` function constructs the dilepton candidate:
+
+- **Sorting**: Valid leptons are sorted by transverse momentum ($p_T$) in descending order.
+- **Multiplicity**: Events must contain exactly two tight leptons.
+- **Flavor**: One electron and one muon ($e\mu$).
+- **Charge**: They must have opposite electric charge (Opposite-Sign, $q_e \times q_\mu < 0$).
+
+- **Kinematics**:
+  - Leading Lepton: $p_T > 25$ GeV.
+  - Sub-leading Lepton: $p_T > 13$ GeV.
+
+- **Acceptance**: $|\eta_e| < 2.5$ and $|\eta_\mu| < 2.4$.
+
+
+### 3.4 Step 3: Event Weight Corrections (MC)
+
+Simulations do not perfectly model the detector response. We apply Scale Factors (SF) to correct the MC weights to match Data efficiencies. These are managed in `hww_tools/Efficiency_data.py`.
+
+- **Trigger SF:** Corrects for the efficiency of the HLT paths used to collect the data.
+- **Lepton ID & Isolation SF:**
+  - Corrections are pulled from [approved](https://github.com/latinos/LatinoAnalysis/tree/UL_production/NanoGardener/python/data/scale_factor/Full2016v9noHIPM) lookup tables (ROOT/Text files) based on the lepton's $p_T$ and $\eta$.
+  - **Systematics:** We compute up and down variations for these weights to estimate uncertainties, which are propagated through to the final histograms.
+
+
+
+### 3.5 Step 4: Kinematic Reconstruction
+
+Before applying topological cuts, we compute the necessary kinematic variables in `hww_tools/calculations.py`.
+
+- **Higgs Transverse Mass ($m_{TH}$)**: Since neutrinos escape detection, we cannot reconstruct the invariant mass. We use the transverse mass as the primary discriminator:
+
+$$
+m_{T}^H = \sqrt{2\, p_{T}^{\ell\ell}\, E_T^{miss} \left(1 - \cos \Delta \phi(\ell\ell, E_T^{miss})\right)}
+$$
+
+This variable peaks near the Higgs mass for the signal but has a broad continuum for the WW background.
+
+- **Lepton-$E_T^{miss}$ Transverse Mass ($m_T(\ell_2, E_T^{miss})$)**: The transverse mass of the sub-leading lepton and the $E_T^{miss}$. This is useful for suppressing $W$+Jets background where the $E_T^{miss}$ comes from a single W decay.
+- **Dijet Invariant Mass ($m_{jj}$)**: Calculated for events with ≥2 jets to identify Vector Boson Fusion (VBF) topology.
+
+
+
+### 3.6 Step 5: Jet Cleaning and Categorization
+
+Jets are critical for separating the production modes (ggH vs VBF) and rejecting the Top background.
+
+#### 3.6.1 Cleaning and Counting
+
+We select jets with $p_T > 30$ GeV and $|\eta| < 4.7$ that pass Tight Jet ID and Pileup ID. Crucially, we perform Lepton Cleaning, where any jet found within a cone of $\Delta R < 0.4$ of a selected signal lepton is considered a "footprint" of the lepton and is removed from the jet collection.
+
+#### 3.6.2 Jet Bins
+
+Events are classified into three exclusive categories based on the number of cleaned jets:
+
+- **0-Jet**: Pure Gluon-Fusion (ggH) signal region.
+- **1-Jet**: ggH with Initial State Radiation (ISR).
+- **2-Jet**: Contaminated by Top background and VBF signal.
+
+
+### 3.7 Step 6: Global Selection Cuts
+
+A set of baseline "Global Cuts" is applied to all categories to remove obvious backgrounds and low-mass resonances. Implemented in `cuts.apply_global_cuts`:
+
+- $E_T^{miss} > 20$ GeV: Ensures real missing energy is present, suppressing Drell-Yan and QCD.
+- $p_T^{\ell\ell} > 30$ GeV: The Higgs is typically produced with moderate boost; this rejects softer backgrounds.
+- $m_{\ell\ell} > 12$ GeV: Rejects low-mass resonances (like $J/\psi$, $\Upsilon$) and low-mass Drell-Yan.
+
+
+### 3.8 Step 7: Region Definitions
+
+Finally, events are split into orthogonal regions for Signal extraction (SR) and Background estimation (CR). These logic masks are defined in `hww_tools/cuts.py`.
+
+#### 3.8.1 Signal Region (SR)
+
+Optimized for the ggH signal, we require:
+
+- **b-jet Veto**: No b-tagged jets ($p_T > 20$ GeV) to reject Top quarks.
+- **Higgs $m_T > 60$ GeV**: Focuses on the Higgs mass peak area.
+- **$m_T(\ell_2, E_T^{miss}) > 30$ GeV**: Suppresses W+Jets and non-prompt leptons.
+- **2-Jet Veto**: In the 2-jet category only, we apply an $m_{jj}$ window cut (veto 65 < $m_{jj}$ < 105 GeV) to remove hadronic $W/Z$ decays.
+
+#### 3.8.2 Control Region Top (CR-Top)
+
+Used to normalize the $t\bar{t}$ background. Defined by inverting the b-veto.
+
+- 0-Jet Bin: Looks for "soft" b-jets (20 < $p_T$ < 30 GeV) which are often missed in the standard jet collection.
+- 1/2-Jet Bins: Requires at least one standard b-jet ($p_T > 30$ GeV).
+- Cuts: Global Cuts + $m_{\ell\ell} > 50$ GeV + b-tag requirement.
+
+#### 3.8.3 Control Region DY (CR-$\tau\tau$)
+
+Used to normalize the Drell-Yan background. Defined by inverting the $m_T^H$ cut.
+
+- **Cuts:** Global Cuts + b-jet Veto + $m_{T}^H < 60$ GeV.
+- **Z-Mass Window:** We strictly select events inside the Z-peak window (40 < $m_{\ell\ell}$ < 80 GeV) to capture $Z \to \tau\tau$ events.
+
+### 3.9 Step 8: Cutflow and Validation
+
+To validate the analysis logic and monitor the efficiency of each selection step, we track the cumulative event yields across the entire workflow.
+
+#### 3.9.1 Tracking Stages
+
+We define specific "checkpoints" in the analysis chain where event counts are recorded. These are defined in `hww_tools/Config.py` and populated dynamically during the event loop in `processor.py`.
+
+The monitored stages are:
+
+- **Total**: Raw number of events in the input files.
+- **After JSON**: Events remaining after applying the Golden JSON (Data only).
+- **eμ Pre-selection**: Events with exactly one electron and one muon of opposite sign.
+- **Global Cuts**: Events passing the baseline $E_T^{miss} > 20$ GeV and $m_{\ell\ell} > 12$ GeV logic.
+- **Jet Categories**: Counts for 0-Jet, 1-Jet, and 2-Jet sub-groups.
+- **Signal/Control Regions**: Final counts in the orthogonal SR, CR-Top, and CR-DY regions.
+
+#### 3.9.2 Raw vs. Weighted Yields
+
+We maintain two parallel cutflow tables:
+
+- **Raw Cutflow**: Counts the absolute number of processed events. Useful for debugging code performance and statistical errors.
+- **Weighted Cutflow**: Sums the weights ($w_{event}$) of surviving events. This represents the expected physical yields (normalized to $16.15 \text{ fb}^{-1}$) and is used for physics comparisons.
+
+---
+## 4. Technical Framework
+
+### 4.1 Event-Loop vs Array-Based Processing 
+Traditional High-Energy Physics (HEP) analysis has historically relied on an Event-Loop paradigm (typically using C++ ROOT macros). In this model, the processor iterates through the dataset one event at a time, reconstructing objects and filling histograms sequentially. While conceptually simple, this approach often suffers from poor performance in interpreted languages like Python due to loop overhead and lack of vectorization.
+To address this, instead of processing events row-by-row, we treat data as contiguous arrays of properties (columns). For example, rather than looping over every muon in every event to check its transverse momentum ($p_T$), we perform a single operation on the entire $p_T$ array (e.g., `muon_pt > 25`). This approach shifts the computational burden to compiled, highly optimized libraries (like NumPy and C++ kernels), allowing us to exploit modern CPU vectorization and ensuring high-throughput data processing.
+
+### 4.2 Core Toolset
+The analysis is built upon the modern [Scikit-HEP](https://scikit-hep.org/) scientific Python ecosystem. Each tool in the stack addresses a specific challenge of processing HEP data:
+
+1. **`Uproot`:** To interface with the vast legacy of data stored in ROOT format, we utilize [Uproot](https://pypi.org/project/uproot/). Unlike PyROOT, Uproot is purely Python-based and does not require the massive C++ ROOT software stack. In this analysis, Uproot handles the input/output layer, streaming NanoAOD data directly from remote XRootD servers into local memory buffers.
+2. **`Awkward Array`:** Particle physics data is inherently "*jagged*" or irregular—one event may contain zero muons, the next might have two, and a third might have one. Standard "*flat*" array libraries like [NumPy](https://numpy.org/) cannot handle this structure naturally. We solve this using [Awkward Array](https://pypi.org/project/awkward/), which allows us to manipulate these irregular, nested structures using NumPy-like idioms (slicing, masking, and broadcasting) without losing the event structure.
+3. **`Vector`:** Calculating physical quantities such as invariant masses ($m_{\ell\ell}$), angular separations ($\Delta R$), and Lorentz boosts is handled by the [Vector](https://vector.readthedocs.io/en/latest/) library. It integrates seamlessly with Awkward Array, allowing us to perform complex 4-vector arithmetic on millions of particles simultaneously with a syntax as simple as `lepton1 + lepton2`.
+4. **`Hist`:** For the final accumulation of yields and distributions, we employ [Hist](https://hist.readthedocs.io/en/latest/). Based on the fast C++ `boost-histogram` library, Hist supports multi-dimensional, sparse, and categorical axes. This is essential for our analysis, which requires simultaneous categorization of events into multiple regions (Signal, Control) and systematic variations within a single object.
+5. **`Mplhep`:** [Mplhep](https://github.com/scikit-hep/mplhep) is a Matplotlib extension for high-energy physics. It provides tools for plotting data in the standard HEP style, including axis formatting, error bar conventions, and legend placement. In this analysis, Mplhep is used to create standardized plots of the signal and control regions.
+
+### 4.3 Distributed Computing with Dask
+
+To handle the massive scale of CMS data (terabytes of information), we leverage [Dask](https://docs.dask.org/en/stable/), a flexible parallel computing library. Dask allows us to scale the same Python analysis from a single laptop to a cluster of machines without rewriting the code. It achieves this by breaking the dataset into smaller *“chunks”* (partitions) and processing them in parallel.
+
+In this analysis, Dask is used to distribute the event processing across multiple CPU cores, significantly reducing the runtime.
+
+To quantify the performance gain, we compare the wall-clock time required to process the full dataset:
+
+* **Sequential Processing:** Processing the full $16.15 \text{ fb}^{-1}$ dataset on a single core would be CPU-bound, taking several hours to complete.
+
+* **Distributed Processing:** By distributing the workload across the Dask cluster, the total processing time is reduced to minutes.
+
+This reduction in runtime is important for the iterative nature of the analysis, where selection cuts and strategies are refined repeatedly. Faster processing enables quicker feedback and more efficient development cycles.
 
 ---
 
-## 2. The Higgs Boson
+## 5. Statistical Interpretation
 
-### 2.1 The Standard Model and the Brout-Englert-Higgs Mechanism
-### 2.2 Discovery of the Higgs Boson (2012)
-### 2.3 Higgs Boson Production Modes at the LHC
-#### 2.3.1 Gluon-Gluon Fusion (ggH) — Dominant Mode
-#### 2.3.2 Vector Boson Fusion (VBF)
-#### 2.3.3 Associated Production (VH, ttH)
-### 2.4 Higgs Boson Decay Channels
-#### 2.4.1 Overview of Branching Ratios
-#### 2.4.2 The H→WW* Decay Mode
-### 2.5 The Fully Leptonic Final State: H→WW*→eμνν
-#### 2.5.1 Why the eμ Channel? — Suppressing Drell-Yan
-#### 2.5.2 Kinematic Properties of the Signal
-#### 2.5.3 The Role of Transverse Mass (m_T^H) as the Discriminating Variable
+### 5.1 CMS Combine Tool
+The final statistical analysis is performed using the [CMS Higgs Combine Tool](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/). It computes the **signal strength (μ)**, defined as the ratio of the observed signal yield to the Standard Model prediction, and evaluates the statistical significance of any excess. The tool uses a **profile likelihood fit**, where systematic uncertainties are treated as nuisance parameters constrained by the data.
 
----
+### 5.2 Input Preparation
+The script `Run_analysis/prepare_combine.py` converts the analysis output into the format required by Combine.
 
-## 3. Signal and Background Processes
+- **Harvesting:** Extracts the relevant histograms (e.g., `mt_higgs`) from the Signal and Control Regions.
+- **Smoothing:** Empty or negative bins are set to a small positive value to ensure fit stability.
+- **Output files:**
+  1. `combine_input.root` – Contains nominal shapes and systematic variations.
+  2. `hww_datacard.txt` – Defines the physics model and uncertainties.
 
-### 3.1 Signal Definition: gg→H→WW*→eμνν
-### 3.2 Irreducible Backgrounds
-#### 3.2.1 Non-Resonant WW Production (qq̄→WW→eμνν)
-#### 3.2.2 Gluon-Induced WW (gg→WW)
-### 3.3 Reducible Backgrounds
-#### 3.3.1 Top Quark Pair Production (tt̄→2ℓ2ν) and Single Top
-#### 3.3.2 Drell-Yan to Tau Pairs (Z/γ*→ττ→eμ+4ν)
-#### 3.3.3 Non-Prompt / Fake Leptons (W+Jets, Semi-Leptonic tt̄)
-#### 3.3.4 Diboson Production (WZ, ZZ)
-#### 3.3.5 V+γ Processes (Wγ, Zγ)
-### 3.4 Summary of Background Mimicry Mechanisms
-### 3.5 Process Grouping and Sample Mapping Used in This Analysis
+### 5.3 Datacard and Fit Strategy
+The datacard (`Outputs/hww_datacard.txt`) performs a **simultaneous fit** of:
 
----
+1. **Signal Region (SR):** Main search region.
+2. **Top Control Region (TopCR):** Used to constrain the dominant top-quark background.
 
-## 4. Analysis Strategy and Event Selection
+Systematic uncertainties are included as:
 
-### 4.1 Overview of the Analysis Chain
-### 4.2 Data and Monte Carlo Samples
-#### 4.2.1 Data: 2016 Legacy Re-Reco (Run2016G–H)
-#### 4.2.2 Monte Carlo Simulation Samples
-#### 4.2.3 Integrated Luminosity (16.1 fb⁻¹)
-### 4.3 Golden JSON Filtering for Data Quality
-### 4.4 Object Selection
-#### 4.4.1 Electron Selection (MVA Fall17 V2 Iso WP90)
-#### 4.4.2 Muon Selection (Tight ID + PF Relative Isolation < 0.15)
-#### 4.4.3 Jet Selection (Jet ID, Pileup ID, Lepton Cleaning via ΔR > 0.4)
-#### 4.4.4 Missing Transverse Energy (PuppiMET)
-### 4.5 Event Pre-Selection
-#### 4.5.1 Exactly One Electron and One Muon (eμ Channel)
-#### 4.5.2 Opposite Charge Requirement
-#### 4.5.3 Leading Lepton pT > 25 GeV, Subleading pT > 13 GeV
-#### 4.5.4 Lepton η Acceptance (|η_e| < 2.5, |η_μ| < 2.4)
-### 4.6 Kinematic Variable Computation
-#### 4.6.1 Dilepton Invariant Mass (m_ℓℓ)
-#### 4.6.2 Dilepton Transverse Momentum (pT_ℓℓ)
-#### 4.6.3 Azimuthal Opening Angle (Δφ_ℓℓ)
-#### 4.6.4 Higgs Transverse Mass (m_T^H)
-#### 4.6.5 Subleading Lepton Transverse Mass (m_T(ℓ₂, MET))
-#### 4.6.6 Dijet Invariant Mass (m_jj)
-### 4.7 Global Cuts
-#### 4.7.1 MET > 20 GeV
-#### 4.7.2 pT_ℓℓ > 30 GeV
-#### 4.7.3 m_ℓℓ > 12 GeV
-### 4.8 Jet Categorization
-#### 4.8.1 0-Jet Category
-#### 4.8.2 1-Jet Category
-#### 4.8.3 ≥2-Jet Category
-### 4.9 Signal Region Definitions
-#### 4.9.1 Common SR Cuts (m_T^H > 60 GeV, m_T(ℓ₂, MET) > 30 GeV, b-jet Veto)
-#### 4.9.2 SR 0-Jet, SR 1-Jet, SR 2-Jet
-#### 4.9.3 m_jj Window Veto in 2-Jet Category
-### 4.10 Control Region Definitions
-#### 4.10.1 Top Control Regions (m_ℓℓ > 50 GeV, b-tag Requirements)
-##### 4.10.1.1 CR-Top 0-Jet (Soft b-jets: 20 < pT < 30 GeV)
-##### 4.10.1.2 CR-Top 1-Jet and 2-Jet (Hard b-jets: pT > 30 GeV)
-#### 4.10.2 Drell-Yan ττ Control Regions (m_T^H < 60, 40 < m_ℓℓ < 80 GeV, b-jet Veto)
-##### 4.10.2.1 CR-ττ 0-Jet, 1-Jet, 2-Jet
-### 4.11 Cutflow and Event Yields
-
----
-
-## 5. Technical Framework and Tools
-
-### 5.1 The Coffea-Casa Analysis Facility for CMS Open Data
-### 5.2 Distributed Computing with Dask
-#### 5.2.1 The Dask Scheduler-Worker Architecture
-#### 5.2.2 Deploying the Analysis Package to Workers
-#### 5.2.3 Performance Comparison: Sequential vs. Dask-Distributed Processing
-### 5.3 Columnar Analysis with Awkward Array
-#### 5.3.1 Jagged/Variable-Length Data Structures in HEP
-#### 5.3.2 Vectorized Operations on Event Data
-### 5.4 ROOT File I/O with Uproot
-#### 5.4.1 Reading NanoAOD Files
-#### 5.4.2 Batch Iteration over Large Files
-#### 5.4.3 Writing Output ROOT Files
-### 5.5 Lorentz Vector Computations with the Vector Library
-### 5.6 Histogramming with the hist (boost-histogram) Library
-#### 5.6.1 Weighted Histogram Storage
-#### 5.6.2 Histogram Axes and Binning Definitions
-### 5.7 Numerical Computing with NumPy
-### 5.8 Visualization with matplotlib and mplhep
-#### 5.8.1 CMS-Style Plotting
-#### 5.8.2 Stacked Histogram Plots with Data/MC Ratio Panels
-#### 5.8.3 Shape Comparison (Superimposed) Plots
-### 5.9 Summary Table of Tools and References
-
----
-
-## 6. Accessing CMS Open Data via XRootD
-
-### 6.1 What is XRootD?
-### 6.2 The EOSPUBLIC Storage Infrastructure at CERN
-### 6.3 Constructing XRootD URLs for CMS Open Data Files
-### 6.4 Organizing File Lists by Sample and Physics Process
-### 6.5 Sample-to-Label Mapping Strategy
-### 6.6 Handling Network Failures: Retry Logic and Timeouts
-
----
-
-## 7. Monte Carlo Normalization and Cross-Section Weighting
-
-### 7.1 Why MC Events Need Reweighting
-### 7.2 The Normalization Formula: w = (σ × L) / Σw_gen
-#### 7.2.1 Cross-Sections (σ)
-#### 7.2.2 Integrated Luminosity (L = 16,150 pb⁻¹)
-#### 7.2.3 Sum of Generator Weights (Σw_gen)
-### 7.3 Generator-Level Weights (genWeight)
-### 7.4 Cross-Section Sources: The LatinoAnalysis GitHub Repository
-### 7.5 Cross-Section Values Used in This Analysis
-### 7.6 Handling Negative Generator Weights
-
----
-
-## 8. Data/MC Correction Factors (Scale Factors)
-
-### 8.1 Why Scale Factors Are Needed
-### 8.2 HLT Trigger Efficiency Scale Factor
-#### 8.2.1 Flat SF Approach (SF = 0.9129 ± 0.0008)
-#### 8.2.2 Propagation as a Systematic Uncertainty
-### 8.3 Electron Identification Scale Factor
-#### 8.3.1 MVA Fall17 V2 Iso WP90 Efficiency
-#### 8.3.2 2D Lookup Table: |η| × pT Binning
-#### 8.3.3 Up/Down Variations for Systematics
-### 8.4 Muon Scale Factors
-#### 8.4.1 Tight ID Efficiency Scale Factor
-#### 8.4.2 PF Relative Isolation (Iso < 0.15) Scale Factor
-#### 8.4.3 Combined Muon SF: Product of Tight ID × Isolation
-#### 8.4.4 2D Lookup Table: |η| × pT Binning
-#### 8.4.5 Correlated Up/Down Variations
-### 8.5 Weight Dictionary and Systematic Variation Strategy
-#### 8.5.1 Nominal Weight Construction
-#### 8.5.2 Seven Variation Categories: nominal, trigger_up/down, ele_id_up/down, mu_id_up/down
-
----
-
-## 9. Statistical Inference with the Combine Tool
-
-### 9.1 Overview of the CMS Combine Framework
-### 9.2 Preparing Inputs for Combine
-#### 9.2.1 Harvesting Histograms from the Analysis Output
-#### 9.2.2 Protecting Against Empty/Negative Bins
-#### 9.2.3 Naming Convention: $PROCESS_$CHANNEL_$SYSTEMATIC
-### 9.3 The Datacard Structure
-#### 9.3.1 Channel and Process Definitions
-#### 9.3.2 Observed and Expected Rates
-#### 9.3.3 Nuisance Parameters
-##### 9.3.3.1 Luminosity Uncertainty (lnN: 2.5%)
-##### 9.3.3.2 Shape Systematics (Trigger, Electron ID, Muon ID)
-#### 9.3.4 Automatic MC Statistical Uncertainties (autoMCStats)
-### 9.4 Simultaneous Fit: Signal Region + Top Control Region
-
----
-
-## 10. Limitations of CMS Open Data for Physics Analysis
-
-### 10.1 Limited Run Periods and Luminosity Coverage
-### 10.2 Absence of Official Correction Files (e.g., JSON POG)
-### 10.3 Missing or Incomplete Scale Factor Derivation Tools
-### 10.4 Lack of Official Trigger Efficiency Measurements for Open Data
-### 10.5 No Access to Data-Driven Background Estimation Frameworks
-### 10.6 Limited Documentation for Advanced Analysis Techniques
-### 10.7 Software Environment Compatibility Challenges
-### 10.8 Reduced Systematic Uncertainty Coverage Compared to Official Analyses
-### 10.9 Validation Difficulties Without Internal Collaboration Benchmarks
-
----
-
-## 11. Future Improvements for CMS Open Data
-
-### 11.1 Publishing Complete Scale Factor and Correction Packages
-### 11.2 Providing Pre-Computed Efficiency Maps and Trigger Turn-On Curves
-### 11.3 Expanding the Available Luminosity and Run Periods
-### 11.4 Releasing Reference Analysis Workflows as Benchmarks
-### 11.5 Improving Documentation with Step-by-Step Analysis Tutorials
-### 11.6 Enabling Data-Driven Techniques (e.g., Fake Factor Methods, Template Fits)
-### 11.7 Better Integration with Modern Analysis Tools (Coffea, Dask, ServiceX)
-### 11.8 Streamlining Access via Cloud-Native Analysis Facilities
-### 11.9 Community-Driven Validation and Reproducibility Frameworks
-### 11.10 Broadening Open Data for Education and Early-Career Researchers
-
----
-
-## Appendices
-
-### A. Complete List of Datasets and XRootD Endpoints
-### B. Full Cutflow Tables (Raw and Weighted)
-### C. Cross-Section and Generator Weight Summary Table
-### D. Scale Factor Lookup Tables
-#### D.1 Electron MVA ID SF Table
-#### D.2 Muon Tight ID SF Table
-#### D.3 Muon PF Isolation SF Table
-### E. Datacard Example
-### F. Software Versions and Environment Specifications
-
----
-
-## References
+- **lnN (log-normal):** Normalization uncertainties (e.g., luminosity).
+- **Shape:** Kinematic uncertainties such as trigger and lepton ID efficiencies.
