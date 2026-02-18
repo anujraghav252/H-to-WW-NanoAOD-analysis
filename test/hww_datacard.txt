@@ -1,0 +1,19 @@
+imax 2  number of channels (SR, TopCR)
+jmax 7  number of backgrounds
+kmax * number of nuisance parameters
+------------------------------
+shapes * * combine_input.root $PROCESS_$CHANNEL $PROCESS_$CHANNEL_$SYSTEMATIC
+------------------------------
+bin            SR              TopCR           
+observation    -1              -1              
+------------------------------
+bin            SR              SR              SR              SR              SR              SR              SR              SR              TopCR           TopCR           TopCR           TopCR           TopCR           TopCR           TopCR           TopCR           
+process        ggH_HWW         WW              Top_antitop     DY_to_Tau_Tau   Fakes           ggWW            Diboson         VG              ggH_HWW         WW              Top_antitop     DY_to_Tau_Tau   Fakes           ggWW            Diboson         VG              
+process        0               1               2               3               4               5               6               7               0               1               2               3               4               5               6               7               
+rate           295.8349        4514.4794       1400.1135       405.6118        4670.5148       45.3189         142.7667        532.8113        9.0269          298.6692        1530.2818       107.7373        427.2587        3.2194          17.1024         32.0555         
+------------------------------
+lumi_13TeV      lnN      1.025 1.025 1.025 1.025 1.025 1.025 1.025 1.025 1.025 1.025 1.025 1.025 1.025 1.025 1.025 1.025 
+CMS_trigger     shape    1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 
+CMS_eff_e       shape    1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 
+CMS_eff_m       shape    1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 
+* autoMCStats 0 1 1
