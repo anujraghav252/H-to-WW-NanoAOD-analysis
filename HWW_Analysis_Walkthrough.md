@@ -4,8 +4,9 @@
 
 ### 1.1 The CMS Experiment at the LHC
 The Compact Muon Solenoid (CMS) is one of the two large general-purpose particle physics detectors built on the Large Hadron Collider (LHC) at CERN. It is designed to investigate a wide range of physics, including the study of the [Standard Model](https://home.cern/science/physics/standard-model) (the framework that describes the fundamental particles and their interactions), the search for extra dimensions, and particles that could make up dark matter.
-
-<img src="Images/CMS_logo.png" width="400">
+<p align="center">
+<img src="Images/CMS_logo.png" width="300">
+<\p>
 
 
 
