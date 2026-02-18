@@ -3,10 +3,20 @@
 ## 1. Introduction to CMS Open Data
 
 ### 1.1 The CMS Experiment at the LHC
+
+<div align="center">
+<img src="Images/CMS_logo.png" alt="CMS Logo" width="300"/>
+</div>
+
 The Compact Muon Solenoid (CMS) is one of the two large general-purpose particle physics detectors built on the Large Hadron Collider (LHC) at CERN. It is designed to investigate a wide range of physics, including the study of the [Standard Model](https://home.cern/science/physics/standard-model) (the framework that describes the fundamental particles and their interactions), the search for extra dimensions, and particles that could make up dark matter.
 
 
 ### 1.2 What is CMS Open Data? 
+
+<div align="center">
+<img src="Images/opendata_cms.png" alt="CMS Open Data" width="400"/>
+</div>
+
 CMS Open Data is the public release of data collected by the CMS experiment. It represents a commitment to scientific transparency and the long-term value of the data collected at the LHC. The data is hosted on the [CERN Open Data Portal](https://opendata.cern.ch).
  
  #### 1.2.1 What is the purpose of CMS Open Data?
@@ -286,15 +296,55 @@ Traditional High-Energy Physics (HEP) analysis has historically relied on an Eve
 To address this, instead of processing events row-by-row, we treat data as contiguous arrays of properties (columns). For example, rather than looping over every muon in every event to check its transverse momentum ($p_T$), we perform a single operation on the entire $p_T$ array (e.g., `muon_pt > 25`). This approach shifts the computational burden to compiled, highly optimized libraries (like NumPy and C++ kernels), allowing us to exploit modern CPU vectorization and ensuring high-throughput data processing.
 
 ### 4.2 Core Toolset
+
+<div align="center">
+<img src="Images/scikit_logo.png" alt="Scikit-HEP Logo" width="350"/>
+</div>
+
 The analysis is built upon the modern [Scikit-HEP](https://scikit-hep.org/) scientific Python ecosystem. Each tool in the stack addresses a specific challenge of processing HEP data:
 
-1. **`Uproot`:** To interface with the vast legacy of data stored in ROOT format, we utilize [Uproot](https://pypi.org/project/uproot/). Unlike PyROOT, Uproot is purely Python-based and does not require the massive C++ ROOT software stack. In this analysis, Uproot handles the input/output layer, streaming NanoAOD data directly from remote XRootD servers into local memory buffers.
-2. **`Awkward Array`:** Particle physics data is inherently "*jagged*" or irregular—one event may contain zero muons, the next might have two, and a third might have one. Standard "*flat*" array libraries like [NumPy](https://numpy.org/) cannot handle this structure naturally. We solve this using [Awkward Array](https://pypi.org/project/awkward/), which allows us to manipulate these irregular, nested structures using NumPy-like idioms (slicing, masking, and broadcasting) without losing the event structure.
-3. **`Vector`:** Calculating physical quantities such as invariant masses ($m_{\ell\ell}$), angular separations ($\Delta R$), and Lorentz boosts is handled by the [Vector](https://vector.readthedocs.io/en/latest/) library. It integrates seamlessly with Awkward Array, allowing us to perform complex 4-vector arithmetic on millions of particles simultaneously with a syntax as simple as `lepton1 + lepton2`.
-4. **`Hist`:** For the final accumulation of yields and distributions, we employ [Hist](https://hist.readthedocs.io/en/latest/). Based on the fast C++ `boost-histogram` library, Hist supports multi-dimensional, sparse, and categorical axes. This is essential for our analysis, which requires simultaneous categorization of events into multiple regions (Signal, Control) and systematic variations within a single object.
-5. **`Mplhep`:** [Mplhep](https://github.com/scikit-hep/mplhep) is a Matplotlib extension for high-energy physics. It provides tools for plotting data in the standard HEP style, including axis formatting, error bar conventions, and legend placement. In this analysis, Mplhep is used to create standardized plots of the signal and control regions.
+1. **`Uproot`:** 
+
+<div align="center">
+<img src="Images/uproot_logo.png" alt="Uproot Logo" width="200"/>
+</div>
+
+To interface with the vast legacy of data stored in ROOT format, we utilize [Uproot](https://pypi.org/project/uproot/). Unlike PyROOT, Uproot is purely Python-based and does not require the massive C++ ROOT software stack. In this analysis, Uproot handles the input/output layer, streaming NanoAOD data directly from remote XRootD servers into local memory buffers.
+2. **`Awkward Array`:** 
+
+<div align="center">
+<img src="Images/awkward.svg" alt="Awkward Array Logo" width="200"/>
+</div>
+
+Particle physics data is inherently "*jagged*" or irregular—one event may contain zero muons, the next might have two, and a third might have one. Standard "*flat*" array libraries like [NumPy](https://numpy.org/) cannot handle this structure naturally. We solve this using [Awkward Array](https://pypi.org/project/awkward/), which allows us to manipulate these irregular, nested structures using NumPy-like idioms (slicing, masking, and broadcasting) without losing the event structure.
+3. **`Vector`:** 
+
+<div align="center">
+<img src="Images/vector logo.svg" alt="Vector Logo" width="200"/>
+</div>
+
+Calculating physical quantities such as invariant masses ($m_{\ell\ell}$), angular separations ($\Delta R$), and Lorentz boosts is handled by the [Vector](https://vector.readthedocs.io/en/latest/) library. It integrates seamlessly with Awkward Array, allowing us to perform complex 4-vector arithmetic on millions of particles simultaneously with a syntax as simple as `lepton1 + lepton2`.
+4. **`Hist`:** 
+
+<div align="center">
+<img src="Images/histlogo.png" alt="Hist Logo" width="200"/>
+</div>
+
+For the final accumulation of yields and distributions, we employ [Hist](https://hist.readthedocs.io/en/latest/). Based on the fast C++ `boost-histogram` library, Hist supports multi-dimensional, sparse, and categorical axes. This is essential for our analysis, which requires simultaneous categorization of events into multiple regions (Signal, Control) and systematic variations within a single object.
+5. **`Mplhep`:** 
+
+<div align="center">
+<img src="Images/mplhep_logo.png" alt="Mplhep Logo" width="250"/>
+</div>
+
+[Mplhep](https://github.com/scikit-hep/mplhep) is a Matplotlib extension for high-energy physics. It provides tools for plotting data in the standard HEP style, including axis formatting, error bar conventions, and legend placement. In this analysis, Mplhep is used to create standardized plots of the signal and control regions.
 
 ### 4.3 Distributed Computing with Dask
+
+<div align="center">
+<img src="Images/dask_horizontal.svg" alt="Dask Logo" width="300"/>
+</div>
+
 
 To handle the massive scale of CMS data (terabytes of information), we leverage [Dask](https://docs.dask.org/en/stable/), a flexible parallel computing library. Dask allows us to scale the same Python analysis from a single laptop to a cluster of machines without rewriting the code. It achieves this by breaking the dataset into smaller *“chunks”* (partitions) and processing them in parallel.
 
@@ -313,6 +363,11 @@ This reduction in runtime is important for the iterative nature of the analysis,
 ## 5. Statistical Interpretation
 
 ### 5.1 CMS Combine Tool
+
+<div align="center">
+<img src="Images/combine_logo.png" alt="Combine Logo" width="300"/>
+</div>
+
 The final statistical analysis is performed using the [CMS Higgs Combine Tool](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/). It computes the **signal strength (μ)**, defined as the ratio of the observed signal yield to the Standard Model prediction, and evaluates the statistical significance of any excess. The tool uses a **profile likelihood fit**, where systematic uncertainties are treated as nuisance parameters constrained by the data.
 
 ### 5.2 Input Preparation
