@@ -10,7 +10,7 @@ observation    -1              -1
 bin            SR              SR              SR              SR              SR              SR              SR              SR              TopCR           TopCR           TopCR           TopCR           TopCR           TopCR           TopCR           TopCR           
 process        ggH_HWW         WW              Top_antitop     DY_to_Tau_Tau   Fakes           ggWW            Diboson         VG              ggH_HWW         WW              Top_antitop     DY_to_Tau_Tau   Fakes           ggWW            Diboson         VG              
 process        0               1               2               3               4               5               6               7               0               1               2               3               4               5               6               7               
-rate           365.0830        5379.7933       1876.1604       505.5139        5013.2882       54.2625         178.3724        639.8512        4.7909          156.6198        1300.0978       70.4761         484.9532        1.5789          10.6077         30.3302         
+rate           365.0830        5239.2133       1862.9677       498.6955        4977.0148       54.2583         175.3588        637.8448        4.7914          155.1625        1291.4655       69.3247         484.7703        1.6004          10.5325         30.2875         
 ------------------------------
 lumi_13TeV      lnN      1.025 1.025 1.025 1.025 1.025 1.025 1.025 1.025 1.025 1.025 1.025 1.025 1.025 1.025 1.025 1.025 
 CMS_trigger     shape    1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 
