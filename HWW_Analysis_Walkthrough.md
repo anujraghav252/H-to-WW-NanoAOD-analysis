@@ -4,16 +4,20 @@
 
 ### 1.1 The CMS Experiment at the LHC
 The Compact Muon Solenoid (CMS) is one of the two large general-purpose particle physics detectors built on the Large Hadron Collider (LHC) at CERN. It is designed to investigate a wide range of physics, including the study of the [Standard Model](https://home.cern/science/physics/standard-model) (the framework that describes the fundamental particles and their interactions), the search for extra dimensions, and particles that could make up dark matter.
+
 <p align="center">
-<img src="Images/CMS_logo.png" width="300">
-<\p>
+  <img src="Images/CMS_logo.png" width="300">
+</p>
 
 
 
 ### 1.2 What is CMS Open Data? 
 CMS Open Data is the public release of data collected by the CMS experiment. It represents a commitment to scientific transparency and the long-term value of the data collected at the LHC. The data is hosted on the [CERN Open Data Portal](https://opendata.cern.ch).
+<p align="center">
+  <img src="Images/opendata.png" width="300" style="margin-right: 60px;">
+  <img src="Images/opendata_cms.png" width="300" style="margin-left: 60px;">
+</p>
 
-<img src="Images/opendata_cms.png" width="400">
 
  
  #### 1.2.1 What is the purpose of CMS Open Data?
@@ -318,6 +322,10 @@ The analysis is built upon the modern [Scikit-HEP](https://scikit-hep.org/) scie
 ### 4.3 Distributed Computing with Dask
 
 To handle the massive scale of CMS data (terabytes of information), we leverage [Dask](https://docs.dask.org/en/stable/), a flexible parallel computing library. Dask allows us to scale the same Python analysis from a single laptop to a cluster of machines without rewriting the code. It achieves this by breaking the dataset into smaller *“chunks”* (partitions) and processing them in parallel.
+<p align="center">
+  <img src="Images/dask_horizontal.svg" width="300">
+</p>
+
 
 In this analysis, Dask is used to distribute the event processing across multiple CPU cores, significantly reducing the runtime.
 
@@ -335,6 +343,10 @@ This reduction in runtime is important for the iterative nature of the analysis,
 
 ### 5.1 CMS Combine Tool
 The final statistical analysis is performed using the [CMS Higgs Combine Tool](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/). It computes the **signal strength (μ)**, defined as the ratio of the observed signal yield to the Standard Model prediction, and evaluates the statistical significance of any excess. The tool uses a **profile likelihood fit**, where systematic uncertainties are treated as nuisance parameters constrained by the data.
+
+<p align="center">
+  <img src="Images/combine_logo.png" width="300">
+</p>
 
 ### 5.2 Input Preparation
 The script `Run_analysis/prepare_combine.py` converts the analysis output into the format required by Combine.
