@@ -165,3 +165,6 @@ See [`requirements.txt`](requirements.txt) for the full pinned list.
 ## Acknowledgements
 
 This analysis is developed as part of the **HSF-India project**, an initiative to foster research software collaborations between India and the international High Energy Physics community.
+<p align="center">
+  <img src="Images/hsf-india_logo.png" width="200">
+</p>
