@@ -315,7 +315,7 @@ The analysis is built upon the modern [Scikit-HEP](https://scikit-hep.org/) scie
   <img src="Images/awkward.svg" width="17%" style="margin: 0 10px;">
   <img src="Images/vector logo.svg" width="17%" style="margin: 0 10px;">
   <img src="Images/histlogo.png" width="17%" style="margin: 0 10px;">
-  <img src="Images/mplhep_logo.png" width="17%" style="margin: 0 10px;">
+  <img src="Images/mplhep.png" width="17%" style="margin: 0 10px;">
 </p>
 
 
