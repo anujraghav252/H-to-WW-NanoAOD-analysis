@@ -123,6 +123,10 @@ The execution flow for each data chunk follows a strict "Cut-and-Count" methodol
 - **Global Cuts:** Baseline kinematic requirements.
 - **Categorization:** Sorting events into orthogonal Signal and Control regions.
 
+<p align="center">
+  <img src="Images/flowchart.svg" width="300">
+</p>
+
 
 ### 3.2 Step 1: Data Ingestion and Validation
 
