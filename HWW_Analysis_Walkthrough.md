@@ -124,7 +124,7 @@ The execution flow for each data chunk follows a strict "Cut-and-Count" methodol
 - **Categorization:** Sorting events into orthogonal Signal and Control regions.
 
 <p align="center">
-  <img src="Images/flowchart.svg" width="300">
+  <img src="Images/flowchart.svg">
 </p>
 
 
