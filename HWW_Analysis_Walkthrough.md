@@ -14,8 +14,9 @@ The Compact Muon Solenoid (CMS) is one of the two large general-purpose particle
 ### 1.2 What is CMS Open Data? 
 CMS Open Data is the public release of data collected by the CMS experiment. It represents a commitment to scientific transparency and the long-term value of the data collected at the LHC. The data is hosted on the [CERN Open Data Portal](https://opendata.cern.ch).
 <p align="center">
-  <img src="Images/opendata.png" width="300" style="margin-right: 60px;">
-  <img src="Images/opendata_cms.png" width="300" style="margin-left: 60px;">
+  <img src="Images/opendata.png" width="300">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="Images/opendata_cms.png" width="300">
 </p>
 
 
