@@ -311,7 +311,7 @@ The analysis is built upon the modern [Scikit-HEP](https://scikit-hep.org/) scie
 4. **`Hist`:** For the final accumulation of yields and distributions, we employ [Hist](https://hist.readthedocs.io/en/latest/). Based on the fast C++ `boost-histogram` library, Hist supports multi-dimensional, sparse, and categorical axes. This is essential for our analysis, which requires simultaneous categorization of events into multiple regions (Signal, Control) and systematic variations within a single object.
 5. **`Mplhep`:** [Mplhep](https://github.com/scikit-hep/mplhep) is a Matplotlib extension for high-energy physics. It provides tools for plotting data in the standard HEP style, including axis formatting, error bar conventions, and legend placement. In this analysis, Mplhep is used to create standardized plots of the signal and control regions.
 <p align="center">
-  <img src="Images/uproot_logo.png" width="17%">
+  <img src="Images/uproot_logo.webp" width="17%">
   &nbsp;&nbsp;&nbsp;
   <img src="Images/awkward.svg" width="17%">
   &nbsp;&nbsp;&nbsp;
