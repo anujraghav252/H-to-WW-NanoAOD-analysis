@@ -1,6 +1,6 @@
 # hww_tools - Analysis Toolkit
 
-Welcome to the `hww_tools` directory! This is the custom Python package powering our H -> WW -> 2l 2nu NanoAOD analysis. 
+Welcome to the `hww_tools` directory! This is the custom Python package powering our $H \to WW \to 2\ell 2\nu$ NanoAOD analysis. 
 
 Instead of writing one massive, unreadable script, we broke the analysis logic down into modular files. This toolkit handles everything from applying trigger scale factors and calculating transverse masses, to orchestrating the Dask cluster and generating publication-ready plots. 
 
@@ -80,6 +80,6 @@ After running the analysis, you will find:
 
 ## How it interacts with the Main Notebook
 
-You might notice that the actual event loop (the thing that loops through events and says "if pT > 25") is missing from this directory. 
+You might notice that the actual event loop (the thing that loops through events and says) is missing from this directory. 
 
 By design, the core event loop is kept directly inside the main `Run_analysis.ipynb` notebook. This allows you to easily read, tweak, and debug the specific order of the physics cuts without having to dig through hidden files. The notebook acts as the brain that decides what to do, while this `hww_tools` directory acts as the muscle that provides the math functions and cluster management to get it done!
