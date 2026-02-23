@@ -1,19 +1,27 @@
 """
 Efficiency_data.py
 
-This module contains lookup tables and constants for data/MC corrections.
-It includes:
-- Trigger efficiency scale factors
-- Electron ID scale factors
-- Muon ID and Isolation scale factors
+This module contains lookup tables and constants for Data/MC corrections.
+
+The scale factors included in this module are:
+- Trigger efficiency scale factors: Corrects for differences in the probability 
+  of an event passing the hardware/software triggers.
+- Electron ID scale factors: Corrects for electron reconstruction and identification.
+- Muon ID and Isolation scale factors: Corrects for muon identification and isolation cuts.
 """
 
 # Trigger Efficiency 
 TRIGGER_SF_VAL = 0.9129
 TRIGGER_SF_ERR = 0.0008
 
-# SCALE FACTOR LOOKUP TABLES 
-# Format: (eta_min, eta_max, pt_min, pt_max, SF, Uncertainty)
+# ==============================================================================
+# SCALE FACTOR LOOKUP TABLES
+# ==============================================================================
+# The following lists are 2D lookup tables binned by pseudo-rapidity (eta) 
+# and transverse momentum (pT). 
+# 
+# Structure of each tuple:
+# (eta_min, eta_max, pt_min, pt_max, Scale_Factor, Uncertainty)
 
 ELECTRON_SF_DATA = [
     # Eta 0.0 - 0.8

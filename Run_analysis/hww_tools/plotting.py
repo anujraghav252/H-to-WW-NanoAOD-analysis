@@ -1,3 +1,19 @@
+"""
+plotting.py
+
+This module handles the visualization of the physics analysis results.
+It uses matplotlib and mplhep to produce plots in the 
+standard CMS collaboration style.
+
+It provides two main plotting capabilities:
+1. Stacked Data/MC plots: Shows the expected Monte Carlo backgrounds stacked 
+   together, overlaid with the observed Data, a signal line, and a Data/MC 
+   ratio panel. Includes full statistical and systematic uncertainty bands.
+2. Superimposed shape plots: Shows normalized distributions (density=True) 
+   of the signal and backgrounds at different stages of the selection process 
+   to visualize how the cuts affect the variable shapes.
+"""
+
 import matplotlib.pyplot as plt
 import mplhep as hep
 import numpy as np
@@ -9,6 +25,29 @@ from .Plots_config import SAMPLES, PLOT_SETTINGS, VAR_LABELS, colour, stack_orde
 from .helper import get_histogram_data
 
 def create_stacked_plots(variable, hist_data_all, output_dir="plots"):
+    """
+    Creates and saves standard Data vs. Monte Carlo stacked histograms.
+    
+    This function generates plots for a specific variable across all defined 
+    analysis regions.
+
+    Parameters
+    ----------
+    variable : str
+        The internal name of the kinematic variable to plot (e.g., 'mass', 'met').
+    hist_data_all : dict
+        The fully populated nested dictionary containing the histogram objects.
+        Format: {Sample: {Stage: {Variable: {Variation: hist.Hist}}}}
+    output_dir : str, optional
+        The directory path where the generated PNG files will be saved. 
+        Defaults to "plots".
+        
+    Returns
+    -------
+    None
+        The function saves the plots directly to disk and closes the figures 
+        to free up memory.
+    """
     os.makedirs(output_dir, exist_ok=True)
     xlabel = VAR_LABELS.get(variable, variable)
     
@@ -204,6 +243,28 @@ def create_stacked_plots(variable, hist_data_all, output_dir="plots"):
         plt.close(fig)
 
 def create_superimposed_plots(variable, var_props, hist_data_all, output_dir=None):
+
+    """
+    Creates a grid of normalized (to unity), superimposed shape plots across cut stages.
+    
+    Parameters
+    ----------
+    variable : str
+        The internal name of the kinematic variable to plot.
+    var_props : hist.axis / object
+        An object containing the axis properties (like 'label' and 'edges') 
+        used to format the x-axis limits and labels.
+    hist_data_all : dict
+        The nested dictionary containing the nominal histogram data.
+    output_dir : pathlib.Path or str, optional
+        The directory where the resulting plot will be saved. If None, 
+        the plot is not saved to disk.
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        The generated matplotlib Figure object containing the 1x5 grid of plots.
+    """
     
     stages = ['before_cuts', 'global', '0jet', '1jet', '2jet']
     stage_labels = [r'Pre-Selection ', r'Global cuts', r'0-jet', r'1-jet', r'$\geq$2-jet']
