@@ -11,17 +11,15 @@ from .helper import *
 from .json_validation import *
 from .dask_utils import *
 from .plotting import *
-from .processor import *
+from .run_analysis import *
 
 # Feedback on import
 _modules = [
     "Config", "Efficiency_data", "Physics_selection", "Plots_config", 
     "calculations", "cross_section", "cutflow_utils", "cuts", 
-    "helper", "json_validation", "dask_utils", "plotting", "processor"
+    "helper", "json_validation", "dask_utils", "plotting", "run_analysis"
 ]
 
 print(f"hww_tools loaded successfully.")
-# print(f"Modules available: {', '.join(_modules)}")
-
 for module in _modules:
     print(f"- {module}")

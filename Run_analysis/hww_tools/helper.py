@@ -184,6 +184,28 @@ def get_histogram_data(hist_data, sample, stage, variable, variation='nominal'):
     except:
         return None, None, None 
 
+def get_sample_key(filename):
+    fn = filename
+    if any(x in fn for x in ["Run2016", "SingleMuon", "DoubleEG", "MuonEG"]): return None
+    if "DYJetsToLL" in fn:         return "DYJetsToLL_M-50"
+    if "TTTo2L2Nu" in fn:          return "TTTo2L2Nu"
+    if "ST_t-channel_top" in fn:   return "ST_t-channel_top"
+    if "ST_t-channel_antitop" in fn: return "ST_t-channel_antitop"
+    if "ST_tW_antitop" in fn:      return "ST_tW_antitop"
+    if "ST_tW_top" in fn:          return "ST_tW_top"
+    if "ST_s-channel" in fn:       return "ST_s-channel"
+    if "WJetsToLNu" in fn:         return "WJetsToLNu"
+    if "TTToSemiLeptonic" in fn:   return "TTToSemiLeptonic"
+    if "ZGToLLG" in fn:            return "ZGToLLG"
+    if "WGToLNuG" in fn:           return "WGToLNuG"
+    if "WZTo3LNu" in fn:           return "WZTo3LNu"
+    if "WZTo2Q2L" in fn:           return "WZTo2Q2L"
+    if "ZZ" in fn:                 return "ZZ"
+    if "GluGluToWW" in fn:         return "GluGluToWW"
+    if "WWTo2L2Nu" in fn:          return "WWTo2L2Nu"
+    if "GluGluHToWW" in fn or "Higgs" in fn: return "Higgs"
+    return "Unknown" 
+
 def merge_dask_results(results, arg_urls, files_dict, stage_names, cutflow_stages, vars_dict, variations):
     """
     Merges results from Dask workers into final aggregated dictionaries.
