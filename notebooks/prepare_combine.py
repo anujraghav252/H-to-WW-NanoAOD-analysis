@@ -8,7 +8,7 @@ OUTPUT_ROOT = "Combine/combine_input.root"
 OUTPUT_CARD = "Combine/hww_datacard.txt"
 
 # Variable to fit
-VAR_NAME = "mt_higgs"  # <--- CHANGED FROM "mass"
+VAR_NAME = "mt_higgs"  
 
 PROCESSES = [
     "ggH_HWW",       # Signal
