@@ -140,7 +140,7 @@ def create_datacard(rates):
     card_content.append("-" * 30)
     
     # <--- CHANGED FROM 1.025 TO 1.2 --->
-    card_content.append(f"{'lumi_13TeV':<15} {'lnN':<8} " + "1.2 " * (len(PROCESSES)*len(sorted_regions)))
+    card_content.append(f"{'lumi_13TeV':<15} {'lnN':<8} " + "1.012 " * (len(PROCESSES)*len(sorted_regions)))
     
     for _, combine_name in SYSTEMATICS.items():
         line = f"{combine_name:<15} {'shape':<8} "
