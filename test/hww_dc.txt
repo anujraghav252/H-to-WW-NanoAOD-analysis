@@ -1,0 +1,24 @@
+imax 2  number of channels (SR, TopCR)
+jmax 7  number of backgrounds
+kmax * number of nuisance parameters
+------------------------------
+shapes * * combine_input.root $PROCESS_$CHANNEL $PROCESS_$CHANNEL_$SYSTEMATIC
+------------------------------
+bin            SR              TopCR           
+observation    -1              -1              
+------------------------------
+bin            SR              SR              SR              SR              SR              SR              SR              SR              TopCR           TopCR           TopCR           TopCR           TopCR           TopCR           TopCR           TopCR           
+process        ggH_HWW         WW              Top_antitop     DY_to_Tau_Tau   Fakes           ggWW            Diboson         VG              ggH_HWW         WW              Top_antitop     DY_to_Tau_Tau   Fakes           ggWW            Diboson         VG              
+process        0               1               2               3               4               5               6               7               0               1               2               3               4               5               6               7               
+rate           370.5763        5318.0447       1890.9987       492.7708        5051.8646       509.1836        177.9973        775.5975        4.8634          157.4972        1310.8974       68.5011         491.9905        15.0144         10.6910         36.3824         
+------------------------------
+lumi_13TeV      lnN      1.012 1.012 1.012 1.012 1.012 1.012 1.012 1.012 1.012 1.012 1.012 1.012 1.012 1.012 1.012 1.012 
+CMS_fake_norm   lnN      -    -    -    -    1.50 -    -    -    -    -    -    -    1.50 -    -    -    
+CMS_trigger     shape    1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 
+CMS_eff_e       shape    1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 
+CMS_eff_m       shape    1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 
+CMS_norm_fake   rateParam  SR     Fakes  1.0  [0.0,2.0]
+CMS_norm_fake   rateParam  TopCR  Fakes  1.0  [0.0,2.0]
+CMS_norm_VG     rateParam  SR     VG     1.0  [0.0,2.0]
+CMS_norm_VG     rateParam  TopCR  VG     1.0  [0.0,2.0]
+* autoMCStats 0 1 1

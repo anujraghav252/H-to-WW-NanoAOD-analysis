@@ -1,0 +1,206 @@
+import uproot
+import hist
+import os
+import numpy as np
+from scipy.ndimage import uniform_filter1d
+
+INPUT_FILE = "../Outputs/HWW_analysis_output.root"
+OUTPUT_ROOT = "combine_input.root"
+OUTPUT_CARD = "hww_dc.txt"
+
+# Variable to fit
+VAR_NAME = "mass"
+
+PROCESSES = [
+    "ggH_HWW",       # Signal
+    "WW",            # Backgrounds
+    "Top_antitop",
+    "DY_to_Tau_Tau",
+    "Fakes",
+    "ggWW",
+    "Diboson",
+    "VG"
+]
+
+REGIONS = {
+    "SR_0jet":      "SR",
+    "CR_top_0jet":  "TopCR"
+}
+
+SYSTEMATICS = {
+    "trigger": "CMS_trigger",
+    "ele_id":  "CMS_eff_e",
+    "mu_id":   "CMS_eff_m"
+}
+
+# Processes with noisy MC histograms that need smoothing
+SMOOTH_PROCESSES = ["Fakes", "VG"]
+
+def smooth_histogram(h_hist, window=3):
+    """Smooth spiky histograms to prevent Combine integration issues.
+    Preserves total normalization."""
+    values = h_hist.view(flow=False).value.copy()
+    original_sum = values.sum()
+    
+    smoothed = uniform_filter1d(values.astype(float), size=window, mode='nearest')
+    smoothed[smoothed <= 0] = 1e-4
+    
+    # Preserve total normalization
+    if smoothed.sum() > 0:
+        smoothed *= original_sum / smoothed.sum()
+    
+    h_hist.view(flow=False).value[:] = smoothed
+    return h_hist
+
+def main():
+    print(f"Opening {INPUT_FILE}")
+    try:
+        f_in = uproot.open(INPUT_FILE)
+    except Exception as e:
+        print(f"Error: Could not open input file. {e}")
+        return
+
+    f_out = uproot.recreate(OUTPUT_ROOT)
+    
+    rates = {reg: {} for reg in REGIONS.values()}
+    
+    print("\n-- Harvesting Histograms --")
+    
+    for internal_reg, card_reg in REGIONS.items():
+        print(f"Processing Region: {internal_reg} -> {card_reg}")
+        
+        data_key = f"Data_{internal_reg}_{VAR_NAME}_nominal"
+        if data_key in f_in:
+            h_data = f_in[data_key].to_hist()
+            
+            f_out[f"data_obs_{card_reg}"] = h_data
+            print(f"  Saved Data: {h_data.sum().value:.0f} events")
+        else:
+            print(f"  WARNING: Data histogram {data_key} not found!")
+
+        for proc in PROCESSES:
+            nom_key = f"{proc}_{internal_reg}_{VAR_NAME}_nominal"
+            
+            if nom_key not in f_in:
+                print(f"    Missing process: {proc} (skipping)")
+                rates[card_reg][proc] = 0.0
+                continue
+                
+            h_nom = f_in[nom_key].to_hist()
+            
+            values = h_nom.view(flow=False).value
+            values[values <= 0] = 1e-4
+            h_nom.view(flow=False).value = values
+            
+            # Smooth noisy MC processes to fix Combine integration issues
+            if proc in SMOOTH_PROCESSES:
+                h_nom = smooth_histogram(h_nom)
+            
+            f_out[f"{proc}_{card_reg}"] = h_nom
+            rates[card_reg][proc] = h_nom.sum().value
+            
+            for internal_syst, combine_syst in SYSTEMATICS.items():
+                up_key = f"{proc}_{internal_reg}_{VAR_NAME}_{internal_syst}_up"
+                dn_key = f"{proc}_{internal_reg}_{VAR_NAME}_{internal_syst}_down"
+                
+                if up_key in f_in and dn_key in f_in:
+                    h_up = f_in[up_key].to_hist()
+                    h_dn = f_in[dn_key].to_hist()
+                    
+                    h_up.view(flow=False).value[h_up.view(flow=False).value <= 0] = 1e-4
+                    h_dn.view(flow=False).value[h_dn.view(flow=False).value <= 0] = 1e-4
+                    
+                    # Smooth systematic variations too
+                    if proc in SMOOTH_PROCESSES:
+                        h_up = smooth_histogram(h_up)
+                        h_dn = smooth_histogram(h_dn)
+                    
+                    f_out[f"{proc}_{card_reg}_{combine_syst}Up"] = h_up
+                    f_out[f"{proc}_{card_reg}_{combine_syst}Down"] = h_dn
+
+    f_out.close()
+    f_in.close()
+    print(f"\nCreated ROOT file: {OUTPUT_ROOT}")
+    
+    create_datacard(rates)
+
+def create_datacard(rates):
+    card_content = []
+    
+    sorted_regions = ["SR", "TopCR"]
+
+    card_content.append(f"imax {len(sorted_regions)}  number of channels (SR, TopCR)")
+    card_content.append(f"jmax {len(PROCESSES)-1}  number of backgrounds")
+    card_content.append("kmax * number of nuisance parameters")
+    card_content.append("-" * 30)
+    
+    card_content.append(f"shapes * * {os.path.basename(OUTPUT_ROOT)} $PROCESS_$CHANNEL $PROCESS_$CHANNEL_$SYSTEMATIC")
+    card_content.append("-" * 30)
+    
+    bin_line = f"{'bin':<15}"
+    obs_line = f"{'observation':<15}"
+    for reg in sorted_regions:
+        bin_line += f"{reg:<15} "
+        obs_line += f"{'-1':<15} "
+    
+    card_content.append(bin_line)
+    card_content.append(obs_line)
+    card_content.append("-" * 30)
+    
+    bin_line = f"{'bin':<15}"
+    proc_name_line = f"{'process':<15}"
+    proc_id_line = f"{'process':<15}"
+    rate_line = f"{'rate':<15}"
+    
+    for reg in sorted_regions:
+        for i, proc in enumerate(PROCESSES):
+            bin_line += f"{reg:<15} "
+            proc_name_line += f"{proc:<15} "
+            pid = 0 if i == 0 else i
+            proc_id_line += f"{pid:<15} "
+            
+            yield_val = rates[reg].get(proc, 0.0)
+            rate_line += f"{yield_val:<15.4f} "
+            
+    card_content.append(bin_line)
+    card_content.append(proc_name_line)
+    card_content.append(proc_id_line)
+    card_content.append(rate_line)
+    card_content.append("-" * 30)
+    
+    # Luminosity: 1.2% uncertainty
+    card_content.append(f"{'lumi_13TeV':<15} {'lnN':<8} " + "1.012 " * (len(PROCESSES)*len(sorted_regions)))
+    
+    # Fakes normalization uncertainty: 50% (MC fakes are unreliable)
+    fake_norm_line = f"{'CMS_fake_norm':<15} {'lnN':<8} "
+    for reg in sorted_regions:
+        for proc in PROCESSES:
+            if proc == "Fakes":
+                fake_norm_line += "1.50 "
+            else:
+                fake_norm_line += "-    "
+    card_content.append(fake_norm_line)
+    
+    # Shape systematics
+    for _, combine_name in SYSTEMATICS.items():
+        line = f"{combine_name:<15} {'shape':<8} "
+        for reg in sorted_regions:
+            for proc in PROCESSES:
+                line += "1.0 " if rates[reg].get(proc, 0) > 0 else "- "
+        card_content.append(line)
+    
+    # Free-floating normalization for Fakes and VG
+    card_content.append("CMS_norm_fake   rateParam  SR     Fakes  1.0  [0.0,2.0]")
+    card_content.append("CMS_norm_fake   rateParam  TopCR  Fakes  1.0  [0.0,2.0]")
+    card_content.append("CMS_norm_VG     rateParam  SR     VG     1.0  [0.0,2.0]")
+    card_content.append("CMS_norm_VG     rateParam  TopCR  VG     1.0  [0.0,2.0]")
+        
+    card_content.append("* autoMCStats 0 1 1")
+
+    with open(OUTPUT_CARD, "w") as f:
+        f.write("\n".join(card_content))
+        
+    print(f"Created Datacard: {OUTPUT_CARD}")
+
+if __name__ == "__main__":
+    main()
