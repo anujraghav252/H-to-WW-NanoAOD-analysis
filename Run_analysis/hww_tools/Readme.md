@@ -78,7 +78,7 @@ After running the analysis, you will find:
 
 ---
 
-## How it interacts with the Main Notebook
+## How it interacts with the Main Notebook?
 
 You might notice that the actual event loop (the thing that loops through events and says) is missing from this directory. 
 
