@@ -6,7 +6,7 @@
 The Compact Muon Solenoid (CMS) is one of the two large general-purpose particle physics detectors built on the Large Hadron Collider (LHC) at CERN. It is designed to investigate a wide range of physics, including the study of the [Standard Model](https://home.cern/science/physics/standard-model) (the framework that describes the fundamental particles and their interactions), the search for extra dimensions, and particles that could make up dark matter.
 
 <p align="center">
-  <img src="Images/CMS_logo.png" width="300">
+  <img src="../Images/CMS_logo.png" width="300">
 </p>
 
 
@@ -14,7 +14,7 @@ The Compact Muon Solenoid (CMS) is one of the two large general-purpose particle
 ### 1.2 What is CMS Open Data? 
 CMS Open Data is the public release of data collected by the CMS experiment. It represents a commitment to scientific transparency and the long-term value of the data collected at the LHC. The data is hosted on the [CERN Open Data Portal](https://opendata.cern.ch).
 <p align="center">
-  <img src="Images/opendata.png" width="300">
+  <img src="../Images/opendata.png" width="300">
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="Images/opendata_cms.png" width="300">
 </p>
@@ -124,7 +124,7 @@ The execution flow for each data chunk follows a strict "Cut-and-Count" methodol
 - **Categorization:** Sorting events into orthogonal Signal and Control regions.
 
 <p align="center">
-  <img src="Images/flowchart.svg">
+  <img src="../Images/flowchart.svg">
 </p>
 
 
@@ -304,7 +304,7 @@ To address this, instead of processing events row-by-row, we treat data as conti
 ### 4.2 Core Toolset
 
 <p align="center">
-<img src="Images/scikit_logo.png" width="300">
+<img src="../Images/scikit_logo.png" width="300">
 </p>
 
 The analysis is built upon the modern [Scikit-HEP](https://scikit-hep.org/) scientific Python ecosystem. Each tool in the stack addresses a specific challenge of processing HEP data:
@@ -315,15 +315,15 @@ The analysis is built upon the modern [Scikit-HEP](https://scikit-hep.org/) scie
 4. **`Hist`:** For the final accumulation of yields and distributions, we employ [Hist](https://hist.readthedocs.io/en/latest/). Based on the fast C++ `boost-histogram` library, Hist supports multi-dimensional, sparse, and categorical axes. This is essential for our analysis, which requires simultaneous categorization of events into multiple regions (Signal, Control) and systematic variations within a single object.
 5. **`Mplhep`:** [Mplhep](https://github.com/scikit-hep/mplhep) is a Matplotlib extension for high-energy physics. It provides tools for plotting data in the standard HEP style, including axis formatting, error bar conventions, and legend placement. In this analysis, Mplhep is used to create standardized plots of the signal and control regions.
 <p align="center">
-  <img src="Images/uproot_logo.webp" width="17%">
+  <img src="../Images/uproot_logo.webp" width="17%">
   &nbsp;&nbsp;&nbsp;
-  <img src="Images/awkward.svg" width="17%">
+  <img src="../Images/awkward.svg" width="17%">
   &nbsp;&nbsp;&nbsp;
-  <img src="Images/vector%20logo.svg" width="17%">
+  <img src="../Images/vector%20logo.svg" width="17%">
   &nbsp;&nbsp;&nbsp;
-  <img src="Images/histlogo.png" width="17%">
+  <img src="../Images/histlogo.png" width="17%">
   &nbsp;&nbsp;&nbsp;
-  <img src="Images/mplhep.png" width="17%">
+  <img src="../Images/mplhep.png" width="17%">
 </p>
 
 
@@ -332,7 +332,7 @@ The analysis is built upon the modern [Scikit-HEP](https://scikit-hep.org/) scie
 
 To handle the massive scale of CMS data (terabytes of information), we leverage [Dask](https://docs.dask.org/en/stable/), a flexible parallel computing library. Dask allows us to scale the same Python analysis from a single laptop to a cluster of machines without rewriting the code. It achieves this by breaking the dataset into smaller *“chunks”* (partitions) and processing them in parallel.
 <p align="center">
-  <img src="Images/dask_horizontal.svg" width="300">
+  <img src="../Images/dask_horizontal.svg" width="300">
 </p>
 
 
@@ -354,7 +354,7 @@ This reduction in runtime is important for the iterative nature of the analysis,
 The final statistical analysis is performed using the [CMS Higgs Combine Tool](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/). It computes the **signal strength (μ)**, defined as the ratio of the observed signal yield to the Standard Model prediction, and evaluates the statistical significance of any excess. The tool uses a **profile likelihood fit**, where systematic uncertainties are treated as nuisance parameters constrained by the data.
 
 <p align="center">
-  <img src="Images/combine_logo.png" width="300">
+  <img src="../Images/combine_logo.png" width="300">
 </p>
 
 ### 5.2 Input Preparation
