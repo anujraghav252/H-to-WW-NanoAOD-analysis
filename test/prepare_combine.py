@@ -6,7 +6,7 @@ from scipy.ndimage import uniform_filter1d
 
 INPUT_FILE = "../Outputs/HWW_analysis_output.root"
 OUTPUT_ROOT = "combine_input.root"
-OUTPUT_CARD = "hww_dc.txt"
+OUTPUT_CARD = "hww_datacard.txt"
 
 # Variable to fit
 VAR_NAME = "mass"
@@ -33,19 +33,15 @@ SYSTEMATICS = {
     "mu_id":   "CMS_eff_m"
 }
 
-# Processes with noisy MC histograms that need smoothing
 SMOOTH_PROCESSES = ["Fakes", "VG"]
 
 def smooth_histogram(h_hist, window=3):
-    """Smooth spiky histograms to prevent Combine integration issues.
-    Preserves total normalization."""
     values = h_hist.view(flow=False).value.copy()
     original_sum = values.sum()
     
     smoothed = uniform_filter1d(values.astype(float), size=window, mode='nearest')
     smoothed[smoothed <= 0] = 1e-4
     
-    # Preserve total normalization
     if smoothed.sum() > 0:
         smoothed *= original_sum / smoothed.sum()
     
@@ -92,7 +88,6 @@ def main():
             values[values <= 0] = 1e-4
             h_nom.view(flow=False).value = values
             
-            # Smooth noisy MC processes to fix Combine integration issues
             if proc in SMOOTH_PROCESSES:
                 h_nom = smooth_histogram(h_nom)
             
@@ -168,10 +163,8 @@ def create_datacard(rates):
     card_content.append(rate_line)
     card_content.append("-" * 30)
     
-    # Luminosity: 1.2% uncertainty
     card_content.append(f"{'lumi_13TeV':<15} {'lnN':<8} " + "1.012 " * (len(PROCESSES)*len(sorted_regions)))
     
-    # Fakes normalization uncertainty: 50% (MC fakes are unreliable)
     fake_norm_line = f"{'CMS_fake_norm':<15} {'lnN':<8} "
     for reg in sorted_regions:
         for proc in PROCESSES:
@@ -189,7 +182,6 @@ def create_datacard(rates):
                 line += "1.0 " if rates[reg].get(proc, 0) > 0 else "- "
         card_content.append(line)
     
-    # Free-floating normalization for Fakes and VG
     card_content.append("CMS_norm_fake   rateParam  SR     Fakes  1.0  [0.0,2.0]")
     card_content.append("CMS_norm_fake   rateParam  TopCR  Fakes  1.0  [0.0,2.0]")
     card_content.append("CMS_norm_VG     rateParam  SR     VG     1.0  [0.0,2.0]")
