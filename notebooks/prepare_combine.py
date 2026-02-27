@@ -4,14 +4,14 @@ import os
 import numpy as np
 
 INPUT_FILE = "Outputs/HWW_analysis_output.root"
-OUTPUT_ROOT = "Combine/combine_input.root"
-OUTPUT_CARD = "Combine/hww_datacard.txt"
+OUTPUT_ROOT = "Combine/combine_input_SR0J.root"
+OUTPUT_CARD = "Combine/hww_sr0j_datacard.txt"
 
 # Variable to fit
 VAR_NAME = "mt_higgs"  
 
 PROCESSES = [
-    "ggH_HWW",       # Signal
+    "ggH_HWW",       # Signal (must be index 0)
     "WW",            # Backgrounds
     "Top_antitop",
     "DY_to_Tau_Tau",
@@ -22,8 +22,7 @@ PROCESSES = [
 ]
 
 REGIONS = {
-    "SR_0jet":      "SR",
-    # "CR_top_0jet":  "TopCR"
+    "SR_0jet": "SR_0j"
 }
 
 SYSTEMATICS = {
@@ -40,24 +39,32 @@ def main():
         print(f"Error: Could not open input file. {e}")
         return
 
+    os.makedirs(os.path.dirname(OUTPUT_ROOT), exist_ok=True)
     f_out = uproot.recreate(OUTPUT_ROOT)
     
+    # Dictionaries to store yields for the datacard
     rates = {reg: {} for reg in REGIONS.values()}
+    data_yields = {reg: 0.0 for reg in REGIONS.values()} 
     
     print("\n-- Harvesting Histograms --")
     
     for internal_reg, card_reg in REGIONS.items():
         print(f"Processing Region: {internal_reg} -> {card_reg}")
         
+        # 1. Process Data
         data_key = f"Data_{internal_reg}_{VAR_NAME}_nominal"
         if data_key in f_in:
             h_data = f_in[data_key].to_hist()
-            
             f_out[f"data_obs_{card_reg}"] = h_data
-            print(f"  Saved Data: {h_data.sum().value:.0f} events")
+            
+            # Capture the exact data yield
+            obs_yield = h_data.sum().value
+            data_yields[card_reg] = obs_yield
+            print(f"  Saved Data: {obs_yield:.0f} events")
         else:
             print(f"  WARNING: Data histogram {data_key} not found!")
 
+        # 2. Process MC Processes
         for proc in PROCESSES:
             nom_key = f"{proc}_{internal_reg}_{VAR_NAME}_nominal"
             
@@ -75,6 +82,7 @@ def main():
             f_out[f"{proc}_{card_reg}"] = h_nom
             rates[card_reg][proc] = h_nom.sum().value
             
+            # 3. Process Systematics
             for internal_syst, combine_syst in SYSTEMATICS.items():
                 up_key = f"{proc}_{internal_reg}_{VAR_NAME}_{internal_syst}_up"
                 dn_key = f"{proc}_{internal_reg}_{VAR_NAME}_{internal_syst}_down"
@@ -93,14 +101,15 @@ def main():
     f_in.close()
     print(f"\nCreated ROOT file: {OUTPUT_ROOT}")
     
-    create_datacard(rates)
+    # Pass the data_yields dictionary to the datacard creator
+    create_datacard(rates, data_yields)
 
-def create_datacard(rates):
+def create_datacard(rates, data_yields):
     card_content = []
     
-    sorted_regions = ["SR", "TopCR"]
+    sorted_regions = ["SR_0j"]
 
-    card_content.append(f"imax {len(sorted_regions)}  number of channels (SR, TopCR)")
+    card_content.append(f"imax {len(sorted_regions)}  number of channels (SR)")
     card_content.append(f"jmax {len(PROCESSES)-1}  number of backgrounds")
     card_content.append("kmax * number of nuisance parameters")
     card_content.append("-" * 30)
@@ -110,9 +119,11 @@ def create_datacard(rates):
     
     bin_line = f"{'bin':<15}"
     obs_line = f"{'observation':<15}"
+    
+    # Write the explicit data yield to the observation line
     for reg in sorted_regions:
         bin_line += f"{reg:<15} "
-        obs_line += f"{'-1':<15} "
+        obs_line += f"{data_yields[reg]:<15.0f} " 
     
     card_content.append(bin_line)
     card_content.append(obs_line)
@@ -127,7 +138,7 @@ def create_datacard(rates):
         for i, proc in enumerate(PROCESSES):
             bin_line += f"{reg:<15} "
             proc_name_line += f"{proc:<15} "
-            pid = 0 if i == 0 else i
+            pid = 0 if i == 0 else i 
             proc_id_line += f"{pid:<15} "
             
             yield_val = rates[reg].get(proc, 0.0)
