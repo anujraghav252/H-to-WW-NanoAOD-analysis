@@ -1,16 +1,16 @@
-imax 1  number of channels (ggH_hww_0j)
+imax 1  number of channels (Top_0j)
 jmax 7  number of backgrounds
 kmax * number of nuisance parameters
 ------------------------------
-shapes * * combine_input_SR0j.root $PROCESS_$CHANNEL $PROCESS_$CHANNEL_$SYSTEMATIC
+shapes * * combine_input_topCR0j.root $PROCESS_$CHANNEL $PROCESS_$CHANNEL_$SYSTEMATIC
 ------------------------------
-bin            ggH_hww_0j      
-observation    11371           
+bin            Top_0j          
+observation    2008            
 ------------------------------
-bin            ggH_hww_0j      ggH_hww_0j      ggH_hww_0j      ggH_hww_0j      ggH_hww_0j      ggH_hww_0j      ggH_hww_0j      ggH_hww_0j      
+bin            Top_0j          Top_0j          Top_0j          Top_0j          Top_0j          Top_0j          Top_0j          Top_0j          
 process        ggH_HWW         WW              Top_antitop     DY_to_Tau_Tau   Fakes           ggWW            Diboson         VG              
 process        0               1               2               3               4               5               6               7               
-rate           370.5763        5460.7399       1904.3898       499.5082        5088.6838       509.2209        181.0563        778.0432        
+rate           4.8629          158.9764        1319.6596       69.6388         492.1761        14.8137         10.7673         36.4790         
 ------------------------------
 lumi_13TeV      lnN      1.012 1.012 1.012 1.012 1.012 1.012 1.012 1.012 
 CMS_trigger     shape    1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 

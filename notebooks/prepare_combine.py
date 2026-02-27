@@ -4,8 +4,6 @@ import os
 import numpy as np
 
 INPUT_FILE = "Outputs/HWW_analysis_output.root"
-OUTPUT_ROOT = "Combine/combine_input_SR0J.root"
-OUTPUT_CARD = "Combine/hww_sr0j_datacard.txt"
 
 # Variable to fit
 VAR_NAME = "mt_higgs"  
@@ -21,8 +19,15 @@ PROCESSES = [
     "VG"
 ]
 
-REGIONS = {
-    "SR_0jet": "SR_0j"
+# Mapping: Internal Name -> (Combine Bin Name, Output ROOT name, Output Card name)
+# The bin names perfectly match the aliases from your combineCards.py command!
+REGIONS_CONFIG = {
+    "SR_0jet":     ("ggH_hww_0j", "Combine/combine_input_SR0j.root", "Combine/hww_sr0j_datacard.txt"),
+    "SR_1jet":     ("ggH_hww_1j", "Combine/combine_input_SR1j.root", "Combine/hww_sr1j_datacard.txt"),
+    "SR_2jet":     ("ggH_hww_2j", "Combine/combine_input_SR2j.root", "Combine/hww_sr2j_datacard.txt"),
+    "CR_top_0jet": ("Top_0j",     "Combine/combine_input_topCR0j.root", "Combine/hww_topCR0j_datacard.txt"),
+    "CR_top_1jet": ("TOP_1j",     "Combine/combine_input_topCR1j.root", "Combine/hww_topCR1j_datacard.txt"),
+    "CR_top_2jet": ("TOP_2j",     "Combine/combine_input_topCR2j.root", "Combine/hww_topCR2j_datacard.txt")
 }
 
 SYSTEMATICS = {
@@ -39,17 +44,19 @@ def main():
         print(f"Error: Could not open input file. {e}")
         return
 
-    os.makedirs(os.path.dirname(OUTPUT_ROOT), exist_ok=True)
-    f_out = uproot.recreate(OUTPUT_ROOT)
+    os.makedirs("Combine", exist_ok=True)
     
-    # Dictionaries to store yields for the datacard
-    rates = {reg: {} for reg in REGIONS.values()}
-    data_yields = {reg: 0.0 for reg in REGIONS.values()} 
+    print("\n-- Harvesting Histograms & Creating Datacards --")
     
-    print("\n-- Harvesting Histograms --")
-    
-    for internal_reg, card_reg in REGIONS.items():
-        print(f"Processing Region: {internal_reg} -> {card_reg}")
+    # LOOP OVER ALL 6 REGIONS
+    for internal_reg, (card_reg, out_root, out_card) in REGIONS_CONFIG.items():
+        print(f"\nProcessing Region: {internal_reg} -> {card_reg}")
+        
+        f_out = uproot.recreate(out_root)
+        
+        # Dictionaries scoped specifically for this region
+        rates = {card_reg: {}}
+        data_yields = {card_reg: 0.0} 
         
         # 1. Process Data
         data_key = f"Data_{internal_reg}_{VAR_NAME}_nominal"
@@ -97,24 +104,28 @@ def main():
                     f_out[f"{proc}_{card_reg}_{combine_syst}Up"] = h_up
                     f_out[f"{proc}_{card_reg}_{combine_syst}Down"] = h_dn
 
-    f_out.close()
-    f_in.close()
-    print(f"\nCreated ROOT file: {OUTPUT_ROOT}")
-    
-    # Pass the data_yields dictionary to the datacard creator
-    create_datacard(rates, data_yields)
+        f_out.close()
+        print(f"  Created ROOT file: {out_root}")
+        
+        # Pass dynamic filenames to the datacard creator
+        create_datacard(rates, data_yields, card_reg, out_root, out_card)
 
-def create_datacard(rates, data_yields):
+    f_in.close()
+    print("\nSuccessfully generated all 6 datacards and ROOT files!")
+
+def create_datacard(rates, data_yields, card_reg, out_root, out_card):
     card_content = []
     
-    sorted_regions = ["SR_0j"]
+    sorted_regions = [card_reg]
 
-    card_content.append(f"imax {len(sorted_regions)}  number of channels (SR)")
+    card_content.append(f"imax {len(sorted_regions)}  number of channels ({card_reg})")
     card_content.append(f"jmax {len(PROCESSES)-1}  number of backgrounds")
     card_content.append("kmax * number of nuisance parameters")
     card_content.append("-" * 30)
     
-    card_content.append(f"shapes * * {os.path.basename(OUTPUT_ROOT)} $PROCESS_$CHANNEL $PROCESS_$CHANNEL_$SYSTEMATIC")
+    # Dynamically extract just the ROOT file name (e.g., 'combine_input_SR1j.root')
+    root_filename = os.path.basename(out_root)
+    card_content.append(f"shapes * * {root_filename} $PROCESS_$CHANNEL $PROCESS_$CHANNEL_$SYSTEMATIC")
     card_content.append("-" * 30)
     
     bin_line = f"{'bin':<15}"
@@ -161,10 +172,10 @@ def create_datacard(rates, data_yields):
         
     card_content.append("* autoMCStats 0 1 1")
 
-    with open(OUTPUT_CARD, "w") as f:
+    with open(out_card, "w") as f:
         f.write("\n".join(card_content))
         
-    print(f"Created Datacard: {OUTPUT_CARD}")
+    print(f"  Created Datacard: {out_card}")
 
 if __name__ == "__main__":
     main()
