@@ -23,7 +23,7 @@ PROCESSES = [
 
 REGIONS = {
     "SR_0jet":      "SR",
-    "CR_top_0jet":  "TopCR"
+    # "CR_top_0jet":  "TopCR"
 }
 
 SYSTEMATICS = {
@@ -139,7 +139,6 @@ def create_datacard(rates):
     card_content.append(rate_line)
     card_content.append("-" * 30)
     
-    # <--- CHANGED FROM 1.025 TO 1.2 --->
     card_content.append(f"{'lumi_13TeV':<15} {'lnN':<8} " + "1.012 " * (len(PROCESSES)*len(sorted_regions)))
     
     for _, combine_name in SYSTEMATICS.items():
