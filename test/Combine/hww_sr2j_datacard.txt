@@ -1,0 +1,19 @@
+imax 1  number of channels (SR)
+jmax 7  number of backgrounds
+kmax * number of nuisance parameters
+------------------------------
+shapes * * combine_input_SR2J.root $PROCESS_$CHANNEL $PROCESS_$CHANNEL_$SYSTEMATIC
+------------------------------
+bin            SR_2j           
+observation    1414            
+------------------------------
+bin            SR_2j           SR_2j           SR_2j           SR_2j           SR_2j           SR_2j           SR_2j           SR_2j           
+process        ggH_HWW         WW              Top_antitop     DY_to_Tau_Tau   Fakes           ggWW            Diboson         VG              
+process        0               1               2               3               4               5               6               7               
+rate           10.1760         213.0074        839.5147        110.4881        108.0913        14.8703         16.5388         40.5591         
+------------------------------
+lumi_13TeV      lnN      1.012 1.012 1.012 1.012 1.012 1.012 1.012 1.012 
+CMS_trigger     shape    1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 
+CMS_eff_e       shape    1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 
+CMS_eff_m       shape    1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 
+* autoMCStats 0 1 1

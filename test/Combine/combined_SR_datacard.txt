@@ -1,0 +1,24 @@
+Combination of ggH_hww_0j=hww_sr0j_datacard.txt  ggH_hww_1j=hww_sr1j_datacard.txt  ggH_hww_2j=hww_sr2j_datacard.txt
+imax 3 number of bins
+jmax 7 number of processes minus 1
+kmax 4 number of nuisance parameters
+----------------------------------------------------------------------------------------------------------------------------------
+shapes *           ggH_hww_0j  combine_input_SR0J.root $PROCESS_SR_0j $PROCESS_SR_0j_$SYSTEMATIC
+shapes *           ggH_hww_1j  combine_input_SR1J.root $PROCESS_SR_1j $PROCESS_SR_1j_$SYSTEMATIC
+shapes *           ggH_hww_2j  combine_input_SR2J.root $PROCESS_SR_2j $PROCESS_SR_2j_$SYSTEMATIC
+----------------------------------------------------------------------------------------------------------------------------------
+bin          ggH_hww_0j  ggH_hww_1j  ggH_hww_2j
+observation  11371       10077       1414      
+----------------------------------------------------------------------------------------------------------------------------------
+bin                               ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_1j     ggH_hww_1j     ggH_hww_1j     ggH_hww_1j     ggH_hww_1j     ggH_hww_1j     ggH_hww_1j     ggH_hww_1j     ggH_hww_2j     ggH_hww_2j     ggH_hww_2j     ggH_hww_2j     ggH_hww_2j     ggH_hww_2j     ggH_hww_2j     ggH_hww_2j   
+process                           ggH_HWW        WW             Top_antitop    DY_to_Tau_Tau  Fakes          ggWW           Diboson        VG             ggH_HWW        WW             Top_antitop    DY_to_Tau_Tau  Fakes          ggWW           Diboson        VG             ggH_HWW        WW             Top_antitop    DY_to_Tau_Tau  Fakes          ggWW           Diboson        VG           
+process                           0              1              2              3              4              5              6              7              0              1              2              3              4              5              6              7              0              1              2              3              4              5              6              7            
+rate                              370.5763       4228.797       1746.7064      499.5082       1499.1266      394.3407       181.0563       778.0432       142.0376       2088.0711      4527.9486      1507.6773      1352.5766      205.0003       162.9808       430.0083       10.176         213.0074       839.5147       110.4881       108.0913       14.8703        16.5388        40.5591      
+----------------------------------------------------------------------------------------------------------------------------------
+CMS_eff_e               shape     1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0          
+CMS_eff_m               shape     1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0          
+CMS_trigger             shape     1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0          
+lumi_13TeV              lnN       1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012        
+ggH_hww_0j autoMCStats 0 1 1
+ggH_hww_1j autoMCStats 0 1 1
+ggH_hww_2j autoMCStats 0 1 1
