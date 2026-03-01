@@ -1,5 +1,15 @@
 # HSF-India Project: H → WW NanoAOD Analysis
 
+[![License](https://img.shields.io/github/license/anujraghav252/H-to-WW-NanoAOD-analysis?color=blue)](LICENSE)
+![Repo Size](https://img.shields.io/github/repo-size/anujraghav252/H-to-WW-NanoAOD-analysis)
+![Last Commit](https://img.shields.io/github/last-commit/anujraghav252/H-to-WW-NanoAOD-analysis)
+![Python](https://img.shields.io/badge/Python-3.8%20%7C%203.9%20%7C%203.10-blue?logo=python&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626.svg?logo=Jupyter&logoColor=white)
+![Dask](https://img.shields.io/badge/Dask-Parallel_Computing-orange?logo=dask&logoColor=white)
+![Scikit-HEP](https://img.shields.io/badge/Ecosystem-Scikit--HEP-brightgreen)
+![CMS Open Data](https://img.shields.io/badge/Data-CMS_Open_Data-red)
+![H to WW](https://img.shields.io/badge/Analysis-H_%E2%86%92_WW-blueviolet)
+
 > **Disclaimer:** This repository is a work in progress. The code, documentation, and data may change frequently as updates and improvements are made.
 
 This repository is part of the **[HSF-India project](https://research-software-collaborations.org/)**, focusing on the analysis of Higgs boson decays to **W boson pairs (H → WW → 2ℓ2ν)** using CMS Open Data in the NanoAOD format. The analysis targets the **gluon-gluon fusion (ggH)** production mode with **2016 Ultra-Legacy Monte Carlo** samples at **√s = 13 TeV**.
