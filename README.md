@@ -1,5 +1,6 @@
 # HSF-India Project: H → WW NanoAOD Analysis
 
+[![Documentation](https://readthedocs.org/projects/h-to-ww-nanoaod-analysis/badge/?version=latest)](https://h-to-ww-nanoaod-analysis.readthedocs.io/en/latest/?badge=latest)
 [![License](https://img.shields.io/github/license/anujraghav252/H-to-WW-NanoAOD-analysis?color=blue)](LICENSE)
 ![Repo Size](https://img.shields.io/github/repo-size/anujraghav252/H-to-WW-NanoAOD-analysis)
 ![Last Commit](https://img.shields.io/github/last-commit/anujraghav252/H-to-WW-NanoAOD-analysis)
