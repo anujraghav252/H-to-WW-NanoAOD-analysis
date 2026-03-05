@@ -3,34 +3,43 @@ site_description: "Documentation for the H→WW NanoAOD analysis — HSF-India p
 site_url: https://h-to-ww-nanoaod-analysis.readthedocs.io/
 repo_url: https://github.com/anujraghav252/H-to-WW-NanoAOD-analysis
 repo_name: anujraghav252/H-to-WW-NanoAOD-analysis
+# copyright: "2026, HSF-India Project. Written by [Anuj Raghav](https://github.com/anujraghav252)."
+copyright: "2026, HSF-India Project. Written by <a href='https://github.com/anujraghav252' target='_blank'>Anuj Raghav</a>."
+# author: "Anuj Raghav"
+
+# # .md-grid: { max-width: 1440px; }
+# extra_css:
+#   - stylesheets/extra.css
 
 theme:
   name: material
   palette:
     - scheme: default
       primary: indigo
-      accent: indigo0
+      accent: indigo
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     - scheme: slate
       primary: indigo
-      accent: indigo0
+      accent: indigo
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
   features:
     - navigation.tabs
-    -navigation.instant
-    -navigation.instant.progress 
-    -navigation.path
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.path
     - navigation.sections
     - navigation.expand
     - navigation.top
+    - navigation.tabs.sticky
     - search.suggest
     - search.highlight
     - content.code.copy
     - toc.follow
+    - navigation.footer
 
 plugins:
   - search
