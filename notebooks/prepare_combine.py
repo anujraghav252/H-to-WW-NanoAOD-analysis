@@ -26,8 +26,8 @@ REGIONS_CONFIG = {
     "SR_1jet":     ("ggH_hww_1j", "Combine/combine_input_SR1j.root", "Combine/hww_sr1j_datacard.txt"),
     "SR_2jet":     ("ggH_hww_2j", "Combine/combine_input_SR2j.root", "Combine/hww_sr2j_datacard.txt"),
     "CR_top_0jet": ("Top_0j",     "Combine/combine_input_topCR0j.root", "Combine/hww_topCR0j_datacard.txt"),
-    "CR_top_1jet": ("TOP_1j",     "Combine/combine_input_topCR1j.root", "Combine/hww_topCR1j_datacard.txt"),
-    "CR_top_2jet": ("TOP_2j",     "Combine/combine_input_topCR2j.root", "Combine/hww_topCR2j_datacard.txt")
+    "CR_top_1jet": ("Top_1j",     "Combine/combine_input_topCR1j.root", "Combine/hww_topCR1j_datacard.txt"),
+    "CR_top_2jet": ("Top_2j",     "Combine/combine_input_topCR2j.root", "Combine/hww_topCR2j_datacard.txt")
 }
 
 SYSTEMATICS = {
