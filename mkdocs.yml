@@ -8,8 +8,8 @@ theme:
   name: material
   palette:
     - scheme: default
-      primary: red
-      accent: red
+      primary: indigo
+      accent: indigo0
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
@@ -21,6 +21,9 @@ theme:
         name: Switch to light mode
   features:
     - navigation.tabs
+    -navigation.instant
+    -navigation.instant.progress 
+    -navigation.path
     - navigation.sections
     - navigation.expand
     - navigation.top
@@ -31,9 +34,9 @@ theme:
 
 plugins:
   - search
-  - git-revision-date-localized:
-      locale: en
-      type: timeago
+  # - git-revision-date-localized:
+  #     locale: en
+  #     type: timeago
 
 markdown_extensions:
   - admonition
