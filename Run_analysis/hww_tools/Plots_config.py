@@ -83,21 +83,21 @@ PLOT_SETTINGS = {
     },
 
     # GROUP 3: TAU CONTROL REGION 
-    "Control_Region_Tau": {
-        "plot_data": True,
-        "stages": [('CR_tau_0jet', r'DY-$\tau\tau$ 0j'), ('CR_tau_1jet', r'DY-$\tau\tau$ 1j'), ('CR_tau_2jet', r'DY-$\tau\tau$ 2j')],
-        "variables": {
-            "mass":          {"log": True, "xlim": (40, 60),   "ylim": (0.01, 1000)},
-            "ptll":          {"log": True, "xlim": (30, 100),  "ylim": (0.01, 1000)},
-            "met":           {"log": True, "xlim": (20, 100),   "ylim": (0.01, 1000)},
-            "mt_higgs":      {"log": True, "xlim": (0, 60),    "ylim": (0.01, 1000)},
-            "mt_l2_met":     {"log": True, "xlim": (30, 50),   "ylim": (0.01, 1000)},
-            "mjj":           {"log": True, "xlim": (0, 500),   "ylim": None},
-            "dphi":          {"log": True, "xlim": (1.5, 3.14),  "ylim": (0.01, 1000)},
-            "leading_pt":    {"log": True, "xlim": (30, 80),  "ylim": (0.01, 1000)},
-            "subleading_pt": {"log": True, "xlim": (10, 30),   "ylim": None},
-        }
-    }
+    # "Control_Region_Tau": {
+    #     "plot_data": True,
+    #     "stages": [('CR_tau_0jet', r'DY-$\tau\tau$ 0j'), ('CR_tau_1jet', r'DY-$\tau\tau$ 1j'), ('CR_tau_2jet', r'DY-$\tau\tau$ 2j')],
+    #     "variables": {
+    #         "mass":          {"log": True, "xlim": (40, 60),   "ylim": (0.01, 1000)},
+    #         "ptll":          {"log": True, "xlim": (30, 100),  "ylim": (0.01, 1000)},
+    #         "met":           {"log": True, "xlim": (20, 100),   "ylim": (0.01, 1000)},
+    #         "mt_higgs":      {"log": True, "xlim": (0, 60),    "ylim": (0.01, 1000)},
+    #         "mt_l2_met":     {"log": True, "xlim": (30, 50),   "ylim": (0.01, 1000)},
+    #         "mjj":           {"log": True, "xlim": (0, 500),   "ylim": None},
+    #         "dphi":          {"log": True, "xlim": (1.5, 3.14),  "ylim": (0.01, 1000)},
+    #         "leading_pt":    {"log": True, "xlim": (30, 80),  "ylim": (0.01, 1000)},
+    #         "subleading_pt": {"log": True, "xlim": (10, 30),   "ylim": None},
+    #     }
+    # }
 }
 
 variables_to_plots = {

@@ -89,7 +89,7 @@ cutflow_stages = [
     '0jet', '1jet', '2jet', # Jet binning categories
     'SR_0jet', 'SR_1jet', 'SR_2jet',                         # Signal Regions
     'CR_top_0jet', 'CR_top_1jet', 'CR_top_2jet',             # Top Control Regions
-    'CR_tau_0jet', 'CR_tau_1jet', 'CR_tau_2jet'              # Tau Control Regions
+    # 'CR_tau_0jet', 'CR_tau_1jet', 'CR_tau_2jet'              # Tau Control Regions
 ]
 
 # Stage names for histogram initialization
@@ -100,7 +100,7 @@ stage_names = [
     'before_cuts', 'global', '0jet', '1jet', '2jet',
     'SR_0jet', 'SR_1jet', 'SR_2jet',
     'CR_top_0jet', 'CR_top_1jet', 'CR_top_2jet',
-    'CR_tau_0jet', 'CR_tau_1jet', 'CR_tau_2jet'
+    # 'CR_tau_0jet', 'CR_tau_1jet', 'CR_tau_2jet'
 ]
 
 # Stage info mapping for Cutflow Tables
@@ -119,9 +119,9 @@ stage_info = [
     ('CR_top_0jet', 'CR Top 0j'),
     ('CR_top_1jet', 'CR Top 1j'),
     ('CR_top_2jet', 'CR Top 2j'),
-    ('CR_tau_0jet', 'CR Tau 0j'),
-    ('CR_tau_1jet', 'CR Tau 1j'),
-    ('CR_tau_2jet', 'CR Tau 2j'),
+    # ('CR_tau_0jet', 'CR Tau 0j'),
+    # ('CR_tau_1jet', 'CR Tau 1j'),
+    # ('CR_tau_2jet', 'CR Tau 2j'),
 ]
 
 # Systematic Variations

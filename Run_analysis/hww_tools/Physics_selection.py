@@ -127,7 +127,7 @@ def count_jets(arrays, jet_pt_threshold=30, tight_leptons=None):
     
     return n_jets, good_mask, sorted_jets, isZeroJet, isOneJet, isTwoJet
 
-def get_bjet_categories(arrays, btag_threshold=0.2217, eta_max=2.5):
+def get_bjet_categories(arrays, btag_threshold=0.2489, eta_max=2.5):
     """
     Get different b-jet categories needed for SR/CR selection.
     """

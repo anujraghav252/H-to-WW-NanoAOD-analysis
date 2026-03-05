@@ -214,7 +214,7 @@ def create_stacked_plots(variable, hist_data_all, output_dir="plots"):
                 ax_ratio.grid(True, linestyle=':', alpha=0.5)
 
             #       STYLING      
-            hep.cms.label(ax=ax_main, loc=0, data=True, label="Open Data", lumi=16.1, fontsize=20)
+            hep.cms.label(ax=ax_main, loc=0, data=True, label="Open Data", lumi=16.4, fontsize=20)
             ax_main.text(0.05, 0.92, stage_label, transform=ax_main.transAxes, fontsize=22, fontweight='bold', va='top')
             ax_main.set_ylabel("Events / Bin", fontsize=20)
             
@@ -335,7 +335,7 @@ def create_superimposed_plots(variable, var_props, hist_data_all, output_dir=Non
         # STYLING 
         if has_data:
             hep.cms.label(ax=ax, loc=0, data=True, label="Open Data", 
-                          lumi=16.1, fontsize=16)
+                          lumi=16.4, fontsize=16)
             ax.set_title(stage_label, pad=20, fontsize=18, fontweight='bold')
             ax.set_xlabel(xlabel, fontsize=18) 
             

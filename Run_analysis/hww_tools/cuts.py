@@ -138,15 +138,15 @@ def apply_control_region_cuts(leading, subleading, met, masses, ptlls, mt_higgs,
     # =========================================================================
     # TAU-TAU (Drell-Yan) CONTROL REGIONS
     # =========================================================================
-    cr_tau_base = (
-        cr_base & 
-        (mt_higgs < 60) &              # Invert the Higgs MT cut (Signal has > 60)
-        (masses > 40) & (masses < 80) & # Restrict to Z-boson mass window
-        bjet_info['passes_bjet_veto']  # Veto b-jets to suppress Top contamination
-    )
+    # cr_tau_base = (
+    #     cr_base & 
+    #     (mt_higgs < 60) &              # Invert the Higgs MT cut (Signal has > 60)
+    #     (masses > 40) & (masses < 80) & # Restrict to Z-boson mass window
+    #     bjet_info['passes_bjet_veto']  # Veto b-jets to suppress Top contamination
+    # )
     
-    cr_regions['CR_tau_0jet'] = cr_tau_base & isZeroJet
-    cr_regions['CR_tau_1jet'] = cr_tau_base & isOneJet  
-    cr_regions['CR_tau_2jet'] = cr_tau_base & isTwoJet & mjj_window
+    # cr_regions['CR_tau_0jet'] = cr_tau_base & isZeroJet
+    # cr_regions['CR_tau_1jet'] = cr_tau_base & isOneJet  
+    # cr_regions['CR_tau_2jet'] = cr_tau_base & isTwoJet & mjj_window
     
     return cr_regions
