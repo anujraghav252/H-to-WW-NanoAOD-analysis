@@ -1,16 +1,4 @@
-# HSF-India Project: H → WW NanoAOD Analysis
-
-<!-- [![License](https://img.shields.io/github/license/anujraghav252/H-to-WW-NanoAOD-analysis?color=blue)](LICENSE)
-![Repo Size](https://img.shields.io/github/repo-size/anujraghav252/H-to-WW-NanoAOD-analysis)
-![Last Commit](https://img.shields.io/github/last-commit/anujraghav252/H-to-WW-NanoAOD-analysis)
-![Python](https://img.shields.io/badge/Python-3.8%20%7C%203.9%20%7C%203.10-blue?logo=python&logoColor=white)
-![Jupyter](https://img.shields.io/badge/Jupyter-F37626.svg?logo=Jupyter&logoColor=white)
-![Dask](https://img.shields.io/badge/Dask-Parallel_Computing-orange?logo=dask&logoColor=white)
-![Scikit-HEP](https://img.shields.io/badge/Ecosystem-Scikit--HEP-brightgreen)
-![CMS Open Data](https://img.shields.io/badge/Data-CMS_Open_Data-red)
-![H to WW](https://img.shields.io/badge/Analysis-H_%E2%86%92_WW-blueviolet) -->
-
-<!-- > **Disclaimer:** This repository is a work in progress. The code, documentation, and data may change frequently as updates and improvements are made. -->
+# Higgs to WW analysis: Using CMS Open Data
 
 This repository is part of the **[HSF-India project](https://research-software-collaborations.org/)**, focusing on the analysis of Higgs boson decays to **W boson pairs (H → WW → 2ℓ2ν)** using CMS Open Data in the NanoAOD format. The analysis targets the **gluon-gluon fusion (ggH)** production mode with **2016 Ultra-Legacy Monte Carlo** samples at **√s = 13 TeV**.
 
@@ -25,55 +13,6 @@ This analysis focuses on the decay channel:
 **H → WW\* → eμ + 2ν** (opposite-flavour dilepton final state)
 
 which offers a clean leptonic signature and a sizeable branching fraction, making it a key channel for Higgs measurements.
-
----
-
-## Repository Structure
-
-```
-H-to-WW-NanoAOD-analysis/
-│
-├── notebooks/                        # Analysis notebooks
-│   ├── HWW_analysis.ipynb            # ★ Main analysis notebook (start here)
-│   ├── Kinematic_plots.ipynb         # Introductory kinematic distributions
-│   ├── Global_selection.ipynb        # Event selection criteria (global + 0-jet)
-│   ├── xsec_weights.ipynb            # Cross-section weight computation
-│   ├── Eff_txt_file_cleaning.ipynb   # Efficiency text file parsing/cleaning
-│   ├── Physics_cuts.md               # Summary of physics selection cuts
-│   ├── Data-MC_corrections/          # Data/MC correction & efficiency studies
-│   │   ├── Lepton_ID_efficiency.ipynb
-│   │   ├── Muon_EFF.ipynb
-│   │   └── Trigger_efficiency.ipynb
-│   └── plots_mplhep/                # Plots styled with mplhep (CMS style)
-│
-├── Auxillary_files/                  # Supporting input files
-│   ├── Efficiencies/                 # Efficiency & scale-factor text files
-│   │   ├── Eff_note.txt              # Trigger efficiency notes & cut summary
-│   │   ├── Muon_tight_Eff.txt        # Muon tight-ID efficiency & SFs
-│   │   ├── Muon_ISO_Eff.txt          # Muon isolation efficiency & SFs
-│   │   └── egammaEffi_TightHWW_2016.txt  # Electron ID efficiency & SFs
-│   ├── Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt  # Golden JSON
-│   ├── Muon_ISO_Eff.txt              # Muon ISO efficiency (flat format)
-│   ├── Muon_tight_Eff.txt            # Muon tight-ID efficiency (flat format)
-│   ├── egammaEffi_TightHWW_2016.txt  # Electron efficiency (flat format)
-│   ├── NUM_TightHWW_DEN_TrackerMuons_eta_pt.root   # Muon ID SF ROOT file
-│   └── NUM_TightHWW_ISO_DEN_TightHWW_eta_pt.root   # Muon ISO SF ROOT file
-│
-├── Datasets/                         # MC sample definitions & cross sections
-│   ├── README_MC_Samples_2016UL.md   # Sample table with cross sections & links
-│   └── Summer20UL16_106x_noHIPM_nAODv9.py  # NanoAOD sample paths
-│
-├── Plots/                            # Saved output plots
-├── Rollbacks/                        # Previous notebook versions / snapshots
-├── Test/                             # Scratch / testing notebooks
-├── scripts/
-│   └── test_uproot.py                # Diagnostic script to verify environment
-│
-├── requirements.txt                  # Python dependencies (pip)
-├── environment.yml                   # Conda environment specification
-├── Higgs.md                          # Extended Higgs physics notes
-└── .gitignore
-```
 
 ---
 
@@ -175,4 +114,4 @@ See [`requirements.txt`](requirements.txt) for the full pinned list.
 ## Acknowledgements
 
 This analysis is developed as part of the **HSF-India project**, an initiative to foster research software collaborations between India and the international High Energy Physics community.
-![HSF-India Logo](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/Images/hsf-india_logo.png)
+![HSF-India Logo](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/hsf-india_logo.png)

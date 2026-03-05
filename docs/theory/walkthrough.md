@@ -6,14 +6,14 @@
 
 The Compact Muon Solenoid (CMS) is one of the two large general-purpose particle physics detectors built on the Large Hadron Collider (LHC) at CERN. It is designed to investigate a wide range of physics, including the study of the [Standard Model](https://home.cern/science/physics/standard-model) (the framework that describes the fundamental particles and their interactions), the search for extra dimensions, and particles that could make up dark matter.
 
-![CMS Logo](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/Images/CMS_logo.png){width = "300"}
+![CMS Logo](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/CMS_logo.png){width = "300"}
 
 ### 1.2 What is CMS Open Data?
 
 CMS Open Data is the public release of data collected by the CMS experiment. It represents a commitment to scientific transparency and the long-term value of the data collected at the LHC. The data is hosted on the [CERN Open Data Portal](https://opendata.cern.ch).
 
-![CERN Open Data](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/Images/opendata.png){ width="300" }
-![CMS Open Data](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/Images/opendata_cms.png){ width="300" }
+![CERN Open Data](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/opendata.png){ width="300" }
+![CMS Open Data](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/opendata_cms.png){ width="300" }
 
 #### 1.2.1 What is the purpose of CMS Open Data?
 
@@ -120,7 +120,7 @@ The execution flow for each data chunk follows a strict "Cut-and-Count" methodol
 - **Global Cuts:** Baseline kinematic requirements.
 - **Categorization:** Sorting events into orthogonal Signal and Control regions.
 
-![Analysis Flowchart](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/Images/flow_chart.svg)
+![Analysis Flowchart](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/flow_chart.svg)
 
 ### 3.2 Step 1: Data Ingestion and Validation
 
@@ -289,7 +289,7 @@ To address this, instead of processing events row-by-row, we treat data as conti
 
 ### 4.2 Core Toolset
 
-![Scikit-HEP Logo](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/Images/scikit_logo.png){ width="300" }
+![Scikit-HEP Logo](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/scikit_logo.png){ width="300" }
 
 The analysis is built upon the modern [Scikit-HEP](https://scikit-hep.org/) scientific Python ecosystem. Each tool in the stack addresses a specific challenge of processing HEP data:
 
@@ -299,17 +299,17 @@ The analysis is built upon the modern [Scikit-HEP](https://scikit-hep.org/) scie
 4. **`Hist`:** For the final accumulation of yields and distributions, we employ [Hist](https://hist.readthedocs.io/en/latest/). Based on the fast C++ `boost-histogram` library, Hist supports multi-dimensional, sparse, and categorical axes. This is essential for our analysis, which requires simultaneous categorization of events into multiple regions (Signal, Control) and systematic variations within a single object.
 5. **`Mplhep`:** [Mplhep](https://github.com/scikit-hep/mplhep) is a Matplotlib extension for high-energy physics. It provides tools for plotting data in the standard HEP style, including axis formatting, error bar conventions, and legend placement. In this analysis, Mplhep is used to create standardized plots of the signal and control regions.
 
-![Uproot](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/Images/uproot_logo.webp){ width="17%" }
-![Awkward Array](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/Images/awkward.svg){ width="17%" }
-![Vector](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/Images/vector%20logo.svg){ width="17%" }
-![Hist](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/Images/histlogo.png){ width="17%" }
-![Mplhep](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/Images/mplhep.png){ width="17%" }
+![Uproot](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/uproot_logo.webp){ width="17%" }
+![Awkward Array](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/awkward.svg){ width="17%" }
+![Vector](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/vector%20logo.svg){ width="17%" }
+![Hist](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/histlogo.png){ width="17%" }
+![Mplhep](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/mplhep.png){ width="17%" }
 
 ### 4.3 Distributed Computing with Dask
 
 To handle the massive scale of CMS data (terabytes of information), we leverage [Dask](https://docs.dask.org/en/stable/), a flexible parallel computing library. Dask allows us to scale the same Python analysis from a single laptop to a cluster of machines without rewriting the code. It achieves this by breaking the dataset into smaller _“chunks”_ (partitions) and processing them in parallel.
 
-![Dask Logo](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/Images/dask_horizontal.svg){ width="300" }
+![Dask Logo](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/dask_horizontal.svg){ width="300" }
 
 In this analysis, Dask is used to distribute the event processing across multiple CPU cores, significantly reducing the runtime.
 
@@ -329,7 +329,7 @@ This reduction in runtime is important for the iterative nature of the analysis,
 
 The final statistical analysis is performed using the [CMS Higgs Combine Tool](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/). It computes the **signal strength (μ)**, defined as the ratio of the observed signal yield to the Standard Model prediction, and evaluates the statistical significance of any excess. The tool uses a **profile likelihood fit**, where systematic uncertainties are treated as nuisance parameters constrained by the data.
 
-![Combine Logo](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/Images/combine_logo.png){ width="300" }
+![Combine Logo](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/combine_logo.png){ width="300" }
 
 ### 5.2 Input Preparation
 
