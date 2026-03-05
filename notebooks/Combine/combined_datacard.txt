@@ -1,43 +1,30 @@
-Combination of ggH_hww_0j=hww_sr0j_datacard.txt  ggH_hww_1j=hww_sr1j_datacard.txt  ggH_hww_2j=hww_sr2j_datacard.txt  Top_0j=hww_topCR0j_datacard.txt  TOP_1j=hww_topCR1j_datacard.txt  TOP_2j=hww_topCR2j_datacard.txt
+Combination of ggH_hww_0j=hww_sr0j_datacard.txt  ggH_hww_1j=hww_sr1j_datacard.txt  ggH_hww_2j=hww_sr2j_datacard.txt  Top_cr0j=hww_topCR0j_datacard.txt  Top_cr1j=hww_topCR1j_datacard.txt  Top_cr2j=hww_topCR2j_datacard.txt
 imax 6 number of bins
 jmax 7 number of processes minus 1
-kmax * number of nuisance parameters
+kmax 4 number of nuisance parameters
 ----------------------------------------------------------------------------------------------------------------------------------
-shapes *           TOP_1j      combine_input_topCR1j.root $PROCESS_TOP_1j $PROCESS_TOP_1j_$SYSTEMATIC
-shapes *           TOP_2j      combine_input_topCR2j.root $PROCESS_TOP_2j $PROCESS_TOP_2j_$SYSTEMATIC
-shapes *           Top_0j      combine_input_topCR0j.root $PROCESS_Top_0j $PROCESS_Top_0j_$SYSTEMATIC
+shapes *           Top_cr0j    combine_input_topCR0j.root $PROCESS_Top_0j $PROCESS_Top_0j_$SYSTEMATIC
+shapes *           Top_cr1j    combine_input_topCR1j.root $PROCESS_TOP_1j $PROCESS_TOP_1j_$SYSTEMATIC
+shapes *           Top_cr2j    combine_input_topCR2j.root $PROCESS_TOP_2j $PROCESS_TOP_2j_$SYSTEMATIC
 shapes *           ggH_hww_0j  combine_input_SR0j.root $PROCESS_ggH_hww_0j $PROCESS_ggH_hww_0j_$SYSTEMATIC
 shapes *           ggH_hww_1j  combine_input_SR1j.root $PROCESS_ggH_hww_1j $PROCESS_ggH_hww_1j_$SYSTEMATIC
 shapes *           ggH_hww_2j  combine_input_SR2j.root $PROCESS_ggH_hww_2j $PROCESS_ggH_hww_2j_$SYSTEMATIC
 ----------------------------------------------------------------------------------------------------------------------------------
-bin          ggH_hww_0j  ggH_hww_1j  ggH_hww_2j  Top_0j      TOP_1j      TOP_2j    
-observation  11371       10077       1414        2008        15078       6396      
+bin          ggH_hww_0j  ggH_hww_1j  ggH_hww_2j  Top_cr0j    Top_cr1j    Top_cr2j  
+observation  11652       10536       1505        1901        14805       6322      
 ----------------------------------------------------------------------------------------------------------------------------------
-bin                               ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_1j     ggH_hww_1j     ggH_hww_1j     ggH_hww_1j     ggH_hww_1j     ggH_hww_1j     ggH_hww_1j     ggH_hww_1j     ggH_hww_2j     ggH_hww_2j     ggH_hww_2j     ggH_hww_2j     ggH_hww_2j     ggH_hww_2j     ggH_hww_2j     ggH_hww_2j     Top_0j         Top_0j         Top_0j         Top_0j         Top_0j         Top_0j         Top_0j         Top_0j         TOP_1j         TOP_1j         TOP_1j         TOP_1j         TOP_1j         TOP_1j         TOP_1j         TOP_1j         TOP_2j         TOP_2j         TOP_2j         TOP_2j         TOP_2j         TOP_2j         TOP_2j         TOP_2j       
+bin                               ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_1j     ggH_hww_1j     ggH_hww_1j     ggH_hww_1j     ggH_hww_1j     ggH_hww_1j     ggH_hww_1j     ggH_hww_1j     ggH_hww_2j     ggH_hww_2j     ggH_hww_2j     ggH_hww_2j     ggH_hww_2j     ggH_hww_2j     ggH_hww_2j     ggH_hww_2j     Top_cr0j       Top_cr0j       Top_cr0j       Top_cr0j       Top_cr0j       Top_cr0j       Top_cr0j       Top_cr0j       Top_cr1j       Top_cr1j       Top_cr1j       Top_cr1j       Top_cr1j       Top_cr1j       Top_cr1j       Top_cr1j       Top_cr2j       Top_cr2j       Top_cr2j       Top_cr2j       Top_cr2j       Top_cr2j       Top_cr2j       Top_cr2j     
 process                           ggH_HWW        WW             Top_antitop    DY_to_Tau_Tau  Fakes          ggWW           Diboson        VG             ggH_HWW        WW             Top_antitop    DY_to_Tau_Tau  Fakes          ggWW           Diboson        VG             ggH_HWW        WW             Top_antitop    DY_to_Tau_Tau  Fakes          ggWW           Diboson        VG             ggH_HWW        WW             Top_antitop    DY_to_Tau_Tau  Fakes          ggWW           Diboson        VG             ggH_HWW        WW             Top_antitop    DY_to_Tau_Tau  Fakes          ggWW           Diboson        VG             ggH_HWW        WW             Top_antitop    DY_to_Tau_Tau  Fakes          ggWW           Diboson        VG           
 process                           0              1              2              3              4              5              6              7              0              1              2              3              4              5              6              7              0              1              2              3              4              5              6              7              0              1              2              3              4              5              6              7              0              1              2              3              4              5              6              7              0              1              2              3              4              5              6              7            
-rate                              370.5763       5460.7399      1904.3898      499.5082       5088.6838      509.2209       181.0563       778.0432       142.0376       2376.048       4581.5528      1507.6773      1352.5766      233.2729       162.9808       430.0083       10.176         168.4653       911.6242       110.4881       108.0913       11.7608        16.5388        40.5591        4.8629         158.9764       1319.6596      69.6388        492.1761       14.8137        10.7673        36.479         1.7929         97.0837        14411.4386     220.4511       394.0177       8.3782         10.2438        25.1766        0.241          12.5254        6650.3461      16.1969        255.5373       0.8668         2.1667         1.9481       
+rate                              376.0043       5516.6921      1968.3006      515.948        5302.6717      514.8256       184.1034       803.1803       144.5812       2406.7888      4853.5412      1568.1459      1402.7514      236.3054       167.4583       439.5831       10.3241        170.817        986.4213       116.9093       111.446        11.9641        17.0623        41.2508        4.2753         140.5889       1283.7269      60.8991        456.899        13.0504        9.7836         33.066         1.5299         83.4308        14195.271      199.0964       379.2807       7.3244         8.5196         23.9934        0.2259         11.0417        6594.6873      14.0597        252.9406       0.7653         1.9656         1.4601       
 ----------------------------------------------------------------------------------------------------------------------------------
 CMS_eff_e               shape     1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0          
 CMS_eff_m               shape     1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0          
 CMS_trigger             shape     1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0          
 lumi_13TeV              lnN       1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012        
-
-# 0-Jet Bin Normalization
-CMS_hww_Top0jnorm  rateParam  ggH_hww_0j  Top_antitop  1.0000
-CMS_hww_Top0jnorm  rateParam  Top_0j      Top_antitop  1.0000
-
-# 1-Jet Bin Normalization
-CMS_hww_Top1jnorm  rateParam  ggH_hww_1j  Top_antitop  1.0000
-CMS_hww_Top1jnorm  rateParam  TOP_1j      Top_antitop  1.0000
-
-# 2-Jet Bin Normalization
-CMS_hww_Top2jnorm  rateParam  ggH_hww_2j  Top_antitop  1.0000
-CMS_hww_Top2jnorm  rateParam  TOP_2j      Top_antitop  1.0000
-
 ggH_hww_0j autoMCStats 10 1 1
 ggH_hww_1j autoMCStats 10 1 1
 ggH_hww_2j autoMCStats 10 1 1
-Top_0j autoMCStats 10 1 1
-TOP_1j autoMCStats 10 1 1
-TOP_2j autoMCStats 10 1 1
+Top_cr0j autoMCStats 10 1 1
+Top_cr1j autoMCStats 10 1 1
+Top_cr2j autoMCStats 10 1 1

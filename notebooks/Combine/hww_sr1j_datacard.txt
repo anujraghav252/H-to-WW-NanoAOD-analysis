@@ -5,15 +5,15 @@ kmax * number of nuisance parameters
 shapes * * combine_input_SR1j.root $PROCESS_$CHANNEL $PROCESS_$CHANNEL_$SYSTEMATIC
 ------------------------------
 bin            ggH_hww_1j      
-observation    10077           
+observation    10536           
 ------------------------------
 bin            ggH_hww_1j      ggH_hww_1j      ggH_hww_1j      ggH_hww_1j      ggH_hww_1j      ggH_hww_1j      ggH_hww_1j      ggH_hww_1j      
 process        ggH_HWW         WW              Top_antitop     DY_to_Tau_Tau   Fakes           ggWW            Diboson         VG              
 process        0               1               2               3               4               5               6               7               
-rate           142.0376        2376.0480       4581.5528       1507.6773       1352.5766       233.2729        162.9808        430.0083        
+rate           144.5812        2406.7888       4853.5412       1568.1459       1402.7514       236.3054        167.4583        439.5831        
 ------------------------------
 lumi_13TeV      lnN      1.012 1.012 1.012 1.012 1.012 1.012 1.012 1.012 
 CMS_trigger     shape    1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 
 CMS_eff_e       shape    1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 
 CMS_eff_m       shape    1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 
-* autoMCStats 0 1 1
+* autoMCStats 10 1 1

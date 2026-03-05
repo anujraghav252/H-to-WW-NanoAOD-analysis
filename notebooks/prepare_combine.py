@@ -170,7 +170,7 @@ def create_datacard(rates, data_yields, card_reg, out_root, out_card):
                 line += "1.0 " if rates[reg].get(proc, 0) > 0 else "- "
         card_content.append(line)
         
-    card_content.append("* autoMCStats 0 1 1")
+    card_content.append("* autoMCStats 10 1 1")
 
     with open(out_card, "w") as f:
         f.write("\n".join(card_content))

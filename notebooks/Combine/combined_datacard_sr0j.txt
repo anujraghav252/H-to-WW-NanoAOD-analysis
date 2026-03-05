@@ -1,0 +1,25 @@
+Combination of ggH_hww_0j=hww_sr0j_datacard.txt  Top_cr0j=hww_topCR0j_datacard.txt
+imax 2 number of bins
+jmax 7 number of processes minus 1
+kmax * number of nuisance parameters
+----------------------------------------------------------------------------------------------------------------------------------
+shapes *           Top_cr0j    combine_input_topCR0j.root $PROCESS_Top_0j $PROCESS_Top_0j_$SYSTEMATIC
+shapes *           ggH_hww_0j  combine_input_SR0j.root $PROCESS_ggH_hww_0j $PROCESS_ggH_hww_0j_$SYSTEMATIC
+----------------------------------------------------------------------------------------------------------------------------------
+bin          ggH_hww_0j  Top_cr0j  
+observation  11371       2008      
+----------------------------------------------------------------------------------------------------------------------------------
+bin                               ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     ggH_hww_0j     Top_cr0j       Top_cr0j       Top_cr0j       Top_cr0j       Top_cr0j       Top_cr0j       Top_cr0j       Top_cr0j     
+process                           ggH_HWW        WW             Top_antitop    DY_to_Tau_Tau  Fakes          ggWW           Diboson        VG             ggH_HWW        WW             Top_antitop    DY_to_Tau_Tau  Fakes          ggWW           Diboson        VG           
+process                           0              1              2              3              4              5              6              7              0              1              2              3              4              5              6              7            
+rate                              370.5763       5460.7399      1904.3898      499.5082       5088.6838      509.2209       181.0563       778.0432       4.8629         158.9764       1319.6596      69.6388        492.1761       14.8137        10.7673        36.479       
+----------------------------------------------------------------------------------------------------------------------------------
+CMS_eff_e               shape     1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0          
+CMS_eff_m               shape     1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0          
+CMS_trigger             shape     1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0            1.0          
+lumi_13TeV              lnN       1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012          1.012        
+ggH_hww_0j autoMCStats 10 1 1
+Top_cr0j autoMCStats 10 1 1
+# 0-Jet Bin Normalization
+CMS_hww_Top0jnorm  rateParam  ggH_hww_0j  Top_antitop  1.0000
+CMS_hww_Top0jnorm  rateParam  Top_cr0j      Top_antitop  1.0000
