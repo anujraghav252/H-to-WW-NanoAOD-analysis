@@ -74,7 +74,7 @@ nav:
       - Repository Architecture: getting-started/repository-structure.md
   - Theory:
       - CMS Open Data: theory/cms-opendata.md
-      - Higgs Physics: theory/higgs-physics.md
+      - Higgs Phenomenology: theory/higgs-physics.md
       - Signal and background processes: theory/signal-and-background.md
   - Datasets: datasets/data-and-mc.md
   - Software Framework: software/ecosystem.md
