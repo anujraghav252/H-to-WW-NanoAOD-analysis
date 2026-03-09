@@ -168,9 +168,15 @@ Or test XRootD connectivity:
 
 ```python
 import fsspec
+
 with fsspec.open(
-    "root://eospublic.cern.ch//eos/opendata/cms/mc/RunIISummer20UL16NanoAODv9/Higgs0Mf05ph0ToWW_M-125_TuneCP5_13TeV-powheg-jhugen727-pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v17-v2/40000/2600A354-96F9-4C48-99FA-D77C85CB7806.root
-"
+    (
+        "root://eospublic.cern.ch//eos/opendata/cms/mc/"
+        "RunIISummer20UL16NanoAODv9/"
+        "Higgs0Mf05ph0ToWW_M-125_TuneCP5_13TeV-powheg-jhugen727-pythia8/"
+        "NANOAODSIM/106X_mcRun2_asymptotic_v17-v2/40000/"
+        "2600A354-96F9-4C48-99FA-D77C85CB7806.root"
+    )
 ) as f:
     print("XRootD connection OK:", f.path)
 ```
