@@ -69,7 +69,11 @@ extra_javascript:
 
 nav:
   - Introduction: index.md
-  - Physics Background: theory/physics-background.md
+  - Theory:
+      - CMS bacground: theory/cms-opendata.md
+      - Higgs Physics: theory/higgs-physics.md
+      - signal and background processes: theory/signal-and-background.md
+  # - Physics Background: theory/physics-background.md
   - Datasets: datasets/data-and-mc.md
   - Software Framework: software/ecosystem.md
   - Getting Started:
