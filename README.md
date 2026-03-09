@@ -116,11 +116,11 @@ git clone https://github.com/anujraghav252/H-to-WW-NanoAOD-analysis.git
 cd H-to-WW-NanoAOD-analysis
 ```
 
----
+<!-- --- -->
 
 ## 2. Set Up the Python Environment
 
-=== "Conda (recommended)"
+"Conda (recommended)"
 
     The repository includes a complete `environment.yml` that specifies all required packages with minimum version constraints:
 
@@ -136,7 +136,7 @@ cd H-to-WW-NanoAOD-analysis
     - Jupyter Lab for interactive notebooks
     - `fsspec-xrootd` for XRootD file access
 
-=== "pip (virtual environment)"
+"pip (virtual environment)"
 
     ```bash
     python3 -m venv .venv
@@ -146,8 +146,8 @@ cd H-to-WW-NanoAOD-analysis
     pip install -r requirements.txt
     ```
 
-!!! note "Windows"
-The analysis runs on Windows, macOS, and Linux. On Windows, use Conda (via Miniconda or Anaconda) for the most reliable experience, as some dependencies have complex build requirements.
+> **Note (Windows):**
+> The analysis runs on Windows, macOS, and Linux. On Windows, use Conda (via Miniconda or Anaconda) for the most reliable experience, as some dependencies have complex build requirements.
 
 ---
 
