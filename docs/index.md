@@ -1,10 +1,10 @@
 # **Higgs to WW Analysis: Using CMS Open Data**
 
-Welcome to the documentation for the (**$H \rightarrow WW$ NanoAOD Analysis**)[https://github.com/anujraghav252/H-to-WW-NanoAOD-analysis] -- an open, reproducible implementation of the $H \rightarrow W^+W^- \rightarrow e\nu\,\mu\nu$ measurement using CMS 2016 Ultra-Legacy Open Data.
+Welcome to the documentation for the **[$H \rightarrow WW$ NanoAOD Analysis](https://github.com/anujraghav252/H-to-WW-NanoAOD-analysis)**, an open, reproducible implementation of the $H \rightarrow W^+W^- \rightarrow e\nu\,\mu\nu$ measurement using CMS 2016 Ultra-Legacy Open Data.
 
 This project is developed as part of the **[HSF-India project](https://research-software-collaborations.org/)**, an initiative to foster research software collaborations between India and the international High-Energy Physics community.
 
-![HSF-India Logo](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/hsf-india_logo.png){ width="200" }
+![HSF-India Logo](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/hsf-india_logo.png){ width="250" }
 
 ---
 
@@ -14,7 +14,7 @@ This analysis searches for the **Standard Model Higgs boson** ($m_H = 125\,\text
 
 $$gg \rightarrow H \rightarrow W^+W^{-*} \rightarrow e^\pm\,\nu_e\;+\;\mu^\mp\,\nu_\mu$$
 
-Working entirely within the **Scikit-HEP Python ecosystem** (Coffea, Uproot, Awkward Array, Dask), it demonstrates a complete, modern HEP analysis workflow — from raw NanoAOD files to final statistical limits — without requiring the traditional C++ ROOT/CMSSW stack.
+Working entirely within the **Scikit-HEP Python ecosystem** (Uproot, Awkward Array, Dask), it demonstrates a complete, modern HEP analysis workflow, from raw NanoAOD files to final statistical limits, without requiring the traditional C++ ROOT/CMSSW stack.
 
 ---
 
@@ -30,8 +30,8 @@ conda env create -f environment.yml
 conda activate HEP_analysis
 
 # 3. Open the main analysis notebook
-cd Run_analysis/
-jupyter lab Run_analysis.ipynb
+cd notebooks/
+jupyter lab HWW_analysis.ipynb
 ```
 
 → Full setup instructions: [Installation & Setup](getting-started/installation.md)
@@ -44,7 +44,7 @@ jupyter lab Run_analysis.ipynb
 | ------------------------------------------------------------------ | ----------------------------------------------------- |
 | [Physics Background](theory/physics-background.md)                 | CMS Open Data, Higgs signal, and background processes |
 | [Datasets](datasets/data-and-mc.md)                                | Sample list, cross sections, and MC normalization     |
-| [Software Framework](software/ecosystem.md)                        | The Scikit-HEP tech stack explained                   |
+| [Software Framework](software/ecosystem.md)                        | The Scikit-HEP framework explained                    |
 | [Installation & Setup](getting-started/installation.md)            | Environment setup and verification                    |
 | [Repository Architecture](getting-started/repository-structure.md) | Directory structure and module overview               |
 | [Process Flowchart](analysis/flowchart.md)                         | Full analysis cut-flow and region definitions         |
@@ -56,15 +56,15 @@ jupyter lab Run_analysis.ipynb
 ## Key Analysis Properties
 
 | Property              | Value                                                    |
-| --------------------- | -------------------------------------------------------- | -------------------------------------------- | --- |
+| --------------------- | -------------------------------------------------------- | ------------------ | -------------------------------------------- | --- | --- |
 | Centre-of-mass energy | $\sqrt{s} = 13\,\text{TeV}$                              |
 | Data-taking year      | 2016 (Run periods G–H)                                   |
 | Integrated luminosity | $\mathcal{L}_{\text{int}} \approx 16.39\,\text{fb}^{-1}$ |
-| <!--                  | MC campaign                                              | RunIISummer20UL16 (Ultra-Legacy, NanoAOD v9) | --> |
+| <!--                  |                                                          | MC campaign        | RunIISummer20UL16 (Ultra-Legacy, NanoAOD v9) |     | --> |
 | Signal process        | $ggH \rightarrow W^+W^- \rightarrow e\nu\,\mu\nu$        |
 | Final state           | Opposite-sign, opposite-flavour dilepton ($e\mu$)        |
 | Production mode       | Gluon-gluon fusion ($ggH$)                               |
-| <!--                  | Analysis framework                                       | Coffea + Dask (columnar, array-based)        | --> |
+| <!--                  |                                                          | Analysis framework | Coffea + Dask (columnar, array-based)        |     | --> |
 
 ---
 
