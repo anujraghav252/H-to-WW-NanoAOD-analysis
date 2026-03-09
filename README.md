@@ -26,7 +26,7 @@ The **Higgs boson**, discovered in 2012 at the LHC, acquires mass for elementary
 
 This analysis focuses on the decay channel:
 
-**H → WW\* → eμ + 2ν** (opposite-flavour dilepton final state)
+**$H \to WW \to e\mu + \nu_e\nu_\mu$** (opposite-flavour dilepton final state)
 
 which offers a clean leptonic signature and a sizeable branching fraction, making it a key channel for Higgs measurements.
 
@@ -109,7 +109,7 @@ The efficiency scale factors used in the analysis are stored as plain-text looku
 
 ## Getting Started
 
-## 1. Clone the Repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/anujraghav252/H-to-WW-NanoAOD-analysis.git
@@ -118,9 +118,9 @@ cd H-to-WW-NanoAOD-analysis
 
 <!-- --- -->
 
-## 2. Set Up the Python Environment
+### 2. Set Up the Python Environment
 
-### 2.1 Conda (recommended)
+#### 2.1 Conda (recommended)
 
 The repository includes a complete `environment.yml` that specifies all required packages with minimum version constraints:
 
@@ -151,7 +151,7 @@ pip install -r requirements.txt
 
 ---
 
-## 3. Verify the Installation
+### 3. Verify the Installation
 
 Launch Python and run a quick sanity check:
 
@@ -218,5 +218,5 @@ See [`requirements.txt`](requirements.txt) for the full pinned list.
 This analysis is developed as part of the **HSF-India project**, an initiative to foster research software collaborations between India and the international High Energy Physics community.
 
 <p align="center">
-  <img src="Images/hsf-india_logo.png" width="200">
+  <img src="assets/hsf-india_logo.png" width="200">
 </p>
