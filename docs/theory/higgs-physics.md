@@ -10,4 +10,8 @@ One of the crucial requirement of the SM is a mechanism to generate the masses o
 
 ### Discovery and the Precision Era
 
-In 2012, the ATLAS and the CMS collaborations at the LHC announced the historic discovery of a new scalar resonance with a mass of $m_H \similar\ \text{125\ GeV}.
+In 2012, the ATLAS and the CMS collaborations at the LHC [announced](https://home.cern/news/press-release/cern/cern-experiments-observe-particle-consistent-long-sought-higgs-boson) the historic discovery of a new scalar resonance with a mass of $m_H \sim\ \text{125 GeV}$.
+
+Subsequent experimental measurements have confirmed that the particle's properties strongly align with the predictions for the SM Higgs Boson. With, its mass now fixed, all other properties of the $H$ boson are constrained by SM.
+
+# Higgs Boson Production at the LHC
