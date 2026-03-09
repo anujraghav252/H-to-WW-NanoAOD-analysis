@@ -1,14 +1,14 @@
-# Higgs to WW Analysis: Using CMS Open Data
+# **Higgs to WW Analysis: Using CMS Open Data**
 
-Welcome to the documentation for the **H → WW NanoAOD Analysis** — an open, reproducible implementation of the $H \rightarrow W^+W^- \rightarrow e\nu\,\mu\nu$ measurement using CMS 2016 Ultra-Legacy Open Data.
+Welcome to the documentation for the (**$H \rightarrow WW$ NanoAOD Analysis**)[https://github.com/anujraghav252/H-to-WW-NanoAOD-analysis] -- an open, reproducible implementation of the $H \rightarrow W^+W^- \rightarrow e\nu\,\mu\nu$ measurement using CMS 2016 Ultra-Legacy Open Data.
 
 This project is developed as part of the **[HSF-India project](https://research-software-collaborations.org/)**, an initiative to foster research software collaborations between India and the international High-Energy Physics community.
 
-![HSF-India Logo](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/hsf-india_logo.png)
+![HSF-India Logo](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/hsf-india_logo.png){ width="100" }
 
 ---
 
-## What This Analysis Does
+## What This Analysis Does?
 
 This analysis searches for the **Standard Model Higgs boson** ($m_H = 125\,\text{GeV}$) decaying to a pair of $W$ bosons in the opposite-flavour dilepton final state:
 
@@ -56,14 +56,15 @@ jupyter lab Run_analysis.ipynb
 ## Key Analysis Properties
 
 | Property              | Value                                                    |
-| --------------------- | -------------------------------------------------------- |
+| --------------------- | -------------------------------------------------------- | -------------------------------------------- | --- |
 | Centre-of-mass energy | $\sqrt{s} = 13\,\text{TeV}$                              |
 | Data-taking year      | 2016 (Run periods G–H)                                   |
-| Integrated luminosity | $\mathcal{L}_{\text{int}} \approx 16.15\,\text{fb}^{-1}$ |
-| MC campaign           | RunIISummer20UL16 (Ultra-Legacy, NanoAOD v9)             |
-| Signal process        | ggH → WW\* → eνμν                                        |
+| Integrated luminosity | $\mathcal{L}_{\text{int}} \approx 16.39\,\text{fb}^{-1}$ |
+| <!--                  | MC campaign                                              | RunIISummer20UL16 (Ultra-Legacy, NanoAOD v9) | --> |
+| Signal process        | $ggH \rightarrow W^+W^- \rightarrow e\nu\,\mu\nu$        |
 | Final state           | Opposite-sign, opposite-flavour dilepton ($e\mu$)        |
-| Analysis framework    | Coffea + Dask (columnar, array-based)                    |
+| Production mode       | Gluon-gluon fusion ($ggH$)                               |
+| <!--                  | Analysis framework                                       | Coffea + Dask (columnar, array-based)        | --> |
 
 ---
 
