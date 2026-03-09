@@ -55,14 +55,14 @@ jupyter lab HWW_analysis.ipynb
 
 ## Key Analysis Properties
 
-| Property              | Value                                                    |
-| --------------------- | -------------------------------------------------------- |
-| Centre-of-mass energy | $\sqrt{s} = 13\,\text{TeV}$                              |
-| Data-taking year      | 2016 (Run periods G–H)                                   |
-| Integrated luminosity | $\mathcal{L}_{\text{int}} \approx 16.39\,\text{fb}^{-1}$ |
-| Signal process        | $ggH \rightarrow W^+W^- \rightarrow e\nu\,\mu\nu$        |
-| Final state           | Opposite-sign, opposite-flavour dilepton ($e\mu$)        |
-| Production mode       | Gluon-gluon fusion ($ggH$)                               |
+| Property              | Value                                                  |
+| --------------------- | ------------------------------------------------------ |
+| Centre-of-mass energy | $\sqrt{s}=13\,\text{TeV}$                              |
+| Data-taking year      | 2016 (Run periods G–H)                                 |
+| Integrated luminosity | $\mathcal{L}_{\text{int}}\approx16.39\,\text{fb}^{-1}$ |
+| Signal process        | $ggH \rightarrow W^+W^- \rightarrow e\nu\,\mu\nu$      |
+| Final state           | Opposite-sign, opposite-flavour dilepton ($e\mu$)      |
+| Production mode       | Gluon–gluon fusion ($ggH$)                             |
 
 ---
 

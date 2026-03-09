@@ -69,16 +69,15 @@ extra_javascript:
 
 nav:
   - Introduction: index.md
-  - Theory:
-      - CMS bacground: theory/cms-opendata.md
-      - Higgs Physics: theory/higgs-physics.md
-      - signal and background processes: theory/signal-and-background.md
-  # - Physics Background: theory/physics-background.md
-  - Datasets: datasets/data-and-mc.md
-  - Software Framework: software/ecosystem.md
   - Getting Started:
       - Installation & Setup: getting-started/installation.md
       - Repository Architecture: getting-started/repository-structure.md
+  - Theory:
+      - CMS Open Data: theory/cms-opendata.md
+      - Higgs Physics: theory/higgs-physics.md
+      - Signal and background processes: theory/signal-and-background.md
+  - Datasets: datasets/data-and-mc.md
+  - Software Framework: software/ecosystem.md
   - Analysis Walkthrough:
       - Process Flowchart: analysis/flowchart.md
       - Execution Guide: analysis/interactive-execution.md
