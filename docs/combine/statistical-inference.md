@@ -1,6 +1,8 @@
 # Statistical Inference
 
-After the analysis histograms are produced, the final step is extracting the **signal strength** and computing upper limits using the **CMS Combine** statistical tool.
+WIP: Come back again next week maybe.
+
+<!-- After the analysis histograms are produced, the final step is extracting the **signal strength** and computing upper limits using the **CMS Combine** statistical tool.
 
 ---
 
@@ -141,4 +143,4 @@ Computes the observed (and expected) significance of any signal excess in units 
 | Observed significance > 5σ | Discovery-level evidence for Higgs in this channel    |
 
 !!! info "Open Data context"
-This analysis uses a **subset** of the full CMS Run 2 dataset (~16 fb$^{-1}$ vs. ~137 fb$^{-1}$ total), and omits several advanced corrections applied in the official CMS analysis. The results are therefore educational in nature and should not be compared directly to the published CMS measurements.
+This analysis uses a **subset** of the full CMS Run 2 dataset (~16 fb$^{-1}$ vs. ~137 fb$^{-1}$ total), and omits several advanced corrections applied in the official CMS analysis. The results are therefore educational in nature and should not be compared directly to the published CMS measurements. -->

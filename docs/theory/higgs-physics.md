@@ -1,3 +1,3 @@
 Info about Higgs physics.
 
-WIP: come back later
+WIP: Come back again next week maybe.
