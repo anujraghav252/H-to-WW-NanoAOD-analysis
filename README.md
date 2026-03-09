@@ -120,31 +120,31 @@ cd H-to-WW-NanoAOD-analysis
 
 ## 2. Set Up the Python Environment
 
-"Conda (recommended)"
+### 2.1 Conda (recommended)
 
-    The repository includes a complete `environment.yml` that specifies all required packages with minimum version constraints:
+The repository includes a complete `environment.yml` that specifies all required packages with minimum version constraints:
 
-    ```bash
-    conda env create -f environment.yml
-    conda activate HEP_analysis
-    ```
+```bash
+conda env create -f environment.yml
+conda activate HEP_analysis
+```
 
-    This creates a Conda environment named `HEP_analysis` with:
+This creates a Conda environment named `HEP_analysis` with:
 
-    - All Scikit-HEP packages (`uproot`, `awkward`, `vector`, `hist`)
-    - Dask for distributed computing
-    - Jupyter Lab for interactive notebooks
-    - `fsspec-xrootd` for XRootD file access
+- All Scikit-HEP packages (`uproot`, `awkward`, `vector`, `hist`)
+- Dask for distributed computing
+- Jupyter Lab for interactive notebooks
+- `fsspec-xrootd` for XRootD file access
 
-"pip (virtual environment)"
+#### 2.2 pip (virtual environment)
 
-    ```bash
-    python3 -m venv .venv
-    source .venv/bin/activate   # Linux / macOS
-    # .venv\Scripts\activate    # Windows
+```bash
+python3 -m venv .venv
+source .venv/bin/activate   # Linux / macOS
+# .venv\Scripts\activate    # Windows
 
-    pip install -r requirements.txt
-    ```
+pip install -r requirements.txt
+```
 
 > **Note (Windows):**
 > The analysis runs on Windows, macOS, and Linux. On Windows, use Conda (via Miniconda or Anaconda) for the most reliable experience, as some dependencies have complex build requirements.
