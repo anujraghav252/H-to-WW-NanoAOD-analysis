@@ -4,7 +4,7 @@ Welcome to the documentation for the (**$H \rightarrow WW$ NanoAOD Analysis**)[h
 
 This project is developed as part of the **[HSF-India project](https://research-software-collaborations.org/)**, an initiative to foster research software collaborations between India and the international High-Energy Physics community.
 
-![HSF-India Logo](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/hsf-india_logo.png){ width="100" }
+![HSF-India Logo](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/hsf-india_logo.png){ width="200" }
 
 ---
 
