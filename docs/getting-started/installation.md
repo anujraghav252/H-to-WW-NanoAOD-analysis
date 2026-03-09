@@ -89,8 +89,8 @@ with fsspec.open(
 Open the main analysis notebook:
 
 ```bash
-cd Run_analysis/
-jupyter lab Run_analysis.ipynb
+cd notebooks/
+jupyter lab HWW_analysis.ipynb
 ```
 
 For a step-by-step walkthrough of the notebook and how to run a full batch job with Dask, see the [Execution Guide](../analysis/interactive-execution.md).
