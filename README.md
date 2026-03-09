@@ -39,11 +39,8 @@ H-to-WW-NanoAOD-analysis/
 │
 ├── notebooks/                        # Analysis notebooks
 │   ├── HWW_analysis.ipynb            # ★ Main analysis notebook (start here)
-│   ├── Kinematic_plots.ipynb         # Introductory kinematic distributions
-│   ├── Global_selection.ipynb        # Event selection criteria (global + 0-jet)
 │   ├── xsec_weights.ipynb            # Cross-section weight computation
 │   ├── Eff_txt_file_cleaning.ipynb   # Efficiency text file parsing/cleaning
-│   ├── Physics_cuts.md               # Summary of physics selection cuts
 │   ├── Data-MC_corrections/          # Data/MC correction & efficiency studies
 │   │   ├── Lepton_ID_efficiency.ipynb
 │   │   ├── Muon_EFF.ipynb
@@ -198,10 +195,10 @@ jupyter lab HWW_analysis.ipynb
 
 All Monte Carlo samples correspond to the **CMS 2016 Ultra-Legacy (Summer20UL16) campaign** and are sourced from CERN Open Data. A full listing of samples, cross sections, and links is available in [`Datasets/README_MC_Samples_2016UL.md`](Datasets/README_MC_Samples_2016UL.md).
 
-| Category        | Example Processes                                 |
-| --------------- | ------------------------------------------------- |
-| **Signal**      | ggH → WW → 2ℓ2ν                                   |
-| **Backgrounds** | Drell-Yan, tt̄, Single-top, WW, WZ, ZZ, Wγ, W+jets |
+| Category        | Example Processes                                       |
+| --------------- | ------------------------------------------------------- |
+| **Signal**      | $ggH \to WW \to 2\ell2\nu $                             |
+| **Backgrounds** | Drell-Yan, $t\bar{t}$, $WW$, Dibsosn, $V\gamma$, W+jets |
 
 ---
 
@@ -210,9 +207,9 @@ All Monte Carlo samples correspond to the **CMS 2016 Ultra-Legacy (Summer20UL16)
 The analysis is built on the modern Python HEP stack:
 
 - **Data I/O:** `uproot`, `awkward`, `fsspec-xrootd`
-- **Analysis:** `coffea`, `hist`, `vector`, `scipy`
+- **Analysis:** `hist`, `vector`, `scipy`
 - **Computing:** `numpy`, `pandas`, `dask`
-- **Visualisation:** `matplotlib` (with `mplhep` CMS styling)
+- **Visualisation:** `matplotlib`, `hist`, `mplhep`
 - **Environment:** `jupyterlab`, `ipywidgets`
 
 See [`requirements.txt`](requirements.txt) for the full pinned list.
