@@ -15,3 +15,16 @@ In 2012, the ATLAS and the CMS collaborations at the LHC [announced](https://hom
 Subsequent experimental measurements have confirmed that the particle's properties strongly align with the predictions for the SM Higgs Boson. With, its mass now fixed, all other properties of the $H$ boson are constrained by SM.
 
 # Higgs Boson Production at the LHC
+
+At the LHC, protons are collided at ultra-high energies, specifically at a center-of-mass energy of $\sqrt{s]\ =\ \txt{13 TeV}$ for the 2016 data-taking period utilized in this analysis. At such high energies, the collision occurs at the quarks level and due to massive amount of energy produced during the collision many heavy particles ($W^\pm,\ Z,\ H$) are produced.
+There are four primary production mechanisms for the SM Higgs boson at the LHC:
+
+1. **Gluon-Gluon Fusion (ggH or ggF):** Two gluons from the interacting protons fuse to produce a Higgs boson. Because gluons are massless, they cannot couple to Higgs directly. This process occurs via a virtual loop of heavy quarks. The top quark, having the largest Yukawa coupling, dominates this loop exchange.
+
+![ggH Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/ggh_FD.png){width = "250"}
+
+2. **Vector Boson Fusion (VBF):** Two quarks from the incoming protons emits a gauge bososn ($W$ or $Z$), which then scatter and fuse to form a Higgs boson. This mode is characterized by two highly energetic forward jets in the detector.
+
+![VBF Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/VBF_FD.png){width = "250"}
+
+3.
