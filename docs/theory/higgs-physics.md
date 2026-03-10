@@ -27,4 +27,10 @@ There are four primary production mechanisms for the SM Higgs boson at the LHC:
 
 ![VBF Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/VBF_FD.png){width = "250"}
 
-3.
+3. **Associated Production (VH):** A quark and an antiquark annhilate to form an off-shell $W$ or $Z$ boson, which then radiates an $H$.
+
+![VBF Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/VH_FD.png){width = "250"}
+
+4. **Top Quark Associated Production (ttH):** Two gluons or quarks fuse to produce a top-antitop quark pair along with an $H$.
+
+![VBF Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/ttH_FD.png){width = "250"}
