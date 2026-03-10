@@ -43,7 +43,7 @@ theme:
 
 plugins:
   - search
-  -mkdocs-pdf
+  - mkdocs-pdf
   # - git-revision-date-localized:
   #     locale: en
   #     type: timeago
