@@ -19,18 +19,18 @@ Subsequent experimental measurements have confirmed that the particle's properti
 At the LHC, protons are collided at ultra-high energies, specifically at a center-of-mass energy of $\sqrt{s]\ =\ \txt{13 TeV}$ for the 2016 data-taking period utilized in this analysis. At such high energies, the collision occurs at the quarks level and due to massive amount of energy produced during the collision many heavy particles ($W^\pm,\ Z,\ H$) are produced.
 There are four primary production mechanisms for the SM Higgs boson at the LHC:
 
-1. **Gluon-Gluon Fusion (ggH or ggF):** Two gluons from the interacting protons fuse to produce a Higgs boson. Because gluons are massless, they cannot couple to Higgs directly. This process occurs via a virtual loop of heavy quarks. The top quark, having the largest Yukawa coupling, dominates this loop exchange.
+- **Gluon-Gluon Fusion (ggH or ggF):** Two gluons from the interacting protons fuse to produce a Higgs boson. Because gluons are massless, they cannot couple to Higgs directly. This process occurs via a virtual loop of heavy quarks. The top quark, having the largest Yukawa coupling, dominates this loop exchange.
 
-![ggH Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/ggh_FD.png){width = "250"}
+![ggH Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/ggh_FD.png){width = "100"}
 
-2. **Vector Boson Fusion (VBF):** Two quarks from the incoming protons emits a gauge bososn ($W$ or $Z$), which then scatter and fuse to form a Higgs boson. This mode is characterized by two highly energetic forward jets in the detector.
+- **Vector Boson Fusion (VBF):** Two quarks from the incoming protons emits a gauge bososn ($W$ or $Z$), which then scatter and fuse to form a Higgs boson. This mode is characterized by two highly energetic forward jets in the detector.
 
-![VBF Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/VBF_FD.png){width = "250"}
+![VBF Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/VBF_FD.png){width = "100"}
 
-3. **Associated Production (VH):** A quark and an antiquark annhilate to form an off-shell $W$ or $Z$ boson, which then radiates an $H$.
+- **Associated Production (VH):** A quark and an antiquark annhilate to form an off-shell $W$ or $Z$ boson, which then radiates an $H$.
 
-![VBF Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/VH_FD.png){width = "250"}
+![VBF Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/VH_FD.png){width = "100"}
 
-4. **Top Quark Associated Production (ttH):** Two gluons or quarks fuse to produce a top-antitop quark pair along with an $H$.
+- **Top Quark Associated Production (ttH):** Two gluons or quarks fuse to produce a top-antitop quark pair along with an $H$.
 
-![VBF Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/ttH_FD.png){width = "250"}
+![VBF Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/ttH_FD.png){width = "100"}
