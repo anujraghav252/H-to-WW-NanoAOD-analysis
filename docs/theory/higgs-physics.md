@@ -4,11 +4,11 @@ The [Standard Model (SM)](https://home.cern/science/physics/standard-model) of t
 
 ![Standard Model](https://cds.cern.ch/images/OPEN-PHO-CHART-2015-001-1/file?size=large)
 
-### Where does the Higgs Boson stands here?
+## Where does the Higgs Boson stands here?
 
 One of the crucial requirement of the SM is a mechanism to generate the masses of these fundamental particles without violeting the underlying mathematical symmetries of the theory. This is achieved through a scalar field. The fundamental fermions and the massive weak forces carries ($W^\pm$ and $Z$ bosons) acquire their intrinsic masses by continously interacting with this field. A direct observable consequence of this field is the existence of a single, spin-0 scalar particle: [**Higgs Boson ($H$)**](https://cms.cern/physics/higgs-boson).
 
-### Discovery and the Precision Era
+## Discovery and the Precision Era
 
 In 2012, the ATLAS and the CMS collaborations at the LHC [announced](https://home.cern/news/press-release/cern/cern-experiments-observe-particle-consistent-long-sought-higgs-boson) the historic discovery of a new scalar resonance with a mass of $m_H \sim\ \text{125 GeV}$.
 
@@ -21,16 +21,16 @@ There are four primary production mechanisms for the SM Higgs boson at the LHC:
 
 - **Gluon-Gluon Fusion (ggH or ggF):** Two gluons from the interacting protons fuse to produce a Higgs boson. Because gluons are massless, they cannot couple to Higgs directly. This process occurs via a virtual loop of heavy quarks. The top quark, having the largest Yukawa coupling, dominates this loop exchange.
 
-![ggH Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/ggh_FD.png){width = "100"}
+![ggH Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/ggh_FD.png){width="100"}
 
 - **Vector Boson Fusion (VBF):** Two quarks from the incoming protons emits a gauge bososn ($W$ or $Z$), which then scatter and fuse to form a Higgs boson. This mode is characterized by two highly energetic forward jets in the detector.
 
-![VBF Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/VBF_FD.png){width = "100"}
+![VBF Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/VBF_FD.png){width="100"}
 
 - **Associated Production (VH):** A quark and an antiquark annhilate to form an off-shell $W$ or $Z$ boson, which then radiates an $H$.
 
-![VBF Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/VH_FD.png){width = "100"}
+![VH Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/VH_FD.png){width="100"}
 
 - **Top Quark Associated Production (ttH):** Two gluons or quarks fuse to produce a top-antitop quark pair along with an $H$.
 
-![VBF Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/ttH_FD.png){width = "100"}
+![ttH Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/ttH_FD.png){width="100"}
