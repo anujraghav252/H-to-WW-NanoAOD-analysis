@@ -53,7 +53,7 @@ This analysis specifically focuses on the ggH production mode. The choice to iso
 - **Cross-section Dominance:** At a center-of-mass energy of $\sqrt{s}\ =\ \text{13 TeV}$, ggH is by far the most abundant production mechanism. According to [Handbook of LHC Higgs cross sections](https://e-publishing.cern.ch/index.php/CYRM/issue/view/32), the inclusive cross-section for ggH at 13 TeV is $\sigma_{ggH}\approx \text{48.58 pb}$. This accounts for approximately 87 % of the total Higgs boson production at the LHC. This overwhelming abundance ensures the maximum possible signal yield, providing good statistical foundation of the analysis.
 
   <div style="text-align: center;">
-    <img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/Higgs_xsec.jpg" alt="Higgs Cross-section at TeV scale" width="600">
+    <img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/Higgs_xsec.jpg" alt="Higgs Cross-section at TeV scale" width="400">
   </div>
 
 - **Signal Cleanliness:** Compared to other production modes, the ggH process offers a comparatively clean experimental topology. For example, the VBF channel, despite having the second-largest cross-section, is characterized by the presence of two highly energetic "forward" jets. Identifying these jets and removing them from the background requires complex jet selections, making the analysis highly sensitive to pileup in the detector region. Similarly, VH and ttH introduce additional heavy bosons or top quarks, making the final state cluttered with extra leptons and $b$-quarks. Thus, focusing on ggH allows for a cleaner extraction of the Higgs signal.
