@@ -1,6 +1,6 @@
 # **The Standard Model and the Higgs Boson**
 
-The [Standard Model (SM)](https://home.cern/science/physics/standard-model) of particle physics is a remarkably successful and tested theoretical framework that describes the fundamental constituents of matter and their interactions. It classifies all known elementary particles into two broad categories: spin-1/2 fermions (quarks and leptons), which form the building blocks of matter, and spin-1 gauge bosons (photons, gluons, and the $W^\pm$ and $Z$ bosons), which mediate the electromagnetic, strong, and weak fundamental forces respectively.
+The [Standard Model (SM)](https://home.cern/science/physics/standard-model) of particle physics is a remarkably successful and tested theoretical framework that describes the fundamental constituents of matter and their interactions. It classifies all known elementary particles into two broad categories: spin-1/2 fermions (quarks and leptons), which form the building blocks of matter, and spin-1 gauge bosons (photons, gluons, and the $W^\pm$ and $Z$ bosons), which mediate the electromagnetic, strong, and weak fundamental forces, respectively.
 
 <div style="text-align: center;">
   <img src="https://cds.cern.ch/images/OPEN-PHO-CHART-2015-001-1/file?size=large" alt="Standard Model" width="700">
@@ -18,7 +18,7 @@ Subsequent experimental measurements have confirmed that the particle's properti
 
 ## **Higgs Boson Production at the LHC**
 
-At the LHC, protons collide at ultra-high energies, specifically at a center-of-mass energy of $\sqrt{s} = \text{13 TeV}$ for the 2016 data-taking period utilized in this analysis. At such high energies, the collision occurs at the quark level and due to the massive amount of energy produced during the collision many heavy particles ($W^\pm,\ Z,\ H$) are produced.
+At the LHC, protons collide at ultra-high energies, specifically at a center-of-mass energy of $\sqrt{s} = \text{13 TeV}$ for the 2016 data-taking period utilized in this analysis. At such high energies, the collision occurs at the quark level, and due to the massive amount of energy produced during the collision, many heavy particles ($W^\pm,\ Z,\ H$) are produced.
 
 There are four primary production mechanisms for the SM Higgs boson at the LHC:
 
@@ -50,7 +50,7 @@ There are four primary production mechanisms for the SM Higgs boson at the LHC:
 
 This analysis specifically focuses on the ggH production mode. The choice to isolate this channel over others is driven by two primary kinematic and experimental factors:
 
-- **Cross-section Dominance:** At a center-of-mass energy of $\sqrt{s}\ =\ \text{13 TeV}$, ggH is by far the most abundant production mechanism. According to [Handbook of LHC Higgs cross sections](https://e-publishing.cern.ch/index.php/CYRM/issue/view/32), the inclusive cross-section for ggH at 13 TeV is $\sigma_{ggH}\approx \text{48.58 pb}$. This accounts for approximately 87 % of the total Higgs boson production at the LHC. This overwhelming abundance ensures the maximum possible signal yield, providing good statistical foundation of the analysis.
+- **Cross-section Dominance:** At a center-of-mass energy of $\sqrt{s}\ =\ \text{13 TeV}$, ggH is by far the most abundant production mechanism. According to [Handbook of LHC Higgs cross sections](https://e-publishing.cern.ch/index.php/CYRM/issue/view/32), the inclusive cross-section for ggH at 13 TeV is $\sigma_{ggH}\approx \text{48.58 pb}$. This accounts for approximately 87 % of the total Higgs boson production at the LHC. This overwhelming abundance ensures the maximum possible signal yield, providing a good statistical foundation for the analysis.
 
   <div style="text-align: center;">
     <img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/Higgs_xsec.jpg" alt="Higgs Cross-section at TeV scale" width="400">
@@ -79,9 +79,9 @@ Using the precision calculations compiled in the [Handbook of LHC Higgs cross se
 !!! info "Off-shell Production"
 Because the mass of the Higgs boson is less than twice the mass of a nominal W or Z boson, one of the emitted vector bosons in these decay modes must be produced virtually, or off-shell, denoted by the asterisk.
 
-### **The Preferentiality of $H\to WW^*$ Channel**
+### **Why the $H\to WW^*$ Channel Is Preferred**
 
-While the decay into a bottom-antibottom quark pair ($H\to b\bar{b}$) has the highest branching ratio, searching for it at a detector presents several challenges. The LHC produces an overwhelmingly vast background of strong-interaction processes (QCD multijet events) that perfectly mimics the hadronic final state, making precision measurements exceptionally difficult.
+While the decay into a bottom-antibottom quark pair ($H\to b\bar{b}$) has the highest branching ratio, searching for it in a detector presents several challenges. The LHC produces an overwhelmingly vast background of strong-interaction processes (QCD multijet events) that perfectly mimics the hadronic final state, making precision measurements exceptionally difficult.
 
 <div style="text-align: center;">
   <img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/Higgs_BR.jpg" alt="Higgs Branching ratio" width="400">

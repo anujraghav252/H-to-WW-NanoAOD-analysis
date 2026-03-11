@@ -4,11 +4,13 @@ Welcome to the documentation for the **[$H \rightarrow WW$ NanoAOD Analysis](htt
 
 This project is developed as part of the **[HSF-India project](https://research-software-collaborations.org/)**, an initiative to foster research software collaborations between India and the international High-Energy Physics community.
 
-![HSF-India Logo](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/hsf-india_logo.png){ width="250" }
+<div style="text-align: center;">
+	<img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/hsf-india_logo.png" alt="HSF-India Logo" width="250">
+</div>
 
 ---
 
-## What This Analysis Does?
+## What This Analysis Does
 
 This analysis searches for the **Standard Model Higgs boson** ($m_H = 125\,\text{GeV}$) decaying to a pair of $W$ bosons in the opposite-flavour dilepton final state:
 
