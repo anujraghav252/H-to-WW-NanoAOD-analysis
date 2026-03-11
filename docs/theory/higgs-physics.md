@@ -71,8 +71,12 @@ Because the mass of the Higgs boson is less than twice the mass of a nominal W o
 
 While the decay into a bottom-antibottom quark pair ($H\to b\bar{b}$) has the highest branching ratio, searching for it at a detector presents several challanges. The LHC produces an overwhelmingly vast background of strong-interaction processes (QCD multijet events) that perfectly mimics the hadronic final state, making precision measurements exeptionally difficult.
 
-![Higgs Branching ratio](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/Higgs_BR.jpg){width="600"}
+![Higgs Branching ratio](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/Higgs_BR.jpg){width="400"}
 
-To bypass the massive hadronic backgrounds, this analysis focuses on the $H\to WW^*$ decay mode. This channel offers
+To bypass the massive hadronic backgrounds, this analysis focuses on the $H\to WW^*$ decay mode. This channel offers a many advantages for experimental physics:
 
-<!-- ![hihs][http] -->
+- **High Event Yield:** With the second-largest branching ratio ($\approx \text{21.52}$%), it gives a substantial statistical sample compared to rarer decays.
+  
+-  **Clean Signature:** The leptonic decay of the $W$ bosons ($W \to \ell \nu$) produces high energy, isolated leptons that cleanly stand out from the overwhelming QCD backgrounds.
+
+- **Drell-Yan Supression:** By strictly requiring the different-flavour final state ($H \to WW^*\to e^{\pm}\mu^{\pm}\nu\bar{\nu}$), the analysis easily bypasses the massive Drell-Yan background ($Z/\gamma^* \to e^\pm/\mu^\pm$) that plagues the same-flavour searches.
