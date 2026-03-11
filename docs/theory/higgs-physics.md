@@ -1,40 +1,50 @@
 # **The Standard Model and the Higgs Boson**
 
-The [Standard Model (SM)](https://home.cern/science/physics/standard-model) of the particle physics is a remarkably successful and tested theoretical framework that describes the fundamental constituents of matter adn their interactions. It classifies all known elementary particles into two board categories: spin-1/2 fermions and (quarks and leptons), which forms the building blocks of matter, and spin-1 gauge bosons (photons, gluons, and the $W^\pm$ and $Z$ bosons), which mediate the electromagnetic, strong, and weak fundamental forces respectively.
+The [Standard Model (SM)](https://home.cern/science/physics/standard-model) of particle physics is a remarkably successful and tested theoretical framework that describes the fundamental constituents of matter and their interactions. It classifies all known elementary particles into two broad categories: spin-1/2 fermions (quarks and leptons), which form the building blocks of matter, and spin-1 gauge bosons (photons, gluons, and the $W^\pm$ and $Z$ bosons), which mediate the electromagnetic, strong, and weak fundamental forces respectively.
 
-![Standard Model](https://cds.cern.ch/images/OPEN-PHO-CHART-2015-001-1/file?size=large)
+<div style="text-align: center;">
+  <img src="https://cds.cern.ch/images/OPEN-PHO-CHART-2015-001-1/file?size=large" alt="Standard Model" width="700">
+</div>
 
-## **Where does the Higgs Boson stands here?**
+## **Where does the Higgs boson stand here?**
 
-One of the crucial requirement of the SM is a mechanism to generate the masses of these fundamental particles without violeting the underlying mathematical symmetries of the theory. This is achieved through a scalar field. The fundamental fermions and the massive weak forces carries ($W^\pm$ and $Z$ bosons) acquire their intrinsic masses by continously interacting with this field. A direct observable consequence of this field is the existence of a single, spin-0 scalar particle: [**Higgs Boson ($H$)**](https://cms.cern/physics/higgs-boson).
+One of the crucial requirements of the SM is a mechanism to generate the masses of these fundamental particles without violating the underlying mathematical symmetries of the theory. This is achieved through a scalar field. The fundamental fermions and the massive weak force carriers ($W^\pm$ and $Z$ bosons) acquire their intrinsic masses by continuously interacting with this field. A direct observable consequence of this field is the existence of a single, spin-0 scalar particle: [**Higgs Boson ($H$)**](https://cms.cern/physics/higgs-boson).
 
 ## **Discovery and the Precision Era**
 
 In 2012, the ATLAS and the CMS collaborations at the LHC [announced](https://home.cern/news/press-release/cern/cern-experiments-observe-particle-consistent-long-sought-higgs-boson) the historic discovery of a new scalar resonance with a mass of $m_H \approx \text{125 GeV}$.
 
-Subsequent experimental measurements have confirmed that the particle's properties strongly align with the predictions for the SM Higgs Boson. With, its mass now fixed, all other properties of the $H$ boson are constrained by SM.
+Subsequent experimental measurements have confirmed that the particle's properties strongly align with the predictions for the SM Higgs Boson. With its mass now fixed, all other properties of the $H$ boson are constrained by the SM.
 
 ## **Higgs Boson Production at the LHC**
 
-At the LHC, protons are collided at ultra-high energies, specifically at a center-of-mass energy of $\sqrt{s} = \text{13 TeV}$ for the 2016 data-taking period utilized in this analysis. At such high energies, the collision occurs at the quarks level and due to massive amount of energy produced during the collision many heavy particles ($W^\pm,\ Z,\ H$) are produced.
+At the LHC, protons collide at ultra-high energies, specifically at a center-of-mass energy of $\sqrt{s} = \text{13 TeV}$ for the 2016 data-taking period utilized in this analysis. At such high energies, the collision occurs at the quark level and due to the massive amount of energy produced during the collision many heavy particles ($W^\pm,\ Z,\ H$) are produced.
 
 There are four primary production mechanisms for the SM Higgs boson at the LHC:
 
 - **Gluon-Gluon Fusion (ggH or ggF):** Two gluons from the interacting protons fuse to produce a Higgs boson. Because gluons are massless, they cannot couple to Higgs directly. This process occurs via a virtual loop of heavy quarks. The top quark, having the largest Yukawa coupling, dominates this loop exchange.
 
-  ![ggH Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/ggh_FD.png){width="250"}
+  <div style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/ggh_FD.png" alt="ggH Feynman Diagram" width="250">
+  </div>
 
-- **Vector Boson Fusion (VBF):** Two quarks from the incoming protons emits a gauge bososn ($W$ or $Z$), which then scatter and fuse to form a Higgs boson. This mode is characterized by two highly energetic forward jets in the detector.
+- **Vector Boson Fusion (VBF):** Two quarks from the incoming protons emit a gauge boson ($W$ or $Z$), which then scatter and fuse to form a Higgs boson. This mode is characterized by two highly energetic forward jets in the detector.
 
-  ![VBF Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/VBF_FD.png){width="250"}
+  <div style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/VBF_FD.png" alt="VBF Feynman Diagram" width="250">
+  </div>
 
-- **Associated Production (VH):** A quark and an antiquark annhilate to form an off-shell $W$ or $Z$ boson, which then radiates an $H$.
+- **Associated Production (VH):** A quark and an antiquark annihilate to form an off-shell $W$ or $Z$ boson, which then radiates an $H$.
 
-  ![VH Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/VH_FD.png){width="250"}
+  <div style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/VH_FD.png" alt="VH Feynman Diagram" width="250">
+  </div>
 
 - **Top Quark Associated Production (ttH):** Two gluons or quarks fuse to produce a top-antitop quark pair along with an $H$.
 
-  ![ttH Feynman Diagram](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/ttH_FD.png){width="250"}
+  <div style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/ttH_FD.png" alt="ttH Feynman Diagram" width="250">
+  </div>
 
 ## **Dominance of Gluon-Gluon Fusion**
 
@@ -42,15 +52,17 @@ This analysis specifically focuses on the ggH production mode. The choice to iso
 
 - **Cross-section Dominance:** At a center-of-mass energy of $\sqrt{s}\ =\ \text{13 TeV}$, ggH is by far the most abundant production mechanism. According to [Handbook of LHC Higgs cross sections](https://e-publishing.cern.ch/index.php/CYRM/issue/view/32), the inclusive cross-section for ggH at 13 TeV is $\sigma_{ggH}\approx \text{48.58 pb}$. This accounts for approximately 87 % of the total Higgs boson production at the LHC. This overwhelming abundance ensures the maximum possible signal yield, providing good statistical foundation of the analysis.
 
-  ![Higgs Cross-section at TeV scale](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/Higgs_xsec.jpg){width="600"}
+  <div style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/Higgs_xsec.jpg" alt="Higgs Cross-section at TeV scale" width="600">
+  </div>
 
-- **Signal Cleanliness:** Compared to other production modes, the ggH process offers a comparatively clean experimental topology. For example, the VBF channel, despite having the second largest cross-section, is characterized by the presence of two highly energetic "forward" jets. Identifying these jets and removing them from the background requires complex jet selections, making the analysis highly sensitive to pileup in the detector region. Similarly, the VH and ttH introduces additional heavy bosons or top quarks, making the final state cluttered with extra leptons and $b$-quarks. Thus, focussing on ggH allows for a cleaner extraction of the Higgs signal.
+- **Signal Cleanliness:** Compared to other production modes, the ggH process offers a comparatively clean experimental topology. For example, the VBF channel, despite having the second-largest cross-section, is characterized by the presence of two highly energetic "forward" jets. Identifying these jets and removing them from the background requires complex jet selections, making the analysis highly sensitive to pileup in the detector region. Similarly, VH and ttH introduce additional heavy bosons or top quarks, making the final state cluttered with extra leptons and $b$-quarks. Thus, focusing on ggH allows for a cleaner extraction of the Higgs signal.
 
 ## **Higgs Boson Decay**
 
-Once produced, the Higgs boson is highly unstable and decays almost instantaneously. In the SM the strength of its coupling to other fermions and bosons is proportional to their masses, meaning it preferentially decays into the heaviest kinematically available particle pairs.
+Once produced, the Higgs boson is highly unstable and decays almost instantaneously. In the SM, the strength of its coupling to other fermions and bosons is proportional to their masses, meaning it preferentially decays into the heaviest kinematically available particle pairs.
 
-Using the precision calculations compiled in the [Handbook of LHC Higgs cross sections: 4](https://e-publishing.cern.ch/index.php/CYRM/issue/view/32), for Higgs boson with a mass of $m_H\approx\text{125 GeV}$, the branching rations are distributed as follws:
+Using the precision calculations compiled in the [Handbook of LHC Higgs cross sections: 4](https://e-publishing.cern.ch/index.php/CYRM/issue/view/32), for a Higgs boson with a mass of $m_H\approx\text{125 GeV}$, the branching ratios are distributed as follows:
 
 |          Decay Channel           | Branching Ratio (BR) |
 | :------------------------------: | :------------------: |
@@ -69,14 +81,16 @@ Because the mass of the Higgs boson is less than twice the mass of a nominal W o
 
 ### **The Preferentiality of $H\to WW^*$ Channel**
 
-While the decay into a bottom-antibottom quark pair ($H\to b\bar{b}$) has the highest branching ratio, searching for it at a detector presents several challanges. The LHC produces an overwhelmingly vast background of strong-interaction processes (QCD multijet events) that perfectly mimics the hadronic final state, making precision measurements exeptionally difficult.
+While the decay into a bottom-antibottom quark pair ($H\to b\bar{b}$) has the highest branching ratio, searching for it at a detector presents several challenges. The LHC produces an overwhelmingly vast background of strong-interaction processes (QCD multijet events) that perfectly mimics the hadronic final state, making precision measurements exceptionally difficult.
 
-![Higgs Branching ratio](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/Higgs_BR.jpg){width="400"}
+<div style="text-align: center;">
+  <img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/Higgs_BR.jpg" alt="Higgs Branching ratio" width="400">
+</div>
 
-To bypass the massive hadronic backgrounds, this analysis focuses on the $H\to WW^*$ decay mode. This channel offers a many advantages for experimental physics:
+To bypass the massive hadronic backgrounds, this analysis focuses on the $H\to WW^*$ decay mode. This channel offers many advantages for experimental physics:
 
-- **High Event Yield:** With the second-largest branching ratio ($\approx \text{21.52}$%), it gives a substantial statistical sample compared to rarer decays.
+- **High Event Yield:** With the second-largest branching ratio ($\approx \text{21.52\%}$), it gives a substantial statistical sample compared to rarer decays.
   
--  **Clean Signature:** The leptonic decay of the $W$ bosons ($W \to \ell \nu$) produces high energy, isolated leptons that cleanly stand out from the overwhelming QCD backgrounds.
+-  **Clean Signature:** The leptonic decay of the $W$ bosons ($W \to \ell \nu$) produces high-energy, isolated leptons that cleanly stand out from the overwhelming QCD backgrounds.
 
-- **Drell-Yan Supression:** By strictly requiring the different-flavour final state ($H \to WW^*\to e^{\pm}\mu^{\pm}\nu\bar{\nu}$), the analysis easily bypasses the massive Drell-Yan background ($Z/\gamma^* \to e^\pm/\mu^\pm$) that plagues the same-flavour searches.
+- **Drell-Yan Suppression:** By strictly requiring the different-flavour final state ($H \to WW^*\to e^{\pm}\mu^{\pm}\nu\bar{\nu}$), the analysis easily bypasses the massive Drell-Yan background ($Z/\gamma^* \to e^\pm/\mu^\pm$) that plagues the same-flavour searches.
