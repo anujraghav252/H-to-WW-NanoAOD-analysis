@@ -1,5 +1,10 @@
 # **Higgs to WW Analysis: Using CMS Open Data**
 
+!!! warning
+    This documentation is currently in development. Some sections might be broken or inconsistent. Meanwhile, do check it out the [repo](https://github.com/anujraghav252/H-to-WW-NanoAOD-analysis) contains this work. 
+
+	Have a nice day!
+
 Welcome to the documentation for the **[$H \rightarrow WW$ NanoAOD Analysis](https://github.com/anujraghav252/H-to-WW-NanoAOD-analysis)**. This project provides an open, reproducible implementation of the $H \rightarrow W^+W^- \rightarrow e\nu\,\mu\nu$ measurement using CMS 2016 Ultra-Legacy Open Data.
 
 This project is developed as part of the **[HSF-India project](https://research-software-collaborations.org/)**, an initiative to foster research software collaborations between India and the international High-Energy Physics community.
@@ -10,7 +15,7 @@ This project is developed as part of the **[HSF-India project](https://research-
 
 ---
 
-## What This Analysis Does
+## **What This Analysis Does**
 
 This analysis searches for the **Standard Model Higgs boson** ($m_H = 125\,\text{GeV}$) decaying to a pair of $W$ bosons in the opposite-flavour dilepton final state:
 
@@ -20,7 +25,7 @@ Working entirely within the **Scikit-HEP Python ecosystem** (Uproot, Awkward Arr
 
 ---
 
-## Quick Start
+## **Quick Start**
 
 ```bash
 # 1. Clone the repository
@@ -40,7 +45,7 @@ jupyter lab HWW_analysis.ipynb
 
 ---
 
-## Documentation Guide
+## **Documentation Guide**
 
 | Section                                                            | What you'll find                                      |
 | ------------------------------------------------------------------ | ----------------------------------------------------- |
@@ -55,7 +60,7 @@ jupyter lab HWW_analysis.ipynb
 
 ---
 
-## Key Analysis Properties
+## **Key Analysis Properties**
 
 | Property              | Value                                                  |
 | --------------------- | ------------------------------------------------------ |
@@ -68,6 +73,7 @@ jupyter lab HWW_analysis.ipynb
 
 ---
 
-## Acknowledgements
+## **Acknowledgements**
 
 This analysis is developed as part of the **HSF-India project**. The datasets are sourced from the [CERN Open Data Portal](https://opendata.cern.ch). MC sample configurations follow [LatinoAnalysis](https://github.com/latinos/LatinoAnalysis) conventions for the Summer20UL16 campaign.
+<!-- The physics steps are loosely based on this thesis -- roebrto seidetta give link here  -->

@@ -10,7 +10,7 @@ The [Standard Model (SM)](https://home.cern/science/physics/standard-model) of p
 
 One of the crucial requirements of the SM is a mechanism to generate the masses of these fundamental particles without violating the underlying mathematical symmetries of the theory. This is achieved through a scalar field. The fundamental fermions and the massive weak force carriers ($W^\pm$ and $Z$ bosons) acquire their intrinsic masses by continuously interacting with this field. A direct observable consequence of this field is the existence of a single, spin-0 scalar particle: [**Higgs Boson ($H$)**](https://cms.cern/physics/higgs-boson).
 
-## **Discovery and the Precision Era**
+<!-- ## **Discovery and the Precision Era** -->
 
 In 2012, the ATLAS and the CMS collaborations at the LHC [announced](https://home.cern/news/press-release/cern/cern-experiments-observe-particle-consistent-long-sought-higgs-boson) the historic discovery of a new scalar resonance with a mass of $m_H \approx \text{125 GeV}$.
 
@@ -34,7 +34,7 @@ There are four primary production mechanisms for the SM Higgs boson at the LHC:
     <img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/VBF_FD.png" alt="VBF Feynman Diagram" width="250">
   </div>
 
-- **Associated Production (VH):** A quark and an antiquark annihilate to form an off-shell $W$ or $Z$ boson, which then radiates an $H$.
+- **Associated Production (VH):** A quark and an antiquark annihilate to form an *off-shell* $W$ or $Z$ boson, which then radiates an $H$.
 
   <div style="text-align: center;">
     <img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/VH_FD.png" alt="VH Feynman Diagram" width="250">
@@ -46,7 +46,7 @@ There are four primary production mechanisms for the SM Higgs boson at the LHC:
     <img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/ttH_FD.png" alt="ttH Feynman Diagram" width="250">
   </div>
 
-## **Dominance of Gluon-Gluon Fusion**
+### **Dominance of Gluon-Gluon Fusion**
 
 This analysis specifically focuses on the ggH production mode. The choice to isolate this channel over others is driven by two primary kinematic and experimental factors:
 
@@ -79,7 +79,7 @@ Using the precision calculations compiled in the [Handbook of LHC Higgs cross se
 !!! info "Off-shell Production"
 Because the mass of the Higgs boson is less than twice the mass of a nominal W or Z boson, one of the emitted vector bosons in these decay modes must be produced virtually, or off-shell, denoted by the asterisk.
 
-### **Why the $H\to WW^*$ Channel Is Preferred**
+### **Why the H to WW Channel is preferred**
 
 While the decay into a bottom-antibottom quark pair ($H\to b\bar{b}$) has the highest branching ratio, searching for it in a detector presents several challenges. The LHC produces an overwhelmingly vast background of strong-interaction processes (QCD multijet events) that perfectly mimics the hadronic final state, making precision measurements exceptionally difficult.
 
@@ -89,7 +89,7 @@ While the decay into a bottom-antibottom quark pair ($H\to b\bar{b}$) has the hi
 
 To bypass the massive hadronic backgrounds, this analysis focuses on the $H\to WW^*$ decay mode. This channel offers many advantages for experimental physics:
 
-- **High Event Yield:** With the second-largest branching ratio ($\approx \text{21.52\%}$), it gives a substantial statistical sample compared to rarer decays.
+- **High Event Yield:** With the second-largest branching ratio ($\approx \text{21.52}$%), it gives a substantial statistical sample compared to rarer decays.
   
 -  **Clean Signature:** The leptonic decay of the $W$ bosons ($W \to \ell \nu$) produces high-energy, isolated leptons that cleanly stand out from the overwhelming QCD backgrounds.
 

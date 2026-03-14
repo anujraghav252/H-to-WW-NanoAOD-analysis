@@ -1,3 +1,4 @@
+# **The CMS Open Data**
 The **[Compact Muon Solenoid (CMS)](https://home.cern/science/experiments/cms)** is one of two large general-purpose detectors at the Large Hadron Collider (LHC) at CERN. It records proton–proton collisions at a centre-of-mass energy of $\sqrt{s} = 13\,\text{TeV}$, providing data suitable for precision measurements of Standard Model (SM) processes and searches for new phenomena.
 
 <div style="display:flex; justify-content:center; gap:20px;">
