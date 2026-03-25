@@ -8,13 +8,13 @@ The [Standard Model (SM)](https://home.cern/science/physics/standard-model) of p
 
 ## **Where does the Higgs boson stand here?**
 
-One of the crucial requirements of the SM is a mechanism to generate the masses of these fundamental particles without violating the underlying mathematical symmetries of the theory. This is achieved through a scalar field. The fundamental fermions and the massive weak force carriers ($W^\pm$ and $Z$ bosons) acquire their intrinsic masses by continuously interacting with this field. A direct observable consequence of this field is the existence of a single, spin-0 scalar particle: [**Higgs Boson ($H$)**](https://cms.cern/physics/higgs-boson).
+One of the crucial requirements of the SM is a mechanism to generate the masses of these fundamental particles without violating the underlying mathematical symmetries of the theory. This is achieved through a scalar field. The fundamental fermions and the massive weak force carriers ($W^\pm$ and $Z$ bosons) acquire their intrinsic masses by continuously interacting with this field. A direct observable consequence of this field is the existence of a single, spin-0 scalar particle: [**Higgs boson ($H$)**](https://cms.cern/physics/higgs-boson).
 
 <!-- ## **Discovery and the Precision Era** -->
 
 In 2012, the ATLAS and the CMS collaborations at the LHC [announced](https://home.cern/news/press-release/cern/cern-experiments-observe-particle-consistent-long-sought-higgs-boson) the historic discovery of a new scalar resonance with a mass of $m_H \approx \text{125 GeV}$.
 
-Subsequent experimental measurements have confirmed that the particle's properties strongly align with the predictions for the SM Higgs Boson. With its mass now fixed, all other properties of the $H$ boson are constrained by the SM.
+Subsequent experimental measurements have confirmed that the particle's properties strongly align with the predictions for the SM Higgs boson. With its mass now fixed, all other properties of the $H$ boson are constrained by the SM.
 
 ## **Higgs Boson Production at the LHC**
 
@@ -79,9 +79,9 @@ Using the precision calculations compiled in the [Handbook of LHC Higgs cross se
 !!! info "Off-shell Production"
 Because the mass of the Higgs boson is less than twice the mass of a nominal W or Z boson, one of the emitted vector bosons in these decay modes must be produced virtually, or off-shell, denoted by the asterisk.
 
-### **Why the H to WW Channel is preferred**
+### **Why the H to WW Channel Is Preferred**
 
-While the decay into a bottom-antibottom quark pair ($H\to b\bar{b}$) has the highest branching ratio, searching for it in a detector presents several challenges. The LHC produces an overwhelmingly vast background of strong-interaction processes (QCD multijet events) that perfectly mimics the hadronic final state, making precision measurements exceptionally difficult.
+While the decay into a bottom-antibottom quark pair ($H\to b\bar{b}$) has the highest branching ratio, searching for it in a detector presents several challenges. The LHC produces an overwhelmingly vast background of strong-interaction processes (QCD multijet events) that perfectly mimic the hadronic final state, making precision measurements exceptionally difficult.
 
 <div style="text-align: center;">
   <img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/Higgs_BR.jpg" alt="Higgs Branching ratio" width="400">
@@ -91,6 +91,33 @@ To bypass the massive hadronic backgrounds, this analysis focuses on the $H\to W
 
 - **High Event Yield:** With the second-largest branching ratio ($\approx \text{21.52}$%), it gives a substantial statistical sample compared to rarer decays.
   
--  **Clean Signature:** The leptonic decay of the $W$ bosons ($W \to \ell \nu$) produces high-energy, isolated leptons that cleanly stand out from the overwhelming QCD backgrounds.
+- **Clean Signature:** The leptonic decay of the $W$ bosons ($W \to \ell \nu$) produces high-energy, isolated leptons that cleanly stand out from the overwhelming QCD backgrounds.
 
-- **Drell-Yan Suppression:** By strictly requiring the different-flavour final state ($H \to WW^*\to e^{\pm}\mu^{\pm}\nu\bar{\nu}$), the analysis easily bypasses the massive Drell-Yan background ($Z/\gamma^* \to e^\pm/\mu^\pm$) that plagues the same-flavour searches.
+- **Drell-Yan Suppression:** By strictly requiring the different-flavor final state ($H \to WW^*\to e^{\pm}\mu^{\pm}\nu\bar{\nu}$), the analysis easily bypasses the massive Drell-Yan background ($Z/\gamma^* \to e^\pm/\mu^\pm$) that plagues the same-flavor searches.
+
+
+## **W Boson Decay Modes**
+
+To understand the final state topology of the event, we must examine the decay mechanisms of the intermediate vector bosons. A $W$ boson decays in two primary ways:
+ - hadronically into a quark-antiquark pair ($W\to q\bar{q}$), or
+ - leptonically into a charged lepton and its corresponding neutrino ($W \to \ell\nu$).
+  
+While the hadronic decay is favored with a branching ratio of approximately 67.4%, it suffers from overwhelming QCD multi-jet backgrounds at the LHC. Conversely, the leptonic decay provides a much cleaner experimental signature. According to the baseline values established in the [Handbook of LHC Higgs cross sections](https://e-publishing.cern.ch/index.php/CYRM/issue/view/32), the leptonic branching ratio for each specific flavor family ($e,\ \mu,\ \tau$) is mathematically symmetric at $\approx$ 10.86%.
+
+## **The Fully Leptonic Different-Flavor State**
+
+This analysis explicitly targets the fully leptonic final state, requiring both $W$ bosons to decay into leptons. Furthermore, the selection is strictly narrowed to the **different-flavor** ($e^\pm \mu^\pm$) final state. 
+
+While incorporating same-flavor events ($e^+e^-$ or $\mu^+\mu^-$) would normally increase the raw signal yield, they introduce a massive and difficult-to-handle background from Drell-Yan processes ($Z/ \gamma^* \to \ell^+\ell^-$). Because Drell-Yan interactions almost always produce same-flavor lepton pairs, requiring exactly one electron and one muon suppresses this $Z$-boson resonance background, securing a highly pure signal region.
+
+## **The Expected Yield Calculation Chain**
+By synthesizing the production cross-section of the Higgs boson with the sequential branching ratios of its decay products, the expected theoretical yield for the exact signal process can be mathematically formalized.
+
+For the $gg\to H \to WW \to e^\pm\mu^\pm\nu\bar{\nu}$ channel, the theoretical cross-section ($\sigma_{signal}$) is calculated as:
+
+$\sigma_{signal} = \sigma(gg\to H) \times \text{BR}(H \to WW) \times \text{BR}(W \to e\nu) \times \text{BR}(W \to \mu\nu)\times 2$
+
+!!! info 'Charge-Flavor Permutations'
+The factor of 2 accounts for the two possible charge-flavor combinations of the final state: $W^+ \to e^+\nu_e$, $W^- \to \mu^-\bar{\nu}_\mu$ and $W^+ \to \mu^+\nu_\mu$, $W^- \to e^-\bar{\nu}_e$.
+
+
