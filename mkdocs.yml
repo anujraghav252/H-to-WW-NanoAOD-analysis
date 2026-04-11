@@ -39,9 +39,9 @@ theme:
     - content.code.copy
     - toc.follow
     - navigation.footer
-    - content.tooltips # hover tooltips on links
+    - content.tooltips
     - content.tabs.link
-    - header.autohide # header hides on scroll down
+    - header.autohide
 
 plugins:
   - search
