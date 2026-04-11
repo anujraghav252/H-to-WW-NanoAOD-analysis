@@ -18,11 +18,11 @@ Subsequent experimental measurements have confirmed that the particle's properti
 
 ## **Higgs Boson Production at the LHC**
 
-At the LHC, protons collide at ultra-high energies, specifically at a center-of-mass energy of $\sqrt{s} = \text{13 TeV}$ for the 2016 data-taking period utilized in this analysis. At such high energies, the collision occurs at the quark level, and due to the massive amount of energy produced during the collision, many heavy particles ($W^\pm,\ Z,\ H$) are produced.
+At the LHC, protons collide at ultra-high energies, specifically at a center-of-mass energy of $\sqrt{s} = \text{13 TeV}$ for the 2016 data-taking period used in this analysis. At such high energies, the collision occurs at the quark level, and because of the large amount of energy available, many heavy particles ($W^\pm,\ Z,\ H$) are produced.
 
 There are four primary production mechanisms for the SM Higgs boson at the LHC:
 
-- **Gluon-Gluon Fusion (ggH or ggF):** Two gluons from the interacting protons fuse to produce a Higgs boson. Because gluons are massless, they cannot couple to Higgs directly. This process occurs via a virtual loop of heavy quarks. The top quark, having the largest Yukawa coupling, dominates this loop exchange.
+- **Gluon-Gluon Fusion (ggH or ggF):** Two gluons from the interacting protons fuse to produce a Higgs boson. Because gluons are massless, they cannot couple directly to the Higgs boson. This process occurs via a virtual loop of heavy quarks. The top quark, having the largest Yukawa coupling, dominates this loop exchange.
 
   <div style="text-align: center;">
     <img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/ggh_FD.png" alt="ggH Feynman Diagram" width="250">
@@ -50,7 +50,7 @@ There are four primary production mechanisms for the SM Higgs boson at the LHC:
 
 This analysis specifically focuses on the ggH production mode. The choice to isolate this channel over others is driven by two primary kinematic and experimental factors:
 
-- **Cross-section Dominance:** At a center-of-mass energy of $\sqrt{s}\ =\ \text{13 TeV}$, ggH is by far the most abundant production mechanism. According to [Handbook of LHC Higgs cross sections](https://e-publishing.cern.ch/index.php/CYRM/issue/view/32), the inclusive cross-section for ggH at 13 TeV is $\sigma_{ggH}\approx \text{48.58 pb}$. This accounts for approximately 87 % of the total Higgs boson production at the LHC. This overwhelming abundance ensures the maximum possible signal yield, providing a good statistical foundation for the analysis.
+- **Cross-section Dominance:** At a center-of-mass energy of $\sqrt{s}\ =\ \text{13 TeV}$, ggH is by far the most abundant production mechanism. According to [Handbook of LHC Higgs cross sections](https://e-publishing.cern.ch/index.php/CYRM/issue/view/32), the inclusive cross-section for ggH at 13 TeV is $\sigma_{ggH}\approx \text{48.58 pb}$. This accounts for approximately 87% of the total Higgs boson production at the LHC. This overwhelming abundance ensures the maximum possible signal yield, providing a strong statistical foundation for the analysis.
 
   <div style="text-align: center;">
     <img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/Higgs_xsec.jpg" alt="Higgs Cross-section at TeV scale" width="400">
@@ -77,7 +77,7 @@ Using the precision calculations compiled in the [Handbook of LHC Higgs cross se
 |  $H \rightarrow \mu^{+}\mu^{-}$  |        0.022%        |
 
 !!! info "Off-shell Production"
-Because the mass of the Higgs boson is less than twice the mass of a nominal W or Z boson, one of the emitted vector bosons in these decay modes must be produced virtually, or off-shell, denoted by the asterisk.
+Because the mass of the Higgs boson is less than twice the mass of an on-shell W or Z boson, one of the emitted vector bosons in these decay modes must be produced virtually, or off-shell, denoted by the asterisk.
 
 ### **Why the H to WW Channel Is Preferred**
 
@@ -89,7 +89,7 @@ While the decay into a bottom-antibottom quark pair ($H\to b\bar{b}$) has the hi
 
 To bypass the massive hadronic backgrounds, this analysis focuses on the $H\to WW^*$ decay mode. This channel offers many advantages for experimental physics:
 
-- **High Event Yield:** With the second-largest branching ratio ($\approx \text{21.52}$%), it gives a substantial statistical sample compared to rarer decays.
+- **High Event Yield:** With the second-largest branching ratio ($\approx \text{21.52}\%$), it provides a substantial statistical sample compared to rarer decays.
   
 - **Clean Signature:** The leptonic decay of the $W$ bosons ($W \to \ell \nu$) produces high-energy, isolated leptons that cleanly stand out from the overwhelming QCD backgrounds.
 
@@ -108,7 +108,7 @@ While the hadronic decay is favored with a branching ratio of approximately 67.4
 
 This analysis explicitly targets the fully leptonic final state, requiring both $W$ bosons to decay into leptons. Furthermore, the selection is strictly narrowed to the **different-flavor** ($e^\pm \mu^\pm$) final state. 
 
-While incorporating same-flavor events ($e^+e^-$ or $\mu^+\mu^-$) would normally increase the raw signal yield, they introduce a massive and difficult-to-handle background from Drell-Yan processes ($Z/ \gamma^* \to \ell^+\ell^-$). Because Drell-Yan interactions almost always produce same-flavor lepton pairs, requiring exactly one electron and one muon suppresses this $Z$-boson resonance background, securing a highly pure signal region.
+While incorporating same-flavor events ($e^+e^-$ or $\mu^+\mu^-$) would normally increase the raw signal yield, they introduce a massive and difficult-to-handle background from Drell-Yan processes ($Z/\gamma^* \to \ell^+\ell^-$). Because Drell-Yan interactions almost always produce same-flavor lepton pairs, requiring exactly one electron and one muon suppresses this $Z$-boson resonance background, yielding a highly pure signal region.
 
 ## **The Expected Yield Calculation Chain**
 By synthesizing the production cross-section of the Higgs boson with the sequential branching ratios of its decay products, the expected theoretical yield for the exact signal process can be mathematically formalized.
@@ -121,12 +121,35 @@ $\sigma_{signal} = \sigma(gg\to H) \times \text{BR}(H \to WW) \times \text{BR}(W
 The factor of 2 accounts for the two possible charge-flavor combinations of the final state: $W^+ \to e^+\nu_e$, $W^- \to \mu^-\bar{\nu}_\mu$ and $W^+ \to \mu^+\nu_\mu$, $W^- \to e^-\bar{\nu}_e$.
 
 ## **Experimental Signature in the Detector**
-Understanding how the process "looks-like" in the detector is crucial and first step in our search.
+Understanding how the process "looks like" in the detector is a crucial first step in our search.
 
+### The Visible: Electrons and Muons
 The charged leptons produced in the $W$ boson decays are the primary visible handles of the signal. They must be accurately reconstructed and identified by the various sub-detectors:
-- **Electrons($e^\pm$):** An electron leaves a curved trajectory in the inner silicon tracker and subsequently deposits energy into the Electromagnetic Calorimeter (ECAL), producing an electromagnetic shower. 
+- **Electrons ($e^\pm$):** An electron leaves a curved trajectory in the inner silicon tracker and subsequently deposits energy into the Electromagnetic Calorimeter (ECAL), producing an electromagnetic shower.
 
-- **Muons ($\mu^\pm$):** As minimum ionizing particles, muons leave a track in the inner silicon tracker, pass through the ECAL and Hadronic Calorimeter (HCAL) with neglegible energy loss, and are finally reconstructed by the dedicated muon chambers located in the outermost layers of the CMS detector. 
+- **Muons ($\mu^\pm$):** As minimum-ionizing particles, muons leave a track in the inner silicon tracker, pass through the ECAL and Hadronic Calorimeter (HCAL) with negligible energy loss, and are finally reconstructed by the dedicated muon chambers located in the outermost layers of the CMS detector.
+
+<div style="text-align: center;">
+  <img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/particle_detector.gif" alt="particle track" width="600">
+</div>
+
+### The Invisible: Missing Transverse Energy (MET)
+
+Being chargeless and almost massless, neutrinos pass through the entire detector volume without leaving a single trace.
+
+Because the initial protons collide head-on along the beam axis ($z$-axis), the net momentum of the system in the transverse plane ($x-y$ plane) is strictly zero. By using conservation of momentum, the presence of neutrinos is inferred by calculating the vector sum of the transverse momenta of all visible particles reconstructed in the event. Any imbalance in the sum is quantified as **Missing Transverse Energy ($E_T^{miss}$ or MET)**. In this analysis, large MET is expected because neutrinos are present in the final state.
+
+### Kinematic Variables and Signal Discrimination
+
+In any analysis, the final state of the process can be represented by specific kinematic variables. In this analysis, we will use a few such key variables to represent our signal process and distinguish it from the background:
+
+- **Transverse Mass of Higgs ($m_T^H$):** Because the two escaping neutrinos prevent the full reconstruction of the Higgs invariant mass, we rely on the transverse mass. Formulated using the transverse momentum of the dilepton system and the missing transverse energy, it forms a broad edge around the $m_H \sim 125 \text{GeV}$ rather than a sharp resonance peak.
+
+- **Transverse Momentum of the Dilepton System ($p_T^{\ell\ell}$):** The combined transverse momentum of the visible electron and muon. 
+
+- **Dilepton Invariant Mass ($m_\ell\ell$):** The invariant mass calculated directly from the four-momenta of the visible electron-muon pair.
+
+- **Angular Separation ($\Delta \phi_\ell\ell$):** The absolute difference in the azimuthal angle between the electron and muon in the transverse plane. It gives the separation between the two leptons in the transverse plane.
 
 
 

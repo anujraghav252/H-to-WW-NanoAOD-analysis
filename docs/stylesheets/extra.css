@@ -1,0 +1,11 @@
+.md-grid {
+    max-width: 1300px;
+}
+.md-typeset {
+    text-align: justify;
+}
+/* Smooth scrolling */
+html { scroll-behavior: smooth; }
+
+/* Better code block font */
+.md-typeset code { font-family: 'JetBrains Mono', monospace; }

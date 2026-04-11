@@ -3,13 +3,12 @@ site_description: "Documentation for the H→WW NanoAOD analysis — HSF-India p
 site_url: https://h-to-ww-nanoaod-analysis.readthedocs.io/
 repo_url: https://github.com/anujraghav252/H-to-WW-NanoAOD-analysis
 repo_name: anujraghav252/H-to-WW-NanoAOD-analysis
-# copyright: "2026, HSF-India Project. Written by [Anuj Raghav](https://github.com/anujraghav252)."
 copyright: "2026, HSF-India Project. Written by <a href='https://github.com/anujraghav252' target='_blank'>Anuj Raghav</a>."
-# author: "Anuj Raghav"
+site_author: "Anuj Raghav"
 
-# # .md-grid: { max-width: 1440px; }
-# extra_css:
-#   - stylesheets/extra.css
+# .md-grid: { max-width: 1440px; }
+extra_css:
+  - stylesheets/extra.css
 
 theme:
   name: material
@@ -40,9 +39,15 @@ theme:
     - content.code.copy
     - toc.follow
     - navigation.footer
+    - content.tooltips # hover tooltips on links
+    - content.tabs.link
+    - header.autohide # header hides on scroll down
 
 plugins:
   - search
+  - mkdocs-jupyter:
+      include_source: true
+      include_markdown: true
   # - mkdocs-pdf
   # - git-revision-date-localized:
   #     locale: en
@@ -85,5 +90,5 @@ nav:
   - Software Framework: software/ecosystem.md
   - Analysis Walkthrough:
       - Process Flowchart: analysis/flowchart.md
-      - Execution Guide: analysis/interactive-execution.md
+      - Analysis notebook: analysis/HWW_analysis.ipynb
   - Statistical Inference: combine/statistical-inference.md
