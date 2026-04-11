@@ -117,7 +117,16 @@ For the $gg\to H \to WW \to e^\pm\mu^\pm\nu\bar{\nu}$ channel, the theoretical c
 
 $\sigma_{signal} = \sigma(gg\to H) \times \text{BR}(H \to WW) \times \text{BR}(W \to e\nu) \times \text{BR}(W \to \mu\nu)\times 2$
 
-!!! info 'Charge-Flavor Permutations'
+!!! info "Charge-Flavor Permutations"
 The factor of 2 accounts for the two possible charge-flavor combinations of the final state: $W^+ \to e^+\nu_e$, $W^- \to \mu^-\bar{\nu}_\mu$ and $W^+ \to \mu^+\nu_\mu$, $W^- \to e^-\bar{\nu}_e$.
+
+## **Experimental Signature in the Detector**
+Understanding how the process "looks-like" in the detector is crucial and first step in our search.
+
+The charged leptons produced in the $W$ boson decays are the primary visible handles of the signal. They must be accurately reconstructed and identified by the various sub-detectors:
+- **Electrons($e^\pm$):** An electron leaves a curved trajectory in the inner silicon tracker and subsequently deposits energy into the Electromagnetic Calorimeter (ECAL), producing an electromagnetic shower. 
+
+- **Muons ($\mu^\pm$):** As minimum ionizing particles, muons leave a track in the inner silicon tracker, pass through the ECAL and Hadronic Calorimeter (HCAL) with neglegible energy loss, and are finally reconstructed by the dedicated muon chambers located in the outermost layers of the CMS detector. 
+
 
 
