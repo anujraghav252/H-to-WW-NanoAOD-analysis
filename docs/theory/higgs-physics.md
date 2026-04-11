@@ -125,6 +125,7 @@ Understanding how the process "looks like" in the detector is a crucial first st
 
 ### The Visible: Electrons and Muons
 The charged leptons produced in the $W$ boson decays are the primary visible handles of the signal. They must be accurately reconstructed and identified by the various sub-detectors:
+
 - **Electrons ($e^\pm$):** An electron leaves a curved trajectory in the inner silicon tracker and subsequently deposits energy into the Electromagnetic Calorimeter (ECAL), producing an electromagnetic shower.
 
 - **Muons ($\mu^\pm$):** As minimum-ionizing particles, muons leave a track in the inner silicon tracker, pass through the ECAL and Hadronic Calorimeter (HCAL) with negligible energy loss, and are finally reconstructed by the dedicated muon chambers located in the outermost layers of the CMS detector.
