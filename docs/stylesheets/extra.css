@@ -1,11 +1,39 @@
 .md-grid {
-    max-width: 1300px;
+  max-width: 1300px;
 }
-.md-typeset {
-    text-align: justify;
-}
-/* Smooth scrolling */
-html { scroll-behavior: smooth; }
 
-/* Better code block font */
-.md-typeset code { font-family: 'JetBrains Mono', monospace; }
+.md-typeset {
+  text-align: justify;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color:        #0c1b36;
+  --md-primary-fg-color--light: #1a3566;
+  --md-primary-fg-color--dark:  #070e1c;
+  --md-accent-fg-color:         #e8320a;
+
+  /* links on white background — deep blue, readable */
+  --md-typeset-a-color:         #1a56a0;
+}
+
+[data-md-color-scheme="default"] .md-typeset a:hover {
+  color: #e8320a;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:        #0c1b36;
+  --md-primary-fg-color--light: #1a3566;
+  --md-primary-fg-color--dark:  #070e1c;
+  --md-accent-fg-color:         #e8320a;
+
+  /* links on dark background — light blue, readable */
+  --md-typeset-a-color:         #7eb8f7;
+}
+
+[data-md-color-scheme="slate"] .md-typeset a:hover {
+  color: #e8320a;
+}

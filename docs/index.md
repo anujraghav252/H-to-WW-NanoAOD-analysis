@@ -1,33 +1,66 @@
-# **Higgs to WW Analysis: Using CMS Open Data**
+---
+template: home.html
+title: H → WW NanoAOD Analysis
+---
 
-!!! warning
-    This documentation is currently in development. Some sections might be broken or inconsistent. Meanwhile, do check it out the [repo](https://github.com/anujraghav252/H-to-WW-NanoAOD-analysis) contains this work. 
+!!! warning "Documentation in Progress"
+    This page is under active development — some sections may be incomplete or inconsistent.
+    The [repository](https://github.com/anujraghav252/H-to-WW-NanoAOD-analysis) is the authoritative reference in the meantime.
 
-	Have a nice day!
+## What This Analysis Does
 
-Welcome to the documentation for the **[$H \rightarrow WW$ NanoAOD Analysis](https://github.com/anujraghav252/H-to-WW-NanoAOD-analysis)**. This project provides an open, reproducible implementation of the $H \rightarrow W^+W^- \rightarrow e\nu\,\mu\nu$ measurement using CMS 2016 Ultra-Legacy Open Data.
+This analysis searches for the **Standard Model Higgs boson** ($m_H = 125\,\text{GeV}$) decaying
+to a pair of $W$ bosons in the opposite-flavour dilepton final state:
 
-This project is developed as part of the **[HSF-India project](https://research-software-collaborations.org/)**, an initiative to foster research software collaborations between India and the international High-Energy Physics community.
+$$gg \rightarrow H \rightarrow W^+W^{-*} \rightarrow e^\pm\,\nu_e\;+\;\mu^\mp\,\nu_\mu$$
 
-<div style="text-align: center;">
-	<img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/hsf-india_logo.png" alt="HSF-India Logo" width="250">
+Working entirely within the **Scikit-HEP Python ecosystem** (Uproot, Awkward Array, Dask), it
+demonstrates a complete, modern HEP analysis workflow — from raw NanoAOD files to final statistical
+limits — without requiring the traditional C++ ROOT/CMSSW stack.
+
+---
+
+## Key Analysis Properties
+
+<div class="grid cards" markdown>
+
+-   :material-lightning-bolt:{ .lg .middle } **Centre-of-mass energy**
+
+    ---
+    $\sqrt{s} = 13\,\text{TeV}$
+
+-   :material-calendar:{ .lg .middle } **Data-taking period**
+
+    ---
+    2016 Ultra-Legacy (Run periods G–H)
+
+-   :material-database:{ .lg .middle } **Integrated luminosity**
+
+    ---
+    $\mathcal{L}_{\text{int}} \approx 16.39\,\text{fb}^{-1}$
+
+-   :material-atom:{ .lg .middle } **Signal process**
+
+    ---
+    $ggH \rightarrow W^+W^- \rightarrow e\nu\,\mu\nu$
+
+-   :material-approximately-equal:{ .lg .middle } **Final state**
+
+    ---
+    Opposite-sign, opposite-flavour dilepton ($e\mu$)
+
+-   :material-chart-bell-curve:{ .lg .middle } **Production mode**
+
+    ---
+    Gluon–gluon fusion ($ggH$)
+
 </div>
 
 ---
 
-## **What This Analysis Does**
+## Quick Start
 
-This analysis searches for the **Standard Model Higgs boson** ($m_H = 125\,\text{GeV}$) decaying to a pair of $W$ bosons in the opposite-flavour dilepton final state:
-
-$$gg \rightarrow H \rightarrow W^+W^{-*} \rightarrow e^\pm\,\nu_e\;+\;\mu^\mp\,\nu_\mu$$
-
-Working entirely within the **Scikit-HEP Python ecosystem** (Uproot, Awkward Array, Dask), it demonstrates a complete, modern HEP analysis workflow, from raw NanoAOD files to final statistical limits, without requiring the traditional C++ ROOT/CMSSW stack.
-
----
-
-## **Quick Start**
-
-```bash
+```bash title="Get up and running"
 # 1. Clone the repository
 git clone https://github.com/anujraghav252/H-to-WW-NanoAOD-analysis.git
 cd H-to-WW-NanoAOD-analysis
@@ -45,35 +78,72 @@ jupyter lab HWW_analysis.ipynb
 
 ---
 
-## **Documentation Guide**
+## Documentation Guide
 
-| Section                                                            | What you'll find                                      |
-| ------------------------------------------------------------------ | ----------------------------------------------------- |
-| [Physics Background](theory/physics-background.md)                 | CMS Open Data, Higgs signal, and background processes |
-| [Datasets](datasets/data-and-mc.md)                                | Sample list, cross sections, and MC normalization     |
-| [Software Framework](software/ecosystem.md)                        | The Scikit-HEP framework explained                    |
-| [Installation & Setup](getting-started/installation.md)            | Environment setup and verification                    |
-| [Repository Architecture](getting-started/repository-structure.md) | Directory structure and module overview               |
-| [Process Flowchart](analysis/flowchart.md)                         | Full analysis cut-flow and region definitions         |
-| [Execution Guide](analysis/interactive-execution.md)               | Running notebooks and Dask batch jobs                 |
-| [Statistical Inference](combine/statistical-inference.md)          | CMS Combine: datacards, limits, and signal strength   |
+<div class="grid cards" markdown>
+
+-   :material-book-open-variant:{ .lg .middle } **Physics Background**
+
+    ---
+    CMS Open Data, Higgs signal, and background processes.
+
+    [:octicons-arrow-right-24: Theory](theory/higgs-physics.md)
+
+-   :material-database:{ .lg .middle } **Datasets**
+
+    ---
+    Sample list, cross sections, and MC normalisation.
+
+    [:octicons-arrow-right-24: Datasets](datasets/data-and-mc.md)
+
+-   :material-wrench:{ .lg .middle } **Software Framework**
+
+    ---
+    The Scikit-HEP ecosystem explained.
+
+    [:octicons-arrow-right-24: Framework](software/ecosystem.md)
+
+-   :material-download:{ .lg .middle } **Installation & Setup**
+
+    ---
+    Environment setup and verification.
+
+    [:octicons-arrow-right-24: Installation](getting-started/installation.md)
+
+-   :material-folder-open:{ .lg .middle } **Repository Architecture**
+
+    ---
+    Directory structure and module overview.
+
+    [:octicons-arrow-right-24: Architecture](getting-started/repository-structure.md)
+
+-   :material-chart-timeline-variant:{ .lg .middle } **Process Flowchart**
+
+    ---
+    Full analysis cut-flow and region definitions.
+
+    [:octicons-arrow-right-24: Flowchart](analysis/flowchart.md)
+
+-   :material-play-circle-outline:{ .lg .middle } **Execution Guide**
+
+    ---
+    Running notebooks and Dask batch jobs.
+
+    [:octicons-arrow-right-24: Execution](analysis/interactive-execution.md)
+
+-   :material-chart-bar:{ .lg .middle } **Statistical Inference**
+
+    ---
+    CMS Combine: datacards, limits, and signal strength.
+
+    [:octicons-arrow-right-24: Combine](combine/statistical-inference.md)
+
+</div>
 
 ---
 
-## **Key Analysis Properties**
+## Acknowledgements
 
-| Property              | Value                                                  |
-| --------------------- | ------------------------------------------------------ |
-| Centre-of-mass energy | $\sqrt{s}=13\,\text{TeV}$                              |
-| Data-taking year      | 2016 (Run periods G–H)                                 |
-| Integrated luminosity | $\mathcal{L}_{\text{int}}\approx16.39\,\text{fb}^{-1}$ |
-| Signal process        | $ggH \rightarrow W^+W^- \rightarrow e\nu\,\mu\nu$      |
-| Final state           | Opposite-sign, opposite-flavour dilepton ($e\mu$)      |
-| Production mode       | Gluon–gluon fusion ($ggH$)                             |
-
----
-
-## **Acknowledgements**
-
-This analysis is developed as part of the **HSF-India project**. The datasets are sourced from the [CERN Open Data Portal](https://opendata.cern.ch). MC sample configurations follow [LatinoAnalysis](https://github.com/latinos/LatinoAnalysis) conventions for the Summer20UL16 campaign.
-<!-- The physics steps are loosely based on this thesis -- roebrto seidetta give link here  -->
+This analysis is developed as part of the **HSF-India project**. Datasets are sourced from the
+[CERN Open Data Portal](https://opendata.cern.ch). MC sample configurations follow
+[LatinoAnalysis](https://github.com/latinos/LatinoAnalysis) conventions for the Summer20UL16 campaign.

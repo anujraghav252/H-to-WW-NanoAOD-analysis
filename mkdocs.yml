@@ -12,16 +12,22 @@ extra_css:
 
 theme:
   name: material
+  font:
+    text: Inter
+    code: JetBrains Mono
+  icon:
+    logo: material/atom
+  custom_dir: overrides
   palette:
     - scheme: default
-      primary: indigo
-      accent: indigo
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     - scheme: slate
-      primary: indigo
-      accent: indigo
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
@@ -48,6 +54,7 @@ plugins:
   - mkdocs-jupyter:
       include_source: true
       include_markdown: true
+  # - social
   # - mkdocs-pdf
   # - git-revision-date-localized:
   #     locale: en
@@ -66,6 +73,9 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - tables
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - toc:
       permalink: true
 

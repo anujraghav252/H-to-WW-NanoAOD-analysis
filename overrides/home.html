@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% block tabs %}
+{{ super() }}
+
+<style>
+  .hero {
+    background:
+      linear-gradient(160deg, #0a1628 0%, #0f2044 55%, #1a3566 100%);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  .hero__inner {
+    position: relative;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 1.6rem;
+  }
+
+  .hero__eyebrow::before,
+  .hero__eyebrow::after {
+    content: "";
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: rgba(255,255,255,0.25);
+  }
+
+  .hero__title {
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 1.4rem;
+    color: white;
+    letter-spacing: -0.01em;
+  }
+
+  .hero__subtitle {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.7);
+    max-width: 600px;
+    margin: 0 auto 2.4rem;
+    line-height: 1.8;
+  }
+
+  .hero__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.4rem;
+  }
+
+  .hero__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.65rem 1.5rem;
+    border-radius: 0.35rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.18s ease;
+    letter-spacing: 0.01em;
+  }
+
+  .hero__btn--primary {
+    background: white;
+    color: #0f2044;
+  }
+
+  .hero__btn--primary:hover {
+    background: #dce8ff;
+    color: #0f2044;
+  }
+
+  .hero__btn--secondary {
+    background: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.85);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .hero__btn--secondary:hover {
+    background: rgba(255,255,255,0.13);
+    color: white;
+  }
+
+  .hero__footnote {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.03em;
+    line-height: 1.8;
+  }
+
+  .hero__footnote a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    transition: color 0.15s ease;
+  }
+
+  .hero__footnote a:hover {
+    color: rgba(255,255,255,0.8);
+  }
+
+  .md-content__inner {
+    max-width: 900px;
+  }
+</style>
+
+<div class="hero">
+  <div class="hero__inner">
+
+    <div class="hero__eyebrow">HSF-India Fellowship &nbsp;·&nbsp; CMS Open Data</div>
+
+    <h1 class="hero__title">Higgs to WW Analysis<br>with CMS Open Data</h1>
+
+    <p class="hero__subtitle">
+      An open, reproducible search for the Standard Model Higgs boson in the
+      opposite-flavour dilepton final state and a guide to CMS data analysis 
+      from the LHC.
+    </p>
+
+  <div class="hero__buttons">
+    <a href="getting-started/installation/" class="hero__btn hero__btn--primary">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 12h20M12 2l10 10-10 10"/>
+      </svg>
+      Get Started
+    </a>
+    <a href="https://github.com/anujraghav252/H-to-WW-NanoAOD-analysis" class="hero__btn hero__btn--secondary" target="_blank" rel="noopener">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+      </svg>
+      View on GitHub
+    </a>
+  </div>
+
+    <p class="hero__footnote">
+      Part of the <a href="https://research-software-collaborations.org/">HSF-India Project</a>
+      &nbsp;·&nbsp;
+      Authored by <a href="https://anujraghav252.github.io">Anuj Raghav</a>
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}
