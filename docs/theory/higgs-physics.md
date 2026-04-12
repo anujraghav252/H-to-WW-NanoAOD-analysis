@@ -144,13 +144,21 @@ Because the initial protons collide head-on along the beam axis ($z$-axis), the 
 
 In any analysis, the final state of the process can be represented by specific kinematic variables. In this analysis, we will use a few such key variables to represent our signal process and distinguish it from the background:
 
-- **Transverse Mass of Higgs ($m_T^H$):** Because the two escaping neutrinos prevent the full reconstruction of the Higgs invariant mass, we rely on the transverse mass. Formulated using the transverse momentum of the dilepton system and the missing transverse energy, it forms a broad edge around the $m_H \sim 125 \text{GeV}$ rather than a sharp resonance peak.
+* **Transverse Mass of Higgs ($m_T^H$):**
+  Because the two escaping neutrinos prevent full reconstruction of the Higgs invariant mass, we rely on the transverse mass. Using the transverse momentum of the dilepton system and the missing transverse energy, it forms a broad edge around $m_H \sim 125,\text{GeV}$ rather than a sharp resonance peak.
 
-- **Transverse Momentum of the Dilepton System ($p_T^{\ell\ell}$):** The combined transverse momentum of the visible electron and muon. 
+* **Transverse Momentum of the Dilepton System ($p_T^{\ell\ell}$):**
+  The combined transverse momentum of the visible electron–muon system.
 
-- **Dilepton Invariant Mass ($m_\ell\ell$):** The invariant mass calculated directly from the four-momenta of the visible electron-muon pair.
+* **Dilepton Invariant Mass ($m_{\ell\ell}$):**
+  The invariant mass calculated from the four-momenta of the visible electron–muon pair:
+  $$
+  m_{\ell\ell} = \sqrt{(E_{\ell_1} + E_{\ell_2})^2 - \left|\vec{p}*{\ell_1} + \vec{p}*{\ell_2}\right|^2}
+  $$
 
-- **Angular Separation ($\Delta \phi_\ell\ell$):** The absolute difference in the azimuthal angle between the electron and muon in the transverse plane. It gives the separation between the two leptons in the transverse plane.
+* **Angular Separation ($\Delta \phi_{\ell\ell}$):**
+  The absolute difference in azimuthal angle between the electron and muon in the transverse plane. It quantifies their separation in the transverse plane.
+
 
 
 
