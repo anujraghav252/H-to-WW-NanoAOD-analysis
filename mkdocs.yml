@@ -105,5 +105,5 @@ nav:
   - Software Framework: software/ecosystem.md
   - Analysis Walkthrough:
       - Process Flowchart: analysis/flowchart.md
-      - Analysis notebook: analysis/HWW_analysis.ipynb
+      - Analysis notebook: analysis/HWW_analysis.md
   - Statistical Inference: combine/statistical-inference.md
