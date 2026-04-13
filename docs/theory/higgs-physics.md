@@ -145,29 +145,17 @@ Because the initial protons collide head-on along the beam axis ($z$-axis), the 
 In any analysis, the final state of the process can be represented by specific kinematic variables. In this analysis, we will use a few such key variables to represent our signal process and distinguish it from the background:
 
 - **Transverse Mass of Higgs ($m_T^H$):** Because the two escaping neutrinos prevent the full reconstruction of the Higgs invariant mass, we rely on the transverse mass. Formulated using the transverse momentum of the dilepton system and the missing transverse energy, it forms a broad edge around the $m_H \sim 125 \text{ GeV}$ rather than a sharp resonance peak.
-<div align="center">
 
 $$m_T^H = \sqrt{m_{\ell\ell}^2 + 2 \left( E_T^{\ell\ell} E_T^{\text{miss}} - p_T^{\ell\ell} E_T^{\text{miss}} \cos(\Delta\phi_{\ell\ell,\text{MET}}) \right)}$$
 
-</div>
-
 - **Transverse Momentum of the Dilepton System ($p_T^{\ell\ell}$):** The combined transverse momentum of the visible electron and muon.
-<div align="center">
 
 $$p_T^{\ell\ell} = \|\vec{p}_{T,\ell_1} + \vec{p}_{T,\ell_2}\|$$
 
-</div>
-
 - **Dilepton Invariant Mass ($m_{\ell\ell}$):** The invariant mass calculated directly from the four-momenta of the visible electron–muon pair.
-<div align="center">
 
 $$m_{\ell\ell} = \sqrt{(E_{\ell_1} + E_{\ell_2})^2 - \|\vec{p}_{\ell_1} + \vec{p}_{\ell_2}\|^2}$$
 
-</div>
-
 - **Angular Separation ($\Delta\phi_{\ell\ell}$):** The absolute difference in the azimuthal angle between the electron and muon in the transverse plane. It gives the separation between the two leptons in the transverse plane.
-<div align="center">
 
 $$\Delta\phi_{\ell\ell} = |\phi_{\ell_1} - \phi_{\ell_2}|$$
-
-</div>
