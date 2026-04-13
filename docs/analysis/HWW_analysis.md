@@ -3081,9 +3081,3 @@ for variable in VAR_LABELS.keys():
     
 ![png](HWW_analysis_files/HWW_analysis_65_17.png)
     
-
-
-
-```python
-
-```
