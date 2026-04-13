@@ -104,18 +104,18 @@ $\sigma = 0.064\,\text{pb}$. Records:
 MC samples are generated with arbitrary statistics that do not automatically match the data
 luminosity. Each simulated event is assigned a weight to correct for this:
 
-$$w_{\text{event}} = \text{genWeight} \times \frac{\sigma_{\text{process}} \times \mathcal{L}_{\text{int}}}{\sum w_{\text{gen}}}$$
+$$\text{Scale Factor} = \frac{\sigma \times \mathcal{L} \times \text{genWeight}}{\sum \text{genWeight}}$$
 
 | Symbol | Meaning |
 |---|---|
 | $\text{genWeight}$ | Per-event generator weight (positive or negative) |
-| $\sigma_{\text{process}}$ | Process cross section in pb (see tables above) |
-| $\mathcal{L}_{\text{int}}$ | Integrated luminosity: $16.15\,\text{fb}^{-1}$ |
-| $\sum w_{\text{gen}}$ | Sum of all generator weights in the sample |
+| $\sigma$ | Process cross section in pb (see tables above) |
+| $\mathcal{L}$ | Integrated luminosity: $16.15\,\text{fb}^{-1}$ |
+| ${\sum \text{genWeight}}$ | Sum of all generator weights in the sample |
 
 ### 3.1 Sum of Generator Weights
 
-The denominator $\sum w_{\text{gen}}$ must be computed _before_ any selection is applied,
+The denominator ${\sum \text{genWeight}}$ must be computed _before_ any selection is applied,
 using all events in the original dataset. Since MC events can carry negative generator weights
 (due to NLO subtractions), the sum is **not** simply equal to the total number of events.
 
@@ -124,7 +124,7 @@ using all events in the original dataset. Since MC events can carry negative gen
     Failing to do this with NLO samples will produce incorrect overall normalisation.
 
 The computation is handled in the `xsec_weights.ipynb` notebook, which reads the sample file
-lists and outputs a lookup dictionary of $\sum w_{\text{gen}}$ per sample.
+lists and outputs a lookup dictionary of ${\sum \text{genWeight}}$ per sample.
 
 ### 3.2 Cross-Section References
 
@@ -140,17 +140,16 @@ lists and outputs a lookup dictionary of $\sum w_{\text{gen}}$ per sample.
 
 Sample ROOT file lists are stored under `Datasets/`:
 
-```text
-Datasets/
-├── Higgs.txt           # Signal
-├── WW.txt              # Continuum WW
-├── ggWW.txt            # Loop-induced WW
-├── DYtoLL.txt          # Drell-Yan
-├── Top.txt             # tt̄ + Single Top
-├── Fakes.txt           # W+jets, semi-leptonic tt̄
-├── VZ.txt              # WZ, ZZ
-└── VG.txt              # W+γ, Z+γ
-```
+**Datasets/**
+
+- **Higgs.txt** — Signal
+- **WW.txt** — Continuum WW
+- **ggWW.txt** — Loop-induced WW
+- **DYtoLL.txt** — Drell-Yan
+- **Top.txt** — $t\bar{t}$ + Single Top
+- **Fakes.txt** — W+jets, semi-leptonic $t\bar{t}$
+- **VZ.txt** — WZ, ZZ
+- **VG.txt** — $W+\gamma$, $Z+\gamma$
 
 Each file contains XRootD paths in the format:
 
