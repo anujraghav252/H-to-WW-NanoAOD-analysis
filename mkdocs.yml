@@ -96,7 +96,6 @@ nav:
   - Introduction: index.md
   - Getting Started:
       - Installation & Setup: getting-started/installation.md
-      - Repository Architecture: getting-started/repository-structure.md
   - Theory:
       - CMS Open Data: theory/cms-opendata.md
       - Higgs Phenomenology: theory/higgs-physics.md
