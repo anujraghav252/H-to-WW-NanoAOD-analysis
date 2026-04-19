@@ -121,7 +121,7 @@ jupyter lab HWW_analysis.ipynb
     ---
     Analysis Methodology and jupyter notebook.
 
-    [:octicons-arrow-right-24: Flowchart](analysis/methodology.md)
+    [:octicons-arrow-right-24: Methodology](analysis/methodology.md)
 
 <!-- -   :material-play-circle-outline:{ .lg .middle } **Execution Guide**
 

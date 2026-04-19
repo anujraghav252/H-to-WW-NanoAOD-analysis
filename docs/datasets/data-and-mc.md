@@ -38,64 +38,56 @@ root://eospublic.cern.ch//eos/opendata/cms/mc/RunIISummer20UL16NanoAODv9/...
 ```
 
 ### 2.1 Signal
-
-| Sample Tag | Dataset | $\sigma$ (pb) | Record |
-|---|---|---|---|
-| **Higgs** | `GluGluHToWWTo2L2N_M-125_TuneCP5_minloHJJ_13TeV-powheg-jhugen727-pythia8` | 1.0315 | [↗](https://opendata.cern.ch/record/37464) |
+| Sample Tag | $\sigma$ (pb) | Record |
+|---|---|---|
+| **Higgs** | 1.0315 | [↗](https://opendata.cern.ch/record/37464) |
 
 ### 2.2 Backgrounds
 
 #### Drell-Yan
-
-| Sample Tag | Dataset | $\sigma$ (pb) | Record |
-|---|---|---|---|
-| DYtoLL | `DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8` | 6189.39 | [↗](https://opendata.cern.ch/record/35671) |
+| Sample Tag | $\sigma$ (pb) | Record |
+|---|---|---|
+| DYtoLL | 6189.39 | [↗](https://opendata.cern.ch/record/35671) |
 
 #### Top Quark
-
-| Sample Tag | Dataset | $\sigma$ (pb) | Record |
-|---|---|---|---|
-| TTTo2L2Nu | `TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8` | 87.310 | [↗](https://opendata.cern.ch/record/67801) |
-| ST_t-channel_top | `ST_t-channel_top_4f_InclusiveDecays_...` | 44.33 | [↗](https://opendata.cern.ch/record/64759) |
-| ST_t-channel_antitop | `ST_t-channel_antitop_4f_InclusiveDecays_...` | 26.38 | [↗](https://opendata.cern.ch/record/64659) |
-| ST_tW_antitop | `ST_tW_antitop_5f_inclusiveDecays_...` | 35.60 | [↗](https://opendata.cern.ch/record/64825) |
-| ST_tW_top | `ST_tW_top_5f_inclusiveDecays_...` | 35.60 | [↗](https://opendata.cern.ch/record/64881) |
-| ST_s-channel | `ST_s-channel_4f_leptonDecays_...` | 3.360 | [↗](https://opendata.cern.ch/record/64635) |
+| Sample Tag | $\sigma$ (pb) | Record |
+|---|---|---|
+| TTTo2L2Nu | 87.310 | [↗](https://opendata.cern.ch/record/67801) |
+| ST_t-channel_top | 44.33 | [↗](https://opendata.cern.ch/record/64759) |
+| ST_t-channel_antitop | 26.38 | [↗](https://opendata.cern.ch/record/64659) |
+| ST_tW_antitop | 35.60 | [↗](https://opendata.cern.ch/record/64825) |
+| ST_tW_top | 35.60 | [↗](https://opendata.cern.ch/record/64881) |
+| ST_s-channel | 3.360 | [↗](https://opendata.cern.ch/record/64635) |
 
 #### Fakes ($W$+jets, semi-leptonic $t\bar{t}$)
-
-| Sample Tag | Dataset | $\sigma$ (pb) | Record |
-|---|---|---|---|
-| TTToSemiLeptonic | `TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8` | 364.35 | [↗](https://opendata.cern.ch/record/67993) |
-| WJetsToLNu | `WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8` | 61526.7 | [↗](https://opendata.cern.ch/record/69747) |
+| Sample Tag | $\sigma$ (pb) | Record |
+|---|---|---|
+| TTToSemiLeptonic | 364.35 | [↗](https://opendata.cern.ch/record/67993) |
+| WJetsToLNu | 61526.7 | [↗](https://opendata.cern.ch/record/69747) |
 
 #### Diboson (WZ, ZZ)
-
-| Sample Tag | Dataset | $\sigma$ (pb) | Record |
-|---|---|---|---|
-| WZTo2Q2L | `WZTo2Q2L_mllmin4p0_TuneCP5_13TeV-amcatnloFXFX-pythia8` | 5.595 | [↗](https://opendata.cern.ch/record/72742) |
-| WZTo3LNu | `WZTo3LNu_mllmin4p0_TuneCP5_13TeV-powheg-pythia8` | 4.430 | [↗](https://opendata.cern.ch/record/72750) |
-| ZZ | `ZZ_TuneCP5_13TeV-pythia8` | 16.523 | [↗](https://opendata.cern.ch/record/75593) |
+| Sample Tag | $\sigma$ (pb) | Record |
+|---|---|---|
+| WZTo2Q2L | 5.595 | [↗](https://opendata.cern.ch/record/72742) |
+| WZTo3LNu | 4.430 | [↗](https://opendata.cern.ch/record/72750) |
+| ZZ | 16.523 | [↗](https://opendata.cern.ch/record/75593) |
 
 #### Continuum WW ($q\bar{q} \to WW$)
-
-| Sample Tag | Dataset | $\sigma$ (pb) | Record |
-|---|---|---|---|
-| WWTo2L2Nu | `WWTo2L2Nu_TuneCP5_13TeV-powheg-pythia8` | 12.178 | [↗](https://opendata.cern.ch/record/72676) |
+| Sample Tag | $\sigma$ (pb) | Record |
+|---|---|---|
+| WWTo2L2Nu | 12.178 | [↗](https://opendata.cern.ch/record/72676) |
 
 #### ggWW ($gg \to WW$, loop-induced)
-
 Nine exclusive di-flavour final states (EN, MN, TN combinations), each with
 $\sigma = 0.064\,\text{pb}$. Records:
 [40044](https://opendata.cern.ch/record/40044) –
 [40060](https://opendata.cern.ch/record/40060).
 
 #### V+$\gamma$
-
-| Sample Tag | Dataset | $\sigma$ (pb) | Record |
-|---|---|---|---|
-| ZGToLLG | `ZGToLLG_01J_5f_TuneCP5_13TeV-amcatnloFXFX-pythia8` | 58.83 | [↗](https://opendata.cern.ch/record/73904) |
-| WGToLNuG | `WGToLNuG_TuneCP5_13TeV-madgraphMLM-pythia8` | 405.271 | [↗](https://opendata.cern.ch/record/69577) |
+| Sample Tag | $\sigma$ (pb) | Record |
+|---|---|---|
+| ZGToLLG | 58.83 | [↗](https://opendata.cern.ch/record/73904) |
+| WGToLNuG | 405.271 | [↗](https://opendata.cern.ch/record/69577) |
 
 ---
 
