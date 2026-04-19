@@ -19,8 +19,6 @@ PROCESSES = [
     "VG"
 ]
 
-# Mapping: Internal Name -> (Combine Bin Name, Output ROOT name, Output Card name)
-# The bin names perfectly match the aliases from your combineCards.py command!
 REGIONS_CONFIG = {
     "SR_0jet":     ("ggH_hww_0j", "Combine/combine_input_SR0j.root", "Combine/hww_sr0j_datacard.txt"),
     "SR_1jet":     ("ggH_hww_1j", "Combine/combine_input_SR1j.root", "Combine/hww_sr1j_datacard.txt"),
@@ -48,30 +46,27 @@ def main():
     
     print("\n-- Harvesting Histograms & Creating Datacards --")
     
-    # LOOP OVER ALL 6 REGIONS
     for internal_reg, (card_reg, out_root, out_card) in REGIONS_CONFIG.items():
         print(f"\nProcessing Region: {internal_reg} -> {card_reg}")
         
         f_out = uproot.recreate(out_root)
         
-        # Dictionaries scoped specifically for this region
         rates = {card_reg: {}}
         data_yields = {card_reg: 0.0} 
         
-        # 1. Process Data
+        # Process Data
         data_key = f"Data_{internal_reg}_{VAR_NAME}_nominal"
         if data_key in f_in:
             h_data = f_in[data_key].to_hist()
             f_out[f"data_obs_{card_reg}"] = h_data
             
-            # Capture the exact data yield
             obs_yield = h_data.sum().value
             data_yields[card_reg] = obs_yield
             print(f"  Saved Data: {obs_yield:.0f} events")
         else:
             print(f"  WARNING: Data histogram {data_key} not found!")
 
-        # 2. Process MC Processes
+        #  Process MC Processes
         for proc in PROCESSES:
             nom_key = f"{proc}_{internal_reg}_{VAR_NAME}_nominal"
             
@@ -89,7 +84,7 @@ def main():
             f_out[f"{proc}_{card_reg}"] = h_nom
             rates[card_reg][proc] = h_nom.sum().value
             
-            # 3. Process Systematics
+            #   Process Systematics
             for internal_syst, combine_syst in SYSTEMATICS.items():
                 up_key = f"{proc}_{internal_reg}_{VAR_NAME}_{internal_syst}_up"
                 dn_key = f"{proc}_{internal_reg}_{VAR_NAME}_{internal_syst}_down"
@@ -107,7 +102,6 @@ def main():
         f_out.close()
         print(f"  Created ROOT file: {out_root}")
         
-        # Pass dynamic filenames to the datacard creator
         create_datacard(rates, data_yields, card_reg, out_root, out_card)
 
     f_in.close()
@@ -123,7 +117,6 @@ def create_datacard(rates, data_yields, card_reg, out_root, out_card):
     card_content.append("kmax * number of nuisance parameters")
     card_content.append("-" * 30)
     
-    # Dynamically extract just the ROOT file name (e.g., 'combine_input_SR1j.root')
     root_filename = os.path.basename(out_root)
     card_content.append(f"shapes * * {root_filename} $PROCESS_$CHANNEL $PROCESS_$CHANNEL_$SYSTEMATIC")
     card_content.append("-" * 30)
@@ -131,7 +124,6 @@ def create_datacard(rates, data_yields, card_reg, out_root, out_card):
     bin_line = f"{'bin':<15}"
     obs_line = f"{'observation':<15}"
     
-    # Write the explicit data yield to the observation line
     for reg in sorted_regions:
         bin_line += f"{reg:<15} "
         obs_line += f"{data_yields[reg]:<15.0f} " 

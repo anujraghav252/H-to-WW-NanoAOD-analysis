@@ -83,5 +83,3 @@ The analysis follows a **Cut-and-Count** strategy organized around mutually excl
 6. **Jet Categorization**: Split events into 0-jet, 1-jet, and ≥2-jet bins.
 7. **Region Assignment**: Assign events to Signal Region (SR), Top Control Region (CR-Top), or DY Control Region (CR-DY).
 
-!!! tip "See the full walkthrough"
-For step-by-step details of each selection cut and the analysis code, see the [Process Flowchart](../analysis/flowchart.md) and [Execution Guide](../analysis/interactive-execution.md).
