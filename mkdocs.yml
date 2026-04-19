@@ -103,7 +103,7 @@ nav:
       - Signal and background processes: theory/signal-and-background.md
   - Datasets: datasets/data-and-mc.md
   - Software Framework: software/ecosystem.md
-  - Analysis Walkthrough:
-      - Process Flowchart: analysis/flowchart.md
+  - Analysis:
+      - Methodology: analysis/methodology.md
       - Analysis notebook: analysis/HWW_analysis.md
   - Statistical Inference: combine/statistical-inference.md
