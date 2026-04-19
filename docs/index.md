@@ -15,8 +15,7 @@ to a pair of $W$ bosons in the opposite-flavour dilepton final state:
 $$gg \rightarrow H \rightarrow W^+W^{-*} \rightarrow e^\pm\,\nu_e\;+\;\mu^\mp\,\nu_\mu$$
 
 Working entirely within the **Scikit-HEP Python ecosystem** (Uproot, Awkward Array, Dask), it
-demonstrates a complete, modern HEP analysis workflow — from raw NanoAOD files to final statistical
-limits — without requiring the traditional C++ ROOT/CMSSW stack.
+demonstrates a complete, modern HEP analysis workflow.
 
 ---
 
@@ -44,7 +43,7 @@ limits — without requiring the traditional C++ ROOT/CMSSW stack.
     ---
     $ggH \rightarrow W^+W^- \rightarrow e\nu\,\mu\nu$
 
--   :material-approximately-equal:{ .lg .middle } **Final state**
+<!-- -   :material-approximately-equal:{ .lg .middle } **Final state**
 
     ---
     Opposite-sign, opposite-flavour dilepton ($e\mu$)
@@ -52,7 +51,7 @@ limits — without requiring the traditional C++ ROOT/CMSSW stack.
 -   :material-chart-bell-curve:{ .lg .middle } **Production mode**
 
     ---
-    Gluon–gluon fusion ($ggH$)
+    Gluon–gluon fusion ($ggH$) -->
 
 </div>
 
@@ -92,7 +91,7 @@ jupyter lab HWW_analysis.ipynb
 -   :material-database:{ .lg .middle } **Datasets**
 
     ---
-    Sample list, cross sections, and MC normalisation.
+    Sample list, cross-sections, and MC normalisation.
 
     [:octicons-arrow-right-24: Datasets](datasets/data-and-mc.md)
 
@@ -110,31 +109,31 @@ jupyter lab HWW_analysis.ipynb
 
     [:octicons-arrow-right-24: Installation](getting-started/installation.md)
 
--   :material-folder-open:{ .lg .middle } **Repository Architecture**
+<!-- -   :material-folder-open:{ .lg .middle } **Repository Architecture**
 
     ---
     Directory structure and module overview.
 
-    [:octicons-arrow-right-24: Architecture](getting-started/repository-structure.md)
+    [:octicons-arrow-right-24: Architecture](getting-started/repository-structure.md) -->
 
--   :material-chart-timeline-variant:{ .lg .middle } **Process Flowchart**
+-   :material-chart-timeline-variant:{ .lg .middle } **Analysis Methodology**
 
     ---
-    Full analysis cut-flow and region definitions.
+    Analysis Methodology and jupyter notebook.
 
-    [:octicons-arrow-right-24: Flowchart](analysis/flowchart.md)
+    [:octicons-arrow-right-24: Flowchart](analysis/methodology.md)
 
--   :material-play-circle-outline:{ .lg .middle } **Execution Guide**
+<!-- -   :material-play-circle-outline:{ .lg .middle } **Execution Guide**
 
     ---
     Running notebooks and Dask batch jobs.
 
-    [:octicons-arrow-right-24: Execution](analysis/interactive-execution.md)
+    [:octicons-arrow-right-24: Execution](analysis/interactive-execution.md) -->
 
 -   :material-chart-bar:{ .lg .middle } **Statistical Inference**
 
     ---
-    CMS Combine: datacards, limits, and signal strength.
+    CMS Combine: datacards, signal strength.
 
     [:octicons-arrow-right-24: Combine](combine/statistical-inference.md)
 
@@ -144,6 +143,6 @@ jupyter lab HWW_analysis.ipynb
 
 ## Acknowledgements
 
-This analysis is developed as part of the **HSF-India project**. Datasets are sourced from the
+This analysis is developed as part of the [**HSF-India project**](https://research-software-collaborations.org/). Datasets are sourced from the
 [CERN Open Data Portal](https://opendata.cern.ch). MC sample configurations follow
 [LatinoAnalysis](https://github.com/latinos/LatinoAnalysis) conventions for the Summer20UL16 campaign.
