@@ -108,6 +108,6 @@ Finally, the multi-dimensional event arrays are projected into using the `hist` 
 
 ## **8. Statistical Interpretation (CMS Combine)**
 
-For the last step of the methodology, the signal strength ($\mu$) of the Higgs boson is extracted using [CMS combine package](/combine/statistical-inference.md).
+For the last step of the methodology, the signal strength ($\mu$) of the Higgs boson is extracted using [CMS combine package](/combine/statistical-inference).
 
 <!-- The output histograms are harvested and prepared into specialized data structures via `prepare_combine.py`. These shapes are injected into text-based **Datacards** (`combined_datacard.txt`) which mathematically define the likelihood model, incorporating the statistical yields of the SR and CRs alongside the assigned systematic uncertainties. The **CMS Combine tool** then performs a maximum profile-likelihood fit on these datacards to evaluate the statistical significance of the $H \to WW^*$ signal. -->
