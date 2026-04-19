@@ -4,13 +4,7 @@ This page describes how to set up the analysis environment on a local machine or
 
 ---
 
-## Requirements
-
-!!! info "Automatic Installation"
-    All dependencies are installed automatically via `environment.yml` (Conda) or `requirements.txt` (pip).
-    See [Set Up the Python Environment](#2-set-up-the-python-environment) for instructions.
-
-### System & Environment
+## System & Environment
 
 <div class="grid cards" markdown>
 
@@ -38,7 +32,7 @@ This page describes how to set up the analysis environment on a local machine or
 
 </div>
 
-### Scikit-HEP Stack
+<!-- ### Scikit-HEP Stack
 
 <div class="grid cards" markdown>
 
@@ -94,8 +88,14 @@ This page describes how to set up the analysis environment on a local machine or
     Interactive notebook environment with widget and kernel support.
 
 </div>
-
+ -->
 ---
+
+<!-- ## Requirements -->
+
+!!! info "Installation"
+    All dependencies are installed automatically via `environment.yml` (Conda) or `requirements.txt` (pip).
+    See [Set Up the Python Environment](#2-set-up-the-python-environment) for instructions.
 
 ## 1. Clone the Repository
 
@@ -134,7 +134,7 @@ cd H-to-WW-NanoAOD-analysis
     ```
 
 !!! note "Windows"
-    The analysis runs on Windows, macOS, and Linux. On Windows, **Conda is strongly recommended** —
+    The analysis runs on Windows, macOS, and Linux. On Windows, **Conda is strongly recommended** --
     some dependencies have complex build requirements that Conda resolves automatically.
 
 ## 3. Verify the Installation
