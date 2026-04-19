@@ -67,25 +67,33 @@ In the final step, the surviving events are sorted into strictly orthogonal regi
 
 Optimized specifically for the $H \to WW^*$ kinematics:
 
-  * **$b$-jet Veto:** Absolutely no $b$-tagged jets are permitted. This is the primary defense against the massive $t\bar{t}$ and single-top backgrounds.
+  * **$b$-jet Veto:** Absolutely no $b$-tagged jets are permitted. This is the primary defense against the massive $t\bar{t}$ backgrounds.
   * **Higgs Transverse Mass:** The system must fall within the expected kinematic edge of the Higgs mass: $m_T^H > 60 \text{ GeV}$.
-  * **Sub-leading Transverse Mass:** Requiring $m_T(\ell_2, E_T^{\text{miss}}) > 30 \text{ GeV}$ suppresses $W$+Jets backgrounds where the $E_T^{\text{miss}}$ originates from a single $W$ decay.
-  * **Invariant Mass Window (2-Jet Only):** For the 2-jet category, the dijet invariant mass ($m_{jj}$) is required to be outside the hadronic $W/Z$ boson resonance window ($m_{jj} < 65 \text{ GeV}$ or $m_{jj} > 105 \text{ GeV}$).
+  <!-- * **Sub-leading Transverse Mass:** Requiring $m_T(\ell_2, E_T^{\text{miss}}) > 30 \text{ GeV}$ suppresses $W$+Jets backgrounds where the $E_T^{\text{miss}}$ originates from a single $W$ decay. -->
+  * **Jet-categorisation:** Then, split the surviving events into three distinct jet categories:
+    * ***0-jet category:*** No jet with $p_T\ >\ 30 \text{ GeV}$
+    * ***1-jet category:*** 1 jet with $p_T\ >\ 30 \text{ GeV}$
+    * ***2-jet category:*** 2 jet with $p_T\ >\ 30 \text{ GeV}$. For the 2-jet category, the dijet invariant mass ($m_{jj}$) is required to be outside the hadronic $W$ boson resonance window ($m_{jj} < 65 \text{ GeV}$ or $m_{jj} > 105 \text{ GeV}$).
+  
 
 ### **Control Region: Top-Quark (CR-Top)**
 
 Designed to cleanly capture the top-quark background:
 
+  * **Mass Cut:** Requires $m_{\ell\ell} > 50 \text{ GeV}$ to isolate the higher-mass kinematics typical of heavy top-quark decays and no $m_T^H$ requirement.
   * **Inverted $b$-jet Veto:** The region strictly requires the presence of $b$-tagged jets.
-  * **Mass Cut:** Requires $m_{\ell\ell} > 50 \text{ GeV}$ to isolate the higher-mass kinematics typical of heavy top-quark decays.
+  <!-- * **Jet-categorisation:** Then, split the surviving events into three distinct jet categories:
+    * ***0-jet category:*** No jet with $p_T\ >\ 30 \text{ GeV}$
+    * ***1-jet category:*** 1 jet with $p_T\ >\ 30 \text{ GeV}$
+    * ***2-jet category:*** 2 jet with $p_T\ >\ 30 \text{ GeV}$. -->
 
 -----
 
 ## **6. Event Weight Corrections and Systematics**
 
-Because Monte Carlo simulations do not perfectly model the CMS detector's response or hardware efficiencies, data-driven Scale Factors (SF) and their associated systematic uncertainties (Up/Down variations) are applied to the MC events.
+Because Monte Carlo simulations do not perfectly model the CMS detector's response or hardware efficiencies, Trigger Efficiency, Electron-ID, and Muon-IDs Scale Factors (SF) and their associated uncertainties are applied to the MC events.
 
-  * **Lepton ID & Isolation:** Corrections for Electron MVA ID, Muon Tight ID, and Muon Isolation are pulled from approved CMS lookup tables evaluated dynamically based on each lepton's $p_T$ and $\eta$.
+  * **Lepton ID & Isolation:** Corrections for Electron MVA ID, Muon Tight ID, and Muon Isolation are evaluated dynamically based on each lepton's $p_T$ and $\eta$.
   * **Trigger Efficiency:** A global High-Level Trigger scale factor is applied to all simulated events to correct for differences in trigger firing rates between data and simulation.
 
 -----
@@ -94,12 +102,12 @@ Because Monte Carlo simulations do not perfectly model the CMS detector's respon
 
 Throughout the execution of the notebook, the absolute and weighted number of surviving events is tracked at every major selection checkpoint (e.g., Pre-selection, Global Cuts, SR, CR-Top). This is exported as `Cutflow_Raw.csv` and `Cutflow_scaled.csv` to ensure transparency and reproducibility of the filtering logic.
 
-Finally, the multi-dimensional event arrays are projected into 1D physical histograms using the `hist` library. These histograms cleanly separate the data by Dataset, Jet Category, and Selection Region, producing the final `.root` files (e.g., `HWW_analysis_output.root`) required for statistical extraction.
+Finally, the multi-dimensional event arrays are projected into using the `hist` library. These histograms cleanly separate the data by Dataset, Jet Category, and Selection Region, producing the final `.root` files (e.g., `HWW_analysis_output.root`) required for statistical extraction.
 
 -----
 
 ## **8. Statistical Interpretation (CMS Combine)**
 
-The ultimate goal of the methodology is to extract the signal strength ($\mu$) of the Higgs boson.
+For the last step of the methodology, the signal strength ($\mu$) of the Higgs boson is extracted using [CMS combine package](/combine/statistical-inference.md).
 
-The output histograms are harvested and prepared into specialized data structures via `prepare_combine.py`. These shapes are injected into text-based **Datacards** (`combined_datacard.txt`) which mathematically define the likelihood model, incorporating the statistical yields of the SR and CRs alongside the assigned systematic uncertainties. The **CMS Combine tool** then performs a maximum profile-likelihood fit on these datacards to evaluate the statistical significance of the $H \to WW^*$ signal.
+<!-- The output histograms are harvested and prepared into specialized data structures via `prepare_combine.py`. These shapes are injected into text-based **Datacards** (`combined_datacard.txt`) which mathematically define the likelihood model, incorporating the statistical yields of the SR and CRs alongside the assigned systematic uncertainties. The **CMS Combine tool** then performs a maximum profile-likelihood fit on these datacards to evaluate the statistical significance of the $H \to WW^*$ signal. -->
