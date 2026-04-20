@@ -1,6 +1,6 @@
 # Software Framework
 
-This analysis is built on the modern **Scikit-HEP** Python ecosystem — a coordinated collection of libraries designed to replace the traditional C++ ROOT-based workflow with a high-performance, portable, and Pythonic alternative.
+This analysis is built on the modern **Scikit-HEP** Python ecosystem, a coordinated collection of libraries designed to replace the traditional C++ ROOT-based workflow with a high-performance, portable, and Pythonic alternative.
 
 ---
 
@@ -10,9 +10,9 @@ Traditional High-Energy Physics analysis has historically relied on an **event-l
 
 This analysis instead uses **columnar processing**:
 
-> Rather than looping over every muon in every event to check its $p_T$, we operate on the _entire $p_T$ array_ at once — a single NumPy-like operation. The computational burden shifts to compiled, highly optimized C++ kernels.
+> Rather than looping over every muon in every event to check its Transverse momentum, we operate on the _entire Transverse momentum array_ at once, a single NumPy-like operation. The computational burden shifts to compiled, highly optimized C++ kernels.
 
-This approach enables CPU vectorization, dramatically reduces Python overhead, and — when combined with **Dask** for parallelism — allows the same code to scale from a laptop to a full computing cluster without modification.
+This approach enables CPU vectorization, reduces Python overhead, and when combined with **Dask** for parallelism, allows the same code to scale from a laptop to a full computing cluster without modification.
 
 ---
 
@@ -22,15 +22,15 @@ This approach enables CPU vectorization, dramatically reduces Python overhead, a
 
 Each library in the stack addresses a specific challenge of HEP data processing:
 
-### 2.1 Uproot — ROOT I/O without ROOT
+### 2.1 Uproot: ROOT I/O without ROOT
 
 [Uproot](https://uproot.readthedocs.io/) reads and writes ROOT files using pure Python, with no dependency on the C++ ROOT framework. In this analysis, Uproot handles the **input/output layer**, streaming NanoAOD `TTrees` from remote XRootD servers directly into memory as NumPy and Awkward arrays.
 
-![Uproot](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/uproot_logo.webp){ width="15%" }
+![Uproot](https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/uproot_logo.webp){ width="30%" }
 
-**Key capability used:** Lazy / chunked reading of remote ROOT files over XRootD.
+<!-- **Key capability used:** Lazy / chunked reading of remote ROOT files over XRootD. -->
 
-### 2.2 Awkward Array — Jagged data structures
+### 2.2 Awkward Array: Jagged data structures
 
 Particle physics data is inherently _irregular_: one event may contain zero muons, the next may have three. Standard flat libraries like NumPy cannot represent this naturally.
 
