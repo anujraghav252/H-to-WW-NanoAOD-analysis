@@ -16,7 +16,7 @@ Before evaluating the physics topology of an event, the raw datasets are validat
 
   * **Observational Data:** For the real CMS collision data, the analysis strictly processes events recorded during verified periods of optimal detector performance. This is achieved by applying the official CMS [Golden JSON mask](https://opendata.cern.ch/record/14220)  which systematically filters out runs and luminosity blocks where sub-detectors were malfunctioning.
   <!-- * [`Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt`](https://opendata.cern.ch/record/14220), -->
-  * **Simulation Normalization (MC):** Monte Carlo datasets are generated with arbitrary event counts. To resolve this, a universal scale factor is applied to weight simulated events to their expected physical yields using the theoretical cross-section ($\sigma$), the integrated luminosity of the 2016 data ($L_{\text{int}} \approx 16.15 \text{ fb}^{-1}$), and the sum of generator weights.
+  * **Simulation Normalization (MC):** Monte Carlo datasets are generated with arbitrary event counts. To resolve this, a universal scale factor is applied to weight simulated events to their expected physical yields using the theoretical cross-section ($\sigma$), the integrated luminosity of the 2016 data ($L_{\text{int}} \approx 16.39 \text{ fb}^{-1}$), and the sum of generator weights.
 
 -----
 
