@@ -1,20 +1,20 @@
-# Datasets
+# **Datasets**
 
 This page describes the data and Monte Carlo (MC) simulation samples used in the analysis,
 and explains how MC events are normalised to the observed luminosity.
 
 ---
 
-## 1. Observed Data
+## **1. Observed Data**
 
 The analysis uses CMS proton–proton collision data collected during **Run 2016G and 2016H**,
-corresponding to an integrated luminosity of:
+corresponding to an [integrated luminosity](https://opendata.cern.ch/record/1059) of:
 
-$$\mathcal{L}_{\text{int}} = 16.15\,\text{fb}^{-1}$$
+$$\mathcal{L}_{\text{int}} = 16.39\,\text{fb}^{-1}$$
 
-### 1.1 Golden JSON Masking
+### **1.1 Golden JSON Masking**
 
-Not all luminosity blocks recorded by CMS are suitable for physics analysis — some periods
+Not all luminosity blocks recorded by CMS are suitable for physics analysis, some periods
 have sub-detectors switched off or operating in degraded mode. Only events within certified
 luminosity blocks are used, enforced by filtering against the official CMS Golden JSON file:
 
@@ -22,12 +22,15 @@ luminosity blocks are used, enforced by filtering against the official CMS Golde
 Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt
 ```
 
-which lists the run numbers and luminosity block ranges that pass data quality requirements.
-The implementation is handled by `hww_tools/json_validation.py`.
+### **1.2 Data**
+| Period | Dataset | CERN Open Data | $\mathcal{L}\ (\text{fb}^{-1})$ |
+| ------ | ------- | -------------- | --------------------------- |
+| 2016G  | /MuonEG/Run2016G-UL2016_MiniAODv2_NanoAODv9-v1/NANOAOD | [Link](https://opendata.cern.ch/record/30528) | 7.65 |
+| 2016H  | /MuonEG/Run2016H-UL2016_MiniAODv2_NanoAODv9-v1/NANOAOD | [Link](https://opendata.cern.ch/record/30561) | 8.74 |
 
 ---
 
-## 2. Monte Carlo Simulation
+## **2. Monte Carlo Simulation**
 
 All simulation samples correspond to the **CMS RunIISummer20UL16 (2016 Ultra-Legacy) campaign**
 at $\sqrt{s} = 13\,\text{TeV}$, using NanoAOD v9 format. Samples are sourced from the
@@ -37,75 +40,91 @@ at $\sqrt{s} = 13\,\text{TeV}$, using NanoAOD v9 format. Samples are sourced fro
 root://eospublic.cern.ch//eos/opendata/cms/mc/RunIISummer20UL16NanoAODv9/...
 ```
 
-### 2.1 Signal
-| Sample Tag | $\sigma$ (pb) | Record |
-|---|---|---|
-| **Higgs** | 1.0315 | [↗](https://opendata.cern.ch/record/37464) |
+### **2.1 Signal**
 
-### 2.2 Backgrounds
+| Dataset                                                                 | CERN Open Data                                | $\sigma$ (pb) |
+| ----------------------------------------------------------------------- | --------------------------------------------- | ------------- |
+| GluGluHToWWTo2L2N_M-125_TuneCP5_minloHJJ_13TeV-powheg-jhugen727-pythia8 | [Link](https://opendata.cern.ch/record/37464) | 1.0315        |
 
-#### Drell-Yan
-| Sample Tag | $\sigma$ (pb) | Record |
-|---|---|---|
-| DYtoLL | 6189.39 | [↗](https://opendata.cern.ch/record/35671) |
+### **2.2 Backgrounds**
 
-#### Top Quark
-| Sample Tag | $\sigma$ (pb) | Record |
-|---|---|---|
-| TTTo2L2Nu | 87.310 | [↗](https://opendata.cern.ch/record/67801) |
-| ST_t-channel_top | 44.33 | [↗](https://opendata.cern.ch/record/64759) |
-| ST_t-channel_antitop | 26.38 | [↗](https://opendata.cern.ch/record/64659) |
-| ST_tW_antitop | 35.60 | [↗](https://opendata.cern.ch/record/64825) |
-| ST_tW_top | 35.60 | [↗](https://opendata.cern.ch/record/64881) |
-| ST_s-channel | 3.360 | [↗](https://opendata.cern.ch/record/64635) |
+#### **Drell-Yan**
 
-#### Fakes ($W$+jets, semi-leptonic $t\bar{t}$)
-| Sample Tag | $\sigma$ (pb) | Record |
-|---|---|---|
-| TTToSemiLeptonic | 364.35 | [↗](https://opendata.cern.ch/record/67993) |
-| WJetsToLNu | 61526.7 | [↗](https://opendata.cern.ch/record/69747) |
+| Dataset                                           | CERN Open Data                                | $\sigma $ (pb) |
+| ------------------------------------------------- | --------------------------------------------- | -------------- |
+| DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8 | [Link](https://opendata.cern.ch/record/35671) | 6189.39        |
 
-#### Diboson (WZ, ZZ)
-| Sample Tag | $\sigma$ (pb) | Record |
-|---|---|---|
-| WZTo2Q2L | 5.595 | [↗](https://opendata.cern.ch/record/72742) |
-| WZTo3LNu | 4.430 | [↗](https://opendata.cern.ch/record/72750) |
-| ZZ | 16.523 | [↗](https://opendata.cern.ch/record/75593) |
+#### **Top Quark**
 
-#### Continuum WW ($q\bar{q} \to WW$)
-| Sample Tag | $\sigma$ (pb) | Record |
-|---|---|---|
-| WWTo2L2Nu | 12.178 | [↗](https://opendata.cern.ch/record/72676) |
+| Dataset                                                                      | CERN Open Data                                | $\sigma$ (pb) |
+| ---------------------------------------------------------------------------- | --------------------------------------------- | ------------- |
+| TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8                                       | [Link](https://opendata.cern.ch/record/67801) | 87.310        |
+| ST_t-channel_top_4f_InclusiveDecays_TuneCP5_13TeV-powheg-madspin-pythia8     | [Link](https://opendata.cern.ch/record/64759) | 44.33         |
+| ST_t-channel_antitop_4f_InclusiveDecays_TuneCP5_13TeV-powheg-madspin-pythia8 | [Link](https://opendata.cern.ch/record/64659) | 26.38         |
+| ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8                | [Link](https://opendata.cern.ch/record/64825) | 35.60         |
+| ST_tW_top_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8                    | [Link](https://opendata.cern.ch/record/64881) | 35.60         |
+| ST_s-channel_4f_leptonDecays_TuneCP5_13TeV-amcatnlo-pythia8                  | [Link](https://opendata.cern.ch/record/64635) | 3.360         |
 
-#### ggWW ($gg \to WW$, loop-induced)
-Nine exclusive di-flavour final states (EN, MN, TN combinations), each with
-$\sigma = 0.064\,\text{pb}$. Records:
-[40044](https://opendata.cern.ch/record/40044) –
-[40060](https://opendata.cern.ch/record/40060).
+#### **Fakes ($W$+jets, semi-leptonic $t\bar{t}$)**
 
-#### V+$\gamma$
-| Sample Tag | $\sigma$ (pb) | Record |
-|---|---|---|
-| ZGToLLG | 58.83 | [↗](https://opendata.cern.ch/record/73904) |
-| WGToLNuG | 405.271 | [↗](https://opendata.cern.ch/record/69577) |
+| Dataset                                       | CERN Open Data                                | $\sigma$ (pb) |
+| --------------------------------------------- | --------------------------------------------- | ------------- |
+| TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8 | [Link](https://opendata.cern.ch/record/67993) | 364.35        |
+| WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8  | [Link](https://opendata.cern.ch/record/69747) | 61526.7       |
+
+#### **Diboson (WZ, ZZ)**
+
+| Dataset                                               | CERN Open Data                                | $\sigma$ (pb) |
+| ----------------------------------------------------- | --------------------------------------------- | ------------- |
+| WZTo2Q2L_mllmin4p0_TuneCP5_13TeV-amcatnloFXFX-pythia8 | [Link](https://opendata.cern.ch/record/72742) | 5.5950        |
+| WZTo3LNu_mllmin4p0_TuneCP5_13TeV-powheg-pythia8       | [Link](https://opendata.cern.ch/record/72750) | 4.42965       |
+| ZZ_TuneCP5_13TeV-pythia8                              | [Link](https://opendata.cern.ch/record/75593) | 16.52300      |
+
+#### **WW**
+
+| Dataset                                | CERN Open Data                                | $\sigma$ (pb) |
+| -------------------------------------- | --------------------------------------------- | ------------- |
+| WWTo2L2Nu_TuneCP5_13TeV-powheg-pythia8 | [Link](https://opendata.cern.ch/record/72676) | 12.178        |
+
+#### **ggWW**
+
+| Dataset                                        | CERN Open Data                                | $\sigma$ (pb) |
+| ---------------------------------------------- | --------------------------------------------- | ------------- |
+| GluGluToWWToENEN_TuneCP5_13TeV_MCFM701_pythia8 | [Link](https://opendata.cern.ch/record/40044) | 0.06387       |
+| GluGluToWWToENMN_TuneCP5_13TeV_MCFM701_pythia8 | [Link](https://opendata.cern.ch/record/40046) | 0.06387       |
+| GluGluToWWToENTN_TuneCP5_13TeV_MCFM701_pythia8 | [Link](https://opendata.cern.ch/record/40048) | 0.06387       |
+| GluGluToWWToMNEN_TuneCP5_13TeV_MCFM701_pythia8 | [Link](https://opendata.cern.ch/record/40050) | 0.06387       |
+| GluGluToWWToMNMN_TuneCP5_13TeV_MCFM701_pythia8 | [Link](https://opendata.cern.ch/record/40052) | 0.06387       |
+| GluGluToWWToMNTN_TuneCP5_13TeV_MCFM701_pythia8 | [Link](https://opendata.cern.ch/record/40054) | 0.06387       |
+| GluGluToWWToTNEN_TuneCP5_13TeV_MCFM701_pythia8 | [Link](https://opendata.cern.ch/record/40056) | 0.06387       |
+| GluGluToWWToTNMN_TuneCP5_13TeV_MCFM701_pythia8 | [Link](https://opendata.cern.ch/record/40058) | 0.06387       |
+| GluGluToWWToTNTN_TuneCP5_13TeV_MCFM701_pythia8 | [Link](https://opendata.cern.ch/record/40060) | 0.06387       |
+
+#### **V+$\gamma$**
+
+| Dataset                                           | CERN Open Data                                | $\sigma$ (pb) |
+| ------------------------------------------------- | --------------------------------------------- | ------------- |
+| ZGToLLG_01J_5f_TuneCP5_13TeV-amcatnloFXFX-pythia8 | [Link](https://opendata.cern.ch/record/73904) | 58.83         |
+| WGToLNuG_TuneCP5_13TeV-madgraphMLM-pythia8        | [Link](https://opendata.cern.ch/record/69577) | 405.271       |
+
 
 ---
 
-## 3. MC Normalisation
+## **3. MC Normalisation**
 
 MC samples are generated with arbitrary statistics that do not automatically match the data
 luminosity. Each simulated event is assigned a weight to correct for this:
 
-$$\text{Scale Factor} = \frac{\sigma \times \mathcal{L} \times \text{genWeight}}{\sum \text{genWeight}}$$
+$$\text{Scale Factor} = \frac{\sigma \times \mathcal{L}_{\text{int}} \times \text{genWeight}}{\sum \text{genWeight}}$$
 
 | Symbol | Meaning |
 |---|---|
 | $\text{genWeight}$ | Per-event generator weight (positive or negative) |
 | $\sigma$ | Process cross section in pb (see tables above) |
-| $\mathcal{L}$ | Integrated luminosity: $16.15\,\text{fb}^{-1}$ |
+| $\mathcal{L}_{\text{int}}$ | Integrated luminosity: $16.39\,\text{fb}^{-1}$ |
 | ${\sum \text{genWeight}}$ | Sum of all generator weights in the sample |
 
-### 3.1 Sum of Generator Weights
+### **3.1 Sum of Generator Weights**
 
 The denominator ${\sum \text{genWeight}}$ must be computed _before_ any selection is applied,
 using all events in the original dataset. Since MC events can carry negative generator weights
@@ -118,7 +137,7 @@ using all events in the original dataset. Since MC events can carry negative gen
 The computation is handled in the `xsec_weights.ipynb` notebook, which reads the sample file
 lists and outputs a lookup dictionary of ${\sum \text{genWeight}}$ per sample.
 
-### 3.2 Cross-Section References
+<!-- ### **3.2 Cross-Section References**
 
 | Code | Reference |
 |---|---|
@@ -126,9 +145,9 @@ lists and outputs a lookup dictionary of ${\sum \text{genWeight}}$ per sample.
 | I | [GenXSecAnalyzer](https://twiki.cern.ch/twiki/bin/viewauth/CMS/HowToGenXSecAnalyzer) |
 | Y | [CERN Yellow Report (BSM @ 13 TeV)](https://twiki.cern.ch/twiki/bin/view/LHCPhysics/CERNYellowReportPageBSMAt13TeV) |
 
----
+--- -->
 
-## 4. File Lists
+## **4. File Lists**
 
 Sample ROOT file lists are stored under `Datasets/`:
 
