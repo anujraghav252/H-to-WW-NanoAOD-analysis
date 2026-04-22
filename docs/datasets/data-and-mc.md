@@ -16,7 +16,7 @@ $$\mathcal{L}_{\text{int}} = 16.39\,\text{fb}^{-1}$$
 
 Not all luminosity blocks recorded by CMS are suitable for physics analysis, some periods
 have sub-detectors switched off or operating in degraded mode. Only events within certified
-luminosity blocks are used, enforced by filtering against the official CMS Golden JSON file:
+luminosity blocks are used, enforced by filtering against the official [CMS Golden JSON file](https://opendata.cern.ch/record/14220):
 
 ```text
 Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt
