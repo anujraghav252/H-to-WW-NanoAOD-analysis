@@ -119,7 +119,7 @@ For the $gg\to H \to WW \to e^\pm\mu^\pm\nu\bar{\nu}$ channel, the theoretical c
 $\sigma_{signal} = \sigma(gg\to H) \times \text{BR}(H \to WW) \times \text{BR}(W \to e\nu) \times \text{BR}(W \to \mu\nu)\times 2$
 
 !!! info "Charge-Flavor Permutations"
-The factor of 2 accounts for the two possible charge-flavor combinations of the final state: $W^+ \to e^+\nu_e$, $W^- \to \mu^-\bar{\nu}_\mu$ and $W^+ \to \mu^+\nu_\mu$, $W^- \to e^-\bar{\nu}_e$.
+    The factor of 2 accounts for the two possible charge-flavor combinations of the final state: $W^+ \to e^+\nu_e$, $W^- \to \mu^-\bar{\nu}_\mu$ and $W^+ \to \mu^+\nu_\mu$, $W^- \to e^-\bar{\nu}_e$.
 
 ## **Experimental Signature in the Detector**
 Understanding how the process "looks like" in the detector is a crucial first step in our search.
