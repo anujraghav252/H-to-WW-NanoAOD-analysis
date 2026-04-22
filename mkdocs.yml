@@ -1,9 +1,9 @@
 site_name: "H → WW NanoAOD Analysis"
 site_description: "Documentation for the H→WW NanoAOD analysis — HSF-India project"
 site_url: https://h-to-ww-nanoaod-analysis.readthedocs.io/
-repo_url: https://github.com/anujraghav252/H-to-WW-NanoAOD-analysis
-repo_name: anujraghav252/H-to-WW-NanoAOD-analysis
-copyright: "2026, HSF-India Project. Written by <a href='https://anujraghav252.github.io/' target='_blank'>Anuj Raghav</a>."
+repo_url: https://github.com/anrghv/H-to-WW-NanoAOD-analysis
+repo_name: anrghv/H-to-WW-NanoAOD-analysis
+copyright: "2026, HSF-India Project. Written by <a href='https://anrghv.github.io/' target='_blank'>Anuj Raghav</a>."
 site_author: "Anuj Raghav"
 
 # .md-grid: { max-width: 1440px; }
