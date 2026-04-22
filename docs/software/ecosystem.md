@@ -93,7 +93,8 @@ For the final accumulation of yields and distributions, we employ [Hist](https:/
 ## 3. Distributed Computing with Dask
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/dask_horizontal.svg" width="300">
+<img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/Dask_light.png" class="only-light" width="300">
+<img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/Dask_dark.png" class="only-dark" width="300">
 </div>
 
 To handle the massive scale of CMS data (terabytes of information), we leverage [Dask](https://docs.dask.org/en/stable/), a flexible parallel computing library. Dask allows us to scale the same Python analysis from a single laptop to a cluster of machines without rewriting the code. It achieves this by breaking the dataset into smaller *“chunks”* (partitions) and processing them in parallel.
