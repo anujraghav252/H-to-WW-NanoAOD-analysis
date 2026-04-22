@@ -99,6 +99,7 @@ To bypass the massive hadronic backgrounds, this analysis focuses on the $H\to W
 ## **W Boson Decay Modes**
 
 To understand the final state topology of the event, we must examine the decay mechanisms of the intermediate vector bosons. A $W$ boson decays in two primary ways:
+
  - hadronically into a quark-antiquark pair ($W\to q\bar{q}$), or
  - leptonically into a charged lepton and its corresponding neutrino ($W \to \ell\nu$).
   
