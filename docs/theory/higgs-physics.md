@@ -77,7 +77,7 @@ Using the precision calculations compiled in the [Handbook of LHC Higgs cross se
 |  $H \rightarrow \mu^{+}\mu^{-}$  |        0.022%        |
 
 !!! info "Off-shell Production"
-Because the mass of the Higgs boson is less than twice the mass of an on-shell W or Z boson, one of the emitted vector bosons in these decay modes must be produced virtually, or off-shell, denoted by the asterisk.
+    Because the mass of the Higgs boson is less than twice the mass of an on-shell W or Z boson, one of the emitted vector bosons in these decay modes must be produced virtually, or off-shell, denoted by the asterisk.
 
 ### **Why the H to WW Channel Is Preferred**
 
