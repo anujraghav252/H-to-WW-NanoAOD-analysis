@@ -1,6 +1,6 @@
 # Software Framework
 
-This analysis is built on the modern **Scikit-HEP** Python ecosystem, a coordinated collection of libraries designed to replace the traditional C++ ROOT-based workflow with a high-performance, portable, and Pythonic alternative.
+This analysis is built on the modern [**Scikit-HEP**](https://scikit-hep.org/) Python ecosystem, a coordinated collection of libraries designed to replace the traditional C++ ROOT-based workflow with a high-performance, portable, and Pythonic alternative.
 
 ---
 
