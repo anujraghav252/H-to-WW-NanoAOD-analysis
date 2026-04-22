@@ -50,7 +50,7 @@ root://eospublic.cern.ch//eos/opendata/cms/mc/RunIISummer20UL16NanoAODv9/...
 
 #### **Drell-Yan**
 
-| Dataset                                           | CERN Open Data                                | $\sigma $ (pb) |
+| Dataset                                           | CERN Open Data                                | $\sigma$ (pb) |
 | ------------------------------------------------- | --------------------------------------------- | -------------- |
 | DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8 | [Link](https://opendata.cern.ch/record/35671) | 6189.39        |
 
