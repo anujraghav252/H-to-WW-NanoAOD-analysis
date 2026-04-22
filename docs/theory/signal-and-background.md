@@ -124,6 +124,7 @@ The backgrounds relevant to this analysis are several Standard Model processes t
 - The MET from the $W$ or $Z$ decay neutrino can appear similar to the signal
 
 **Suppression Strategy:**
+
 - **Lepton Identification:** Strict electron and muon identification criteria suppress photon misidentification
   
 ---
@@ -132,7 +133,6 @@ The backgrounds relevant to this analysis are several Standard Model processes t
 
 **Final State:** Jets misidentified as leptons, producing a false dilepton + MET signature
 
-<!-- **Nature:** This is a **reducible background** arising from QCD multi-jet and $W$/Z+jets events where jets are mislabeled as leptons. -->
 
 **Why It Mimics the Signal:**
 
@@ -141,6 +141,7 @@ The backgrounds relevant to this analysis are several Standard Model processes t
 - When multiple jets are selected as "leptons," the resulting four-vectors and MET can resemble the signal
 
 **Suppression Strategy:**
+
 - **Tight Lepton Identification:** Applying strict criteria on lepton isolation reduces this background
   
 - **Lepton Multiplicity Requirements:** Selecting events with exactly two leptons, with well-defined kinematic properties, suppresses multi-jet contamination
