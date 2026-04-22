@@ -31,7 +31,8 @@ Each library in the stack addresses a specific challenge of HEP data processing:
 [Uproot](https://uproot.readthedocs.io/) reads and writes ROOT files using pure Python, with no dependency on the C++ ROOT framework. In this analysis, Uproot handles the **input/output layer**, streaming NanoAOD `TTrees` from remote XRootD servers directly into memory as NumPy and Awkward arrays.
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/uproot_logo.webp" width="30%">
+<img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/uproot_light.png" class="only-light" width="30%">
+<img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/uproot_dark.webp" class="only-dark" width="30%">
 </div>
 
 <!-- **Key capability used:** Lazy / chunked reading of remote ROOT files over XRootD. -->
@@ -83,7 +84,8 @@ For the final accumulation of yields and distributions, we employ [Hist](https:/
 [mplhep](https://github.com/scikit-hep/mplhep) is a Matplotlib extension for high-energy physics. It provides tools for plotting data in the standard HEP style, including axis formatting, error bar conventions, and legend placement. In this analysis, mplhep is used to create standardized plots of the signal and control regions.
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/mplhep.png" width="30%">
+<img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/mplhep_light.png" class="only-light" width="30%">
+<img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/mplhep_dark.png" class="only-dark" width="30%">
 </div>
 
 ---
