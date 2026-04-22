@@ -37,3 +37,12 @@ html {
 [data-md-color-scheme="slate"] .md-typeset a:hover {
   color: #e8320a;
 }
+
+
+/* Hide dark images in light mode, and light images in dark mode. */
+[data-md-color-scheme="default"] .only-dark {
+  display: none;
+}
+[data-md-color-scheme="slate"] .only-light {
+  display: none;
+}
