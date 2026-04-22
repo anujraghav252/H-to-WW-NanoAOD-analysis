@@ -51,6 +51,9 @@ theme:
 
 plugins:
   - search
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: date
   - mkdocs-jupyter:
       include_source: true
       include_markdown: true
