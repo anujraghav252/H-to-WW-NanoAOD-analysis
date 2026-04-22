@@ -46,8 +46,3 @@ html {
 [data-md-color-scheme="slate"] .only-light {
   display: none;
 }
-
-Widen only this page
-body[data-md-page="analysis/HWW_analysis"] .md-main_inner {
-  max-width: 800px;  
-}
