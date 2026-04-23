@@ -12,7 +12,7 @@ This analysis instead uses **columnar processing**:
 
 > Rather than looping over every muon in every event to check its Transverse momentum, we operate on the *entire Transverse momentum array* at once—a single NumPy-like operation. The computational burden shifts to compiled, highly optimized C++ kernels.
 
-This approach enables CPU vectorization, reduces Python overhead, and, when combined with **Dask** for parallelism, allows the same code to scale from a laptop to a full computing cluster without modification. You can read more about "array-oriented" programming or "coloumnar" processing [here](https://hsf-training.github.io/hsf-training-scikit-hep-webpage/skhep-tutorial/introduction/)
+This approach enables CPU vectorization, reduces Python overhead, and, when combined with **Dask** for parallelism, allows the same code to scale from a laptop to a full computing cluster without modification. You can read more about "array-oriented" programming or "coloumnar" processing [here](https://hsf-training.github.io/hsf-training-scikit-hep-webpage/skhep-tutorial/introduction/).
 
 ---
 
