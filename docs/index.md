@@ -56,6 +56,10 @@ demonstrates a complete, modern HEP analysis workflow.
 </div>
 
 ---
+## Pre-Requisite 
+* This analysis assumes a basic working knowledge of `Python`, including familiarity with functions, dictionaries, lists, and arrays.
+* Readers are also expected to have prior exposure to undergraduate or graduate-level particle physics, along with an understanding of standard terminology related to fundamental particles.
+---
 
 ## Quick Start
 
