@@ -138,7 +138,7 @@ The backgrounds relevant to this analysis are several Standard Model processes t
 
 - Jets from b-quark or charm-quark decays can sometimes pass loose lepton selection criteria
   
-- When multiple jets are selected as "leptons," the resulting four-vectors and MET can resemble the signal
+- When multiple jets are selected as "leptons", the resulting four-vectors and MET can resemble the signal
 
 **Suppression Strategy:**
 
