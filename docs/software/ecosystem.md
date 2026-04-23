@@ -1,6 +1,6 @@
 # Software Framework
 
-This analysis is built on the modern [**Scikit-HEP**](https://scikit-hep.org/) Python ecosystem, a coordinated collection of libraries designed to replace the traditional C++ ROOT-based workflow with a high-performance, portable, and Pythonic alternative.
+This analysis is built on the modern [**Scikit-HEP**](https://scikit-hep.org/) ecosystem, a coordinated collection of libraries designed for providing Particle Physics at large with an ecosystem for data analysis in Python. Some of the tutorials for Scikit-HEP can be found [here](https://hsf-training.github.io/hsf-training-scikit-hep-webpage/) and some more from HSF [here](https://hsf-training.org/training-center/).
 
 ---
 
@@ -12,7 +12,7 @@ This analysis instead uses **columnar processing**:
 
 > Rather than looping over every muon in every event to check its Transverse momentum, we operate on the *entire Transverse momentum array* at once—a single NumPy-like operation. The computational burden shifts to compiled, highly optimized C++ kernels.
 
-This approach enables CPU vectorization, reduces Python overhead, and, when combined with **Dask** for parallelism, allows the same code to scale from a laptop to a full computing cluster without modification.
+This approach enables CPU vectorization, reduces Python overhead, and, when combined with **Dask** for parallelism, allows the same code to scale from a laptop to a full computing cluster without modification. You can read more about "array-oriented" programming or "coloumnar" processing [here](https://hsf-training.github.io/hsf-training-scikit-hep-webpage/skhep-tutorial/introduction/)
 
 ---
 
