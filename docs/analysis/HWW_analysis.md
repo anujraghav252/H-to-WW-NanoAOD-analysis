@@ -1,18 +1,3 @@
----
-hide: 
-    - navigation
-
----
-<style>
-  .md-grid {
-    max-width: 1600px !important;
-  }
-  .md-content__inner {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-</style>
-
 # **Full Analysis Notebook**
 
 Welcome! This notebook contains the complete, start-to-finish analysis pipeline. It is designed to act as a walkthrough, guiding you step-by-step through the physics logic, data processing, and visualization.
@@ -68,7 +53,7 @@ print(" All imports loaded")
 ```
 
      All imports loaded
-    
+
 
 ---
 
@@ -89,7 +74,7 @@ client
     <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px;">Client</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-181fe04c-3753-11f1-8141-22e67ff7258a</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-40d8372f-40c2-11f1-85e8-766a6634dd9a</p>
         <table style="width: 100%; text-align: left;">
 
         <tr>
@@ -124,14 +109,14 @@ client
         <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
         <div style="margin-left: 48px;">
             <h3 style="margin-bottom: 0px;">Scheduler</h3>
-            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-f1f9820c-2ca1-4792-bc8d-833d427e7c46</p>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-781fc5c6-6818-4cf3-b064-ebda3eca4b8a</p>
             <table style="width: 100%; text-align: left;">
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Comm:</strong> tls://192.168.197.225:8786
+                        <strong>Comm:</strong> tls://192.168.121.184:8786
                     </td>
                     <td style="text-align: left;">
-                        <strong>Workers:</strong> 1
+                        <strong>Workers:</strong> 0
                     </td>
                 </tr>
                 <tr>
@@ -139,15 +124,15 @@ client
                         <strong>Dashboard:</strong> <a href="/user/anujraghav.physics@gmail.com/proxy/8787/status" target="_blank">/user/anujraghav.physics@gmail.com/proxy/8787/status</a>
                     </td>
                     <td style="text-align: left;">
-                        <strong>Total threads:</strong> 1
+                        <strong>Total threads:</strong> 0
                     </td>
                 </tr>
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Started:</strong> 4 minutes ago
+                        <strong>Started:</strong> 12 hours ago
                     </td>
                     <td style="text-align: left;">
-                        <strong>Total memory:</strong> 2.89 GiB
+                        <strong>Total memory:</strong> 0 B
                     </td>
                 </tr>
             </table>
@@ -159,92 +144,6 @@ client
             <h3 style="display: inline;">Workers</h3>
         </summary>
 
-
-        <div style="margin-bottom: 20px;">
-            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
-            <div style="margin-left: 48px;">
-            <details>
-                <summary>
-                    <h4 style="margin-bottom: 0px; display: inline;">Worker: htcondor--26156840.0--</h4>
-                </summary>
-                <table style="width: 100%; text-align: left;">
-                    <tr>
-                        <td style="text-align: left;">
-                            <strong>Comm: </strong> tls://129.93.182.115:44407
-                        </td>
-                        <td style="text-align: left;">
-                            <strong>Total threads: </strong> 1
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="/user/anujraghav.physics@gmail.com/proxy/40503/status" target="_blank">/user/anujraghav.physics@gmail.com/proxy/40503/status</a>
-                        </td>
-                        <td style="text-align: left;">
-                            <strong>Memory: </strong> 2.89 GiB
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">
-                            <strong>Nanny: </strong> tls://172.19.0.20:43553
-                        </td>
-                        <td style="text-align: left;"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /var/lib/condor/execute/dir_195686/dask-scratch-space/worker-oenab5pv
-                        </td>
-                    </tr>
-
-
-
-
-                    <tr>
-                        <td style="text-align: left;">
-                            <strong>Tasks executing: </strong> 
-                        </td>
-                        <td style="text-align: left;">
-                            <strong>Tasks in memory: </strong> 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">
-                            <strong>Tasks ready: </strong> 
-                        </td>
-                        <td style="text-align: left;">
-                            <strong>Tasks in flight: </strong>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">
-                            <strong>CPU usage:</strong> 2.0%
-                        </td>
-                        <td style="text-align: left;">
-                            <strong>Last seen: </strong> Just now
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">
-                            <strong>Memory usage: </strong> 178.80 MiB
-                        </td>
-                        <td style="text-align: left;">
-                            <strong>Spilled bytes: </strong> 0 B
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">
-                            <strong>Read bytes: </strong> 330.9563751945453 B
-                        </td>
-                        <td style="text-align: left;">
-                            <strong>Write bytes: </strong> 1.50 kiB
-                        </td>
-                    </tr>
-
-
-                </table>
-            </details>
-            </div>
-        </div>
 
 
     </details>
@@ -501,7 +400,7 @@ print("="*70)
     ______________________________________________________________________
     TOTAL               :  776 files
     ======================================================================
-    
+
 
 ## **Filtering Validated Runs**
 
@@ -1041,11 +940,13 @@ def cal_kinematic_var(leading, subleading, met):
     ptll = dilepton.pt
     dphi = wrap_angle_to_pi(leading.phi - subleading.phi)
     # Higgs Transverse Mass 
-    dll_et = np.sqrt(dilepton.pt**2 + dilepton.mass**2)
+    # dll_et = np.sqrt(dilepton.pt**2 + dilepton.mass**2)
     mt_higgs_dphi = wrap_angle_to_pi(dilepton.phi - met.phi)
-    term_1 = masses**2
-    term_2 = 2 * (dll_et * met.pt - dilepton.pt * met.pt * np.cos(mt_higgs_dphi))
-    mt_higgs = np.sqrt(term_1 + term_2)
+    # term_1 = masses**2
+    # term_2 = 2 * (dll_et * met.pt - dilepton.pt * met.pt * np.cos(mt_higgs_dphi))
+    # mt_higgs = np.sqrt(term_1 + term_2)
+    mt_higgs = np.sqrt(2 * ptll * met.pt * (1 - np.cos(mt_higgs_dphi)))
+    
     # Lepton 2 Transverse Mass
     mt_l2_met_dphi = wrap_angle_to_pi(subleading.phi - met.phi)
     mt_l2_met = np.sqrt(2 * subleading.pt * met.pt * (1 - np.cos(mt_l2_met_dphi)))
@@ -1272,7 +1173,7 @@ print(f"Histogram storage initialized for {len(hist_data)} samples.")
 ```
 
     Histogram storage initialized for 8 samples.
-    
+
 
 ---
 # **Run Analysis**
@@ -1825,7 +1726,7 @@ gc.collect()
     
     Submitting 776 files to the cluster...
     Processing and merging results as they arrive...
-    
+
 
 
       0%|          | 0/776 [00:00<?, ?file/s]
@@ -1845,27 +1746,27 @@ gc.collect()
     DY_to_Tau_Tau        |   82,448,537
     Data                 |   63,091,128
     Diboson              |   15,551,954
-    Fakes                |  225,680,227
+    Fakes                |  226,680,227
     Top_antitop          |  137,367,000
     VG                   |   34,915,878
     WW                   |    2,900,000
     ggH_HWW              |    2,946,000
     ggWW                 |   17,662,000
     -----------------------------------
-    TOTAL                |  582,562,724
+    TOTAL                |  583,562,724
     ======================================================================
     
-    Processing completed in 475.2s (7.9 min)
-    Average: 0.61s per file
-    Throughput: 1,226,052 events/sec
+    Processing completed in 682.6s (11.4 min)
+    Average: 0.88s per file
+    Throughput: 854,969 events/sec
     ======================================================================
     
-    
 
 
 
 
-    0
+
+    73
 
 
 
@@ -2000,242 +1901,256 @@ display(styled_df)
 
 
 <style type="text/css">
-#T_3844d_row0_col0 {
+#T_9891e_row0_col0 {
   background-color: #ebf3fb;
   color: #000000;
   font-weight: bold;
 }
-#T_3844d_row0_col1, #T_3844d_row0_col5, #T_3844d_row0_col8, #T_3844d_row9_col0, #T_3844d_row9_col2, #T_3844d_row9_col3, #T_3844d_row9_col4, #T_3844d_row9_col6, #T_3844d_row9_col7, #T_3844d_row9_col9, #T_3844d_row9_col10, #T_3844d_row9_col11 {
+#T_9891e_row0_col1, #T_9891e_row0_col5, #T_9891e_row0_col8, #T_9891e_row9_col0, #T_9891e_row9_col2, #T_9891e_row9_col3, #T_9891e_row9_col4, #T_9891e_row9_col6, #T_9891e_row9_col7, #T_9891e_row9_col9, #T_9891e_row9_col10, #T_9891e_row9_col11 {
   background-color: #08306b;
   color: #f1f1f1;
   font-weight: bold;
 }
-#T_3844d_row0_col2 {
+#T_9891e_row0_col2 {
   background-color: #084a91;
   color: #f1f1f1;
   font-weight: bold;
 }
-#T_3844d_row0_col3, #T_3844d_row0_col6 {
+#T_9891e_row0_col3 {
   background-color: #1c6bb0;
   color: #f1f1f1;
   font-weight: bold;
 }
-#T_3844d_row0_col4 {
+#T_9891e_row0_col4 {
   background-color: #083c7d;
   color: #f1f1f1;
   font-weight: bold;
 }
-#T_3844d_row0_col7, #T_3844d_row0_col9 {
+#T_9891e_row0_col6 {
+  background-color: #1f6eb3;
+  color: #f1f1f1;
+  font-weight: bold;
+}
+#T_9891e_row0_col7 {
+  background-color: #08478d;
+  color: #f1f1f1;
+  font-weight: bold;
+}
+#T_9891e_row0_col9 {
   background-color: #084184;
   color: #f1f1f1;
   font-weight: bold;
 }
-#T_3844d_row0_col10 {
+#T_9891e_row0_col10 {
   background-color: #08326e;
   color: #f1f1f1;
   font-weight: bold;
 }
-#T_3844d_row0_col11 {
+#T_9891e_row0_col11 {
   background-color: #084488;
   color: #f1f1f1;
   font-weight: bold;
 }
-#T_3844d_row1_col0, #T_3844d_row1_col1, #T_3844d_row1_col2, #T_3844d_row1_col4, #T_3844d_row1_col5, #T_3844d_row1_col7, #T_3844d_row1_col8, #T_3844d_row1_col9, #T_3844d_row1_col10, #T_3844d_row1_col11, #T_3844d_row2_col0, #T_3844d_row2_col11, #T_3844d_row3_col0, #T_3844d_row4_col11, #T_3844d_row6_col0, #T_3844d_row6_col1, #T_3844d_row6_col5, #T_3844d_row6_col8, #T_3844d_row6_col10, #T_3844d_row6_col11, #T_3844d_row7_col0, #T_3844d_row7_col1, #T_3844d_row7_col2, #T_3844d_row7_col3, #T_3844d_row7_col4, #T_3844d_row7_col6, #T_3844d_row7_col7, #T_3844d_row7_col9, #T_3844d_row7_col10, #T_3844d_row7_col11, #T_3844d_row8_col10, #T_3844d_row8_col11 {
+#T_9891e_row1_col0, #T_9891e_row1_col1, #T_9891e_row1_col2, #T_9891e_row1_col4, #T_9891e_row1_col5, #T_9891e_row1_col7, #T_9891e_row1_col8, #T_9891e_row1_col9, #T_9891e_row1_col10, #T_9891e_row1_col11, #T_9891e_row2_col0, #T_9891e_row2_col11, #T_9891e_row3_col0, #T_9891e_row4_col8, #T_9891e_row4_col11, #T_9891e_row6_col0, #T_9891e_row6_col1, #T_9891e_row6_col5, #T_9891e_row6_col8, #T_9891e_row6_col10, #T_9891e_row6_col11, #T_9891e_row7_col0, #T_9891e_row7_col1, #T_9891e_row7_col2, #T_9891e_row7_col3, #T_9891e_row7_col4, #T_9891e_row7_col6, #T_9891e_row7_col7, #T_9891e_row7_col8, #T_9891e_row7_col9, #T_9891e_row7_col10, #T_9891e_row7_col11, #T_9891e_row8_col10, #T_9891e_row8_col11 {
   background-color: #f7fbff;
   color: #000000;
 }
-#T_3844d_row1_col3, #T_3844d_row1_col6, #T_3844d_row6_col7 {
+#T_9891e_row1_col3 {
   background-color: #f5fafe;
   color: #000000;
 }
-#T_3844d_row2_col1, #T_3844d_row5_col5 {
-  background-color: #edf4fc;
-  color: #000000;
-}
-#T_3844d_row2_col2 {
-  background-color: #cfe1f2;
-  color: #000000;
-}
-#T_3844d_row2_col3 {
-  background-color: #afd1e7;
-  color: #000000;
-}
-#T_3844d_row2_col4 {
-  background-color: #d4e4f4;
-  color: #000000;
-}
-#T_3844d_row2_col5 {
-  background-color: #e7f0fa;
-  color: #000000;
-}
-#T_3844d_row2_col6 {
-  background-color: #a3cce3;
-  color: #000000;
-}
-#T_3844d_row2_col7, #T_3844d_row5_col9 {
-  background-color: #cee0f2;
-  color: #000000;
-}
-#T_3844d_row2_col8, #T_3844d_row5_col7 {
-  background-color: #e1edf8;
-  color: #000000;
-}
-#T_3844d_row2_col9, #T_3844d_row4_col3, #T_3844d_row5_col8 {
-  background-color: #eaf3fb;
-  color: #000000;
-}
-#T_3844d_row2_col10, #T_3844d_row6_col2, #T_3844d_row6_col4, #T_3844d_row6_col9, #T_3844d_row7_col5, #T_3844d_row7_col8, #T_3844d_row8_col0 {
-  background-color: #f6faff;
-  color: #000000;
-}
-#T_3844d_row3_col1 {
-  background-color: #5ba3d0;
-  color: #f1f1f1;
-}
-#T_3844d_row3_col2 {
-  background-color: #a5cde3;
-  color: #000000;
-}
-#T_3844d_row3_col3, #T_3844d_row4_col7 {
-  background-color: #dfecf7;
-  color: #000000;
-}
-#T_3844d_row3_col4 {
-  background-color: #9dcae1;
-  color: #000000;
-}
-#T_3844d_row3_col5 {
-  background-color: #3c8cc3;
-  color: #f1f1f1;
-}
-#T_3844d_row3_col6 {
-  background-color: #ddeaf7;
-  color: #000000;
-}
-#T_3844d_row3_col7 {
-  background-color: #85bcdc;
-  color: #000000;
-}
-#T_3844d_row3_col8 {
-  background-color: #3787c0;
-  color: #f1f1f1;
-}
-#T_3844d_row3_col9 {
-  background-color: #3686c0;
-  color: #f1f1f1;
-}
-#T_3844d_row3_col10 {
-  background-color: #083b7c;
-  color: #f1f1f1;
-}
-#T_3844d_row3_col11 {
-  background-color: #083979;
-  color: #f1f1f1;
-}
-#T_3844d_row4_col0, #T_3844d_row5_col1 {
-  background-color: #e6f0f9;
-  color: #000000;
-}
-#T_3844d_row4_col1 {
-  background-color: #c3daee;
-  color: #000000;
-}
-#T_3844d_row4_col2 {
-  background-color: #deebf7;
-  color: #000000;
-}
-#T_3844d_row4_col4 {
-  background-color: #cddff1;
-  color: #000000;
-}
-#T_3844d_row4_col5 {
-  background-color: #dfebf7;
-  color: #000000;
-}
-#T_3844d_row4_col6, #T_3844d_row5_col10, #T_3844d_row6_col6, #T_3844d_row8_col1, #T_3844d_row8_col5, #T_3844d_row8_col8 {
-  background-color: #f3f8fe;
-  color: #000000;
-}
-#T_3844d_row4_col8 {
-  background-color: #eaf2fb;
-  color: #000000;
-}
-#T_3844d_row4_col9, #T_3844d_row8_col7 {
-  background-color: #f2f8fd;
-  color: #000000;
-}
-#T_3844d_row4_col10, #T_3844d_row8_col9 {
+#T_9891e_row1_col6, #T_9891e_row4_col10, #T_9891e_row6_col7, #T_9891e_row8_col8, #T_9891e_row8_col9 {
   background-color: #f5f9fe;
   color: #000000;
 }
-#T_3844d_row5_col0 {
-  background-color: #084a91;
-  color: #f1f1f1;
-}
-#T_3844d_row5_col2 {
-  background-color: #d3e4f3;
+#T_9891e_row2_col1, #T_9891e_row5_col5 {
+  background-color: #edf4fc;
   color: #000000;
 }
-#T_3844d_row5_col3 {
-  background-color: #a8cee4;
+#T_9891e_row2_col2 {
+  background-color: #cfe1f2;
   color: #000000;
 }
-#T_3844d_row5_col4 {
+#T_9891e_row2_col3 {
+  background-color: #afd1e7;
+  color: #000000;
+}
+#T_9891e_row2_col4 {
+  background-color: #d4e4f4;
+  color: #000000;
+}
+#T_9891e_row2_col5 {
+  background-color: #e7f0fa;
+  color: #000000;
+}
+#T_9891e_row2_col6 {
+  background-color: #a0cbe2;
+  color: #000000;
+}
+#T_9891e_row2_col7 {
+  background-color: #cbdef1;
+  color: #000000;
+}
+#T_9891e_row2_col8, #T_9891e_row5_col4 {
   background-color: #e2edf8;
   color: #000000;
 }
-#T_3844d_row5_col6 {
-  background-color: #aed1e7;
+#T_9891e_row2_col9, #T_9891e_row4_col3 {
+  background-color: #eaf3fb;
   color: #000000;
 }
-#T_3844d_row5_col11, #T_3844d_row8_col4 {
+#T_9891e_row2_col10, #T_9891e_row4_col6, #T_9891e_row4_col7, #T_9891e_row6_col2, #T_9891e_row6_col4, #T_9891e_row6_col9, #T_9891e_row7_col5, #T_9891e_row8_col0 {
+  background-color: #f6faff;
+  color: #000000;
+}
+#T_9891e_row3_col1 {
+  background-color: #5ba3d0;
+  color: #f1f1f1;
+}
+#T_9891e_row3_col2 {
+  background-color: #a5cde3;
+  color: #000000;
+}
+#T_9891e_row3_col3 {
+  background-color: #dfecf7;
+  color: #000000;
+}
+#T_9891e_row3_col4 {
+  background-color: #9dcae1;
+  color: #000000;
+}
+#T_9891e_row3_col5 {
+  background-color: #3c8cc3;
+  color: #f1f1f1;
+}
+#T_9891e_row3_col6 {
+  background-color: #dceaf6;
+  color: #000000;
+}
+#T_9891e_row3_col7 {
+  background-color: #69add5;
+  color: #f1f1f1;
+}
+#T_9891e_row3_col8 {
+  background-color: #2373b6;
+  color: #f1f1f1;
+}
+#T_9891e_row3_col9 {
+  background-color: #3686c0;
+  color: #f1f1f1;
+}
+#T_9891e_row3_col10 {
+  background-color: #083b7c;
+  color: #f1f1f1;
+}
+#T_9891e_row3_col11 {
+  background-color: #083979;
+  color: #f1f1f1;
+}
+#T_9891e_row4_col0, #T_9891e_row5_col1 {
+  background-color: #e6f0f9;
+  color: #000000;
+}
+#T_9891e_row4_col1 {
+  background-color: #c3daee;
+  color: #000000;
+}
+#T_9891e_row4_col2, #T_9891e_row5_col7 {
+  background-color: #deebf7;
+  color: #000000;
+}
+#T_9891e_row4_col4 {
+  background-color: #cddff1;
+  color: #000000;
+}
+#T_9891e_row4_col5 {
+  background-color: #dfebf7;
+  color: #000000;
+}
+#T_9891e_row4_col9, #T_9891e_row6_col6 {
+  background-color: #f2f8fd;
+  color: #000000;
+}
+#T_9891e_row5_col0 {
+  background-color: #084a91;
+  color: #f1f1f1;
+}
+#T_9891e_row5_col2 {
+  background-color: #d3e4f3;
+  color: #000000;
+}
+#T_9891e_row5_col3 {
+  background-color: #a8cee4;
+  color: #000000;
+}
+#T_9891e_row5_col6 {
+  background-color: #abd0e6;
+  color: #000000;
+}
+#T_9891e_row5_col8 {
+  background-color: #eef5fc;
+  color: #000000;
+}
+#T_9891e_row5_col9 {
+  background-color: #cee0f2;
+  color: #000000;
+}
+#T_9891e_row5_col10, #T_9891e_row8_col1, #T_9891e_row8_col5, #T_9891e_row8_col7 {
+  background-color: #f3f8fe;
+  color: #000000;
+}
+#T_9891e_row5_col11, #T_9891e_row8_col4 {
   background-color: #f1f7fd;
   color: #000000;
 }
-#T_3844d_row6_col3 {
+#T_9891e_row6_col3 {
   background-color: #f4f9fe;
   color: #000000;
 }
-#T_3844d_row8_col2 {
+#T_9891e_row8_col2 {
   background-color: #f2f7fd;
   color: #000000;
 }
-#T_3844d_row8_col3, #T_3844d_row8_col6 {
+#T_9891e_row8_col3 {
   background-color: #eff6fc;
   color: #000000;
 }
-#T_3844d_row9_col1 {
+#T_9891e_row8_col6 {
+  background-color: #f0f6fd;
+  color: #000000;
+}
+#T_9891e_row9_col1 {
   background-color: #08316d;
   color: #f1f1f1;
   font-weight: bold;
 }
-#T_3844d_row9_col5 {
+#T_9891e_row9_col5 {
   background-color: #083573;
   color: #f1f1f1;
   font-weight: bold;
 }
-#T_3844d_row9_col8 {
-  background-color: #083471;
+#T_9891e_row9_col8 {
+  background-color: #083776;
   color: #f1f1f1;
   font-weight: bold;
 }
 </style>
-<table id="T_3844d">
+<table id="T_9891e">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_3844d_level0_col0" class="col_heading level0 col0" >Total (Raw)</th>
-      <th id="T_3844d_level0_col1" class="col_heading level0 col1" >e-μ Preselect</th>
-      <th id="T_3844d_level0_col2" class="col_heading level0 col2" >Global Cuts</th>
-      <th id="T_3844d_level0_col3" class="col_heading level0 col3" >0-jet</th>
-      <th id="T_3844d_level0_col4" class="col_heading level0 col4" >1-jet</th>
-      <th id="T_3844d_level0_col5" class="col_heading level0 col5" >2-jet</th>
-      <th id="T_3844d_level0_col6" class="col_heading level0 col6" >SR 0j</th>
-      <th id="T_3844d_level0_col7" class="col_heading level0 col7" >SR 1j</th>
-      <th id="T_3844d_level0_col8" class="col_heading level0 col8" >SR 2j</th>
-      <th id="T_3844d_level0_col9" class="col_heading level0 col9" >CR Top 0j</th>
-      <th id="T_3844d_level0_col10" class="col_heading level0 col10" >CR Top 1j</th>
-      <th id="T_3844d_level0_col11" class="col_heading level0 col11" >CR Top 2j</th>
+      <th id="T_9891e_level0_col0" class="col_heading level0 col0" >Total (Raw)</th>
+      <th id="T_9891e_level0_col1" class="col_heading level0 col1" >e-μ Preselect</th>
+      <th id="T_9891e_level0_col2" class="col_heading level0 col2" >Global Cuts</th>
+      <th id="T_9891e_level0_col3" class="col_heading level0 col3" >0-jet</th>
+      <th id="T_9891e_level0_col4" class="col_heading level0 col4" >1-jet</th>
+      <th id="T_9891e_level0_col5" class="col_heading level0 col5" >2-jet</th>
+      <th id="T_9891e_level0_col6" class="col_heading level0 col6" >SR 0j</th>
+      <th id="T_9891e_level0_col7" class="col_heading level0 col7" >SR 1j</th>
+      <th id="T_9891e_level0_col8" class="col_heading level0 col8" >SR 2j</th>
+      <th id="T_9891e_level0_col9" class="col_heading level0 col9" >CR Top 0j</th>
+      <th id="T_9891e_level0_col10" class="col_heading level0 col10" >CR Top 1j</th>
+      <th id="T_9891e_level0_col11" class="col_heading level0 col11" >CR Top 2j</th>
     </tr>
     <tr>
       <th class="index_name level0" >Sample</th>
@@ -2255,154 +2170,154 @@ display(styled_df)
   </thead>
   <tbody>
     <tr>
-      <th id="T_3844d_level0_row0" class="row_heading level0 row0" >Data</th>
-      <td id="T_3844d_row0_col0" class="data row0 col0" >62,385,800.00</td>
-      <td id="T_3844d_row0_col1" class="data row0 col1" >320,498.00</td>
-      <td id="T_3844d_row0_col2" class="data row0 col2" >46,371.00</td>
-      <td id="T_3844d_row0_col3" class="data row0 col3" >15,657.00</td>
-      <td id="T_3844d_row0_col4" class="data row0 col4" >15,953.00</td>
-      <td id="T_3844d_row0_col5" class="data row0 col5" >14,761.00</td>
-      <td id="T_3844d_row0_col6" class="data row0 col6" >12,328.00</td>
-      <td id="T_3844d_row0_col7" class="data row0 col7" >11,380.00</td>
-      <td id="T_3844d_row0_col8" class="data row0 col8" >1,618.00</td>
-      <td id="T_3844d_row0_col9" class="data row0 col9" >2,090.00</td>
-      <td id="T_3844d_row0_col10" class="data row0 col10" >16,485.00</td>
-      <td id="T_3844d_row0_col11" class="data row0 col11" >6,883.00</td>
+      <th id="T_9891e_level0_row0" class="row_heading level0 row0" >Data</th>
+      <td id="T_9891e_row0_col0" class="data row0 col0" >62,385,800.00</td>
+      <td id="T_9891e_row0_col1" class="data row0 col1" >320,498.00</td>
+      <td id="T_9891e_row0_col2" class="data row0 col2" >46,371.00</td>
+      <td id="T_9891e_row0_col3" class="data row0 col3" >15,657.00</td>
+      <td id="T_9891e_row0_col4" class="data row0 col4" >15,953.00</td>
+      <td id="T_9891e_row0_col5" class="data row0 col5" >14,761.00</td>
+      <td id="T_9891e_row0_col6" class="data row0 col6" >11,389.00</td>
+      <td id="T_9891e_row0_col7" class="data row0 col7" >8,112.00</td>
+      <td id="T_9891e_row0_col8" class="data row0 col8" >1,171.00</td>
+      <td id="T_9891e_row0_col9" class="data row0 col9" >2,090.00</td>
+      <td id="T_9891e_row0_col10" class="data row0 col10" >16,485.00</td>
+      <td id="T_9891e_row0_col11" class="data row0 col11" >6,883.00</td>
     </tr>
     <tr>
-      <th id="T_3844d_level0_row1" class="row_heading level0 row1" >ggH_HWW</th>
-      <td id="T_3844d_row1_col0" class="data row1 col0" >15,436.57</td>
-      <td id="T_3844d_row1_col1" class="data row1 col1" >1,054.98</td>
-      <td id="T_3844d_row1_col2" class="data row1 col2" >690.07</td>
-      <td id="T_3844d_row1_col3" class="data row1 col3" >411.75</td>
-      <td id="T_3844d_row1_col4" class="data row1 col4" >186.83</td>
-      <td id="T_3844d_row1_col5" class="data row1 col5" >91.49</td>
-      <td id="T_3844d_row1_col6" class="data row1 col6" >376.00</td>
-      <td id="T_3844d_row1_col7" class="data row1 col7" >144.59</td>
-      <td id="T_3844d_row1_col8" class="data row1 col8" >10.32</td>
-      <td id="T_3844d_row1_col9" class="data row1 col9" >4.27</td>
-      <td id="T_3844d_row1_col10" class="data row1 col10" >1.53</td>
-      <td id="T_3844d_row1_col11" class="data row1 col11" >0.22</td>
+      <th id="T_9891e_level0_row1" class="row_heading level0 row1" >ggH_HWW</th>
+      <td id="T_9891e_row1_col0" class="data row1 col0" >15,436.57</td>
+      <td id="T_9891e_row1_col1" class="data row1 col1" >1,054.98</td>
+      <td id="T_9891e_row1_col2" class="data row1 col2" >690.07</td>
+      <td id="T_9891e_row1_col3" class="data row1 col3" >411.75</td>
+      <td id="T_9891e_row1_col4" class="data row1 col4" >186.83</td>
+      <td id="T_9891e_row1_col5" class="data row1 col5" >91.49</td>
+      <td id="T_9891e_row1_col6" class="data row1 col6" >364.32</td>
+      <td id="T_9891e_row1_col7" class="data row1 col7" >128.92</td>
+      <td id="T_9891e_row1_col8" class="data row1 col8" >8.56</td>
+      <td id="T_9891e_row1_col9" class="data row1 col9" >4.27</td>
+      <td id="T_9891e_row1_col10" class="data row1 col10" >1.53</td>
+      <td id="T_9891e_row1_col11" class="data row1 col11" >0.22</td>
     </tr>
     <tr>
-      <th id="T_3844d_level0_row2" class="row_heading level0 row2" >WW</th>
-      <td id="T_3844d_row2_col0" class="data row2 col0" >182,245.80</td>
-      <td id="T_3844d_row2_col1" class="data row2 col1" >17,941.05</td>
-      <td id="T_3844d_row2_col2" class="data row2 col2" >11,144.64</td>
-      <td id="T_3844d_row2_col3" class="data row2 col3" >6,712.35</td>
-      <td id="T_3844d_row2_col4" class="data row2 col4" >3,134.68</td>
-      <td id="T_3844d_row2_col5" class="data row2 col5" >1,297.62</td>
-      <td id="T_3844d_row2_col6" class="data row2 col6" >5,895.36</td>
-      <td id="T_3844d_row2_col7" class="data row2 col7" >2,664.37</td>
-      <td id="T_3844d_row2_col8" class="data row2 col8" >192.40</td>
-      <td id="T_3844d_row2_col9" class="data row2 col9" >146.97</td>
-      <td id="T_3844d_row2_col10" class="data row2 col10" >93.54</td>
-      <td id="T_3844d_row2_col11" class="data row2 col11" >13.36</td>
+      <th id="T_9891e_level0_row2" class="row_heading level0 row2" >WW</th>
+      <td id="T_9891e_row2_col0" class="data row2 col0" >182,245.80</td>
+      <td id="T_9891e_row2_col1" class="data row2 col1" >17,941.05</td>
+      <td id="T_9891e_row2_col2" class="data row2 col2" >11,144.64</td>
+      <td id="T_9891e_row2_col3" class="data row2 col3" >6,712.35</td>
+      <td id="T_9891e_row2_col4" class="data row2 col4" >3,134.68</td>
+      <td id="T_9891e_row2_col5" class="data row2 col5" >1,297.62</td>
+      <td id="T_9891e_row2_col6" class="data row2 col6" >5,635.57</td>
+      <td id="T_9891e_row2_col7" class="data row2 col7" >2,113.54</td>
+      <td id="T_9891e_row2_col8" class="data row2 col8" >133.64</td>
+      <td id="T_9891e_row2_col9" class="data row2 col9" >146.97</td>
+      <td id="T_9891e_row2_col10" class="data row2 col10" >93.54</td>
+      <td id="T_9891e_row2_col11" class="data row2 col11" >13.36</td>
     </tr>
     <tr>
-      <th id="T_3844d_level0_row3" class="row_heading level0 row3" >Top_antitop</th>
-      <td id="T_3844d_row3_col0" class="data row3 col0" >3,480,598.89</td>
-      <td id="T_3844d_row3_col1" class="data row3 col1" >176,782.09</td>
-      <td id="T_3844d_row3_col2" class="data row3 col2" >18,652.66</td>
-      <td id="T_3844d_row3_col3" class="data row3 col3" >2,645.37</td>
-      <td id="T_3844d_row3_col4" class="data row3 col4" >6,409.86</td>
-      <td id="T_3844d_row3_col5" class="data row3 col5" >9,597.43</td>
-      <td id="T_3844d_row3_col6" class="data row3 col6" >2,254.09</td>
-      <td id="T_3844d_row3_col7" class="data row3 col7" >5,382.91</td>
-      <td id="T_3844d_row3_col8" class="data row3 col8" >1,082.88</td>
-      <td id="T_3844d_row3_col9" class="data row3 col9" >1,494.79</td>
-      <td id="T_3844d_row3_col10" class="data row3 col10" >15,956.24</td>
-      <td id="T_3844d_row3_col11" class="data row3 col11" >7,177.25</td>
+      <th id="T_9891e_level0_row3" class="row_heading level0 row3" >Top_antitop</th>
+      <td id="T_9891e_row3_col0" class="data row3 col0" >3,480,598.89</td>
+      <td id="T_9891e_row3_col1" class="data row3 col1" >176,782.09</td>
+      <td id="T_9891e_row3_col2" class="data row3 col2" >18,652.66</td>
+      <td id="T_9891e_row3_col3" class="data row3 col3" >2,645.37</td>
+      <td id="T_9891e_row3_col4" class="data row3 col4" >6,409.86</td>
+      <td id="T_9891e_row3_col5" class="data row3 col5" >9,597.43</td>
+      <td id="T_9891e_row3_col6" class="data row3 col6" >2,144.07</td>
+      <td id="T_9891e_row3_col7" class="data row3 col7" >4,572.33</td>
+      <td id="T_9891e_row3_col8" class="data row3 col8" >867.57</td>
+      <td id="T_9891e_row3_col9" class="data row3 col9" >1,494.79</td>
+      <td id="T_9891e_row3_col10" class="data row3 col10" >15,956.24</td>
+      <td id="T_9891e_row3_col11" class="data row3 col11" >7,177.25</td>
     </tr>
     <tr>
-      <th id="T_3844d_level0_row4" class="row_heading level0 row4" >DY_to_Tau_Tau</th>
-      <td id="T_3844d_row4_col0" class="data row4 col0" >90,168,168.35</td>
-      <td id="T_3844d_row4_col1" class="data row4 col1" >83,604.27</td>
-      <td id="T_3844d_row4_col2" class="data row4 col2" >7,176.81</td>
-      <td id="T_3844d_row4_col3" class="data row4 col3" >1,507.83</td>
-      <td id="T_3844d_row4_col4" class="data row4 col4" >3,765.21</td>
-      <td id="T_3844d_row4_col5" class="data row4 col5" >1,903.77</td>
-      <td id="T_3844d_row4_col6" class="data row4 col6" >522.57</td>
-      <td id="T_3844d_row4_col7" class="data row4 col7" >1,571.36</td>
-      <td id="T_3844d_row4_col8" class="data row4 col8" >117.96</td>
-      <td id="T_3844d_row4_col9" class="data row4 col9" >60.90</td>
-      <td id="T_3844d_row4_col10" class="data row4 col10" >200.21</td>
-      <td id="T_3844d_row4_col11" class="data row4 col11" >14.06</td>
+      <th id="T_9891e_level0_row4" class="row_heading level0 row4" >DY_to_Tau_Tau</th>
+      <td id="T_9891e_row4_col0" class="data row4 col0" >90,168,168.35</td>
+      <td id="T_9891e_row4_col1" class="data row4 col1" >83,604.27</td>
+      <td id="T_9891e_row4_col2" class="data row4 col2" >7,176.81</td>
+      <td id="T_9891e_row4_col3" class="data row4 col3" >1,507.83</td>
+      <td id="T_9891e_row4_col4" class="data row4 col4" >3,765.21</td>
+      <td id="T_9891e_row4_col5" class="data row4 col5" >1,903.77</td>
+      <td id="T_9891e_row4_col6" class="data row4 col6" >284.57</td>
+      <td id="T_9891e_row4_col7" class="data row4 col7" >166.20</td>
+      <td id="T_9891e_row4_col8" class="data row4 col8" >12.85</td>
+      <td id="T_9891e_row4_col9" class="data row4 col9" >60.90</td>
+      <td id="T_9891e_row4_col10" class="data row4 col10" >200.21</td>
+      <td id="T_9891e_row4_col11" class="data row4 col11" >14.06</td>
     </tr>
     <tr>
-      <th id="T_3844d_level0_row5" class="row_heading level0 row5" >Fakes</th>
-      <td id="T_3844d_row5_col0" class="data row5 col0" >926,210,036.68</td>
-      <td id="T_3844d_row5_col1" class="data row5 col1" >29,008.87</td>
-      <td id="T_3844d_row5_col2" class="data row5 col2" >9,969.65</td>
-      <td id="T_3844d_row5_col3" class="data row5 col3" >7,127.42</td>
-      <td id="T_3844d_row5_col4" class="data row5 col4" >1,985.52</td>
-      <td id="T_3844d_row5_col5" class="data row5 col5" >856.71</td>
-      <td id="T_3844d_row5_col6" class="data row5 col6" >5,348.71</td>
-      <td id="T_3844d_row5_col7" class="data row5 col7" >1,475.26</td>
-      <td id="T_3844d_row5_col8" class="data row5 col8" >111.71</td>
-      <td id="T_3844d_row5_col9" class="data row5 col9" >468.34</td>
-      <td id="T_3844d_row5_col10" class="data row5 col10" >381.82</td>
-      <td id="T_3844d_row5_col11" class="data row5 col11" >255.20</td>
+      <th id="T_9891e_level0_row5" class="row_heading level0 row5" >Fakes</th>
+      <td id="T_9891e_row5_col0" class="data row5 col0" >926,247,715.69</td>
+      <td id="T_9891e_row5_col1" class="data row5 col1" >29,048.68</td>
+      <td id="T_9891e_row5_col2" class="data row5 col2" >9,972.20</td>
+      <td id="T_9891e_row5_col3" class="data row5 col3" >7,127.42</td>
+      <td id="T_9891e_row5_col4" class="data row5 col4" >1,985.79</td>
+      <td id="T_9891e_row5_col5" class="data row5 col5" >858.98</td>
+      <td id="T_9891e_row5_col6" class="data row5 col6" >5,086.44</td>
+      <td id="T_9891e_row5_col7" class="data row5 col7" >1,238.98</td>
+      <td id="T_9891e_row5_col8" class="data row5 col8" >66.27</td>
+      <td id="T_9891e_row5_col9" class="data row5 col9" >468.42</td>
+      <td id="T_9891e_row5_col10" class="data row5 col10" >383.08</td>
+      <td id="T_9891e_row5_col11" class="data row5 col11" >256.39</td>
     </tr>
     <tr>
-      <th id="T_3844d_level0_row6" class="row_heading level0 row6" >ggWW</th>
-      <td id="T_3844d_row6_col0" class="data row6 col0" >8,836.93</td>
-      <td id="T_3844d_row6_col1" class="data row6 col1" >1,313.42</td>
-      <td id="T_3844d_row6_col2" class="data row6 col2" >966.93</td>
-      <td id="T_3844d_row6_col3" class="data row6 col3" >581.42</td>
-      <td id="T_3844d_row6_col4" class="data row6 col4" >289.18</td>
-      <td id="T_3844d_row6_col5" class="data row6 col5" >96.33</td>
-      <td id="T_3844d_row6_col6" class="data row6 col6" >537.30</td>
-      <td id="T_3844d_row6_col7" class="data row6 col7" >256.11</td>
-      <td id="T_3844d_row6_col8" class="data row6 col8" >13.78</td>
-      <td id="T_3844d_row6_col9" class="data row6 col9" >13.66</td>
-      <td id="T_3844d_row6_col10" class="data row6 col10" >8.14</td>
-      <td id="T_3844d_row6_col11" class="data row6 col11" >0.92</td>
+      <th id="T_9891e_level0_row6" class="row_heading level0 row6" >ggWW</th>
+      <td id="T_9891e_row6_col0" class="data row6 col0" >8,836.93</td>
+      <td id="T_9891e_row6_col1" class="data row6 col1" >1,313.42</td>
+      <td id="T_9891e_row6_col2" class="data row6 col2" >966.93</td>
+      <td id="T_9891e_row6_col3" class="data row6 col3" >581.42</td>
+      <td id="T_9891e_row6_col4" class="data row6 col4" >289.18</td>
+      <td id="T_9891e_row6_col5" class="data row6 col5" >96.33</td>
+      <td id="T_9891e_row6_col6" class="data row6 col6" >525.29</td>
+      <td id="T_9891e_row6_col7" class="data row6 col7" >232.72</td>
+      <td id="T_9891e_row6_col8" class="data row6 col8" >11.62</td>
+      <td id="T_9891e_row6_col9" class="data row6 col9" >13.66</td>
+      <td id="T_9891e_row6_col10" class="data row6 col10" >8.14</td>
+      <td id="T_9891e_row6_col11" class="data row6 col11" >0.92</td>
     </tr>
     <tr>
-      <th id="T_3844d_level0_row7" class="row_heading level0 row7" >Diboson</th>
-      <td id="T_3844d_row7_col0" class="data row7 col0" >397,290.09</td>
-      <td id="T_3844d_row7_col1" class="data row7 col1" >1,167.75</td>
-      <td id="T_3844d_row7_col2" class="data row7 col2" >659.04</td>
-      <td id="T_3844d_row7_col3" class="data row7 col3" >232.12</td>
-      <td id="T_3844d_row7_col4" class="data row7 col4" >245.18</td>
-      <td id="T_3844d_row7_col5" class="data row7 col5" >181.74</td>
-      <td id="T_3844d_row7_col6" class="data row7 col6" >192.71</td>
-      <td id="T_3844d_row7_col7" class="data row7 col7" >179.45</td>
-      <td id="T_3844d_row7_col8" class="data row7 col8" >18.04</td>
-      <td id="T_3844d_row7_col9" class="data row7 col9" >10.31</td>
-      <td id="T_3844d_row7_col10" class="data row7 col10" >8.97</td>
-      <td id="T_3844d_row7_col11" class="data row7 col11" >2.12</td>
+      <th id="T_9891e_level0_row7" class="row_heading level0 row7" >Diboson</th>
+      <td id="T_9891e_row7_col0" class="data row7 col0" >397,290.09</td>
+      <td id="T_9891e_row7_col1" class="data row7 col1" >1,167.75</td>
+      <td id="T_9891e_row7_col2" class="data row7 col2" >659.04</td>
+      <td id="T_9891e_row7_col3" class="data row7 col3" >232.12</td>
+      <td id="T_9891e_row7_col4" class="data row7 col4" >245.18</td>
+      <td id="T_9891e_row7_col5" class="data row7 col5" >181.74</td>
+      <td id="T_9891e_row7_col6" class="data row7 col6" >178.97</td>
+      <td id="T_9891e_row7_col7" class="data row7 col7" >139.63</td>
+      <td id="T_9891e_row7_col8" class="data row7 col8" >11.24</td>
+      <td id="T_9891e_row7_col9" class="data row7 col9" >10.31</td>
+      <td id="T_9891e_row7_col10" class="data row7 col10" >8.97</td>
+      <td id="T_9891e_row7_col11" class="data row7 col11" >2.12</td>
     </tr>
     <tr>
-      <th id="T_3844d_level0_row8" class="row_heading level0 row8" >VG</th>
-      <td id="T_3844d_row8_col0" class="data row8 col0" >8,029,875.81</td>
-      <td id="T_3844d_row8_col1" class="data row8 col1" >7,656.66</td>
-      <td id="T_3844d_row8_col2" class="data row8 col2" >2,207.13</td>
-      <td id="T_3844d_row8_col3" class="data row8 col3" >1,040.38</td>
-      <td id="T_3844d_row8_col4" class="data row8 col4" >741.64</td>
-      <td id="T_3844d_row8_col5" class="data row8 col5" >425.12</td>
-      <td id="T_3844d_row8_col6" class="data row8 col6" >822.82</td>
-      <td id="T_3844d_row8_col7" class="data row8 col7" >463.51</td>
-      <td id="T_3844d_row8_col8" class="data row8 col8" >41.83</td>
-      <td id="T_3844d_row8_col9" class="data row8 col9" >33.07</td>
-      <td id="T_3844d_row8_col10" class="data row8 col10" >27.97</td>
-      <td id="T_3844d_row8_col11" class="data row8 col11" >1.56</td>
+      <th id="T_9891e_level0_row8" class="row_heading level0 row8" >VG</th>
+      <td id="T_9891e_row8_col0" class="data row8 col0" >8,029,875.81</td>
+      <td id="T_9891e_row8_col1" class="data row8 col1" >7,656.66</td>
+      <td id="T_9891e_row8_col2" class="data row8 col2" >2,207.13</td>
+      <td id="T_9891e_row8_col3" class="data row8 col3" >1,040.38</td>
+      <td id="T_9891e_row8_col4" class="data row8 col4" >741.64</td>
+      <td id="T_9891e_row8_col5" class="data row8 col5" >425.12</td>
+      <td id="T_9891e_row8_col6" class="data row8 col6" >729.86</td>
+      <td id="T_9891e_row8_col7" class="data row8 col7" >302.46</td>
+      <td id="T_9891e_row8_col8" class="data row8 col8" >25.58</td>
+      <td id="T_9891e_row8_col9" class="data row8 col9" >33.07</td>
+      <td id="T_9891e_row8_col10" class="data row8 col10" >27.97</td>
+      <td id="T_9891e_row8_col11" class="data row8 col11" >1.56</td>
     </tr>
     <tr>
-      <th id="T_3844d_level0_row9" class="row_heading level0 row9" >TOTAL (MC)</th>
-      <td id="T_3844d_row9_col0" class="data row9 col0" >1,028,492,489.12</td>
-      <td id="T_3844d_row9_col1" class="data row9 col1" >318,529.09</td>
-      <td id="T_3844d_row9_col2" class="data row9 col2" >51,466.93</td>
-      <td id="T_3844d_row9_col3" class="data row9 col3" >20,258.62</td>
-      <td id="T_3844d_row9_col4" class="data row9 col4" >16,758.10</td>
-      <td id="T_3844d_row9_col5" class="data row9 col5" >14,450.21</td>
-      <td id="T_3844d_row9_col6" class="data row9 col6" >15,949.56</td>
-      <td id="T_3844d_row9_col7" class="data row9 col7" >12,137.55</td>
-      <td id="T_3844d_row9_col8" class="data row9 col8" >1,588.92</td>
-      <td id="T_3844d_row9_col9" class="data row9 col9" >2,232.32</td>
-      <td id="T_3844d_row9_col10" class="data row9 col10" >16,678.41</td>
-      <td id="T_3844d_row9_col11" class="data row9 col11" >7,464.70</td>
+      <th id="T_9891e_level0_row9" class="row_heading level0 row9" >TOTAL (MC)</th>
+      <td id="T_9891e_row9_col0" class="data row9 col0" >1,028,530,168.12</td>
+      <td id="T_9891e_row9_col1" class="data row9 col1" >318,568.90</td>
+      <td id="T_9891e_row9_col2" class="data row9 col2" >51,469.47</td>
+      <td id="T_9891e_row9_col3" class="data row9 col3" >20,258.62</td>
+      <td id="T_9891e_row9_col4" class="data row9 col4" >16,758.37</td>
+      <td id="T_9891e_row9_col5" class="data row9 col5" >14,452.49</td>
+      <td id="T_9891e_row9_col6" class="data row9 col6" >14,949.09</td>
+      <td id="T_9891e_row9_col7" class="data row9 col7" >8,894.77</td>
+      <td id="T_9891e_row9_col8" class="data row9 col8" >1,137.33</td>
+      <td id="T_9891e_row9_col9" class="data row9 col9" >2,232.39</td>
+      <td id="T_9891e_row9_col10" class="data row9 col10" >16,679.67</td>
+      <td id="T_9891e_row9_col11" class="data row9 col11" >7,465.89</td>
     </tr>
   </tbody>
 </table>
@@ -2490,7 +2405,7 @@ hist_data_final = restore_histograms(
 
     Restoring histograms from: HWW_analysis_output.root
     Successfully restored data for 9 samples.
-    
+
 
 We can use `type()` to confirm that our results were successfully aggregated into a Python dictionary.
 
@@ -2938,7 +2853,7 @@ def stacked_plots(variable, hist_data_all, output_dir="plots"):
                 ax_ratio.grid(True, linestyle=':', alpha=0.5)
 
             #       STYLING      
-            hep.cms.label(ax=ax_main, loc=0, data=True, label="Open Data", lumi=16.1, fontsize=20)
+            hep.cms.label(ax=ax_main, loc=0, data=True, label="Open Data", lumi=16.39, fontsize=20)
             ax_main.text(0.05, 0.92, stage_label, transform=ax_main.transAxes, fontsize=22, fontweight='bold', va='top')
             ax_main.set_ylabel("Events / Bin", fontsize=20)
             
@@ -3096,3 +3011,9 @@ for variable in VAR_LABELS.keys():
     
 ![png](HWW_analysis_files/HWW_analysis_65_17.png)
     
+
+
+
+```python
+
+```
