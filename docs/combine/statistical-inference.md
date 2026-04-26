@@ -3,7 +3,7 @@
 The final stage of this analysis is the statistical extraction of the Higgs boson signal. To evaluate the results, we utilize the official [CMS Higgs Combine Tool](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/), the standard statistical framework used throughout the CMS collaboration for performing maximum profile-likelihood fits.
 
 <div style="text-align: center;">
-  <img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/combine_logo.png" alt="CMS Combine Logo" width="200">
+  <img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/combine_logo.png" alt="CMS Combine Logo" width="200">
 </div>
 
 The primary goal of this stage is to extract the **Signal Strength ($\mu$)**, which is defined as the ratio of the experimentally observed cross-section to the theoretical Standard Model prediction:

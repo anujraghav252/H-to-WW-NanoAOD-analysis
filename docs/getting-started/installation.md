@@ -100,7 +100,7 @@ This page describes how to set up the analysis environment on a local machine or
 ## 1. Clone the Repository
 
 ```bash title="Terminal"
-git clone https://github.com/anujraghav252/H-to-WW-NanoAOD-analysis.git
+git clone https://github.com/anrghv/H-to-WW-NanoAOD-analysis.git
 cd H-to-WW-NanoAOD-analysis
 ```
 

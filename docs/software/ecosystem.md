@@ -19,7 +19,7 @@ This approach enables CPU vectorization, reduces Python overhead, and, when comb
 ## 2. The Scikit-HEP Stack
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/scikit_logo.png" width="280">
+<img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/scikit_logo.png" width="280">
 </div>
 
 Each library in the stack addresses a specific challenge of HEP data processing:
@@ -31,8 +31,8 @@ Each library in the stack addresses a specific challenge of HEP data processing:
 [Uproot](https://uproot.readthedocs.io/) reads and writes ROOT files using pure Python, with no dependency on the C++ ROOT framework. In this analysis, Uproot handles the **input/output layer**, streaming NanoAOD `TTrees` from remote XRootD servers directly into memory as NumPy and Awkward arrays.
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/uproot_light.png" class="only-light" width="30%">
-<img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/uproot_dark.webp" class="only-dark" width="30%">
+<img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/uproot_light.png" class="only-light" width="30%">
+<img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/uproot_dark.webp" class="only-dark" width="30%">
 </div>
 
 <!-- **Key capability used:** Lazy / chunked reading of remote ROOT files over XRootD. -->
@@ -46,7 +46,7 @@ Particle physics data is inherently *irregular*: one event may contain zero muon
 [Awkward Array](https://awkward-array.org/) provides **jagged array** operations that allow us to manipulate these irregular, nested structures using NumPy-like idioms (slicing, masking, and broadcasting) without losing the event structure.
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/awkward.svg" width="30%">
+<img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/awkward.svg" width="30%">
 </div>
 
 ---
@@ -62,7 +62,7 @@ m_ll     = dilepton.mass
 ```
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/vector%20logo.svg" width="30%">
+<img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/vector%20logo.svg" width="30%">
 </div>
 
 ---
@@ -72,7 +72,7 @@ m_ll     = dilepton.mass
 For the final accumulation of yields and distributions, we employ [Hist](https://hist.readthedocs.io/en/latest/). Based on the fast C++ `boost-histogram` library, Hist supports multi-dimensional, sparse, and categorical axes. This is essential for our analysis, which requires simultaneous categorization of events into multiple regions (Signal, Control) and systematic variations within a single object.
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/histlogo.png" width="30%">
+<img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/histlogo.png" width="30%">
 </div>
 
 <!-- **Key capability used:** All analysis histograms in `hww_tools/Config.py` and filled in `Run_analysis.ipynb`. -->
@@ -84,8 +84,8 @@ For the final accumulation of yields and distributions, we employ [Hist](https:/
 [mplhep](https://github.com/scikit-hep/mplhep) is a Matplotlib extension for high-energy physics. It provides tools for plotting data in the standard HEP style, including axis formatting, error bar conventions, and legend placement. In this analysis, mplhep is used to create standardized plots of the signal and control regions.
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/mplhep_light.png" class="only-light" width="30%">
-<img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/mplhep_dark.png" class="only-dark" width="30%">
+<img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/mplhep_light.png" class="only-light" width="30%">
+<img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/mplhep_dark.png" class="only-dark" width="30%">
 </div>
 
 ---
@@ -93,8 +93,8 @@ For the final accumulation of yields and distributions, we employ [Hist](https:/
 ## 3. Distributed Computing with Dask
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/Dask_light.png" class="only-light" width="300">
-<img src="https://raw.githubusercontent.com/anujraghav252/H-to-WW-NanoAOD-analysis/main/assets/Dask_dark.png" class="only-dark" width="300">
+<img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/Dask_light.png" class="only-light" width="300">
+<img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/Dask_dark.png" class="only-dark" width="300">
 </div>
 
 To handle the massive scale of CMS data (terabytes of information), we leverage [Dask](https://docs.dask.org/en/stable/), a flexible parallel computing library. Dask allows us to scale the same Python analysis from a single laptop to a cluster of machines without rewriting the code. It achieves this by breaking the dataset into smaller *“chunks”* (partitions) and processing them in parallel.
@@ -149,4 +149,4 @@ This reduction in runtime is important for the iterative nature of the analysis,
 
 
 
-Full pinned versions: see [`requirements.txt`](https://github.com/anujraghav252/H-to-WW-NanoAOD-analysis/blob/main/requirements.txt) and [`environment.yml`](https://github.com/anujraghav252/H-to-WW-NanoAOD-analysis/blob/main/environment.yml).
+Full pinned versions: see [`requirements.txt`](https://github.com/anrghv/H-to-WW-NanoAOD-analysis/blob/main/requirements.txt) and [`environment.yml`](https://github.com/anrghv/H-to-WW-NanoAOD-analysis/blob/main/environment.yml).

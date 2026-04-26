@@ -5,7 +5,7 @@ title: H → WW NanoAOD Analysis
 
 !!! warning "Documentation in Progress"
     This page is under active development — some sections may be incomplete or inconsistent.
-    The [repository](https://github.com/anujraghav252/H-to-WW-NanoAOD-analysis) is the authoritative reference in the meantime.
+    The [repository](https://github.com/anrghv/H-to-WW-NanoAOD-analysis) is the authoritative reference in the meantime.
 
 ## What This Analysis Does
 
@@ -65,7 +65,7 @@ demonstrates a complete, modern HEP analysis workflow.
 
 ```bash title="Get up and running"
 # 1. Clone the repository
-git clone https://github.com/anujraghav252/H-to-WW-NanoAOD-analysis.git
+git clone https://github.com/anrghv/H-to-WW-NanoAOD-analysis.git
 cd H-to-WW-NanoAOD-analysis
 
 # 2. Create the environment (Conda recommended)
