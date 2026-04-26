@@ -25,25 +25,25 @@ There are four primary production mechanisms for the SM Higgs boson at the LHC:
 - **Gluon-Gluon Fusion (ggH or ggF):** Two gluons from the interacting protons fuse to produce a Higgs boson. Because gluons are massless, they cannot couple directly to the Higgs boson. This process occurs via a virtual loop of heavy quarks. The top quark, having the largest Yukawa coupling, dominates this loop exchange.
 
   <div style="text-align: center;">
-    <img src="anrghvassets/ggh_FD.png" alt="ggH Feynman Diagram" width="250">
+    <img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/ggh_FD.png" alt="ggH Feynman Diagram" width="250">
   </div>
 
 - **Vector Boson Fusion (VBF):** Two quarks from the incoming protons emit a gauge boson ($W$ or $Z$), which then scatter and fuse to form a Higgs boson. This mode is characterized by two highly energetic forward jets in the detector.
 
   <div style="text-align: center;">
-    <img src="anrghvassets/VBF_FD.png" alt="VBF Feynman Diagram" width="250">
+    <img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/VBF_FD.png" alt="VBF Feynman Diagram" width="250">
   </div>
 
 - **Associated Production (VH):** A quark and an antiquark annihilate to form an *off-shell* $W$ or $Z$ boson, which then radiates an $H$.
 
   <div style="text-align: center;">
-    <img src="anrghvassets/VH_FD.png" alt="VH Feynman Diagram" width="250">
+    <img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/VH_FD.png" alt="VH Feynman Diagram" width="250">
   </div>
 
 - **Top Quark Associated Production (ttH):** Two gluons or quarks fuse to produce a top-antitop quark pair along with an $H$.
 
   <div style="text-align: center;">
-    <img src="anrghvassets/ttH_FD.png" alt="ttH Feynman Diagram" width="250">
+    <img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/ttH_FD.png" alt="ttH Feynman Diagram" width="250">
   </div>
 
 ### **Dominance of Gluon-Gluon Fusion**
@@ -53,7 +53,7 @@ This analysis specifically focuses on the ggH production mode. The choice to iso
 - **Cross-section Dominance:** At a center-of-mass energy of $\sqrt{s}\ =\ \text{13 TeV}$, ggH is by far the most abundant production mechanism. According to [Handbook of LHC Higgs cross sections](https://e-publishing.cern.ch/index.php/CYRM/issue/view/32), the inclusive cross-section for ggH at 13 TeV is $\sigma_{ggH}\approx \text{48.58 pb}$. This accounts for approximately 87% of the total Higgs boson production at the LHC. This overwhelming abundance ensures the maximum possible signal yield, providing a strong statistical foundation for the analysis.
 
   <div style="text-align: center;">
-    <img src="anrghvassets/Higgs_xsec.jpg" alt="Higgs Cross-section at TeV scale" width="400">
+    <img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/Higgs_xsec.jpg" alt="Higgs Cross-section at TeV scale" width="400">
   </div>
 
 - **Signal Cleanliness:** Compared to other production modes, the ggH process offers a comparatively clean experimental topology. For example, the VBF channel, despite having the second-largest cross-section, is characterized by the presence of two highly energetic "forward" jets. Identifying these jets and removing them from the background requires complex jet selections, making the analysis highly sensitive to pileup in the detector region. Similarly, VH and ttH introduce additional heavy bosons or top quarks, making the final state cluttered with extra leptons and $b$-quarks. Thus, focusing on ggH allows for a cleaner extraction of the Higgs signal.
@@ -84,7 +84,7 @@ Using the precision calculations compiled in the [Handbook of LHC Higgs cross se
 While the decay into a bottom-antibottom quark pair ($H\to b\bar{b}$) has the highest branching ratio, searching for it in a detector presents several challenges. The LHC produces an overwhelmingly vast background of strong-interaction processes (QCD multijet events) that perfectly mimic the hadronic final state, making precision measurements exceptionally difficult.
 
 <div style="text-align: center;">
-  <img src="anrghvassets/Higgs_BR.jpg" alt="Higgs Branching ratio" width="400">
+  <img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/Higgs_BR.jpg" alt="Higgs Branching ratio" width="400">
 </div>
 
 To bypass the massive hadronic backgrounds, this analysis focuses on the $H\to WW^*$ decay mode. This channel offers many advantages for experimental physics:
@@ -132,7 +132,7 @@ The charged leptons produced in the $W$ boson decays are the primary visible han
 - **Muons ($\mu^\pm$):** As minimum-ionizing particles, muons leave a track in the inner silicon tracker, pass through the ECAL and Hadronic Calorimeter (HCAL) with negligible energy loss, and are finally reconstructed by the dedicated muon chambers located in the outermost layers of the CMS detector.
 
 <div style="text-align: center;">
-  <img src="anrghvassets/particle_detector.gif" alt="particle track" width="600">
+  <img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/particle_detector.gif" alt="particle track" width="600">
 </div>
 
 ### The Invisible: Missing Transverse Energy (MET)
