@@ -1,12 +1,12 @@
 ---
 hide: 
     - navigation
-
 ---
+
 <style>
   .md-grid {
     max-width: 1600px !important;
-  }
+  }`
   .md-content__inner {
     padding-left: 1rem;
     padding-right: 1rem;
