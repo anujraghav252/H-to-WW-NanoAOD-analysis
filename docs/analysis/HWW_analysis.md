@@ -1,3 +1,18 @@
+---
+hide: 
+    - navigation
+
+---
+<style>
+  .md-grid {
+    max-width: 1600px !important;
+  }
+  .md-content__inner {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+</style>
+
 # **Full Analysis Notebook**
 
 Welcome! This notebook contains the complete, start-to-finish analysis pipeline. It is designed to act as a walkthrough, guiding you step-by-step through the physics logic, data processing, and visualization.
