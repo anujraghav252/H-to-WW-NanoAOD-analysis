@@ -1,3 +1,8 @@
+#=======================================================================================================================================
+# Sourced from https://github.com/latinos/LatinoAnalysis/blob/UL_production/NanoGardener/python/framework/samples/Summer20UL16_106x_noHIPM_nAODv9.py#L35-L43
+#========================================================================================================================================
+
+
 Samples = {}
 #--->Updated!###-----------------------------------------------##
 Samples['WZTo3LNu'] = {'nanoAOD' :'/WZTo3LNu_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIISummer20UL16NanoAODv9-106X_mcRun2_asymptotic_v17-v1/NANOAODSIM'}
