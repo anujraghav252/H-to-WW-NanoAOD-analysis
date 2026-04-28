@@ -169,4 +169,4 @@ root://eospublic.cern.ch//eos/opendata/cms/mc/RunIISummer20UL16NanoAODv9/...
 ```
 
 #### Reference
-The cross-section numbers are sourced from [here](https://github.com/latinos/LatinoAnalysis/blob/UL_production/NanoGardener/python/framework/samples/samplesCrossSections2016_legacy.py) 
+The cross-section numbers are sourced from [here](https://github.com/latinos/LatinoAnalysis/blob/UL_production/NanoGardener/python/framework/samples/samplesCrossSections2016_legacy.py).
