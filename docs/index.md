@@ -3,9 +3,9 @@ template: home.html
 title: H → WW NanoAOD Analysis
 ---
 
-!!! warning "Documentation in Progress"
+<!-- !!! warning "Documentation in Progress"
     This page is under active development — some sections may be incomplete or inconsistent.
-    The [repository](https://github.com/anrghv/H-to-WW-NanoAOD-analysis) is the authoritative reference in the meantime.
+    The [repository](https://github.com/anrghv/H-to-WW-NanoAOD-analysis) is the authoritative reference in the meantime. -->
 
 ## What This Analysis Does
 
