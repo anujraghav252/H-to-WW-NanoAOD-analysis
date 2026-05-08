@@ -1,18 +1,18 @@
-# **Datasets**
+# :material-database: **Datasets**
 
 This page describes the data and Monte Carlo (MC) simulation samples used in the analysis,
 and explains how MC events are normalised to the observed luminosity.
 
 ---
 
-## **1. Observed Data**
+## :material-folder-open: **1. Observed Data**
 
 The analysis uses CMS proton–proton collision data collected during **Run 2016G and 2016H**,
 corresponding to an [integrated luminosity](https://opendata.cern.ch/record/1059) of:
 
 $$\mathcal{L}_{\text{int}} = 16.39\,\text{fb}^{-1}$$
 
-### **1.1 Golden JSON Masking**
+### :material-filter: **1.1 Golden JSON Masking**
 
 Not all luminosity blocks recorded by CMS are suitable for physics analysis, some periods
 have sub-detectors switched off or operating in degraded mode. Only events within certified
@@ -22,15 +22,16 @@ luminosity blocks are used, enforced by filtering against the official [CMS Gold
 Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt
 ```
 
-### **1.2 Data**
-| Period | Dataset | CERN Open Data | $\mathcal{L}\ (\text{fb}^{-1})$ |
-| ------ | ------- | -------------- | --------------------------- |
-| 2016G  | /MuonEG/Run2016G-UL2016_MiniAODv2_NanoAODv9-v1/NANOAOD | [Link](https://opendata.cern.ch/record/30528) | 7.65 |
-| 2016H  | /MuonEG/Run2016H-UL2016_MiniAODv2_NanoAODv9-v1/NANOAOD | [Link](https://opendata.cern.ch/record/30561) | 8.74 |
+### :material-table: **1.2 Data**
+
+| Period | Dataset                                                | CERN Open Data                                | $\mathcal{L}\ (\text{fb}^{-1})$ |
+| ------ | ------------------------------------------------------ | --------------------------------------------- | ------------------------------- |
+| 2016G  | /MuonEG/Run2016G-UL2016_MiniAODv2_NanoAODv9-v1/NANOAOD | [Link](https://opendata.cern.ch/record/30528) | 7.65                            |
+| 2016H  | /MuonEG/Run2016H-UL2016_MiniAODv2_NanoAODv9-v1/NANOAOD | [Link](https://opendata.cern.ch/record/30561) | 8.74                            |
 
 ---
 
-## **2. Monte Carlo Simulation**
+## :material-test-tube: **2. Monte Carlo Simulation**
 
 All simulation samples correspond to the **CMS RunIISummer20UL16 (2016 Ultra-Legacy) campaign**
 at $\sqrt{s} = 13\,\text{TeV}$, using NanoAOD v9 format. Samples are sourced from the
@@ -40,19 +41,19 @@ at $\sqrt{s} = 13\,\text{TeV}$, using NanoAOD v9 format. Samples are sourced fro
 root://eospublic.cern.ch//eos/opendata/cms/mc/RunIISummer20UL16NanoAODv9/...
 ```
 
-### **2.1 Signal**
+### :material-target: **2.1 Signal**
 
 | Dataset                                                                 | CERN Open Data                                | $\sigma$ (pb) |
 | ----------------------------------------------------------------------- | --------------------------------------------- | ------------- |
 | GluGluHToWWTo2L2N_M-125_TuneCP5_minloHJJ_13TeV-powheg-jhugen727-pythia8 | [Link](https://opendata.cern.ch/record/37464) | 1.0315        |
 
-### **2.2 Backgrounds**
+### :material-cancel: **2.2 Backgrounds**
 
 #### **Drell-Yan**
 
 | Dataset                                           | CERN Open Data                                | $\sigma$ (pb) |
-| ------------------------------------------------- | --------------------------------------------- | -------------- |
-| DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8 | [Link](https://opendata.cern.ch/record/35671) | 6189.39        |
+| ------------------------------------------------- | --------------------------------------------- | ------------- |
+| DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8 | [Link](https://opendata.cern.ch/record/35671) | 6189.39       |
 
 #### **Top Quark**
 
@@ -107,7 +108,6 @@ root://eospublic.cern.ch//eos/opendata/cms/mc/RunIISummer20UL16NanoAODv9/...
 | ZGToLLG_01J_5f_TuneCP5_13TeV-amcatnloFXFX-pythia8 | [Link](https://opendata.cern.ch/record/73904) | 58.83         |
 | WGToLNuG_TuneCP5_13TeV-madgraphMLM-pythia8        | [Link](https://opendata.cern.ch/record/69577) | 405.271       |
 
-
 ---
 
 ## **3. MC Normalisation**
@@ -117,12 +117,12 @@ luminosity. Each simulated event is assigned a weight to correct for this:
 
 $$\text{Scale Factor} = \frac{\sigma \times \mathcal{L}_{\text{int}} \times \text{genWeight}}{\sum \text{genWeight}}$$
 
-| Symbol | Meaning |
-|---|---|
-| $\text{genWeight}$ | Per-event generator weight (positive or negative) |
-| $\sigma$ | Process cross section in pb (see tables above) |
-| $\mathcal{L}_{\text{int}}$ | Integrated luminosity: $16.39\,\text{fb}^{-1}$ |
-| ${\sum \text{genWeight}}$ | Sum of all generator weights in the sample |
+| Symbol                     | Meaning                                           |
+| -------------------------- | ------------------------------------------------- |
+| $\text{genWeight}$         | Per-event generator weight (positive or negative) |
+| $\sigma$                   | Process cross section in pb (see tables above)    |
+| $\mathcal{L}_{\text{int}}$ | Integrated luminosity: $16.39\,\text{fb}^{-1}$    |
+| ${\sum \text{genWeight}}$  | Sum of all generator weights in the sample        |
 
 ### **3.1 Sum of Generator Weights**
 
@@ -131,8 +131,8 @@ using all events in the original dataset. Since MC events can carry negative gen
 (due to NLO subtractions), the sum is **not** simply equal to the total number of events.
 
 !!! warning "Sum of weights vs. number of events"
-    Always use the sum of `genWeight` (not raw event counts) in the normalisation denominator.
-    Failing to do this with NLO samples will produce incorrect overall normalisation.
+Always use the sum of `genWeight` (not raw event counts) in the normalisation denominator.
+Failing to do this with NLO samples will produce incorrect overall normalisation.
 
 The computation is handled in the `xsec_weights.ipynb` notebook, which reads the sample file
 lists and outputs a lookup dictionary of ${\sum \text{genWeight}}$ per sample.
@@ -169,4 +169,5 @@ root://eospublic.cern.ch//eos/opendata/cms/mc/RunIISummer20UL16NanoAODv9/...
 ```
 
 #### Reference
+
 The cross-section numbers are sourced from [here](https://github.com/latinos/LatinoAnalysis/blob/UL_production/NanoGardener/python/framework/samples/samplesCrossSections2016_legacy.py).

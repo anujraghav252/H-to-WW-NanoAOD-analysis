@@ -1,24 +1,24 @@
-# Monte Carlo Samples and Cross Sections for 2016 UL Higgs to WW Analysis
+# :material-test-tube: Monte Carlo Samples and Cross Sections for 2016 UL Higgs to WW Analysis
 
 **Last Updated:** 26 October, 2025
 
 Based on [LatinoAnalysis Summer20UL16 configuration](https://github.com/latinos/LatinoAnalysis/blob/UL_production/NanoGardener/python/framework/samples/Summer20UL16_106x_noHIPM_nAODv9.py#L35-L43)
 
-## Signal
+## :material-target: Signal
 
 | Sample    | Dataset                                                                 | CERN Open Data                                | Cross Section (pb) | K-factor | Reference |
 | --------- | ----------------------------------------------------------------------- | --------------------------------------------- | ------------------ | -------- | --------- |
 | **Higgs** | GluGluHToWWTo2L2N_M-125_TuneCP5_minloHJJ_13TeV-powheg-jhugen727-pythia8 | [Link](https://opendata.cern.ch/record/37464) | 1.0315             | 1.000    | Y         |
 
-## Backgrounds
+## :material-cancel: Backgrounds
 
-### 1. Drell-Yan
+### :material-layer: 1. Drell-Yan
 
 | Sample | Dataset                                           | CERN Open Data                                | Cross Section (pb) | K-factor | Reference |
 | ------ | ------------------------------------------------- | --------------------------------------------- | ------------------ | -------- | --------- |
 | DYtoLL | DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8 | [Link](https://opendata.cern.ch/record/35671) | 6189.39            | 1.000    | X         |
 
-### 2. Top
+### :material-atom-variant: 2. Top
 
 | Sample               | Dataset                                                                      | CERN Open Data                                | Cross Section (pb) | K-factor | Reference |
 | -------------------- | ---------------------------------------------------------------------------- | --------------------------------------------- | ------------------ | -------- | --------- |
@@ -29,14 +29,14 @@ Based on [LatinoAnalysis Summer20UL16 configuration](https://github.com/latinos/
 | ST_tW_top            | ST_tW_top_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8                    | [Link](https://opendata.cern.ch/record/64881) | 35.60              | 1.000    | E         |
 | ST_s-channel         | ST_s-channel_4f_leptonDecays_TuneCP5_13TeV-amcatnlo-pythia8                  | [Link](https://opendata.cern.ch/record/64635) | 3.360              | 1.000    | E         |
 
-### 3. Fakes
+### :material-ghost: 3. Fakes
 
 | Sample           | Dataset                                       | CERN Open Data                                | Cross Section (pb) | K-factor | Reference |
 | ---------------- | --------------------------------------------- | --------------------------------------------- | ------------------ | -------- | --------- |
 | TTToSemiLeptonic | TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8 | [Link](https://opendata.cern.ch/record/67993) | 364.35             | 1.000    | E         |
 | WJetsToLNu       | WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8  | [Link](https://opendata.cern.ch/record/69747) | 61526.7            | 1.000    | E         |
 
-### 4. Diboson (VZ)
+### :material-pulse: 4. Diboson (VZ)
 
 | Sample   | Dataset                                               | CERN Open Data                                | Cross Section (pb) | K-factor | Reference |
 | -------- | ----------------------------------------------------- | --------------------------------------------- | ------------------ | -------- | --------- |
@@ -44,7 +44,7 @@ Based on [LatinoAnalysis Summer20UL16 configuration](https://github.com/latinos/
 | WZTo3LNu | WZTo3LNu_mllmin4p0_TuneCP5_13TeV-powheg-pythia8       | [Link](https://opendata.cern.ch/record/72750) | 4.42965            | 1.000    | E         |
 | ZZ       | ZZ_TuneCP5_13TeV-pythia8                              | [Link](https://opendata.cern.ch/record/75593) | 16.52300           | 1.000    | E         |
 
-### 5. ggWW
+### :material-lightning-bolt: 5. ggWW
 
 | Sample           | Dataset                                        | CERN Open Data                                | Cross Section (pb) | K-factor | Reference |
 | ---------------- | ---------------------------------------------- | --------------------------------------------- | ------------------ | -------- | --------- |

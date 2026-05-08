@@ -1,6 +1,6 @@
 ---
-hide: 
-    - navigation
+hide:
+  - navigation
 ---
 
 <style>
@@ -13,7 +13,7 @@ hide:
   }
 </style>
 
-# **Full Analysis Notebook**
+# :material-notebook-outline: **Full Analysis Notebook**
 
 Welcome! This notebook contains the complete, start-to-finish analysis pipeline. It is designed to act as a walkthrough, guiding you step-by-step through the physics logic, data processing, and visualization.
 
@@ -21,10 +21,9 @@ Welcome! This notebook contains the complete, start-to-finish analysis pipeline.
 
 ---
 
-# **Imports**
+# :material-code-braces: **Imports**
 
 Let's bring in all the required Python libraries for our analysis. To keep things clean, we have grouped them into specific categories so you can easily see what each tool is used for.
-
 
 ```python
 # Handing file paths, memory management (garbage collection), and reading configurations
@@ -69,21 +68,16 @@ print(" All imports loaded")
 
      All imports loaded
 
-
 ---
 
 ## **Setting up the Dask Client**
 
 With our imports ready, the next step is to initialize the Dask client. We are connecting to `localhost:8786` here, but feel free to swap this out with your own scheduler address depending on the machine or cluster you are using.
 
-
 ```python
 client = Client("tls://localhost:8786")
 client
 ```
-
-
-
 
 <div>
     <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
@@ -162,22 +156,21 @@ client
 
 
     </details>
+
 </div>
             </details>
 
-
     </div>
+
 </div>
 
-
-
 ---
+
 ## **Directories and File Paths**
 
 This section sets up all the file paths required for the analysis. If you have cloned this repository, the folder structure is already set up for you, you just need to populate the directories with your dataset files. If you are writing this from scratch, make sure to point these variables to the correct locations on your machine.
 
 Defining these dynamic paths clearly upfront ensures that you can run this notebook smoothly from anywhere without running into "file not found" errors later on.
-
 
 ```python
 # BASE PATHS
@@ -192,7 +185,7 @@ MC_DIR = DATASETS_DIR / "MC_samples"
 AUX_DIR = PROJECT_DIR / "Auxillary_files"
 OUTPUT_DIR = Path.cwd() / "Outputs"
 PLOTS_DIR = OUTPUT_DIR / "Plots"
- 
+
 # Files
 GOLDEN_JSON_PATH = AUX_DIR / "Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt"
 LEPTON_ID_SF = AUX_DIR / "lepID_lookup.txt"
@@ -206,15 +199,14 @@ RUN_PERIODS_2016 = {
 
 ## **Setting Up Configurations and Labels**
 
-Next, let's set up the dictionaries and lists that will guide our analysis. 
+Next, let's set up the dictionaries and lists that will guide our analysis.
 
 Instead of hard-coding colors and labels later on, we define them all right here. We start by assigning a standard name, color, and stacking order to each of our Monte Carlo backgrounds and signal. Then, we map out the exact sequence of our cutflow stages so we can accurately track how many events survive our physics cuts. Finally, we include a list of LaTeX-formatted labels so that when we generate our plots at the end, the axes are already perfectly formatted.
-
 
 ```python
 # SAMPLE DEFINITIONS
 
-# Sample mapping 
+# Sample mapping
 SAMPLE_MAPPING = {
     'data': 'Data',
     'higgs': 'ggH_HWW',
@@ -331,8 +323,7 @@ Instead of downloading massive ROOT files locally, we stream the data directly v
 
 This next code block simply reads through those text files, extracts the URLs, and organizes them so our processor can read them.
 
-> **Tip**: At the bottom of the cell, you will notice a commented-out line that restricts the list to just one file per sample. This is very useful for running a quick local test to ensure your code works before sending the full job to the cluster.*
-
+> **Tip**: At the bottom of the cell, you will notice a commented-out line that restricts the list to just one file per sample. This is very useful for running a quick local test to ensure your code works before sending the full job to the cluster.\*
 
 ```python
 def load_urls_from_file(filepath, max_files=None):
@@ -340,7 +331,7 @@ def load_urls_from_file(filepath, max_files=None):
     urls = []
     if not os.path.exists(filepath):
         return urls
-    
+
     with open(filepath, 'r') as f:
         for line in f:
             line = line.strip()
@@ -352,9 +343,9 @@ def load_urls_from_file(filepath, max_files=None):
 
 def load_all_files(data_dir, mc_dir, max_per_sample=None):
     """Load all file URLs from directories"""
-    
+
     files_dict = {}
-    
+
     for directory in [data_dir, mc_dir]:
         if not os.path.exists(directory):
             continue
@@ -368,24 +359,24 @@ def load_all_files(data_dir, mc_dir, max_per_sample=None):
             for pattern, sample_label in SAMPLE_MAPPING.items():
                 if pattern in filename_lower:
                     label = sample_label
-                    break          
+                    break
             if not label:
                 print(f"   Unknown file: {filename} - skipping")
                 continue
-            
+
             # Load URLs
             urls = load_urls_from_file(filepath, max_per_sample)
-            
+
             if urls:
                 if label in files_dict:
                     files_dict[label].extend(urls)
                 else:
                     files_dict[label] = urls
-    
+
     return files_dict
 
 # files = load_all_files(DATA_DIR, MC_DIR, max_per_sample=1)  # TESTING
-files = load_all_files(DATA_DIR, MC_DIR)  # FULL 
+files = load_all_files(DATA_DIR, MC_DIR)  # FULL
 
 print("\n" + "="*70)
 print("FILES TO PROCESS")
@@ -399,7 +390,6 @@ print(f"{'TOTAL':20s}: {total:4d} files")
 print("="*70)
 ```
 
-    
     ======================================================================
     FILES TO PROCESS
     ======================================================================
@@ -416,13 +406,11 @@ print("="*70)
     TOTAL               :  776 files
     ======================================================================
 
-
 ## **Filtering Validated Runs**
 
 Not all the data collected by the detector is suitable for physics analysis. Sometimes certain subdetectors are offline or experiencing issues. To ensure we only process high-quality data, we use a JSON file (often called the "Golden JSON") to filter our dataset. This acts as a master list, keeping only the certified runs and luminosity blocks.
 
 If you want to dive deeper into how this works, you can read more about [validated runs](https://cms-opendata-guide.web.cern.ch/analysis/selection/validatedRuns/).
-
 
 ```python
 def load_golden_json(json_input, run_periods=None):
@@ -436,68 +424,68 @@ def load_golden_json(json_input, run_periods=None):
         golden_json = json_input
     else:
         raise TypeError(f"Expected str or dict, got {type(json_input)}")
-    
+
     valid_lumis = {}
     for run_str, lumi_ranges in golden_json.items():
         run = int(run_str)
-        
-        # Filter by run periods 
-        if run_periods is not None: 
+
+        # Filter by run periods
+        if run_periods is not None:
             in_period = any(
                 period['run_min'] <= run <= period['run_max']
                 for period in run_periods.values()
             )
             if not in_period:
                 continue
-        
+
         valid_lumis[run] = [tuple(lr) for lr in lumi_ranges]
-    
+
     return valid_lumis
 
 def apply_json_mask(arrays, json_input, run_periods=None):
 
-    valid_lumis = load_golden_json(json_input, run_periods)    
+    valid_lumis = load_golden_json(json_input, run_periods)
     runs = ak.to_numpy(arrays.run)
     lumis = ak.to_numpy(arrays.luminosityBlock)
     mask = np. zeros(len(runs), dtype=bool)
-    
+
     for run, lumi_ranges in valid_lumis.items():
         run_mask = (runs == run)
         if not np.any(run_mask):
             continue
-        # Check lumi sections 
+        # Check lumi sections
         run_lumis = lumis[run_mask]
         run_lumi_mask = np.zeros(len(run_lumis), dtype=bool)
-        for lumi_start, lumi_end in lumi_ranges: 
+        for lumi_start, lumi_end in lumi_ranges:
             run_lumi_mask |= (run_lumis >= lumi_start) & (run_lumis <= lumi_end)
         mask[run_mask] = run_lumi_mask
-    
+
     return ak.Array(mask)
 ```
 
 ## **Loading Only What We Need (Branches)**
+
 ROOT files contain hundreds of variables (called branches), but we definitely do not need to load all of them into memory. By using `uproot`, we can specify exactly which branches we care about, saving us a massive amount of RAM and processing time.
 
 > **Wait, New to ROOT terminology?**\
 > If words like "Trees" and "Branches" sound foreign to you, check out [the official ROOT manual](https://root.cern/manual/trees/) for a quick primer on how these data files are structured.
 
+For this analysis, we are primarily interested in the kinematics of electrons, muons, and a few jet-related properties.
 
-For this analysis, we are primarily interested in the kinematics of electrons, muons, and a few jet-related properties. 
-* **For real Data:** We also load the `run` and `luminosityBlock` branches to apply the JSON validation we just talked about.
-* **For Monte Carlo (MC):** We load the `genWeight` branch to handle theoretical event scaling (we will cover this in detail a bit later!).
-
+- **For real Data:** We also load the `run` and `luminosityBlock` branches to apply the JSON validation we just talked about.
+- **For Monte Carlo (MC):** We load the `genWeight` branch to handle theoretical event scaling (we will cover this in detail a bit later!).
 
 ```python
 def load_events(file_url, batch_size= 1_000_000, timeout=600, max_retries=3, retry_wait=10, is_data = False):
 
     columns = [
-        "Electron_pt", "Electron_eta", "Electron_phi", "Electron_mass", 
+        "Electron_pt", "Electron_eta", "Electron_phi", "Electron_mass",
         "Electron_mvaFall17V2Iso_WP90", "Electron_charge",
-        
-        "Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass", 
+
+        "Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass",
         "Muon_tightId", "Muon_charge", "Muon_pfRelIso04_all",
         "PuppiMET_pt", "PuppiMET_phi",
-        
+
         "Jet_pt", "Jet_eta", "Jet_phi", "Jet_mass",
         "Jet_btagDeepFlavB", "nJet", "Jet_jetId", "Jet_puId",
     ]
@@ -505,23 +493,23 @@ def load_events(file_url, batch_size= 1_000_000, timeout=600, max_retries=3, ret
     if is_data:
         columns.extend(["run","luminosityBlock"])
     else: columns.append("genWeight")
-        
+
     for attempt in range(max_retries):
         try:
-            
+
             with uproot.open(file_url, timeout=timeout) as f:
                 tree = f['Events']
-                
-                
+
+
                 for arrays in tree.iterate(columns, step_size=batch_size, library="ak"):
                     yield arrays
-                
+
                 return
-                
+
         except (TimeoutError, OSError, IOError, ConnectionError) as e:
             error_type = type(e).__name__
             file_name = file_url.split('/')[-1]
-            
+
             if attempt < max_retries - 1:
                 print(f"      {error_type} on {file_name}")
                 print(f"       Retry {attempt+1}/{max_retries-1} in {retry_wait}s...")
@@ -530,43 +518,43 @@ def load_events(file_url, batch_size= 1_000_000, timeout=600, max_retries=3, ret
                 print(f"     FAILED after {max_retries} attempts: {file_name}")
                 print(f"       Error: {str(e)[:100]}")
                 raise
-                
+
         except Exception as e:
-            
+
             file_name = file_url.split('/')[-1]
             print(f"     Unexpected error on {file_name}: {str(e)[:100]}")
             raise
 ```
 
 ---
+
 # **Event Selection**
 
-Now that we are done with the  setup, we can get to the real physics. 
+Now that we are done with the setup, we can get to the real physics.
 
 Let's take a look at the specific decay channel we are analyzing:
 
 $$H \to WW \to e\nu_e + \mu\nu_\mu$$
 
-
-Our target final state consists of an *electron*, a *muon*, and two *neutrinos*. In our dataset, this translates to an electron, a muon, and missing energy, because we cannot detect neutrinos directly with the detector. **Why?** 
+Our target final state consists of an _electron_, a _muon_, and two _neutrinos_. In our dataset, this translates to an electron, a muon, and missing energy, because we cannot detect neutrinos directly with the detector. **Why?**
 
 To isolate this specific Higgs signal from the massive background of other collision events, we will now apply a series of targeted physics cuts.\
 We will divide all the cuts into three categories:
+
 - Pre-selection
 - Global cuts
 - Signal and Control Regions
 
 ## **Pre-Selection: Selecting tight leptons**
 
-Let's kick things off by setting up our initial pre-selection cuts. 
+Let's kick things off by setting up our initial pre-selection cuts.
 
-The very first step is to isolate our "tight" leptons-which, for this analysis, means our electrons and muons. 
+The very first step is to isolate our "tight" leptons-which, for this analysis, means our electrons and muons.
 
 > **What makes a lepton "tight"?**
 > In particle physics, a tight lepton is simply one that passes a very strict set of quality and isolation criteria. This helps us guarantee that the particle we are looking at is genuinely a high-quality electron or muon, rather than a fake signal or background noise.
 
 To handle this data efficiently, we use the `ak.zip` function from Awkward Array. This allows us to bundle all the relevant particle properties into a single, neatly structured array.
-
 
 ```python
 def select_tight_leptons(arrays):
@@ -574,7 +562,7 @@ def select_tight_leptons(arrays):
     # Define selection masks
     tight_electron_mask = arrays.Electron_mvaFall17V2Iso_WP90 == 1
     tight_muon_mask = (arrays.Muon_tightId == 1) & (arrays.Muon_pfRelIso04_all < 0.15)
-    
+
     # Create structured arrays for selected leptons
     tight_electrons = ak.zip({
         "pt": arrays.Electron_pt[tight_electron_mask],
@@ -584,7 +572,7 @@ def select_tight_leptons(arrays):
         "charge": arrays.Electron_charge[tight_electron_mask],
         "flavor": ak.ones_like(arrays.Electron_pt[tight_electron_mask]) * 11
     })
-    
+
     tight_muons = ak.zip({
         "pt": arrays.Muon_pt[tight_muon_mask],
         "eta": arrays.Muon_eta[tight_muon_mask],
@@ -593,23 +581,23 @@ def select_tight_leptons(arrays):
         "charge": arrays.Muon_charge[tight_muon_mask],
         "flavor": ak.ones_like(arrays.Muon_pt[tight_muon_mask]) * 13
     })
-    
+
     # Combine into single collection
     tight_leptons = ak.concatenate([tight_electrons, tight_muons], axis=1)
-    
+
     return tight_leptons, tight_electron_mask, tight_muon_mask
 ```
 
 ## **Pre-Selection: Finding Our Lepton Pair**
 
-Now that we have our collection of "tight" leptons, we need to filter them down to the specific electron and muon candidates that match our signal. 
+Now that we have our collection of "tight" leptons, we need to filter them down to the specific electron and muon candidates that match our signal.
 
-First, we require exactly two leptons per event. Because the W bosons in our signal have opposite charges ($W^+W^-$), we specifically look for an electron and a muon with opposite electrical charges. 
+First, we require exactly two leptons per event. Because the W bosons in our signal have opposite charges ($W^+W^-$), we specifically look for an electron and a muon with opposite electrical charges.
 
 Next, we apply a few essential kinematic cuts:
-* **Transverse Momentum ($p_T$):** The leptons must pass a specific $p_T$ threshold. This ensures we are looking at real, high-energy physics events rather than low-energy background noise.
-* **Pseudorapidity ($|\eta|$):** We restrict the particles to the geometric acceptance range of the detector. If a particle is produced at an angle too close to the beamline (a very high $|\eta|$), the CMS detector cannot measure it accurately.
 
+- **Transverse Momentum ($p_T$):** The leptons must pass a specific $p_T$ threshold. This ensures we are looking at real, high-energy physics events rather than low-energy background noise.
+- **Pseudorapidity ($|\eta|$):** We restrict the particles to the geometric acceptance range of the detector. If a particle is produced at an angle too close to the beamline (a very high $|\eta|$), the CMS detector cannot measure it accurately.
 
 ```python
 def select_e_mu_events(tight_leptons, met_arrays, leading_pt_cut=25, subleading_pt_cut=13):
@@ -620,7 +608,7 @@ def select_e_mu_events(tight_leptons, met_arrays, leading_pt_cut=25, subleading_
     mask_2lep = (ak.num(sorted_leptons) == 2)
     events_2lep = sorted_leptons[mask_2lep]
     met_2lep = met_arrays[mask_2lep]
-    
+
     if len(events_2lep) == 0:
         return None, None, {}, None
     # Get leading and subleading
@@ -636,10 +624,10 @@ def select_e_mu_events(tight_leptons, met_arrays, leading_pt_cut=25, subleading_
     eta_subleading = ((subleading.flavor == 11) & (abs(subleading.eta) < 2.5)) | \
                           ((subleading.flavor == 13) & (abs(subleading.eta) < 2.4))
     mask_eta = eta_leading & eta_subleading
-    
+
     # Final selection
     final_mask = mask_1e1mu & mask_opposite_charge & mask_pt & mask_eta
-    
+
     # Store cutflow information
     cutflow = {
         'events_2lep': len(leading),
@@ -647,26 +635,25 @@ def select_e_mu_events(tight_leptons, met_arrays, leading_pt_cut=25, subleading_
         'events_opposite_charge': ak.sum(mask_1e1mu & mask_opposite_charge),
         'events_final': ak.sum(final_mask)
     }
-    
+
     return leading[final_mask], subleading[final_mask], cutflow, met_2lep[final_mask]
 ```
 
 ## **Jet Selection and Lepton Cleaning**
 
-Next up, we need to look at the jets in our event. Jets are essentially concentrated sprays of particles produced by quarks and gluons. 
+Next up, we need to look at the jets in our event. Jets are essentially concentrated sprays of particles produced by quarks and gluons.
 
-First, we bundle the jet properties and apply some quality checks. For jets with lower momentum ($p_T < 50$ GeV), we also require a passing "Pileup ID".  
+First, we bundle the jet properties and apply some quality checks. For jets with lower momentum ($p_T < 50$ GeV), we also require a passing "Pileup ID".
 
->**Why?**\
-> Because the LHC smashes many protons together at once, creating overlapping background collisions (pileup) that can fake low-energy jets. 
+> **Why?**\
+> Because the LHC smashes many protons together at once, creating overlapping background collisions (pileup) that can fake low-energy jets.
 
-Then comes a crucial step: **Lepton Cleaning**. We calculate the angular distance, known as $\Delta R$, between all of our jets and the tight leptons we selected earlier. If a jet is too close to an electron or muon ($\Delta R < 0.4$), we throw the jet away.  
+Then comes a crucial step: **Lepton Cleaning**. We calculate the angular distance, known as $\Delta R$, between all of our jets and the tight leptons we selected earlier. If a jet is too close to an electron or muon ($\Delta R < 0.4$), we throw the jet away.
 
->**Why do we do this?**\
->Because a high-energy electron deposits a lot of energy into the calorimeter, and the detector's clustering algorithms might accidentally label that energy splash as a "jet". We clean them to ensure we are not double-counting our leptons!
+> **Why do we do this?**\
+> Because a high-energy electron deposits a lot of energy into the calorimeter, and the detector's clustering algorithms might accidentally label that energy splash as a "jet". We clean them to ensure we are not double-counting our leptons!
 
 Finally, we sort our surviving, clean jets by their $p_T$ and categorize the event into one of three bins: **0-jet**, **1-jet**, or **2-jet**.
-
 
 ```python
 def count_jets(arrays, jet_pt_threshold=30, tight_leptons=None):
@@ -678,7 +665,7 @@ def count_jets(arrays, jet_pt_threshold=30, tight_leptons=None):
         "mass": arrays.Jet_mass,
         "jetId": arrays.Jet_jetId,
         "btagDeepFlavB": arrays.Jet_btagDeepFlavB,
-        "puId": arrays.Jet_puId 
+        "puId": arrays.Jet_puId
     })
     # Step 2: Good jet selection
     pu_id_mask = (jets.pt > 50) | ((jets.pt <= 50) & (jets.puId >= 4))
@@ -690,18 +677,18 @@ def count_jets(arrays, jet_pt_threshold=30, tight_leptons=None):
         jets_phi = jets.phi[:, :, None]
         leps_eta = tight_leptons.eta[:, None, :]
         leps_phi = tight_leptons.phi[:, None, :]
-        
+
         deta = jets_eta - leps_eta
         dphi = (jets_phi - leps_phi + np.pi) % (2 * np.pi) - np.pi
         dr = np.sqrt(deta**2 + dphi**2)
-        
+
         min_dr = ak.min(dr, axis=-1)
-        
+
         min_dr = ak.fill_none(min_dr, 999.0)
         good_mask = good_mask & (min_dr > 0.4)
-    
+
     good_jets = jets[good_mask]
-    
+
     # Step 4: Sort by pT
     sorted_jets = good_jets[ak.argsort(good_jets.pt, axis=1, ascending=False)]
     lead_jet_pt = ak.fill_none(ak.firsts(sorted_jets.pt), 0)
@@ -710,9 +697,9 @@ def count_jets(arrays, jet_pt_threshold=30, tight_leptons=None):
     isZeroJet = (lead_jet_pt < jet_pt_threshold)
     isOneJet = (lead_jet_pt >= jet_pt_threshold) & (sublead_jet_pt < jet_pt_threshold)
     isTwoJet = (sublead_jet_pt >= jet_pt_threshold) # At least 2 jets
-    
+
     n_jets = ak.sum(sorted_jets.pt >= jet_pt_threshold, axis=1)
-    
+
     return n_jets, good_mask, sorted_jets, isZeroJet, isOneJet, isTwoJet
 ```
 
@@ -720,20 +707,20 @@ def count_jets(arrays, jet_pt_threshold=30, tight_leptons=None):
 
 Now we need to identify "b-jets"-jets that originate from bottom quarks.
 
->**Why do we care about b-jets?**\
->Because of top quarks! A top quark decays almost exclusively into a W boson and a bottom quark. Since top-antitop pair production ($t\bar{t}$) produces two W bosons, it mimics our $H \to WW$ signal perfectly and is one of our biggest backgrounds. 
+> **Why do we care about b-jets?**\
+> Because of top quarks! A top quark decays almost exclusively into a W boson and a bottom quark. Since top-antitop pair production ($t\bar{t}$) produces two W bosons, it mimics our $H \to WW$ signal perfectly and is one of our biggest backgrounds.
 
 In the code below, we identify these b-jets and split our logic into two paths:
-* **The Signal Region Veto:** If we are looking for our Higgs signal, we *veto* (throw away) any event that contains a b-jet. This effectively kills that massive top quark background.
-* **The Top Control Region:** If we want to study our background to understand it better, we do the exact opposite. We deliberately *require* events to have b-jets, giving us a pure sample of top quarks to measure.
 
+- **The Signal Region Veto:** If we are looking for our Higgs signal, we _veto_ (throw away) any event that contains a b-jet. This effectively kills that massive top quark background.
+- **The Top Control Region:** If we want to study our background to understand it better, we do the exact opposite. We deliberately _require_ events to have b-jets, giving us a pure sample of top quarks to measure.
 
 ```python
 def get_bjet_categories(arrays, btag_threshold=0.2489, eta_max=2.5):
     """
     Get different b-jet categories needed for SR/CR selection.
     """
-    # Base b-jet selection 
+    # Base b-jet selection
     base_bjet_mask = (
         (arrays.Jet_jetId >= 2) &
         (abs(arrays.Jet_eta) < eta_max) &
@@ -745,11 +732,11 @@ def get_bjet_categories(arrays, btag_threshold=0.2489, eta_max=2.5):
     bjets_30 = base_bjet_mask & (arrays.Jet_pt > 30)
     # Count per event
     n_bjets_20 = ak.sum(bjets_20, axis=1)
-    n_bjets_20_30 = ak.sum(bjets_20_30, axis=1) 
+    n_bjets_20_30 = ak.sum(bjets_20_30, axis=1)
     n_bjets_30 = ak.sum(bjets_30, axis=1)
     return {
-        # For Signal Regions 
-        'passes_bjet_veto': n_bjets_20 == 0,  
+        # For Signal Regions
+        'passes_bjet_veto': n_bjets_20 == 0,
         # For Control Regions
         'has_btag_20_30': n_bjets_20_30 > 0,  # Top CR 0-jet
         'has_btag_30': n_bjets_30 > 0,        # Top CR 1-jet, 2-jet
@@ -770,20 +757,20 @@ def apply_bjet_selections(arrays):
 ```
 
 ---
+
 ## **Global Cuts**
 
-With our particles clearly identified and cleaned, we now apply a set of "global" baseline cuts. Every single event must pass these filters, regardless of how many jets it has. 
+With our particles clearly identified and cleaned, we now apply a set of "global" baseline cuts. Every single event must pass these filters, regardless of how many jets it has.
 
 Here are the three fundamental physics checks we perform in this block:
 
-* **Missing Transverse Energy (MET > 20 GeV):** We require a noticeable amount of missing energy in the transverse plane.
+- **Missing Transverse Energy (MET > 20 GeV):** We require a noticeable amount of missing energy in the transverse plane.
 
-  >**Why?**
-  >Because our $H \to WW$ signal produces two neutrinos that escape the detector entirely! If an event has almost zero missing energy, it is highly unlikely to be the signal we are looking for.
+  > **Why?**
+  > Because our $H \to WW$ signal produces two neutrinos that escape the detector entirely! If an event has almost zero missing energy, it is highly unlikely to be the signal we are looking for.
 
-* **Dilepton Momentum ($p_T^{\ell\ell} > 30$ GeV):** The combined transverse momentum of our electron and muon system must be reasonably high. 
-* **Invariant Mass ($m_{\ell\ell} > 12$ GeV):** The calculated invariant mass of the electron-muon pair must be at least 12 GeV. This low-mass threshold is a standard trick to strip away background noise from low-mass resonances.
-
+- **Dilepton Momentum ($p_T^{\ell\ell} > 30$ GeV):** The combined transverse momentum of our electron and muon system must be reasonably high.
+- **Invariant Mass ($m_{\ell\ell} > 12$ GeV):** The calculated invariant mass of the electron-muon pair must be at least 12 GeV. This low-mass threshold is a standard trick to strip away background noise from low-mass resonances.
 
 ```python
 def apply_global_cuts(leading, subleading, met, mt_higgs, mt_l2_met,ptlls,masses):
@@ -791,7 +778,7 @@ def apply_global_cuts(leading, subleading, met, mt_higgs, mt_l2_met,ptlls,masses
     # Global cuts
     mask_met_pt = met.pt > 20
     mask_ptll  = ptlls > 30
-    mask_mll = masses > 12 
+    mask_mll = masses > 12
     # Combine all masks
     global_mask =  mask_met_pt & mask_ptll & mask_mll
     return global_mask, {
@@ -808,23 +795,23 @@ After all the cleaning and baseline filtering, we finally define our **Signal Re
 
 To enter the signal region, an event must pass our previous global cuts, survive the b-jet veto, and pass two new, crucial kinematic thresholds:
 
-* **Higgs Transverse Mass ($m_T^H > 60$ GeV)**
-* **Subleading Lepton Transverse Mass ($m_T(\ell_2, E_T^{miss}) > 30$ GeV)**
+- **Higgs Transverse Mass ($m_T^H > 60$ GeV)**
+- **Subleading Lepton Transverse Mass ($m_T(\ell_2, E_T^{miss}) > 30$ GeV)**
 
->**Why do we use "Transverse Mass" instead of normal mass?** \
->Because of our invisible neutrinos! If we could detect all the decay products, we would simply calculate the standard invariant mass, and our signal would form a peak right at the Higgs mass (125 GeV). But since the neutrinos escape, we only have the *transverse* (perpendicular) components of the missing energy. 
+> **Why do we use "Transverse Mass" instead of normal mass?** \
+> Because of our invisible neutrinos! If we could detect all the decay products, we would simply calculate the standard invariant mass, and our signal would form a peak right at the Higgs mass (125 GeV). But since the neutrinos escape, we only have the _transverse_ (perpendicular) components of the missing energy.
 
 By calculating the transverse mass ($m_T$), we can still reconstruct a recognizable shape for our Higgs signal, even with missing pieces! The cut on the subleading lepton's $m_T$ specifically helps us suppress backgrounds where a fake lepton or a mismeasured jet creates artificial missing energy.
 
 Finally, the function splits our surviving events into three distinct buckets:
-* **SR_0jet:** The cleanest region, dominated by standard gluon-gluon fusion.
-* **SR_1jet:** Slightly messier, but still holds a lot of signal.
-* **SR_2jet:** Here, we also apply an $m_{jj}$ (invariant mass of the two jets) window cut.
 
+- **SR_0jet:** The cleanest region, dominated by standard gluon-gluon fusion.
+- **SR_1jet:** Slightly messier, but still holds a lot of signal.
+- **SR_2jet:** Here, we also apply an $m_{jj}$ (invariant mass of the two jets) window cut.
 
 ```python
-def apply_signal_region_cuts(leading, subleading, met, masses, ptlls, mt_higgs, 
-                           mt_l2_met, isZeroJet, isOneJet, isTwoJet, 
+def apply_signal_region_cuts(leading, subleading, met, masses, ptlls, mt_higgs,
+                           mt_l2_met, isZeroJet, isOneJet, isTwoJet,
                            bjet_veto_mask, mjj=None):
     """Apply Signal Region selections for all jet categories."""
     sr_specific_cuts = (
@@ -833,7 +820,7 @@ def apply_signal_region_cuts(leading, subleading, met, masses, ptlls, mt_higgs,
                        ( masses > 12)  &
                         (mt_higgs >60) &
                         (mt_l2_met >30) &
-                        bjet_veto_mask        
+                        bjet_veto_mask
                         )
     sr_base =  sr_specific_cuts
     # Apply mjj window for 2-jet category
@@ -851,33 +838,35 @@ def apply_signal_region_cuts(leading, subleading, met, masses, ptlls, mt_higgs,
 
 ## **Defining the Control Regions (CR)**
 
-While the Signal Region is designed to capture our Higgs boson, a **Control Region** does the exact opposite. A control region is a specialized subset of data deliberately designed to be entirely background! 
+While the Signal Region is designed to capture our Higgs boson, a **Control Region** does the exact opposite. A control region is a specialized subset of data deliberately designed to be entirely background!
 
->**Why do we want a region full of background?**\
->Because simulations aren't perfect. By creating a region rich in a specific background (like top quarks or Z bosons) but free of any Higgs signal, we can compare our Monte Carlo simulations to real Data. If they match well in the Control Region, we can trust our background estimates in the Signal Region. 
+> **Why do we want a region full of background?**\
+> Because simulations aren't perfect. By creating a region rich in a specific background (like top quarks or Z bosons) but free of any Higgs signal, we can compare our Monte Carlo simulations to real Data. If they match well in the Control Region, we can trust our background estimates in the Signal Region.
 
 In this block, we define two main types of control regions:
 
 ### 1. The Top Control Region (`CR_top`)
-To isolate events where top quarks were produced, we take our baseline cuts and explicitly *require* the presence of b-tagged jets. 
+
+To isolate events where top quarks were produced, we take our baseline cuts and explicitly _require_ the presence of b-tagged jets.
 
 We also require the invariant mass of the leptons to be greater than 50 GeV ($m_{\ell\ell} > 50$). Since, top quarks are massive, and the leptons they produce tend to have a wide opening angle and high momentum, pushing their combined invariant mass higher.
 
 ### 2. The Tau-Tau Control Region (`CR_tau`)
-One of our trickiest backgrounds is the Drell-Yan process where a Z boson decays into two tau leptons ($Z \to \tau\tau$), which then decay into an electron, a muon, and *four* neutrinos! 
+
+One of our trickiest backgrounds is the Drell-Yan process where a Z boson decays into two tau leptons ($Z \to \tau\tau$), which then decay into an electron, a muon, and _four_ neutrinos!
 
 To isolate this background, we do two things:
-* **We invert the Higgs cut:** We require $m_T^H < 60$ GeV. Since our Signal Region required this to be *greater* than 60, this ensures our Tau-Tau Control Region has absolutely zero overlap with our signal.
-* **We apply a shifted Z-mass window:** We restrict the lepton invariant mass to be between 40 and 80 GeV.
-  >**Why not the actual Z boson mass of 91 GeV?** \
+
+- **We invert the Higgs cut:** We require $m_T^H < 60$ GeV. Since our Signal Region required this to be _greater_ than 60, this ensures our Tau-Tau Control Region has absolutely zero overlap with our signal.
+- **We apply a shifted Z-mass window:** We restrict the lepton invariant mass to be between 40 and 80 GeV.
+  > **Why not the actual Z boson mass of 91 GeV?** \
   > Because the tau leptons decay and release neutrinos, carrying away a chunk of the energy. This shifts the visible mass of the electron-muon pair significantly lower than the true Z mass peak!
 
 Just like before, we split these control regions into 0-jet, 1-jet, and 2-jet categories to match the structure of our signal regions.
 
-
 ```python
-def apply_control_region_cuts(leading, subleading, met, masses, ptlls, mt_higgs, 
-                            mt_l2_met, isZeroJet, isOneJet, isTwoJet, 
+def apply_control_region_cuts(leading, subleading, met, masses, ptlls, mt_higgs,
+                            mt_l2_met, isZeroJet, isOneJet, isTwoJet,
                             bjet_info, mjj=None):
     """Apply Control Region selections for all jet categories."""
     cr_base = (
@@ -895,18 +884,18 @@ def apply_control_region_cuts(leading, subleading, met, masses, ptlls, mt_higgs,
     # === TOP CONTROL REGIONS ===
     cr_top_base = cr_base & (masses > 50)
     cr_regions['CR_top_0jet'] = (
-        cr_top_base & 
-        isZeroJet & 
+        cr_top_base &
+        isZeroJet &
         bjet_info['has_btag_20_30']  # 20 < pT < 30 GeV b-jets for 0-jet
     )
     cr_regions['CR_top_1jet'] = (
-        cr_top_base & 
-        isOneJet & 
+        cr_top_base &
+        isOneJet &
         bjet_info['has_btag_30']     # pT > 30 GeV b-jets for 1-jet
     )
     cr_regions['CR_top_2jet'] = (
-        cr_top_base & 
-        isTwoJet & 
+        cr_top_base &
+        isTwoJet &
         mjj_window &
         bjet_info['has_btag_30']     # pT > 30 GeV b-jets for 2-jet
     )
@@ -914,23 +903,23 @@ def apply_control_region_cuts(leading, subleading, met, masses, ptlls, mt_higgs,
 ```
 
 ---
+
 ## **Calculating Kinematic Variables**
 
-Now that we have isolated the exact particles we want, we need to calculate the final variables that will define our signal regions and fill our histograms. 
+Now that we have isolated the exact particles we want, we need to calculate the final variables that will define our signal regions and fill our histograms.
 
-To do this, we use the `cal_kinematic_var` function. You will notice the very first thing we do is pass our raw particle data into the `vector` library to create a `lepton_vector`. 
+To do this, we use the `cal_kinematic_var` function. You will notice the very first thing we do is pass our raw particle data into the `vector` library to create a `lepton_vector`.
 
->**Why do we use a special `vector` library for this?**
->Because these particles are moving at nearly the speed of light in three-dimensional space! Calculating how their energies and momenta combine using standard trigonometry is a massive headache. The `vector` library handles all that complex relativistic math behind the scenes. 
+> **Why do we use a special `vector` library for this?**
+> Because these particles are moving at nearly the speed of light in three-dimensional space! Calculating how their energies and momenta combine using standard trigonometry is a massive headache. The `vector` library handles all that complex relativistic math behind the scenes.
 
 Instead of writing out long equations, we can treat the particles as simple objects. If we want to know the properties of the combined electron-muon system, we literally just add them together in the code: `dilepton = lepton_1 + lepton_2`. The library instantly calculates their combined invariant mass and momentum for us!
 
 Once we have our vectors set up, we calculate a few key features:
 
-* **Mass and Momentum (`masses`, `ptll`):** We simply ask our new `dilepton` object for its combined mass and transverse momentum.
-* **Angular Difference (`dphi`):** We calculate the angle between the electron and the muon. 
-* **Transverse Mass (`mt_higgs`, `mt_l2_met`):** Finally, we mix the properties of our visible leptons with the Missing Transverse Energy (MET). As we discussed earlier, this helps us reconstruct the mass of the Higgs and the W boson even though the neutrinos escaped the detector.
-
+- **Mass and Momentum (`masses`, `ptll`):** We simply ask our new `dilepton` object for its combined mass and transverse momentum.
+- **Angular Difference (`dphi`):** We calculate the angle between the electron and the muon.
+- **Transverse Mass (`mt_higgs`, `mt_l2_met`):** Finally, we mix the properties of our visible leptons with the Missing Transverse Energy (MET). As we discussed earlier, this helps us reconstruct the mass of the Higgs and the W boson even though the neutrinos escaped the detector.
 
 ```python
 def wrap_angle_to_pi(angle):
@@ -944,7 +933,7 @@ def create_lepton_vector(lepton):
         "phi": lepton.phi,
         "mass": lepton.mass
     })
-    
+
 def cal_kinematic_var(leading, subleading, met):
     # Create vectors
     lepton_1 = create_lepton_vector(leading)
@@ -954,14 +943,14 @@ def cal_kinematic_var(leading, subleading, met):
     masses = dilepton.mass
     ptll = dilepton.pt
     dphi = wrap_angle_to_pi(leading.phi - subleading.phi)
-    # Higgs Transverse Mass 
+    # Higgs Transverse Mass
     # dll_et = np.sqrt(dilepton.pt**2 + dilepton.mass**2)
     mt_higgs_dphi = wrap_angle_to_pi(dilepton.phi - met.phi)
     # term_1 = masses**2
     # term_2 = 2 * (dll_et * met.pt - dilepton.pt * met.pt * np.cos(mt_higgs_dphi))
     # mt_higgs = np.sqrt(term_1 + term_2)
     mt_higgs = np.sqrt(2 * ptll * met.pt * (1 - np.cos(mt_higgs_dphi)))
-    
+
     # Lepton 2 Transverse Mass
     mt_l2_met_dphi = wrap_angle_to_pi(subleading.phi - met.phi)
     mt_l2_met = np.sqrt(2 * subleading.pt * met.pt * (1 - np.cos(mt_l2_met_dphi)))
@@ -973,15 +962,14 @@ def cal_kinematic_var(leading, subleading, met):
 
 Remember earlier when we sorted our events into 0-jet, 1-jet, and 2-jet categories? If an event lands in the 2-jet bucket, we need to take one extra step to analyze the relationship between those two jets.
 
-First, we use `calculate_mjj`. Just like we did with our electron and muon, we use 4-vectors to combine the two highest-energy jets and calculate their combined invariant mass ($m_{jj}$). 
+First, we use `calculate_mjj`. Just like we did with our electron and muon, we use 4-vectors to combine the two highest-energy jets and calculate their combined invariant mass ($m_{jj}$).
 
-Next, we pass that mass into `apply_mjj_window`. If you look closely at the math, you will notice we keep events where $m_{jj} < 65$ or $m_{jj} > 105$. This means we are deliberately *excluding* all events that land right in the middle between 65 and 105 GeV. 
+Next, we pass that mass into `apply_mjj_window`. If you look closely at the math, you will notice we keep events where $m_{jj} < 65$ or $m_{jj} > 105$. This means we are deliberately _excluding_ all events that land right in the middle between 65 and 105 GeV.
 
 > **Why do we cut out the middle?**\
-> Because that specific mass range is exactly where the W and Z bosons live! 
+> Because that specific mass range is exactly where the W and Z bosons live!
 
 If the two jets have a combined mass in that 65-105 GeV window, they most likely came from a background W or Z boson decaying into quarks, rather than the specific Higgs process we are hunting for. Slicing out that middle part is a effective way to cut down our background!
-
 
 ```python
 def calculate_mjj(jets):
@@ -1010,7 +998,7 @@ def calculate_mjj(jets):
         mjj_calculated = dijet.mass
         # Apply only where we have 2+ jets
         mjj = ak.where(has_two_jets, mjj_calculated, 0.0)
-    
+
     return mjj
 
 def apply_mjj_window(mjj):
@@ -1018,7 +1006,9 @@ def apply_mjj_window(mjj):
 ```
 
 ---
+
 # **DATA-MC Corrections**
+
 ## **Scaling the Monte Carlo Simulations**
 
 Next, we define our `LUMINOSITY` and a large dictionary containing the specific properties of our Monte Carlo (MC) samples.
@@ -1028,9 +1018,9 @@ Next, we define our `LUMINOSITY` and a large dictionary containing the specific 
 
 To make our simulated backgrounds accurately represent the real world, we must scale each MC event so that the proportions match reality. We do this using three key numbers:
 
-* **Luminosity ($L$):** The total amount of data collected. For our [2016G and 2016H data](https://opendata.cern.ch/record/1059), this is $16{,}393 \text{ pb}^{-1}$. You can read [this](https://cds.cern.ch/record/941318/files/p361.pdf) if you want to learn more about luminosity in collisions.
-* **Cross Section ($\sigma$):** The fundamental quantum mechanical probability of a specific physics process occurring during a proton–proton collision.
-* **Sum of Generator Weights:** The total initial weight of all the simulated events in that specific dataset. `genWeight` is a branch inside our tree that we extracted from the MC ROOT files earlier.
+- **Luminosity ($L$):** The total amount of data collected. For our [2016G and 2016H data](https://opendata.cern.ch/record/1059), this is $16{,}393 \text{ pb}^{-1}$. You can read [this](https://cds.cern.ch/record/941318/files/p361.pdf) if you want to learn more about luminosity in collisions.
+- **Cross Section ($\sigma$):** The fundamental quantum mechanical probability of a specific physics process occurring during a proton–proton collision.
+- **Sum of Generator Weights:** The total initial weight of all the simulated events in that specific dataset. `genWeight` is a branch inside our tree that we extracted from the MC ROOT files earlier.
 
 Later in the processor, we will combine these to calculate a universal scale factor for every simulated event:
 
@@ -1040,33 +1030,32 @@ $$
 
 The `get_sample_key` function below acts as our lookup tool. When we feed a file into our processor, it checks the filename against this dictionary to retrieve the correct cross section. Notice how it deliberately skips filenames containing `Run2016` or `SingleMuon`? That is because real collision data is already physical—it should not be scaled.
 
-*Tip: If you want to dive deeper into exactly where these samples and cross-section numbers come from, refer to the **`Datasets/README_MC_Samples_2016UL.md`** and to see how the Sum_genweight is calculated refer **`notebooks/sum_genWeight`** file for detailed dataset documentation.*
-
+_Tip: If you want to dive deeper into exactly where these samples and cross-section numbers come from, refer to the **`Datasets/README_MC_Samples_2016UL.md`** and to see how the Sum_genweight is calculated refer **`notebooks/sum_genWeight`** file for detailed dataset documentation._
 
 ```python
 # Luminosity for 2016 UltraLegacy  (pb^-1)
-LUMINOSITY = 16_393.0 
+LUMINOSITY = 16_393.0
 sample_info_detailed = {
-    #   DRELL-YAN  
+    #   DRELL-YAN
     "DYJetsToLL_M-50":      { "xsec": 6025.20, "sum_genWeight": 82448537.0 },
-    #   TOP QUARK  
+    #   TOP QUARK
     "TTTo2L2Nu":            { "xsec": 87.31, "sum_genWeight": 3140127171.4748 },
     "ST_t-channel_top":     { "xsec": 44.33, "sum_genWeight": 6703802049.126 },
     "ST_t-channel_antitop": { "xsec": 26.38, "sum_genWeight": 1522100315.652 },
     "ST_tW_top":            { "xsec": 35.60, "sum_genWeight": 20635251.1008 },
     "ST_tW_antitop":        { "xsec": 35.60, "sum_genWeight": 27306324.658 },
     "ST_s-channel":         { "xsec": 3.36,  "sum_genWeight": 19429336.179 },
-    #   FAKES  
+    #   FAKES
     "WJetsToLNu":           { "xsec": 61526.7, "sum_genWeight": 9697410121705.164 },
     "TTToSemiLeptonic":     { "xsec": 364.35,  "sum_genWeight": 43548253725.284 },
-    #   V+GAMMA  
+    #   V+GAMMA
     "ZGToLLG":              { "xsec": 131.30,   "sum_genWeight": 3106465270.711 },
     "WGToLNuG":             { "xsec": 405.271, "sum_genWeight": 3353413.0 },
-    #   DIBOSON  
+    #   DIBOSON
     "WZTo3LNu":             { "xsec": 4.42965, "sum_genWeight": 4077550.6318 },
     "WZTo2Q2L":             { "xsec": 5.595,   "sum_genWeight": 129756627.882 },
     "ZZ":                   { "xsec": 16.523,  "sum_genWeight": 1151000.0 },
-    #   SIGNAL & IRREDUCIBLE  
+    #   SIGNAL & IRREDUCIBLE
     "GluGluToWW":           { "xsec": 0.5905, "sum_genWeight": 17662000.0 },
     "WWTo2L2Nu":            { "xsec": 12.1780,  "sum_genWeight": 32147079.595 },
     "Higgs":                { "xsec": 1.0315,  "sum_genWeight": 63281816.82 }
@@ -1094,8 +1083,7 @@ Even with a very detailed detector simulation, the efficiency for identifying an
 To correct for this, we load precomputed scale factor (SF) lookup tables from `Auxillary_files/lepID_lookup.txt`. These tables encode data-to-simulation efficiency ratios as functions of lepton transverse momentum ($p_T$) and pseudorapidity ($\eta$).
 
 Later, inside the event loop, the `get_sf_with_uncertainty` function evaluates each simulated lepton’s $p_T$ and $\eta$, retrieves the appropriate correction factor from the lookup table, and assigns a weight to that particle. In effect, every simulated lepton is adjusted so that the overall identification and isolation efficiency matches what was measured in real collision data.
-To see how the look-up table has been created and how these numbers are obtained see **`notebooks/Muon_EFF.ipynb`** and **`notebooks/Eff_txt_file_cleaning.ipynb`** 
-
+To see how the look-up table has been created and how these numbers are obtained see **`notebooks/Muon_EFF.ipynb`** and **`notebooks/Eff_txt_file_cleaning.ipynb`**
 
 **NOTE TO SELF: ADD THE LOCATIONS OF THIS NOTEBOOKS**
 
@@ -1106,17 +1094,15 @@ To see how the look-up table has been created and how these numbers are obtained
 Unline real collision data, the MC samples do not pass any trigger. To account for this difference, we apply a global trigger scale factor.
 A detailed procedure for getting the Trigger SF is shown in **`notebooks/Trigger_efficiency.ipynb`**
 
-
-
 ```python
 def load_lepID_data(filepath):
     """Reads a text file containing Python variables and returns a dictionary of those variables."""
     local_vars = {}
     with open(filepath, 'r') as f:
         exec(f.read(), {}, local_vars)
-        
+
     return local_vars
-    
+
 def get_sf_with_uncertainty(eta_array, pt_array, lookup_table):
     sf_out = ak.ones_like(eta_array, dtype=float)
     err_out = ak.zeros_like(eta_array, dtype=float)
@@ -1127,7 +1113,7 @@ def get_sf_with_uncertainty(eta_array, pt_array, lookup_table):
         sf_out = ak.where(mask, sf_val, sf_out)
         err_out = ak.where(mask, err_val, err_out)
     return sf_out, err_out
-    
+
 lep_data = load_lepID_data(LEPTON_ID_SF)
 
 ELECTRON_SF_DATA = lep_data.get('ELECTRON_SF_DATA', [])
@@ -1139,6 +1125,7 @@ TRIGGER_SF_ERR = 0.0008
 ```
 
 ---
+
 # **Histogram Initialization**
 
 With the event selection done, we need a structured way to store the results. In this block, we initialize the empty histograms that will eventually hold all of our processed data.
@@ -1148,10 +1135,10 @@ We start by defining the **variations** for our systematic uncertainties.
 Next, we define `variables_to_plots`. This dictionary uses the `hist` library to set up the axes, bin counts, and ranges for all the kinematic variables we want to study (like $m_{\ell\ell}$, MET, and $\Delta\phi$).
 
 Finally, the `initialize_stage_histograms` function builds a nested dictionary to keep everything highly organized. For every physics sample (like Data, Top quarks, or our Higgs signal), it generates a dedicated histogram for:
+
 1. Every stage/region of our analysis (e.g., SR_0jet, CR_top_1jet)
 2. Every kinematic variable
 3. Every systematic variation
-
 
 ```python
 VARIATIONS = ['nominal', 'trigger_up', 'trigger_down', 'ele_id_up', 'ele_id_down', 'mu_id_up', 'mu_id_down']
@@ -1189,56 +1176,62 @@ print(f"Histogram storage initialized for {len(hist_data)} samples.")
 
     Histogram storage initialized for 8 samples.
 
-
 ---
+
 # **Run Analysis**
+
 ## **The Processor Function**
 
 We have finally arrived at the engine of our analysis: the `make_processor` function. This block ties together every single helper function, cut, and scale factor we have defined so far into one massive, automated assembly line.
 
 ### 1. The Distributed Worker Setup
-You might notice that we put `import uproot`, `import awkward`, and other libraries *inside* the `processing_file` function. \
->**Why import them again inside the function?**\
->Because we are designing this code to run on a distributed cluster using Dask. If we put the imports at the top of our notebook, the remote worker wouldn't have access to them. By putting them inside the worker function, we guarantee that every single node loads its own tools before it starts working.
+
+You might notice that we put `import uproot`, `import awkward`, and other libraries _inside_ the `processing_file` function. \
+
+> **Why import them again inside the function?**\
+> Because we are designing this code to run on a distributed cluster using Dask. If we put the imports at the top of our notebook, the remote worker wouldn't have access to them. By putting them inside the worker function, we guarantee that every single node loads its own tools before it starts working.
 
 ### 2. The Cutflow Tracker
+
 Throughout the code, you will see us adding numbers to `cutflow` and `weighted_cutflow` dictionaries. This acts as our accounting book. Every time we apply a cut (like filtering for 2 leptons, or vetoing b-jets), we record exactly how many events survived.
 
 ### 3. The `fill_histograms` Helper
-Filling 9 different histograms across 7 systematic variations (like `trigger_up` or `mu_id_down`) for multiple regions would normally require hundreds of lines of repetitive code. Instead, we wrote a compact helper function that automatically applies the correct event mask and the correct systematic weight to all variables at once. 
+
+Filling 9 different histograms across 7 systematic variations (like `trigger_up` or `mu_id_down`) for multiple regions would normally require hundreds of lines of repetitive code. Instead, we wrote a compact helper function that automatically applies the correct event mask and the correct systematic weight to all variables at once.
 
 ### 4. Network Resilience
-At the bottom of the loop, there is a `try/except` block that will attempt to read a file up to 3 times before giving up. 
->**Why do we need retries?** \
->Because we are streaming ROOT files over the internet from distant servers. Small network issues and dropped connections are inevitable! Instead of letting a 2-second network glitch crash our entire hours-long analysis, we tell the worker to sleep for 3 seconds and simply try again. If it completely fails, it returns empty histograms so the rest of the analysis can continue uninterrupted.
 
+At the bottom of the loop, there is a `try/except` block that will attempt to read a file up to 3 times before giving up.
+
+> **Why do we need retries?** \
+> Because we are streaming ROOT files over the internet from distant servers. Small network issues and dropped connections are inevitable! Instead of letting a 2-second network glitch crash our entire hours-long analysis, we tell the worker to sleep for 3 seconds and simply try again. If it completely fails, it returns empty histograms so the rest of the analysis can continue uninterrupted.
 
 ```python
 def make_processor(golden_json_data, sample_info_detailed, luminosity, run_periods):
-    #        WORKER FUNCTION      
+    #        WORKER FUNCTION
     def processing_file(label, file_url, file_idx):
         import uproot
         import awkward as ak
         import numpy as np
         import vector
         import time
-        import hist 
-        
+        import hist
+
         vector.register_awkward()
-        
-        file_name = file_url.split('/')[-1] 
+
+        file_name = file_url.split('/')[-1]
         is_data = (label == 'Data')
-        
+
         specific_sample_key = get_sample_key(file_url,dict_for_xsec_mapping)
 
         empty_cutflow = {stage: 0 for stage in cutflow_stages}
-        
-        #        Updated Fill Function      
-        def fill_histograms(stage_name, mask, weights_dict, 
+
+        #        Updated Fill Function
+        def fill_histograms(stage_name, mask, weights_dict,
                            masses, met_pt, dphis, ptlls,
                            mt_higgs, mt_l2_met, mjj,
                            leading_pt, subleading_pt):
-            
+
             if not isinstance(mask, np.ndarray):
                 mask = ak.to_numpy(mask)
 
@@ -1265,23 +1258,23 @@ def make_processor(golden_json_data, sample_info_detailed, luminosity, run_perio
                 stage_histograms[stage_name]['mjj'][syst].fill(masked(mjj), weight=w)
                 stage_histograms[stage_name]['leading_pt'][syst].fill(masked(leading_pt), weight=w)
                 stage_histograms[stage_name]['subleading_pt'][syst].fill(masked(subleading_pt), weight=w)
-        
+
         try:
             # Use GLOBAL initialization
             stage_histograms = initialize_stage_histograms(stage_names, variables_to_plots, VARIATIONS)
-            
+
             cutflow = empty_cutflow.copy()
             weighted_cutflow = {stage: 0.0 for stage in cutflow_stages}
-            
+
             max_file_retries = 3
-            
+
             for file_attempt in range(max_file_retries):
                 try:
                     for arrays in load_events(file_url, batch_size= 1_000_000, is_data=is_data):
-                        
+
                         cutflow['total'] += len(arrays)
 
-                        #        SCALING & VARIATIONS INITIALIZATION      
+                        #        SCALING & VARIATIONS INITIALIZATION
                         if is_data:
                             base_weight = ak.ones_like(arrays.PuppiMET_pt, dtype=float)
                         elif specific_sample_key in sample_info_detailed:
@@ -1294,18 +1287,18 @@ def make_processor(golden_json_data, sample_info_detailed, luminosity, run_perio
                         # Initialize Dictionary of Weights
                         weights_dict = {v: base_weight for v in VARIATIONS}
 
-                        #        APPLY TRIGGER SF & UNCERTAINTY (MC ONLY)      
+                        #        APPLY TRIGGER SF & UNCERTAINTY (MC ONLY)
                         if not is_data:
                             weights_dict['nominal'] = weights_dict['nominal'] * TRIGGER_SF_VAL
                             weights_dict['trigger_up']   = weights_dict['trigger_up'] * (TRIGGER_SF_VAL + TRIGGER_SF_ERR)
                             weights_dict['trigger_down'] = weights_dict['trigger_down'] * (TRIGGER_SF_VAL - TRIGGER_SF_ERR)
-                            
+
                             for var in ['ele_id_up', 'ele_id_down', 'mu_id_up', 'mu_id_down']:
                                 weights_dict[var] = weights_dict[var] * TRIGGER_SF_VAL
 
                         weighted_cutflow['total'] += float(ak.sum(weights_dict['nominal']))
-                        
-                        #        JSON MASK (DATA ONLY)      
+
+                        #        JSON MASK (DATA ONLY)
                         if is_data and golden_json_data is not None:
                             try:
                                 json_mask = apply_json_mask(arrays, golden_json_data, run_periods=run_periods)
@@ -1319,53 +1312,53 @@ def make_processor(golden_json_data, sample_info_detailed, luminosity, run_perio
                                 arrays = arrays[json_mask]
                                 for k in weights_dict:
                                     weights_dict[k] = weights_dict[k][json_mask]
-                            except Exception as e: 
+                            except Exception as e:
                                 print(f"Warning: JSON mask failed for {file_name}: {e}")
-                        
-                        #        LEPTON SELECTION      
+
+                        #        LEPTON SELECTION
                         tight_leptons, _, _ = select_tight_leptons(arrays)
                         met = ak.zip({"pt": arrays.PuppiMET_pt, "phi": arrays.PuppiMET_phi})
-                        
+
                         leading, subleading, emu_cutflow, met_selected = select_e_mu_events(tight_leptons, met)
-                        
+
                         if leading is None or len(leading) == 0:
                             continue
 
                         sorted_leptons = tight_leptons[ak.argsort(tight_leptons.pt, ascending=False)]
                         has_2lep = ak.num(sorted_leptons) == 2
                         events_2lep = sorted_leptons[has_2lep]
-                        
+
                         if len(events_2lep) == 0:
                             continue
-                        
+
                         lead_all = events_2lep[:, 0]
                         sublead_all = events_2lep[:, 1]
-                        
+
                         mask_1e1mu = ((lead_all.flavor == 11) & (sublead_all.flavor == 13)) | \
                                      ((lead_all.flavor == 13) & (sublead_all.flavor == 11))
                         mask_charge = lead_all.charge * sublead_all.charge < 0
                         mask_pt = (lead_all.pt > 25) & (sublead_all.pt > 13)
-                        
+
                         eta_leading = ((lead_all.flavor == 11) & (abs(lead_all.eta) < 2.5)) | \
                                       ((lead_all.flavor == 13) & (abs(lead_all.eta) < 2.4))
 
                         eta_subleading = ((sublead_all.flavor == 11) & (abs(sublead_all.eta) < 2.5)) | \
                                          ((sublead_all.flavor == 13) & (abs(sublead_all.eta) < 2.4))
-                        
+
                         mask_eta = eta_leading & eta_subleading
-                        
+
                         emu_mask_2lep = mask_1e1mu & mask_charge & mask_pt & mask_eta
-                        
+
                         indices_2lep = ak.where(has_2lep)[0]
                         indices_selected = ak.to_numpy(indices_2lep[emu_mask_2lep])
-                        
+
                         emu_mask_full = np.zeros(len(has_2lep), dtype=bool)
                         emu_mask_full[indices_selected] = True
-                        
+
                         for k in weights_dict:
                             weights_dict[k] = weights_dict[k][emu_mask_full]
 
-                        #        LEPTON SCALE FACTORS & UNCERTAINTIES (MC ONLY)      
+                        #        LEPTON SCALE FACTORS & UNCERTAINTIES (MC ONLY)
                         if not is_data:
                             # 1. Prepare Electron SFs
                             is_lead_ele = (leading.flavor == 11)
@@ -1382,14 +1375,14 @@ def make_processor(golden_json_data, sample_info_detailed, luminosity, run_perio
 
                             mu_tight_nom, mu_tight_err = get_sf_with_uncertainty(mu_eta, mu_pt, MUON_TIGHT_DATA)
                             mu_iso_nom, mu_iso_err = get_sf_with_uncertainty(mu_eta, mu_pt, MUON_ISO_DATA)
-                            
+
                             # Combined Muon Nominal
                             mu_sf_nom = mu_tight_nom * mu_iso_nom
-                            
+
                             # Combined Muon Error (conservative calculation)
                             mu_sf_up = (mu_tight_nom + mu_tight_err) * (mu_iso_nom + mu_iso_err)
                             mu_sf_down = (mu_tight_nom - mu_tight_err) * (mu_iso_nom - mu_iso_err)
-                            
+
                             # Electron Up/Down
                             ele_sf_up   = ele_sf_nom + ele_sf_err
                             ele_sf_down = ele_sf_nom - ele_sf_err
@@ -1397,46 +1390,46 @@ def make_processor(golden_json_data, sample_info_detailed, luminosity, run_perio
                             # 3. Apply to Weights
                             # Nominal
                             weights_dict['nominal'] = weights_dict['nominal'] * ele_sf_nom * mu_sf_nom
-                            
+
                             # Trigger Variations
                             weights_dict['trigger_up']   = weights_dict['trigger_up'] * ele_sf_nom * mu_sf_nom
                             weights_dict['trigger_down'] = weights_dict['trigger_down'] * ele_sf_nom * mu_sf_nom
-                            
+
                             # Electron Variations
                             weights_dict['ele_id_up']    = weights_dict['ele_id_up'] * ele_sf_up * mu_sf_nom
                             weights_dict['ele_id_down']  = weights_dict['ele_id_down'] * ele_sf_down * mu_sf_nom
-                            
+
                             # Muon Variations
                             weights_dict['mu_id_up']     = weights_dict['mu_id_up'] * ele_sf_nom * mu_sf_up
                             weights_dict['mu_id_down']   = weights_dict['mu_id_down'] * ele_sf_nom * mu_sf_down
-                        
+
                         cutflow['e_mu_preselection'] += len(leading)
                         weighted_cutflow['e_mu_preselection'] += float(ak.sum(weights_dict['nominal']))
-                        
-                        #        KINEMATICS & FILLING      
+
+                        #        KINEMATICS & FILLING
                         masses, ptlls, dphis, mt_higgs, mt_l2_met = cal_kinematic_var(
                             leading, subleading, met_selected
                         )
-                        
+
                         mjj_before = ak.zeros_like(masses)
                         all_true = np.ones(len(masses), dtype=bool)
-                        
+
                         fill_histograms(
                             'before_cuts', all_true, weights_dict,
                             masses, met_selected.pt, dphis, ptlls,
                             mt_higgs, mt_l2_met, mjj_before,
                             leading.pt, subleading.pt
                         )
-                        
+
                         indices_emu = indices_selected
-                        
+
                         n_jets_full, _, sorted_jets_full, isZeroJet_full, isOneJet_full, isTwoJet_full = count_jets(
                             arrays, tight_leptons=tight_leptons
                         )
-                        
+
                         mjj_full = calculate_mjj(sorted_jets_full)
                         mjj_selected = ak.fill_none(mjj_full[indices_emu], 0.0)
-                        
+
                         global_cut_mask, _ = apply_global_cuts(
                             leading, subleading, met_selected, mt_higgs, mt_l2_met, ptlls, masses
                         )
@@ -1445,23 +1438,23 @@ def make_processor(golden_json_data, sample_info_detailed, luminosity, run_perio
                         bjet_info_selected = {
                             key: value[indices_emu] for key, value in bjet_info_full.items()
                         }
-                        
+
                         global_mask_selected = global_cut_mask & bjet_veto_selected
                         global_mask_np = ak.to_numpy(global_mask_selected)
-                        
+
                         cutflow['global_cuts'] += int(np.sum(global_mask_np))
                         weighted_cutflow['global_cuts'] += float(ak.sum(weights_dict['nominal'][global_mask_np]))
-                        
+
                         if np.sum(global_mask_np) == 0:
                             continue
-                        
+
                         fill_histograms(
                             'global', global_mask_np, weights_dict,
                             masses, met_selected.pt, dphis, ptlls,
                             mt_higgs, mt_l2_met, mjj_selected,
                             leading.pt, subleading.pt
                         )
-                        
+
                         # Jet categories
                         isZeroJet = ak.to_numpy(isZeroJet_full[indices_emu])
                         isOneJet = ak.to_numpy(isOneJet_full[indices_emu])
@@ -1473,68 +1466,68 @@ def make_processor(golden_json_data, sample_info_detailed, luminosity, run_perio
                             ('1jet', isOneJet),
                             ('2jet', isTwoJet)
                         ]
-                        
+
                         for jet_name, jet_mask in jet_categories:
                             mask = global_mask_np & jet_mask
                             n_events = int(np.sum(mask))
                             cutflow[jet_name] += n_events
                             weighted_cutflow[jet_name] += float(ak.sum(weights_dict['nominal'][mask]))
-                            
+
                             fill_histograms(
                                 jet_name, mask, weights_dict,
                                 masses, met_selected.pt, dphis, ptlls,
                                 mt_higgs, mt_l2_met, mjj_selected,
                                 leading.pt, subleading.pt
                             )
-                        
+
                         # Signal and Control Regions
                         sr_regions = apply_signal_region_cuts(
                             leading, subleading, met_selected, masses, ptlls, mt_higgs,
                             mt_l2_met, isZeroJet_full[indices_emu], isOneJet_full[indices_emu],
                             isTwoJet_full[indices_emu], bjet_veto_selected, mjj_selected
                         )
-                        
+
                         cr_regions = apply_control_region_cuts(
                             leading, subleading, met_selected, masses, ptlls, mt_higgs,
                             mt_l2_met, isZeroJet_full[indices_emu], isOneJet_full[indices_emu],
                             isTwoJet_full[indices_emu], bjet_info_selected, mjj_selected
                         )
-                        
+
                         all_regions = {**sr_regions, **cr_regions}
-                        
+
                         for region_name, region_mask in all_regions.items():
                             region_mask_np = ak.to_numpy(region_mask)
                             n_events = int(np.sum(region_mask_np))
                             cutflow[region_name] += n_events
                             weighted_cutflow[region_name] += float(ak.sum(weights_dict['nominal'][region_mask_np]))
-                            
+
                             fill_histograms(
                                 region_name, region_mask_np, weights_dict,
                                 masses, met_selected.pt, dphis, ptlls,
                                 mt_higgs, mt_l2_met, mjj_selected,
                                 leading.pt, subleading.pt
                             )
-                    
+
                     # Return results
                     return label, stage_histograms, cutflow, weighted_cutflow, None
-                    
+
                 except (OSError, IOError, ValueError) as e:
                     if file_attempt < max_file_retries - 1:
                         print(f"  {label}/{file_name}: {type(e).__name__} - Retry {file_attempt+1}/{max_file_retries}")
                         time.sleep(3)
                         continue
-                    else: 
+                    else:
                         error_msg = f"{file_name}: {type(e).__name__} after {max_file_retries} attempts - {str(e)[:100]}"
                         # Call Global Initialization on Failure
                         return label, initialize_stage_histograms(stage_names, variables_to_plots, VARIATIONS), empty_cutflow, {s: 0.0 for s in cutflow_stages}, error_msg
-                
+
                 except Exception as e:
                     error_msg = f"{file_name}: {type(e).__name__} - {str(e)[:100]}"
                     # Call Global Initialization on Failure
                     return label, initialize_stage_histograms(stage_names, variables_to_plots, VARIATIONS), empty_cutflow, {s: 0.0 for s in cutflow_stages}, error_msg
-            
+
             return label, stage_histograms, cutflow, weighted_cutflow, None
-            
+
         except Exception as e:
             import traceback
             error_msg = f"{file_name}: Unexpected error - {str(e)[:100]}"
@@ -1551,31 +1544,36 @@ With our `make_processor` function defined, this cell handles the actual computa
 Instead, we utilize **Dask** to parallelize the workload across a distributed cluster. Here is a technical breakdown of the mechanics within this execution block:
 
 ### 1. Task Distribution via `client.map`
-Instead of a standard `for` loop, we use `client.map(processing_task, arg_labels, arg_urls, arg_indices, retries=1)`. 
-* Dask takes our `processing_task` function and maps it element-wise across the lists of file URLs and labels. For a deeper look at how this operates, you can review how Dask handles [submitting tasks with client.map](https://distributed.dask.org/en/stable/client.html#distributed.Client.map).
-* This creates an independent **Task** for every single ROOT file. 
-* The Dask Scheduler instantly distributes these tasks across all available Worker nodes in the cluster. If a worker crashes or experiences a network timeout while reading a remote file, the `retries=1` argument instructs the scheduler to automatically reassign that task to a healthy worker.
 
+Instead of a standard `for` loop, we use `client.map(processing_task, arg_labels, arg_urls, arg_indices, retries=1)`.
+
+- Dask takes our `processing_task` function and maps it element-wise across the lists of file URLs and labels. For a deeper look at how this operates, you can review how Dask handles [submitting tasks with client.map](https://distributed.dask.org/en/stable/client.html#distributed.Client.map).
+- This creates an independent **Task** for every single ROOT file.
+- The Dask Scheduler instantly distributes these tasks across all available Worker nodes in the cluster. If a worker crashes or experiences a network timeout while reading a remote file, the `retries=1` argument instructs the scheduler to automatically reassign that task to a healthy worker.
 
 ### 2. Non-Blocking Execution and Futures
+
 When `client.map` is called, it does not wait for the computation to finish. Instead, it instantly returns a list of **Futures**. A Future is simply a pointer to a computation that is currently happening in the background on a remote worker, which is how Dask manages [Futures for asynchronous computation](https://distributed.dask.org/en/stable/manage-computation.html). This allows the main Jupyter notebook thread to remain active and responsive while the cluster handles the heavy processing.
 
 ### 3. Asynchronous Aggregation (`as_completed`)
+
 To collect the results, we wrap our list of Futures in Dask's `as_completed()` iterator, an approach designed to handle [task streams efficiently](https://distributed.dask.org/en/stable/api.html#distributed.as_completed).
-* **Why not use `client.gather()`?** If we waited for all tasks to finish and gathered them simultaneously, we would pull hundreds of dictionaries containing complex histograms into our local RAM all at once. This almost guarantees an Out-Of-Memory (OOM) crash.
-* **The Streaming Solution:** `as_completed` yields a Future the exact millisecond its specific worker finishes, regardless of the order they were submitted. This prevents the entire pipeline from stalling if one worker gets stuck on a particularly large or slow file.
+
+- **Why not use `client.gather()`?** If we waited for all tasks to finish and gathered them simultaneously, we would pull hundreds of dictionaries containing complex histograms into our local RAM all at once. This almost guarantees an Out-Of-Memory (OOM) crash.
+- **The Streaming Solution:** `as_completed` yields a Future the exact millisecond its specific worker finishes, regardless of the order they were submitted. This prevents the entire pipeline from stalling if one worker gets stuck on a particularly large or slow file.
 
 ### 4. On-the-Fly Reduction and Memory Management
+
 As each worker returns its tuple of results (label, histograms, cutflows), we immediately merge them into our master dictionaries (`hist_data_final` and `cutflow_final`).
 
-* Because the `hist` library supports mathematical addition, we can incrementally add the bins of a single file's histogram directly into the master histogram using the `+=` operator.
-* Once the merge is complete, we call `del result` to immediately destroy the local copy of the worker's output. Combined with `gc.collect()` at the end of the script, this adheres to Dask's best practices for [managing worker memory and avoiding OOM errors](https://distributed.dask.org/en/stable/worker-memory.html). It ensures our local memory footprint remains completely flat throughout the entire execution, no matter how many terabytes of data the cluster processes.
+- Because the `hist` library supports mathematical addition, we can incrementally add the bins of a single file's histogram directly into the master histogram using the `+=` operator.
+- Once the merge is complete, we call `del result` to immediately destroy the local copy of the worker's output. Combined with `gc.collect()` at the end of the script, this adheres to Dask's best practices for [managing worker memory and avoiding OOM errors](https://distributed.dask.org/en/stable/worker-memory.html). It ensures our local memory footprint remains completely flat throughout the entire execution, no matter how many terabytes of data the cluster processes.
 
 ### 5. Persistence
+
 Finally, the aggregated master histograms are exported to a single ROOT file (`HWW_analysis_output.root`) using `uproot.recreate`. This effectively reduces terabytes of distributed raw data into a few megabytes of dense, statistical distributions, ready for local plotting and limit-setting.
 
 If you are new to `Dask` and want to explore plese refer [Dask](https://docs.dask.org/en/stable/).
-
 
 ```python
 print("\n" + "="*70)
@@ -1589,9 +1587,9 @@ if GOLDEN_JSON_PATH.exists():
         golden_json_data = json.load(f)
 # 1. PREPARE PROCESSOR
 processing_task = make_processor(
-    golden_json_data=golden_json_data, 
-    sample_info_detailed=sample_info_detailed, 
-    luminosity=LUMINOSITY,                     
+    golden_json_data=golden_json_data,
+    sample_info_detailed=sample_info_detailed,
+    luminosity=LUMINOSITY,
     run_periods=RUN_PERIODS_2016
 )
 
@@ -1599,7 +1597,7 @@ processing_task = make_processor(
 print("Initializing storage...")
 hist_data_final = {}
 cutflow_final = {}
-weighted_cutflow_final = {}  
+weighted_cutflow_final = {}
 
 for label in files.keys():
     hist_data_final[label] = initialize_stage_histograms(stage_names, variables_to_plots, VARIATIONS)
@@ -1616,7 +1614,7 @@ for label, urls in files.items():
     is_data = (label == 'Data')
     if is_data and golden_json_data is not None:
          print(f"  {label}: Validation enabled ({len(urls)} files)")
-    
+
     for file_idx, file_url in enumerate(urls):
         arg_labels.append(label)
         arg_urls.append(file_url)
@@ -1627,11 +1625,11 @@ print(f"\nSubmitting {len(arg_urls)} files to the cluster...")
 start_time = time.perf_counter()
 
 futures = client.map(
-    processing_task, 
-    arg_labels, 
-    arg_urls, 
+    processing_task,
+    arg_labels,
+    arg_urls,
     arg_indices,
-    retries=1  
+    retries=1
 )
 
 # 5. STREAMING MERGE LOOP WITH TQDM
@@ -1641,11 +1639,11 @@ error_count = 0
 for future in tqdm(as_completed(futures), total=len(futures), unit="file"):
     try:
         result = future.result()
-        if not result: 
+        if not result:
             continue
-        
+
         label, stage_histograms, cutflow, weighted_cutflow, error = result
-        
+
         if error:
             error_count += 1
             print(f" ERROR: {error}")
@@ -1655,11 +1653,11 @@ for future in tqdm(as_completed(futures), total=len(futures), unit="file"):
         if cutflow:
             for stage, count in cutflow.items():
                 cutflow_final[label][stage] += count
-        
+
         if weighted_cutflow:
             for stage, count in weighted_cutflow.items():
                 weighted_cutflow_final[label][stage] += count
-        
+
         # B. Merge Histograms
         if stage_histograms:
             for stage_name, var_dict in stage_histograms.items():
@@ -1667,7 +1665,7 @@ for future in tqdm(as_completed(futures), total=len(futures), unit="file"):
                     for syst_name, hist_obj in syst_dict.items():
                         # In-place addition
                         hist_data_final[label][stage_name][var_name][syst_name] += hist_obj
-                        
+
         # Clear memory immediately after merging
         del result, stage_histograms, cutflow, weighted_cutflow
 
@@ -1696,7 +1694,7 @@ try:
                         hist_name = hist_name.replace(" ", "_").replace("-", "_")
                         # Write to file
                         root_file[hist_name] = hist_obj
-                        
+
     print("  Success! ROOT file saved.")
 except Exception as e:
     print(f"  Error saving ROOT file: {e}")
@@ -1730,15 +1728,14 @@ del futures, arg_urls, arg_labels, arg_indices
 gc.collect()
 ```
 
-    
     ======================================================================
-    PROCESSING START!! 
+    PROCESSING START!!
     Output Directory: /home/cms-jovyan/H-to-WW-NanoAOD-analysis/docs/analysis/Outputs
     ======================================================================
     Initializing storage...
     Preparing file lists...
       Data: Validation enabled (48 files)
-    
+
     Submitting 776 files to the cluster...
     Processing and merging results as they arrive...
 
@@ -1747,14 +1744,14 @@ gc.collect()
       0%|          | 0/776 [00:00<?, ?file/s]
 
 
-    
+
     ======================================================================
     File processing complete. Saving results...
     ======================================================================
-    
+
     Saving histograms to ROOT file: HWW_analysis_output.root...
       Success! ROOT file saved.
-    
+
     ======================================================================
     SAMPLE               |       EVENTS
     -----------------------------------
@@ -1770,12 +1767,12 @@ gc.collect()
     -----------------------------------
     TOTAL                |  583,562,724
     ======================================================================
-    
+
     Processing completed in 682.6s (11.4 min)
     Average: 0.88s per file
     Throughput: 854,969 events/sec
     ======================================================================
-    
+
 
 
 
@@ -1783,16 +1780,13 @@ gc.collect()
 
     73
 
-
-
 # **Closing the Dask Client**
 
 Finally, it's always a good practice to cleanly shut down the Dask client we initialized at the start of the notebook and delete the variables associated with it.
 
 **But why do we need to do this?**
 
-Well, Dask workers reserves a lot of CPU and memory. If we don't explicitly close the client, those resources stay locked up, which can slow down your machine or leave "zombie" processes eating up your RAM in the background. Plus, failing to close the client can leave network ports blocked, meaning you might run into annoying port conflict errors the next time you try to run the notebook. 
-
+Well, Dask workers reserves a lot of CPU and memory. If we don't explicitly close the client, those resources stay locked up, which can slow down your machine or leave "zombie" processes eating up your RAM in the background. Plus, failing to close the client can leave network ports blocked, meaning you might run into annoying port conflict errors the next time you try to run the notebook.
 
 ```python
 client.close()
@@ -1800,14 +1794,15 @@ del client
 ```
 
 ---
+
 # **Outputs**
 
-With the processing complete, it is time to examine the results of our processing. 
+With the processing complete, it is time to examine the results of our processing.
 
 During the Dask execution, we securely saved our aggregated data to disk:
-* **Histograms:** Saved in the standard ROOT format at `Outputs/HWW_analysis_output.root`.
-* **Cutflow Tables:** Saved to the `Outputs/` directory.
 
+- **Histograms:** Saved in the standard ROOT format at `Outputs/HWW_analysis_output.root`.
+- **Cutflow Tables:** Saved to the `Outputs/` directory.
 
 ```python
 def get_cutflow_rows(cutflow_data, custom_stage_info=None, custom_sample_order=None):
@@ -1815,21 +1810,21 @@ def get_cutflow_rows(cutflow_data, custom_stage_info=None, custom_sample_order=N
     Generates header and rows for the cutflow table.
     Returns the data as raw numbers (ints or floats).
     """
-    current_stage_info = custom_stage_info if custom_stage_info is not None else stage_info 
+    current_stage_info = custom_stage_info if custom_stage_info is not None else stage_info
     current_sample_order = custom_sample_order if custom_sample_order is not None else sample_order
 
     mc_samples = [s for s in current_sample_order if s != 'Data']
     table_stage_names = [s[1] for s in current_stage_info]
     stage_keys = [s[0] for s in current_stage_info]
-    
+
     header = ['Sample'] + table_stage_names
     rows = []
-    
+
     # 1. Fill rows for each sample
     for sample in current_sample_order:
-        if sample not in cutflow_data: 
+        if sample not in cutflow_data:
             continue
-            
+
         row = [sample]
         for key in stage_keys:
             if sample == 'Data' and key == 'total':
@@ -1845,7 +1840,7 @@ def get_cutflow_rows(cutflow_data, custom_stage_info=None, custom_sample_order=N
         total = sum(cutflow_data[s].get(key, 0) for s in mc_samples if s in cutflow_data)
         total_row.append(total)
     rows.append(total_row)
-    
+
     return header, rows
 
 def save_cutflows(cutflow_final, weighted_cutflow_final, output_dir):
@@ -1854,18 +1849,18 @@ def save_cutflows(cutflow_final, weighted_cutflow_final, output_dir):
     - Raw events -> Cutflow_Raw.csv (Formatted as Integers, no scientific notation)
     - Weighted events -> Cutflow_scaled.csv (Formatted to 2 decimal places, no scientific notation)
     """
-    
+
     # 1. Save Raw Events (Unweighted)
     header_raw, rows_raw = get_cutflow_rows(cutflow_final)
     raw_path = output_dir / "Cutflow_Raw.csv"
-    
-    # Format Raw numbers: Force 0 decimal places 
+
+    # Format Raw numbers: Force 0 decimal places
     formatted_rows_raw = []
     for row in rows_raw:
         sample_name = row[0]
         formatted = [sample_name] + [f"{float(val):.0f}" for val in row[1:]]
         formatted_rows_raw.append(formatted)
-    
+
     try:
         with open(raw_path, 'w', newline='') as f:
             writer = csv.writer(f)
@@ -1878,8 +1873,8 @@ def save_cutflows(cutflow_final, weighted_cutflow_final, output_dir):
     if weighted_cutflow_final:
         header_w, rows_w = get_cutflow_rows(weighted_cutflow_final)
         weighted_path = output_dir / "Cutflow_scaled.csv"
-        
-        # Format Weighted numbers: Force 2 decimal places 
+
+        # Format Weighted numbers: Force 2 decimal places
         formatted_rows_w = []
         for row in rows_w:
             sample_name = row[0]
@@ -1895,11 +1890,10 @@ def save_cutflows(cutflow_final, weighted_cutflow_final, output_dir):
             print(f"Failed to save Weighted CSV: {e}")
 ```
 
-
 ```python
 save_cutflows(
-    cutflow_final=cutflow_final, 
-    weighted_cutflow_final=weighted_cutflow_final, 
+    cutflow_final=cutflow_final,
+    weighted_cutflow_final=weighted_cutflow_final,
     output_dir=OUTPUT_DIR
 )
 df = pd.read_csv(OUTPUT_DIR / "Cutflow_scaled.csv", index_col=0)
@@ -1907,13 +1901,12 @@ rows_to_highlight = [df.index[0], df.index[-1]]
 styled_df = df.style.format("{:,.2f}") \
     .background_gradient(cmap="Blues", axis=0) \
     .set_properties(
-        subset=pd.IndexSlice[rows_to_highlight, :], 
+        subset=pd.IndexSlice[rows_to_highlight, :],
         **{'font-weight': 'bold'}
     )
 
 display(styled_df)
 ```
-
 
 <style type="text/css">
 #T_9891e_row0_col0 {
@@ -2337,26 +2330,25 @@ display(styled_df)
   </tbody>
 </table>
 
-
-
 ## **Loading Processed Data from ROOT**
-Once the processing is done, it is generally not a good idea to rely solely on the results provided by the main processing loop—which in our case is `hist_data_final`. If the server unexpectedly crashes or we disconnect from it, we could lose all our progress. 
+
+Once the processing is done, it is generally not a good idea to rely solely on the results provided by the main processing loop—which in our case is `hist_data_final`. If the server unexpectedly crashes or we disconnect from it, we could lose all our progress.
 
 Therefore, we will use the `HWW_analysis_output.root` file that we created during the processing stage to load the dictionary containing all our information.
 
 **Why is this the preferred workflow?**
-* **Persistence:** The ROOT file acts as a permanent snapshot of our results. We can close the notebook, come back days later, and pick up exactly where we left off without rerunning the Dask cluster.
-* **Memory Efficiency:** Instead of keeping every single histogram in the active Python RAM, we can use `uproot` to surgically extract only the specific regions or variables we need for a particular plot.
-* **Portability:** This output file is relatively small (megabytes instead of the terabytes of raw data we started with), making it easy to share with collaborators or move to a local machine for final styling and plotting.
+
+- **Persistence:** The ROOT file acts as a permanent snapshot of our results. We can close the notebook, come back days later, and pick up exactly where we left off without rerunning the Dask cluster.
+- **Memory Efficiency:** Instead of keeping every single histogram in the active Python RAM, we can use `uproot` to surgically extract only the specific regions or variables we need for a particular plot.
+- **Portability:** This output file is relatively small (megabytes instead of the terabytes of raw data we started with), making it easy to share with collaborators or move to a local machine for final styling and plotting.
 
 In the following cell, we use `uproot` to open this file and reconstruct our nested dictionary structure.
-
 
 ```python
 def restore_histograms(sample_list, stage_names, vars_dict, variations, root_file_path):
     """
     Reconstructs the full nested dictionary of histograms from a saved ROOT file.
-    
+
     Parameters
     ----------
     sample_list : list
@@ -2375,23 +2367,23 @@ def restore_histograms(sample_list, stage_names, vars_dict, variations, root_fil
     dict
         The fully populated hist_data dictionary.
     """
-    
+
     path = Path(root_file_path)
     if not path.exists():
         print(f"CRITICAL: ROOT file not found at {path}")
         return {}
 
     print(f"Restoring histograms from: {path.name}")
-    
+
     hist_data = {}
-    
+
     # Open file once
     with uproot.open(path) as file:
         # Loop through known structure to find matching keys
         for sample in sample_list:
             # 1. Initialize empty structure for this sample
             hist_data[sample] = initialize_stage_histograms(stage_names, vars_dict, variations)
-            
+
             # 2. Fill with data from ROOT file
             for stage in stage_names:
                 for var in vars_dict.keys():
@@ -2400,17 +2392,17 @@ def restore_histograms(sample_list, stage_names, vars_dict, variations, root_fil
                         # Format: Sample_Stage_Variable_Variation
                         hist_name = f"{sample}_{stage}_{var}_{syst}"
                         hist_name = hist_name.replace(" ", "_").replace("-", "_")
-                        
+
                         if hist_name in file:
                             # .to_hist() converts Uproot object back to boost_histogram
                             hist_data[sample][stage][var][syst] = file[hist_name].to_hist()
-                            
+
     print(f"Successfully restored data for {len(hist_data)} samples.")
     return hist_data
 
 # root_file_path
 hist_data_final = restore_histograms(
-    sample_list=sorted(files.keys()),       
+    sample_list=sorted(files.keys()),
     stage_names=stage_names,
     vars_dict=variables_to_plots,
     variations=VARIATIONS,
@@ -2421,76 +2413,71 @@ hist_data_final = restore_histograms(
     Restoring histograms from: HWW_analysis_output.root
     Successfully restored data for 9 samples.
 
-
 We can use `type()` to confirm that our results were successfully aggregated into a Python dictionary.
-
 
 ```python
 type(hist_data_final)
 ```
 
-
-
-
     dict
 
-
-
 ---
+
 # **Plots**
+
 We will generate two distinct types of plots:
 
 1. **Superimposed Plots (Shape Analysis)**\
-In these plots, we normalize the area of every process to `1.0` and overlay them on the same axes.
-> **Why?**\
-> This allows us to ignore how "large" a process is and focus purely on its shape. It is the best way to see how our selection cuts change the kinematic distributions of our signal compared to the background at different stages of the analysis.
+   In these plots, we normalize the area of every process to `1.0` and overlay them on the same axes.
+
+   > **Why?**\
+   > This allows us to ignore how "large" a process is and focus purely on its shape. It is the best way to see how our selection cuts change the kinematic distributions of our signal compared to the background at different stages of the analysis.
 
 2. **Stacked Plots (Yield and Region Analysis)**\
-Here, we stack the backgrounds on top of each other and layer our signal (and eventually our Data) on top.
->**Why?**\
->It allows us to visualize the total yield (number of events) and see exactly how much signal is out above the background. This is where we truly "see" the Signal and Control Regions we defined earlier and can judge how well our simulations match the reality of the detector.
+   Here, we stack the backgrounds on top of each other and layer our signal (and eventually our Data) on top.
+   > **Why?**\
+   > It allows us to visualize the total yield (number of events) and see exactly how much signal is out above the background. This is where we truly "see" the Signal and Control Regions we defined earlier and can judge how well our simulations match the reality of the detector.
 
 ## **Superimposed plots**
 
-
 ```python
 def plot_stage_comparison(variable, var_props, hist_data_all, output_dir=None):
-    
+
     stages = ['before_cuts', 'global', '0jet', '1jet', '2jet']
     stage_labels = [r'Pre-Selection ', r'Global cuts', r'0-jet', r'1-jet', r'$\geq$2-jet']
-    
+
     # Create figure
-    fig, axes = plt.subplots(1, 5, figsize=(30, 7), dpi= 300) 
-    
+    fig, axes = plt.subplots(1, 5, figsize=(30, 7), dpi= 300)
+
     var_map = {
         'mass': 'mass', 'met': 'met', 'dphi': 'dphi', 'ptll': 'ptll',
         'mt_higgs': 'mt_higgs', 'mt_l2_met': 'mt_l2_met', 'mjj': 'mjj'
     }
-    
+
     hist_key = var_map.get(variable, variable)
-    
+
     xlabel = VAR_LABELS.get(variable, var_props.label if hasattr(var_props, 'label') else variable)
     xlim = (var_props.edges[0], var_props.edges[-1]) if hasattr(var_props, 'edges') else None
 
     for idx, (stage, stage_label) in enumerate(zip(stages, stage_labels)):
         ax = axes[idx]
         has_data = False
-        
+
         for sample in files.keys():
             if sample not in hist_data_all: continue
             if stage not in hist_data_all[sample]: continue
             if hist_key not in hist_data_all[sample][stage]: continue
-            
+
             hist_variations = hist_data_all[sample][stage][hist_key]
-            
+
             if 'nominal' not in hist_variations:
                 continue
-                
+
             hist_obj = hist_variations['nominal']
-            
+
             try:
                 if hasattr(hist_obj, 'to_numpy'):
-                    values, edges = hist_obj.to_numpy() 
+                    values, edges = hist_obj.to_numpy()
                 else:
                     values = hist_obj.values()
                     edges = hist_obj.axes[0].edges
@@ -2500,7 +2487,7 @@ def plot_stage_comparison(variable, var_props, hist_data_all, output_dir=None):
 
             total = np.sum(values)
             if total == 0: continue
-            
+
             has_data = True
 
             is_sig = False
@@ -2508,39 +2495,39 @@ def plot_stage_comparison(variable, var_props, hist_data_all, output_dir=None):
             if 'SAMPLES' in globals() and sample in SAMPLES:
                 is_sig = SAMPLES[sample].get("is_signal", False)
                 color = SAMPLES[sample]["color"]
-            
+
             if "DATA" in sample.upper():
-                continue            
+                continue
             else:
                 lw = 2 if is_sig else 1
                 zord = 10 if is_sig else 1
-                
-                hep.histplot(values, bins=edges, density=True, 
-                             histtype='step', 
+
+                hep.histplot(values, bins=edges, density=True,
+                             histtype='step',
                              linewidth=lw,
                              label=sample,
                              color=color,
                              ax=ax, zorder=zord)
 
-        # STYLING 
+        # STYLING
         if has_data:
-            hep.cms.label(ax=ax, loc=0, data=True, label="Open Data", 
+            hep.cms.label(ax=ax, loc=0, data=True, label="Open Data",
                           lumi=16.39, fontsize=16)
             ax.set_title(stage_label, pad=20, fontsize=18, fontweight='bold')
-            ax.set_xlabel(xlabel, fontsize=18) 
-            
+            ax.set_xlabel(xlabel, fontsize=18)
+
             if idx == 0:
                 ax.set_ylabel(r"Random Units", fontsize=16)
-            
-            if xlim: 
+
+            if xlim:
                 ax.set_xlim(xlim)
-                
+
             ax.grid(True, linestyle=':', alpha=0.5)
-            if idx == 4: 
+            if idx == 4:
                 ax.legend(loc='upper right', fontsize=12, frameon=False)
 
     plt.tight_layout()
-    
+
     # SAVING FILES
     # if output_dir:
     #     out_file = output_dir / f"{variable}_stages.png"
@@ -2550,70 +2537,34 @@ def plot_stage_comparison(variable, var_props, hist_data_all, output_dir=None):
     return fig
 ```
 
-
 ```python
 for var_name, var_props in variables_to_plots.items():
     fig = plot_stage_comparison(var_name, var_props, hist_data_final, output_dir=PLOTS_DIR / "Kinematics")
-    
+
     plt.show()
     plt.close(fig)
 ```
 
-
-    
 ![png](HWW_analysis_files/HWW_analysis_58_0.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_58_1.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_58_2.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_58_3.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_58_4.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_58_5.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_58_6.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_58_7.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_58_8.png)
-    
-
 
 ---
+
 ## **Stacked plots**
 
 ### **Configuring the Stacked Plots**
@@ -2623,17 +2574,16 @@ This `PLOT_SETTINGS` dictionary acts as our master blueprint. It organizes our o
 There are a few important experimental design choices embedded in this dictionary:
 
 1. **Blinding the Signal**\
-Notice the `plot_data` flag. It is set to `True` for our Control Regions, but strictly `False` for our Signal Region. 
+   Notice the `plot_data` flag. It is set to `True` for our Control Regions, but strictly `False` for our Signal Region.
 
 1. **Dynamic Kinematic Axes**\
-You will also notice custom `xlim` and `ylim` ranges for the same variable depending on the region. By defining these ranges here, our plotting function will dynamically zoom in on the relevant phase space for each specific control region, ensuring our distributions are perfectly framed.
-
+   You will also notice custom `xlim` and `ylim` ranges for the same variable depending on the region. By defining these ranges here, our plotting function will dynamically zoom in on the relevant phase space for each specific control region, ensuring our distributions are perfectly framed.
 
 ```python
 PLOT_SETTINGS = {
-    # GROUP 1: SIGNAL REGION 
+    # GROUP 1: SIGNAL REGION
     "Signal_Region": {
-        "plot_data": False, 
+        "plot_data": False,
         "stages": [('SR_0jet', 'SR 0j'), ('SR_1jet', 'SR 1j'), ('SR_2jet', 'SR 2j')],
         "variables": {
             "mass":          {"log": True,  "xlim": (12, 200),  "ylim": (0.01, 5000)},
@@ -2641,14 +2591,14 @@ PLOT_SETTINGS = {
             "met":           {"log": True,  "xlim": (20, 200),  "ylim": (0.01, 5000)},
             "mt_higgs":      {"log": True,  "xlim": (60, 300),  "ylim": None},
             "mt_l2_met":     {"log": True,  "xlim": (30, 140),  "ylim": None},
-            "mjj":           {"log": True,  "xlim": (0, 500),   "ylim": None}, 
+            "mjj":           {"log": True,  "xlim": (0, 500),   "ylim": None},
             "dphi":          {"log": True,  "xlim": (0, 3.14),  "ylim": (0.01, 1000)},
             "leading_pt":    {"log": True,  "xlim": (25, 200),  "ylim": None},
             "subleading_pt": {"log": True,  "xlim": (10, 200),  "ylim": None},
         }
     },
 
-    # GROUP 2: TOP CONTROL REGION 
+    # GROUP 2: TOP CONTROL REGION
     "Control_Region_Top": {
         "plot_data": True,
         "stages": [('CR_top_0jet', 'Top 0j'), ('CR_top_1jet', 'Top 1j'), ('CR_top_2jet', 'Top 2j')],
@@ -2683,36 +2633,34 @@ The function also extracts the essential components needed for visualization:
 
 Since the histograms were initialized with weight storage, calling `.variances()` directly returns the sum of squared weights. This allows us to compute statistically correct uncertainty bands for the final plots.
 
-
 ```python
 def get_histogram_data(hist_data, sample, stage, variable, variation='nominal'):
     if sample not in hist_data: return None, None, None
     if stage not in hist_data[sample]: return None, None, None
     if variable not in hist_data[sample][stage]: return None, None, None
-    
+
     vars_dict = hist_data[sample][stage][variable]
     if variation not in vars_dict: return None, None, None
-        
+
     h = vars_dict[variation]
-    
+
     try:
         return h.values(), h.variances(), h.axes[0].edges
     except:
         return None, None, None
 ```
 
-
 ```python
 def stacked_plots(variable, hist_data_all, output_dir="plots"):
     os.makedirs(output_dir, exist_ok=True)
     xlabel = VAR_LABELS.get(variable, variable)
-    
+
     backgrounds = [s for s in SAMPLES if not SAMPLES[s]['is_signal'] and s != 'Data']
     backgrounds.sort(key=lambda s: SAMPLES[s].get("stack_order", 0))
     signal = next((s for s in SAMPLES if SAMPLES[s]['is_signal']), None)
     data_sample = 'Data'
 
-    syst_sources = ['trigger', 'ele_id', 'mu_id'] 
+    syst_sources = ['trigger', 'ele_id', 'mu_id']
 
     for region_name, config in PLOT_SETTINGS.items():
         var_config = config['variables'].get(variable)
@@ -2722,19 +2670,19 @@ def stacked_plots(variable, hist_data_all, output_dir="plots"):
         use_log = var_config.get('log', False)
         set_xlim = var_config.get('xlim', None)
         set_ylim = var_config.get('ylim', None)
-        
+
         is_signal_region = "Signal" in region_name
         plot_data = False if is_signal_region else config.get('plot_data', True)
 
         # CANVAS SETUP
         if plot_data:
-            fig, axes = plt.subplots(2, 3, figsize=(30, 12), dpi=300, 
+            fig, axes = plt.subplots(2, 3, figsize=(30, 12), dpi=300,
                                      gridspec_kw={'height_ratios': [3, 1], 'hspace': 0.08, 'wspace': 0.25},
                                      sharex='col')
             row_axes = axes[0]
             ratio_axes = axes[1]
         else:
-            fig, axes = plt.subplots(1, 3, figsize=(30, 9), dpi = 300, 
+            fig, axes = plt.subplots(1, 3, figsize=(30, 9), dpi = 300,
                                      gridspec_kw={'wspace': 0.25},
                                      sharex='col')
             row_axes = axes
@@ -2743,22 +2691,22 @@ def stacked_plots(variable, hist_data_all, output_dir="plots"):
         for col_idx, (stage_key, stage_label) in enumerate(stages):
             ax_main = row_axes[col_idx]
             ax_ratio = ratio_axes[col_idx]
-            
-            # GET NOMINAL DATA 
+
+            # GET NOMINAL DATA
             stack_vals = []
             stack_colors = []
             stack_labels = []
-            stack_variances = [] 
+            stack_variances = []
             edges = None
-            
+
             total_nominal = None
             syst_stacks = {source: {'up': None, 'down': None} for source in syst_sources}
 
             for s in backgrounds:
                 vals, vars_sq, e = get_histogram_data(hist_data_all, s, stage_key, variable, 'nominal')
-                
+
                 if vals is not None:
-                    if edges is None: 
+                    if edges is None:
                         edges = e
                         nbins = len(vals)
                         total_nominal = np.zeros(nbins)
@@ -2770,57 +2718,57 @@ def stacked_plots(variable, hist_data_all, output_dir="plots"):
                     stack_variances.append(vars_sq) # Add stat variance
                     stack_colors.append(SAMPLES[s].get("color", "gray"))
                     stack_labels.append(s)
-                    
+
                     # Add to totals
                     total_nominal += vals
-                    
+
                     # Accumulate Systematics for this background
                     for src in syst_sources:
                         v_up, _, _ = get_histogram_data(hist_data_all, s, stage_key, variable, f'{src}_up')
                         v_dn, _, _ = get_histogram_data(hist_data_all, s, stage_key, variable, f'{src}_down')
-                        
+
                         if v_up is None: v_up = vals
                         if v_dn is None: v_dn = vals
-                            
+
                         syst_stacks[src]['up'] += v_up
                         syst_stacks[src]['down'] += v_dn
 
             if edges is None:
                 ax_main.text(0.5, 0.5, "No Data", ha='center', transform=ax_main.transAxes)
                 continue
-                
+
             # Stats Uncertainty
             total_stat_variance = np.sum(stack_variances, axis=0)
-            
+
             # Systematic Uncertainty
             total_syst_variance = np.zeros_like(total_nominal)
-            
+
             for src in syst_sources:
                 diff_up = np.abs(syst_stacks[src]['up'] - total_nominal)
                 diff_dn = np.abs(syst_stacks[src]['down'] - total_nominal)
-                
+
                 max_diff = np.maximum(diff_up, diff_dn)
                 total_syst_variance += max_diff**2
-                
+
             # Total Error (Stat + Syst)
             total_err = np.sqrt(total_stat_variance + total_syst_variance)
 
-            # PLOTTING      
-            
+            # PLOTTING
+
             # A. Stack
             if stack_vals:
                 hep.histplot(stack_vals, bins=edges, stack=True, histtype='fill',
                              color=stack_colors, label=stack_labels, ax=ax_main)
-                
+
                 # Outline
                 hep.histplot(total_nominal, bins=edges, histtype='step', color='black', linewidth=1, ax=ax_main)
-                
+
                 # DRAW UNCERTAINTY BAND
                 band_low = np.append(total_nominal - total_err, (total_nominal - total_err)[-1])
                 band_high = np.append(total_nominal + total_err, (total_nominal + total_err)[-1])
-                
-                ax_main.fill_between(edges, band_low, band_high, step='post', 
-                                     facecolor='none', edgecolor='gray', 
+
+                ax_main.fill_between(edges, band_low, band_high, step='post',
+                                     facecolor='none', edgecolor='gray',
                                      label='Stat+Syst Unc.', hatch='////', zorder=2)
 
             # B. Signal
@@ -2830,7 +2778,7 @@ def stacked_plots(variable, hist_data_all, output_dir="plots"):
                     sig_scale = 10 if is_signal_region else 1
                     sig_lbl = f"{signal} (x{sig_scale})" if sig_scale > 1 else signal
                     hep.histplot(sig_vals * sig_scale, bins=edges, histtype='step',
-                                 color=SAMPLES[signal].get("color", "red"), 
+                                 color=SAMPLES[signal].get("color", "red"),
                                  linewidth=3, label=sig_lbl, ax=ax_main)
 
             # C. Data
@@ -2839,39 +2787,39 @@ def stacked_plots(variable, hist_data_all, output_dir="plots"):
                 data_vals, _, _ = get_histogram_data(hist_data_all, data_sample, stage_key, variable, 'nominal')
                 if data_vals is not None:
                     yerr = np.sqrt(data_vals); yerr[data_vals == 0] = 0
-                    hep.histplot(data_vals, bins=edges, histtype='errorbar', color='black', 
+                    hep.histplot(data_vals, bins=edges, histtype='errorbar', color='black',
                                  label='Data', yerr=yerr, marker='o', markersize=5, ax=ax_main, zorder=10)
 
             # D. Ratio Plot
             if plot_data and data_vals is not None and total_nominal is not None:
                 safe_denom = np.where(total_nominal == 0, 1e-9, total_nominal)
                 ratio = data_vals / safe_denom
-                ratio_stat_err = np.abs(np.sqrt(data_vals) / safe_denom) 
-                
+                ratio_stat_err = np.abs(np.sqrt(data_vals) / safe_denom)
+
                 # Points
                 hep.histplot(ratio, bins=edges, histtype='errorbar', yerr=ratio_stat_err,
                              color='black', marker='o', markersize=4, ax=ax_ratio)
-                
+
                 rel_err = total_err / safe_denom
-                rel_err[total_nominal == 0] = 0 
-                
+                rel_err[total_nominal == 0] = 0
+
                 ratio_band_low = np.append(1.0 - rel_err, (1.0 - rel_err)[-1])
                 ratio_band_high = np.append(1.0 + rel_err, (1.0 + rel_err)[-1])
-                
+
                 ax_ratio.fill_between(edges, ratio_band_low, ratio_band_high, step='post',
                                       facecolor='gray', alpha=0.3, zorder=1) # Solid gray or hatched
-                
+
                 ax_ratio.axhline(1, color='gray', linestyle='--')
                 ax_ratio.set_ylim(0.5, 1.5)
                 ax_ratio.set_ylabel("Data / Pred.", fontsize=16)
                 ax_ratio.set_xlabel(xlabel, fontsize=20)
                 ax_ratio.grid(True, linestyle=':', alpha=0.5)
 
-            #       STYLING      
+            #       STYLING
             hep.cms.label(ax=ax_main, loc=0, data=True, label="Open Data", lumi=16.39, fontsize=20)
             ax_main.text(0.05, 0.92, stage_label, transform=ax_main.transAxes, fontsize=22, fontweight='bold', va='top')
             ax_main.set_ylabel("Events / Bin", fontsize=20)
-            
+
             if use_log:
                 ax_main.set_yscale('log')
                 max_val = np.max(total_nominal) if total_nominal is not None else 1
@@ -2886,11 +2834,11 @@ def stacked_plots(variable, hist_data_all, output_dir="plots"):
 
             handles, labels = ax_main.get_legend_handles_labels()
             by_label = dict(zip(labels, handles))
-            ax_main.legend(by_label.values(), by_label.keys(), 
-                           loc='upper right', 
+            ax_main.legend(by_label.values(), by_label.keys(),
+                           loc='upper right',
                            # bbox_to_anchor=(1.02, 1),
-                           ncol=2, 
-                           frameon=False, 
+                           ncol=2,
+                           frameon=False,
                            fontsize=16)
 
         # SAVE
@@ -2899,7 +2847,6 @@ def stacked_plots(variable, hist_data_all, output_dir="plots"):
         plt.show()
         plt.close(fig)
 ```
-
 
 ```python
 # Ensure output directory exists
@@ -2910,8 +2857,8 @@ output_dir.mkdir(parents=True, exist_ok=True)
 for variable in VAR_LABELS.keys():
     try:
         stacked_plots(
-            variable=variable, 
-            hist_data_all=hist_data_final, 
+            variable=variable,
+            hist_data_all=hist_data_final,
             output_dir=output_dir
         )
     except Exception as e:
@@ -2920,114 +2867,41 @@ for variable in VAR_LABELS.keys():
 
 ```
 
-
-    
 ![png](HWW_analysis_files/HWW_analysis_65_0.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_65_1.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_65_2.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_65_3.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_65_4.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_65_5.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_65_6.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_65_7.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_65_8.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_65_9.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_65_10.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_65_11.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_65_12.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_65_13.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_65_14.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_65_15.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_65_16.png)
-    
 
-
-
-    
 ![png](HWW_analysis_files/HWW_analysis_65_17.png)
-    
-
-
 
 ```python
 
