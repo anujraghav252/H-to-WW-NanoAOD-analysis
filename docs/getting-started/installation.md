@@ -1,38 +1,34 @@
-# :material-hammer-wrench: Installation & Setup
+# Installation & Setup
 
 This page describes how to set up the analysis environment on a local machine or a remote cluster.
 
 ---
 
-## :material-gear: System & Environment
+## System & Environment
 
 <div class="grid cards" markdown>
 
-- :material-language-python:{ .lg .middle } **Python ≥ 3.10**
+-   :material-language-python:{ .lg .middle } **Python ≥ 3.10**
 
-  ***
+    ---
+    Required for all analysis scripts and notebooks.
 
-  Required for all analysis scripts and notebooks.
+-   :material-git:{ .lg .middle } **Git**
 
-- :material-git:{ .lg .middle } **Git**
+    ---
+    For cloning the repository.
 
-  ***
+-   :material-hammer-wrench:{ .lg .middle } **C++ Compiler**
 
-  For cloning the repository.
+    ---
+    Required for XRootD and compiled dependencies.
+    GCC or Clang on Linux/macOS; use Conda on Windows.
 
-- :material-hammer-wrench:{ .lg .middle } **C++ Compiler**
+-   :material-package-variant-closed:{ .lg .middle } **Conda** *(recommended)*
 
-  ***
-
-  Required for XRootD and compiled dependencies.
-  GCC or Clang on Linux/macOS; use Conda on Windows.
-
-- :material-package-variant-closed:{ .lg .middle } **Conda** _(recommended)_
-
-  ***
-
-  Handles complex binary dependencies reliably.
-  Requires Miniconda or Anaconda. `pip + virtualenv` also supported.
+    ---
+    Handles complex binary dependencies reliably.
+    Requires Miniconda or Anaconda. `pip + virtualenv` also supported.
 
 </div>
 
@@ -93,14 +89,13 @@ This page describes how to set up the analysis environment on a local machine or
 
 </div>
  -->
-
 ---
 
 <!-- ## Requirements -->
 
 !!! info "Installation"
-All dependencies are installed automatically via `environment.yml` (Conda) or `requirements.txt` (pip).
-See [Set Up the Python Environment](#2-set-up-the-python-environment) for instructions.
+    All dependencies are installed automatically via `environment.yml` (Conda) or `requirements.txt` (pip).
+    See [Set Up the Python Environment](#2-set-up-the-python-environment) for instructions.
 
 ## 1. Clone the Repository
 
@@ -110,7 +105,6 @@ cd H-to-WW-NanoAOD-analysis
 ```
 
 ---
-
 ## 2. Set Up the Python Environment
 
 === ":material-package-variant-closed: Conda (recommended)"
@@ -140,8 +134,8 @@ cd H-to-WW-NanoAOD-analysis
     ```
 
 !!! note "Windows"
-The analysis runs on Windows, macOS, and Linux. On Windows, **Conda is strongly recommended** --
-some dependencies have complex build requirements that Conda resolves automatically.
+    The analysis runs on Windows, macOS, and Linux. On Windows, **Conda is strongly recommended** --
+    some dependencies have complex build requirements that Conda resolves automatically.
 
 ## 3. Verify the Installation
 

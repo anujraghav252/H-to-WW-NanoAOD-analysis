@@ -7,7 +7,7 @@ title: H → WW NanoAOD Analysis
     This page is under active development — some sections may be incomplete or inconsistent.
     The [repository](https://github.com/anrghv/H-to-WW-NanoAOD-analysis) is the authoritative reference in the meantime. -->
 
-## :material-target: What This Analysis Does
+## What This Analysis Does
 
 This analysis searches for the **Standard Model Higgs boson** ($m_H = 125\,\text{GeV}$) decaying
 to a pair of $W$ bosons in the opposite-flavour dilepton final state:
@@ -19,33 +19,29 @@ demonstrates a complete, modern HEP analysis workflow.
 
 ---
 
-## :material-lightning-bolt: Key Analysis Properties
+## Key Analysis Properties
 
 <div class="grid cards" markdown>
 
-- :material-lightning-bolt:{ .lg .middle } **Centre-of-mass energy**
+-   :material-lightning-bolt:{ .lg .middle } **Centre-of-mass energy**
 
-  ***
+    ---
+    $\sqrt{s} = 13\,\text{TeV}$
 
-  $\sqrt{s} = 13\,\text{TeV}$
+-   :material-calendar:{ .lg .middle } **Data-taking period**
 
-- :material-calendar:{ .lg .middle } **Data-taking period**
+    ---
+    2016 Ultra-Legacy (Run periods G–H)
 
-  ***
+-   :material-database:{ .lg .middle } **Integrated luminosity**
 
-  2016 Ultra-Legacy (Run periods G–H)
+    ---
+    $\mathcal{L}_{\text{int}} \approx 16.39\,\text{fb}^{-1}$
 
-- :material-database:{ .lg .middle } **Integrated luminosity**
+-   :material-atom:{ .lg .middle } **Signal process**
 
-  ***
-
-  $\mathcal{L}_{\text{int}} \approx 16.39\,\text{fb}^{-1}$
-
-- :material-atom:{ .lg .middle } **Signal process**
-
-  ***
-
-  $ggH \rightarrow W^+W^- \rightarrow e\nu\,\mu\nu$
+    ---
+    $ggH \rightarrow W^+W^- \rightarrow e\nu\,\mu\nu$
 
 <!-- -   :material-approximately-equal:{ .lg .middle } **Final state**
 
@@ -60,12 +56,9 @@ demonstrates a complete, modern HEP analysis workflow.
 </div>
 
 ---
-
-## Pre-Requisite
-
-- This analysis assumes a basic working knowledge of `Python`, including familiarity with functions, dictionaries, lists, and arrays.
-- Readers are also expected to have prior exposure to undergraduate or graduate-level particle physics, along with an understanding of standard terminology related to fundamental particles.
-
+## Pre-Requisite 
+* This analysis assumes a basic working knowledge of `Python`, including familiarity with functions, dictionaries, lists, and arrays.
+* Readers are also expected to have prior exposure to undergraduate or graduate-level particle physics, along with an understanding of standard terminology related to fundamental particles.
 ---
 
 ## Quick Start
@@ -92,37 +85,33 @@ jupyter lab HWW_analysis.ipynb
 
 <div class="grid cards" markdown>
 
-- :material-book-open-variant:{ .lg .middle } **Physics Background**
+-   :material-book-open-variant:{ .lg .middle } **Physics Background**
 
-  ***
+    ---
+    CMS Open Data, Higgs signal, and background processes.
 
-  CMS Open Data, Higgs signal, and background processes.
+    [:octicons-arrow-right-24: Theory](theory/higgs-physics.md)
 
-  [:octicons-arrow-right-24: Theory](theory/higgs-physics.md)
+-   :material-database:{ .lg .middle } **Datasets**
 
-- :material-database:{ .lg .middle } **Datasets**
+    ---
+    Sample list, cross-sections, and MC normalisation.
 
-  ***
+    [:octicons-arrow-right-24: Datasets](datasets/data-and-mc.md)
 
-  Sample list, cross-sections, and MC normalisation.
+-   :material-wrench:{ .lg .middle } **Software Framework**
 
-  [:octicons-arrow-right-24: Datasets](datasets/data-and-mc.md)
+    ---
+    The Scikit-HEP ecosystem explained.
 
-- :material-wrench:{ .lg .middle } **Software Framework**
+    [:octicons-arrow-right-24: Framework](software/ecosystem.md)
 
-  ***
+-   :material-download:{ .lg .middle } **Installation & Setup**
 
-  The Scikit-HEP ecosystem explained.
+    ---
+    Environment setup and verification.
 
-  [:octicons-arrow-right-24: Framework](software/ecosystem.md)
-
-- :material-download:{ .lg .middle } **Installation & Setup**
-
-  ***
-
-  Environment setup and verification.
-
-  [:octicons-arrow-right-24: Installation](getting-started/installation.md)
+    [:octicons-arrow-right-24: Installation](getting-started/installation.md)
 
 <!-- -   :material-folder-open:{ .lg .middle } **Repository Architecture**
 
@@ -131,13 +120,12 @@ jupyter lab HWW_analysis.ipynb
 
     [:octicons-arrow-right-24: Architecture](getting-started/repository-structure.md) -->
 
-- :material-chart-timeline-variant:{ .lg .middle } **Analysis Methodology**
+-   :material-chart-timeline-variant:{ .lg .middle } **Analysis Methodology**
 
-  ***
+    ---
+    Analysis Methodology and jupyter notebook.
 
-  Analysis Methodology and jupyter notebook.
-
-  [:octicons-arrow-right-24: Methodology](analysis/methodology.md)
+    [:octicons-arrow-right-24: Methodology](analysis/methodology.md)
 
 <!-- -   :material-play-circle-outline:{ .lg .middle } **Execution Guide**
 
@@ -146,13 +134,12 @@ jupyter lab HWW_analysis.ipynb
 
     [:octicons-arrow-right-24: Execution](analysis/interactive-execution.md) -->
 
-- :material-chart-bar:{ .lg .middle } **Statistical Inference**
+-   :material-chart-bar:{ .lg .middle } **Statistical Inference**
 
-  ***
+    ---
+    CMS Combine: datacards, signal strength.
 
-  CMS Combine: datacards, signal strength.
-
-  [:octicons-arrow-right-24: Combine](combine/statistical-inference.md)
+    [:octicons-arrow-right-24: Combine](combine/statistical-inference.md)
 
 </div>
 

@@ -1,5 +1,4 @@
-# :material-open-in-new: **The CMS Open Data**
-
+# **The CMS Open Data**
 The **[Compact Muon Solenoid (CMS)](https://home.cern/science/experiments/cms)** is one of two large general-purpose detectors at the Large Hadron Collider (LHC) at CERN. It records proton–proton collisions at a centre-of-mass energy of $\sqrt{s} = 13\,\text{TeV}$, providing data suitable for precision measurements of Standard Model (SM) processes and searches for new phenomena.
 
 <div style="display:flex; justify-content:center; gap:20px;">
@@ -18,7 +17,7 @@ This analysis uses the **2016 Ultra-Legacy (UL) dataset**. "Ultra Legacy" refers
 !!! info "Integrated Luminosity"
 The 2016 data used in this analysis corresponds to an integrated luminosity of [$\mathcal{L}_{\text{int}} \approx 16.39\,\text{fb}^{-1}$](https://opendata.cern.ch/record/1059), covering run periods **2016G–2016H**.
 
-## :material-file-document: The NanoAOD Format
+## The NanoAOD Format
 
 **NanoAOD** is a compact data format developed by CMS for the high-luminosity LHC era. It stores only the physics objects needed for analyses (leptons, jets, MET, etc.) as simple ROOT `TTrees`, providing several key advantages:
 

@@ -1,10 +1,10 @@
-# :material-package-variant: Ecosystem
+# Ecosystem
 
 This analysis is built on the modern [**Scikit-HEP**](https://scikit-hep.org/) ecosystem, a coordinated collection of libraries designed for providing Particle Physics at large with an ecosystem for data analysis in Python. Some of the tutorials for Scikit-HEP can be found [here](https://hsf-training.github.io/hsf-training-scikit-hep-webpage/) and some more from HSF [here](https://hsf-training.org/training-center/).
 
 ---
 
-## :material-loop: 1. From Event Loops to Array-Based Processing
+## 1. From Event Loops to Array-Based Processing
 
 Traditional High-Energy Physics analysis has historically relied on an **event-loop** paradigm: iterating through the dataset one event at a time, reconstructing objects, and filling histograms sequentially. While conceptually simple, this approach suffers from poor performance in Python due to interpreter overhead and the absence of vectorization.
 
@@ -16,7 +16,7 @@ This approach enables CPU vectorization, reduces Python overhead, and, when comb
 
 ---
 
-## :material-library: 2. The Scikit-HEP Stack
+## 2. The Scikit-HEP Stack
 
 <div align="center">
 <img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/scikit_logo.png" width="280">
@@ -26,7 +26,7 @@ Each library in the stack addresses a specific challenge of HEP data processing:
 
 ---
 
-### :material-file-upload: 2.1 Uproot: ROOT I/O without ROOT
+### 2.1 Uproot: ROOT I/O without ROOT
 
 [Uproot](https://uproot.readthedocs.io/) reads and writes ROOT files using pure Python, with no dependency on the C++ ROOT framework. In this analysis, Uproot handles the **input/output layer**, streaming NanoAOD `TTrees` from remote XRootD servers directly into memory as NumPy and Awkward arrays.
 
@@ -39,7 +39,7 @@ Each library in the stack addresses a specific challenge of HEP data processing:
 
 ---
 
-### :material-arrange-send-to-back: 2.2 Awkward Array: Jagged data structures
+### 2.2 Awkward Array: Jagged data structures
 
 Particle physics data is inherently _irregular_: one event may contain zero muons, while the next may have three. Standard flat libraries like NumPy cannot represent this naturally.
 

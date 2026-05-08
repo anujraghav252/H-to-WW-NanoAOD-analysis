@@ -1,10 +1,10 @@
-# :material-play-circle: Execution Guide
+# Execution Guide
 
 This page explains how to run the analysis: from an interactive step-by-step exploration in Jupyter to a fully automated distributed batch run using Dask.
 
 ---
 
-## :material-checkbox-marked: Prerequisites
+## Prerequisites
 
 Make sure the environment is set up and verified before proceeding:
 
@@ -13,11 +13,11 @@ Make sure the environment is set up and verified before proceeding:
 
 ---
 
-## :material-notebook: 1. Notebook-Based Interactive Execution
+## 1. Notebook-Based Interactive Execution
 
 The recommended starting point is the **main analysis notebook**, which runs the full pipeline interactively.
 
-### :material-rocket: 1.1 Launch JupyterLab
+### 1.1 Launch JupyterLab
 
 ```bash
 cd Run_analysis/
@@ -26,7 +26,7 @@ jupyter lab Run_analysis.ipynb
 
 The notebook is structured to be run **cell-by-cell**, and each section is documented with physics context, code explanations, and expected outputs.
 
-### :material-format-list-bulleted: 1.2 Notebook Structure
+### 1.2 Notebook Structure
 
 | Section            | What it does                                                                    |
 | ------------------ | ------------------------------------------------------------------------------- |
@@ -36,7 +36,7 @@ The notebook is structured to be run **cell-by-cell**, and each section is docum
 | **Cutflow**        | Prints a formatted cutflow table showing event yields at each selection stage   |
 | **Data/MC Plots**  | Produces stacked Data/MC comparison plots for SR, CR-Top, and CR-DY             |
 
-### :material-cloud-upload: 1.3 Starting a Local Dask Cluster
+### 1.3 Starting a Local Dask Cluster
 
 The analysis uses Dask for parallelism. A `LocalCluster` running on your machine is sufficient for testing:
 

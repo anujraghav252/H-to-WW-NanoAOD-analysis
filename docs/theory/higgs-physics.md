@@ -1,4 +1,4 @@
-# :material-atom: **The Standard Model and the Higgs Boson**
+# **The Standard Model and the Higgs Boson**
 
 The [Standard Model (SM)](https://home.cern/science/physics/standard-model) of particle physics is a remarkably successful and tested theoretical framework that describes the fundamental constituents of matter and their interactions. It classifies all known elementary particles into two broad categories: spin-1/2 fermions (quarks and leptons), which form the building blocks of matter, and spin-1 gauge bosons (photons, gluons, and the $W^\pm$ and $Z$ bosons), which mediate the electromagnetic, strong, and weak fundamental forces, respectively.
 
@@ -6,7 +6,7 @@ The [Standard Model (SM)](https://home.cern/science/physics/standard-model) of p
   <img src="https://cds.cern.ch/images/OPEN-PHO-CHART-2015-001-1/file?size=large" alt="Standard Model" width="700">
 </div>
 
-## :material-help-circle: **Where does the Higgs boson stand here?**
+## **Where does the Higgs boson stand here?**
 
 One of the crucial requirements of the SM is a mechanism to generate the masses of these fundamental particles without violating the underlying mathematical symmetries of the theory. This is achieved through a scalar field. The fundamental fermions and the massive weak force carriers ($W^\pm$ and $Z$ bosons) acquire their intrinsic masses by continuously interacting with this field. A direct observable consequence of this field is the existence of a single, spin-0 scalar particle: [**Higgs boson ($H$)**](https://cms.cern/physics/higgs-boson).
 
@@ -16,7 +16,7 @@ In 2012, the ATLAS and the CMS collaborations at the LHC [announced](https://hom
 
 Subsequent experimental measurements have confirmed that the particle's properties strongly align with the predictions for the SM Higgs boson. With its mass now fixed, all other properties of the $H$ boson are constrained by the SM.
 
-## :material-lightning-bolt-circle: **Higgs Boson Production at the LHC**
+## **Higgs Boson Production at the LHC**
 
 At the LHC, protons collide at ultra-high energies, specifically at a center-of-mass energy of $\sqrt{s} = \text{13 TeV}$ for the 2016 data-taking period used in this analysis. At such high energies, the collision occurs at the quark level, and because of the large amount of energy available, many heavy particles ($W^\pm,\ Z,\ H$) are produced.
 
@@ -34,7 +34,7 @@ There are four primary production mechanisms for the SM Higgs boson at the LHC:
     <img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/VBF_FD.png" alt="VBF Feynman Diagram" width="250">
   </div>
 
-- **Associated Production (VH):** A quark and an antiquark annihilate to form an _off-shell_ $W$ or $Z$ boson, which then radiates an $H$.
+- **Associated Production (VH):** A quark and an antiquark annihilate to form an *off-shell* $W$ or $Z$ boson, which then radiates an $H$.
 
   <div style="text-align: center;">
     <img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/VH_FD.png" alt="VH Feynman Diagram" width="250">
@@ -46,7 +46,7 @@ There are four primary production mechanisms for the SM Higgs boson at the LHC:
     <img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/ttH_FD.png" alt="ttH Feynman Diagram" width="250">
   </div>
 
-### :material-chart-line: **Dominance of Gluon-Gluon Fusion**
+### **Dominance of Gluon-Gluon Fusion**
 
 This analysis specifically focuses on the ggH production mode. The choice to isolate this channel over others is driven by two primary kinematic and experimental factors:
 
@@ -77,7 +77,7 @@ Using the precision calculations compiled in the [Handbook of LHC Higgs cross se
 |  $H \rightarrow \mu^{+}\mu^{-}$  |        0.022%        |
 
 !!! info "Off-shell Production"
-Because the mass of the Higgs boson is less than twice the mass of an on-shell W or Z boson, one of the emitted vector bosons in these decay modes must be produced virtually, or off-shell, denoted by the asterisk.
+    Because the mass of the Higgs boson is less than twice the mass of an on-shell W or Z boson, one of the emitted vector bosons in these decay modes must be produced virtually, or off-shell, denoted by the asterisk.
 
 ### **Why the H to WW Channel Is Preferred**
 
@@ -90,27 +90,28 @@ While the decay into a bottom-antibottom quark pair ($H\to b\bar{b}$) has the hi
 To bypass the massive hadronic backgrounds, this analysis focuses on the $H\to WW^*$ decay mode. This channel offers many advantages for experimental physics:
 
 - **High Event Yield:** With the second-largest branching ratio ($\approx \text{21.52}\%$), it provides a substantial statistical sample compared to rarer decays.
+  
 - **Clean Signature:** The leptonic decay of the $W$ bosons ($W \to \ell \nu$) produces high-energy, isolated leptons that cleanly stand out from the overwhelming QCD backgrounds.
 
 - **Drell-Yan Suppression:** By strictly requiring the different-flavor final state ($H \to WW^*\to e^{\pm}\mu^{\pm}\nu\bar{\nu}$), the analysis easily bypasses the massive Drell-Yan background ($Z/\gamma^* \to e^\pm/\mu^\pm$) that plagues the same-flavor searches.
+
 
 ## **W Boson Decay Modes**
 
 To understand the final state topology of the event, we must examine the decay mechanisms of the intermediate vector bosons. A $W$ boson decays in two primary ways:
 
-- hadronically into a quark-antiquark pair ($W\to q\bar{q}$), or
-- leptonically into a charged lepton and its corresponding neutrino ($W \to \ell\nu$).
-
+ - hadronically into a quark-antiquark pair ($W\to q\bar{q}$), or
+ - leptonically into a charged lepton and its corresponding neutrino ($W \to \ell\nu$).
+  
 While the hadronic decay is favored with a branching ratio of approximately 67.4%, it suffers from overwhelming QCD multi-jet backgrounds at the LHC. Conversely, the leptonic decay provides a much cleaner experimental signature. According to the baseline values established in the [Handbook of LHC Higgs cross sections](https://e-publishing.cern.ch/index.php/CYRM/issue/view/32), the leptonic branching ratio for each specific flavor family ($e,\ \mu,\ \tau$) is mathematically symmetric at $\approx$ 10.86%.
 
 ## **The Fully Leptonic Different-Flavor State**
 
-This analysis explicitly targets the fully leptonic final state, requiring both $W$ bosons to decay into leptons. Furthermore, the selection is strictly narrowed to the **different-flavor** ($e^\pm \mu^\pm$) final state.
+This analysis explicitly targets the fully leptonic final state, requiring both $W$ bosons to decay into leptons. Furthermore, the selection is strictly narrowed to the **different-flavor** ($e^\pm \mu^\pm$) final state. 
 
 While incorporating same-flavor events ($e^+e^-$ or $\mu^+\mu^-$) would normally increase the raw signal yield, they introduce a massive and difficult-to-handle background from Drell-Yan processes ($Z/\gamma^* \to \ell^+\ell^-$). Because Drell-Yan interactions almost always produce same-flavor lepton pairs, requiring exactly one electron and one muon suppresses this $Z$-boson resonance background, yielding a highly pure signal region.
 
 ## **The Expected Yield Calculation Chain**
-
 By synthesizing the production cross-section of the Higgs boson with the sequential branching ratios of its decay products, the expected theoretical yield for the exact signal process can be mathematically formalized.
 
 For the $gg\to H \to WW \to e^\pm\mu^\pm\nu\bar{\nu}$ channel, the theoretical cross-section ($\sigma_{signal}$) is calculated as:
@@ -118,14 +119,12 @@ For the $gg\to H \to WW \to e^\pm\mu^\pm\nu\bar{\nu}$ channel, the theoretical c
 $\sigma_{signal} = \sigma(gg\to H) \times \text{BR}(H \to WW) \times \text{BR}(W \to e\nu) \times \text{BR}(W \to \mu\nu)\times 2$
 
 !!! info "Charge-Flavor Permutations"
-The factor of 2 accounts for the two possible charge-flavor combinations of the final state: $W^+ \to e^+\nu_e$, $W^- \to \mu^-\bar{\nu}_\mu$ and $W^+ \to \mu^+\nu_\mu$, $W^- \to e^-\bar{\nu}_e$.
+    The factor of 2 accounts for the two possible charge-flavor combinations of the final state: $W^+ \to e^+\nu_e$, $W^- \to \mu^-\bar{\nu}_\mu$ and $W^+ \to \mu^+\nu_\mu$, $W^- \to e^-\bar{\nu}_e$.
 
 ## **Experimental Signature in the Detector**
-
 Understanding how the process "looks like" in the detector is a crucial first step in our search.
 
 ### The Visible: Electrons and Muons
-
 The charged leptons produced in the $W$ boson decays are the primary visible handles of the signal. They must be accurately reconstructed and identified by the various sub-detectors:
 
 - **Electrons ($e^\pm$):** An electron leaves a curved trajectory in the inner silicon tracker and subsequently deposits energy into the Electromagnetic Calorimeter (ECAL), producing an electromagnetic shower.
