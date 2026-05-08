@@ -1,4 +1,4 @@
-# Software Framework
+# Ecosystem
 
 This analysis is built on the modern [**Scikit-HEP**](https://scikit-hep.org/) ecosystem, a coordinated collection of libraries designed for providing Particle Physics at large with an ecosystem for data analysis in Python. Some of the tutorials for Scikit-HEP can be found [here](https://hsf-training.github.io/hsf-training-scikit-hep-webpage/) and some more from HSF [here](https://hsf-training.org/training-center/).
 
@@ -10,7 +10,7 @@ Traditional High-Energy Physics analysis has historically relied on an **event-l
 
 This analysis instead uses **columnar processing**:
 
-> Rather than looping over every muon in every event to check its Transverse momentum, we operate on the *entire Transverse momentum array* at once—a single NumPy-like operation. The computational burden shifts to compiled, highly optimized C++ kernels.
+> Rather than looping over every muon in every event to check its Transverse momentum, we operate on the _entire Transverse momentum array_ at once—a single NumPy-like operation. The computational burden shifts to compiled, highly optimized C++ kernels.
 
 This approach enables CPU vectorization, reduces Python overhead, and, when combined with **Dask** for parallelism, allows the same code to scale from a laptop to a full computing cluster without modification. You can read more about "array-oriented" programming or "coloumnar" processing [here](https://hsf-training.github.io/hsf-training-scikit-hep-webpage/skhep-tutorial/introduction/).
 
@@ -41,7 +41,7 @@ Each library in the stack addresses a specific challenge of HEP data processing:
 
 ### 2.2 Awkward Array: Jagged data structures
 
-Particle physics data is inherently *irregular*: one event may contain zero muons, while the next may have three. Standard flat libraries like NumPy cannot represent this naturally.
+Particle physics data is inherently _irregular_: one event may contain zero muons, while the next may have three. Standard flat libraries like NumPy cannot represent this naturally.
 
 [Awkward Array](https://awkward-array.org/) provides **jagged array** operations that allow us to manipulate these irregular, nested structures using NumPy-like idioms (slicing, masking, and broadcasting) without losing the event structure.
 
@@ -97,14 +97,14 @@ For the final accumulation of yields and distributions, we employ [Hist](https:/
 <img src="https://raw.githubusercontent.com/anrghv/H-to-WW-NanoAOD-analysis/main/assets/Dask_dark.png" class="only-dark" width="300">
 </div>
 
-To handle the massive scale of CMS data (terabytes of information), we leverage [Dask](https://docs.dask.org/en/stable/), a flexible parallel computing library. Dask allows us to scale the same Python analysis from a single laptop to a cluster of machines without rewriting the code. It achieves this by breaking the dataset into smaller *“chunks”* (partitions) and processing them in parallel.
+To handle the massive scale of CMS data (terabytes of information), we leverage [Dask](https://docs.dask.org/en/stable/), a flexible parallel computing library. Dask allows us to scale the same Python analysis from a single laptop to a cluster of machines without rewriting the code. It achieves this by breaking the dataset into smaller _“chunks”_ (partitions) and processing them in parallel.
 
 In this analysis, Dask is used to distribute the event processing across multiple CPU cores, significantly reducing the runtime.
 
 To quantify the performance gain, we compare the wall-clock time required to process the full dataset:
 
-* **Sequential Processing:** Processing the full dataset on a single core would be CPU-bound, taking several hours to complete.
-* **Distributed Processing:** By distributing the workload across the Dask cluster, the total processing time is reduced to minutes.
+- **Sequential Processing:** Processing the full dataset on a single core would be CPU-bound, taking several hours to complete.
+- **Distributed Processing:** By distributing the workload across the Dask cluster, the total processing time is reduced to minutes.
 
 | Mode        | Setup                     | Approximate runtime |
 | ----------- | ------------------------- | ------------------- |
@@ -119,34 +119,32 @@ This reduction in runtime is important for the iterative nature of the analysis,
 
 ### Core
 
-* `python` — Language runtime
-* `numpy` — Numerical arrays
-* `scipy` — Statistical utilities
+- `python` — Language runtime
+- `numpy` — Numerical arrays
+- `scipy` — Statistical utilities
 
 ### I/O and Data Structures
 
-* `uproot` — ROOT file I/O
-* `awkward` — Jagged array operations
-* `fsspec-xrootd` — XRootD file access
+- `uproot` — ROOT file I/O
+- `awkward` — Jagged array operations
+- `fsspec-xrootd` — XRootD file access
 
 ### Physics and Analysis
 
-* `vector` — Lorentz four-vector arithmetic
-* `hist` — Histogramming
+- `vector` — Lorentz four-vector arithmetic
+- `hist` — Histogramming
 
 ### Parallel Computing
 
-* `dask` — Distributed/parallel computing
+- `dask` — Distributed/parallel computing
 
 ### Visualization
 
-* `matplotlib` — Plotting base
-* `mplhep` — CMS-style plots
+- `matplotlib` — Plotting base
+- `mplhep` — CMS-style plots
 
 ### Environment
 
-* `jupyterlab` — Notebook environment
-
-
+- `jupyterlab` — Notebook environment
 
 Full pinned versions: see [`requirements.txt`](https://github.com/anrghv/H-to-WW-NanoAOD-analysis/blob/main/requirements.txt) and [`environment.yml`](https://github.com/anrghv/H-to-WW-NanoAOD-analysis/blob/main/environment.yml).

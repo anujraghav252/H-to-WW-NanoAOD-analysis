@@ -104,7 +104,9 @@ nav:
       - Higgs Phenomenology: theory/higgs-physics.md
       - Signal and background processes: theory/signal-and-background.md
   - Datasets: datasets/data-and-mc.md
-  - Software Framework: software/ecosystem.md
+  - Software Framework:
+      - Ecosystem: software/ecosystem.md
+      - Compute Environment: software/environment.md
   - Analysis:
       - Methodology: analysis/methodology.md
       - Analysis notebook: analysis/HWW_analysis.md
