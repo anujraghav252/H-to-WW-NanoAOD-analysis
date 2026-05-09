@@ -1,0 +1,107 @@
+cff-version: 1.2.0
+
+title: "A comprehensive Pedagogical Pipeline for the H to WW Search Using CMS Open Data"
+
+message: "If you use this analysis, software, or documentation, please cite it as below."
+
+type: software
+
+authors:
+  - family-names: Raghav
+    given-names: Anuj
+    orcid: "https://orcid.org/0009-0004-6667-0434"
+    affiliation: "University of Delhi / HSF-India Fellow (Princeton University)"
+    email: "anujraghav.physics@gmail.com"
+    website: "https://anrghv.github.io"
+
+repository-code: "https://github.com/anrghv/H-to-WW-NanoAOD-analysis"
+
+url: "https://h-to-ww-nanoaod-analysis.readthedocs.io/en/latest/"
+
+license: Apache-2.0
+
+version: "1.0.0"
+
+date-released: "2026-05-09"
+
+abstract: >
+  The discovery of the Higgs boson by the ATLAS & CMS collaborations at
+  the Large Hadron Collider (LHC) stands as a monumental achievement in
+  particle physics. While the theoretical underpinnings of the Higgs
+  mechanism are widely taught at the university level and substantial
+  data sets have been publically available, the practical complexities
+  of experimental data analysis, ranging from object reconstruction to
+  statistical interpretation, often remain inaccessible. Comprehensive
+  end-to-end tutorials that mirror real experimental workflows are
+  notably scarce.
+
+  We present an example of a complete training and educational focused
+  data analysis based on CMS open data and analysis tools available in
+  the Python ecosystem. This project reconstructs the workflow of a
+  search for the Higgs boson decaying into a pair of W bosons targeting
+  the electron–muon final state produced via gluon–gluon fusion. Using
+  the CMS experiment architecture as a case study, the analysis guides
+  users through the critical stages of modern high-energy physics
+  research. The pipeline includes the implementation of triggers and
+  object reconstruction focusing on lepton identification and the role
+  of missing transverse energy in neutrino inference. This is followed
+  by kinematic and topological cuts to isolate the high-purity signal
+  from the overwhelming background. The pipeline illustrates both
+  data-driven and Monte Carlo techniques to model dominant backgrounds,
+  specifically top-quark pair production and Drell–Yan process,
+  culminating in statistical inference through signal significance
+  estimation and uncertainty evaluation. We discuss how corrections were
+  derived and which analysis aspects can not be easily included without
+  information not publicly available.
+
+  This pipeline aims to serve as an illustrative example of an
+  experimental analysis possible using LHC Open Data. Beyond its
+  pedagogical value, the project highlights the educational potential of
+  open data initiatives and provides a modular template adaptable to
+  other physics processes and experiments.
+
+keywords:
+  - "Higgs boson"
+  - "H to WW"
+  - "CMS Open Data"
+  - "NanoAOD"
+  - "high energy physics"
+  - "particle physics"
+  - "Scikit-HEP"
+  - "HSF-India"
+  - "gluon-gluon fusion"
+  - "dilepton"
+  - "CMS Combine"
+  - "open science"
+
+references:
+  - type: conference-paper
+    title: "A comprehensive Pedagogical Pipeline for the H to WW Search Using CMS Open Data"
+    authors:
+      - family-names: Raghav
+        given-names: Anuj
+    collection-title: "Proceedings of the 26th International Conference on Computing in High Energy and Nuclear Physics (CHEP 2026)"
+    year: 2026
+    location:
+      name: "Bangkok, Thailand"
+    notes: "Contributed talk"
+
+  - type: software
+    title: "Scikit-HEP"
+    authors:
+      - name: "Scikit-HEP community"
+    url: "https://scikit-hep.org"
+
+  - type: software
+    title: "CMS HiggsAnalysis-CombinedLimit (Combine)"
+    authors:
+      - name: "CMS Collaboration"
+    url: "https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/"
+
+  - type: data
+    title: "CMS Open Data — RunIISummer20UL16 NanoAODv9"
+    authors:
+      - name: "CMS Collaboration"
+    url: "https://opendata.cern.ch"
+    institution:
+      name: "CERN Open Data Portal"
