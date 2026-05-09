@@ -37,7 +37,7 @@ Authentication is handled entirely through **CILogon**. This means you can log i
 </div>
 
 !!! info "Initial Registration"
-While access is open, computational resources are finite. When you first log in, you may be prompted to submit a brief registration request. Once approved by the facility administrators, your CILogon identity will be granted full access.
+    While access is open, computational resources are finite. When you first log in, you may be prompted to submit a brief registration request. Once approved by the facility administrators, your CILogon identity will be granted full access.
 
 ---
 
