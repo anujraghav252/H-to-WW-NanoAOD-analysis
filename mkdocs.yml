@@ -58,10 +58,8 @@ plugins:
       locale: en
   - mkdocs-jupyter:
       execute: false
-      ignore_h1: true
       include_source: false
       no_input: false
-      include_markdown: true
       remove_tag_config:
         remove_input_tags:
           - hide_input
