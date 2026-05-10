@@ -87,8 +87,6 @@ cd H-to-WW-NanoAOD-analysis
 
 ## 2. Set Up the Python Environment
 
-=== ":material-package-variant-closed: Conda (recommended)"
-
     The repository includes a complete `environment.yml` specifying all required packages
     with minimum version constraints:
 
@@ -104,7 +102,6 @@ cd H-to-WW-NanoAOD-analysis
     - JupyterLab for interactive notebooks
     - `fsspec-xrootd` for XRootD file access
 
-=== ":material-language-python: pip (virtual environment)"
 
     ```bash title="Create and activate the virtual environment"
     python3 -m venv .venv
@@ -113,13 +110,7 @@ cd H-to-WW-NanoAOD-analysis
     pip install -r requirements.txt
     ```
 
-!!! note "Windows"
-The analysis runs on Windows, macOS, and Linux. On Windows, **Conda is strongly recommended** --
-some dependencies have complex build requirements that Conda resolves automatically.
-
 ## 3. Verify the Installation
-
-=== ":material-check-circle-outline: Package check"
 
 ```python title="Verify all packages"
     import uproot, awkward as ak, vector, hist, dask
@@ -129,18 +120,16 @@ some dependencies have complex build requirements that Conda resolves automatica
     print(f"  dask    : {dask.__version__}")
 ```
 
-=== ":material-server-network: XRootD connectivity"
-
 ```python title="Test CERN EOS access"
-    import fsspec
-    with fsspec.open(
+    import uproot
+    with uprrot.open(
         "root://eospublic.cern.ch//eos/opendata/cms/mc/"
         "RunIISummer20UL16NanoAODv9/GluGluHToWWTo2L2N_M-125"
         "_TuneCP5_minloHJJ_13TeV-powheg-jhugen727-pythia8/"
         "NANOAODSIM/106X_mcRun2_asymptotic_v17-v2/30000/"
         "00B3B6E3-3D68-C048-A8C4-04EB699CCE5D.root"
     ) as f:
-        print("XRootD connection OK:", f.path)
+        print(f.keys())
 ```
 
 ---
