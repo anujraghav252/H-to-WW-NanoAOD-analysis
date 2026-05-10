@@ -2,19 +2,10 @@
 
 [![Documentation](https://readthedocs.org/projects/h-to-ww-nanoaod-analysis/badge/?version=latest)](https://h-to-ww-nanoaod-analysis.readthedocs.io/en/latest/?badge=latest)
 [![License](https://img.shields.io/github/license/anujraghav252/H-to-WW-NanoAOD-analysis?color=blue)](LICENSE)
-
-<!-- ![Repo Size](https://img.shields.io/github/repo-size/anujraghav252/H-to-WW-NanoAOD-analysis) -->
-
 ![Last Commit](https://img.shields.io/github/last-commit/anujraghav252/H-to-WW-NanoAOD-analysis)
 ![Python](https://img.shields.io/badge/Python-blue?logo=python&logoColor=white)
 ![Jupyter](https://img.shields.io/badge/Jupyter-F37626.svg?logo=Jupyter&logoColor=white)
-
-<!-- ![Dask](https://img.shields.io/badge/Dask-Parallel_Computing-orange?logo=dask&logoColor=white) -->
-
 ![Scikit-HEP](https://img.shields.io/badge/Ecosystem-Scikit--HEP-brightgreen)
-
-<!-- ![CMS Open Data](https://img.shields.io/badge/Data-CMS_Open_Data-red) -->
-<!-- ![H to WW](https://img.shields.io/badge/Analysis-H_%E2%86%92_WW-blueviolet) -->
 
 The full documentation for this analysis is available at:
 https://h-to-ww-nanoaod-analysis.readthedocs.io/en/latest/
@@ -111,11 +102,11 @@ pip install -r requirements.txt
 ## 3. Verify the Installation
 
 ```python title="Verify all packages"
-    import uproot, awkward as ak, vector, hist, dask
-    print("All packages loaded successfully.")
-    print(f"  uproot  : {uproot.__version__}")
-    print(f"  awkward : {ak.__version__}")
-    print(f"  dask    : {dask.__version__}")
+import uproot, awkward as ak, vector, hist, dask
+print("All packages loaded successfully.")
+print(f"  uproot  : {uproot.__version__}")
+print(f"  awkward : {ak.__version__}")
+print(f"  dask    : {dask.__version__}")
 ```
 
 ```python title="Test CERN EOS access"
