@@ -40,10 +40,12 @@ theme:
     - navigation.expand
     - navigation.top
     - navigation.tabs.sticky
+    - navigation.indexes
     - search.suggest
     - search.highlight
     - content.code.copy
     - toc.follow
+    - toc.integrate
     - navigation.footer
     - content.tooltips
     - content.tabs.link
@@ -52,21 +54,18 @@ theme:
 plugins:
   - search
   - git-revision-date-localized:
-      # enable_creation_date: true
       type: timeago
       locale: en
   - mkdocs-jupyter:
-      include_source: true
-      include_markdown: true
       execute: false
+      ignore_h1: true
+      include_source: false
+      no_input: false
+      include_markdown: true
       remove_tag_config:
         remove_input_tags:
-          - hide_code
+          - hide_input
   - glightbox
-  # - mkdocs-pdf
-  # - git-revision-date-localized:
-  #     locale: en
-  #     type: timeago
 
 markdown_extensions:
   - admonition
@@ -86,7 +85,12 @@ markdown_extensions:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - toc:
       permalink: true
-      toc_depth: 2-4
+      toc_depth: 3
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.highlight
+  - pymdownx.superfences
 
 extra_javascript:
   - javascripts/mathjax.js
@@ -110,5 +114,5 @@ nav:
       - Compute Environment: software/environment.md
   - Analysis:
       - Methodology: analysis/methodology.md
-      - Analysis notebook: analysis/HWW_analysis.md
+      - Analysis notebook: analysis/HWW_analysis.ipynb
   - Statistical Inference: combine/statistical-inference.md
