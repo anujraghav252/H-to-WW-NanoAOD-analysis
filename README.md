@@ -87,28 +87,26 @@ cd H-to-WW-NanoAOD-analysis
 
 ## 2. Set Up the Python Environment
 
-    The repository includes a complete `environment.yml` specifying all required packages
-    with minimum version constraints:
+The repository includes a complete `environment.yml` specifying all required packages with minimum version constraints:
 
     ```bash title="Create and activate the environment"
     conda env create -f environment.yml
     conda activate HEP_analysis
     ```
 
-    This creates a Conda environment named `HEP_analysis` with:
+This creates a Conda environment named `HEP_analysis` with:
 
-    - All Scikit-HEP packages (`uproot`, `awkward`, `vector`, `hist`)
-    - Dask for distributed computing
-    - JupyterLab for interactive notebooks
-    - `fsspec-xrootd` for XRootD file access
+- All Scikit-HEP packages (`uproot`, `awkward`, `vector`, `hist`)
+- Dask for distributed computing
+- JupyterLab for interactive notebooks
+- `fsspec-xrootd` for XRootD file access
 
-
-    ```bash title="Create and activate the virtual environment"
-    python3 -m venv .venv
-    source .venv/bin/activate   # Linux / macOS
-    # .venv\Scripts\activate    # Windows
-    pip install -r requirements.txt
-    ```
+  ```bash title="Create and activate the virtual environment"
+  python3 -m venv .venv
+  source .venv/bin/activate   # Linux / macOS
+  # .venv\Scripts\activate    # Windows
+  pip install -r requirements.txt
+  ```
 
 ## 3. Verify the Installation
 
