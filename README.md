@@ -119,15 +119,15 @@ pip install -r requirements.txt
 ```
 
 ```python title="Test CERN EOS access"
-    import uproot
-    with uprrot.open(
-        "root://eospublic.cern.ch//eos/opendata/cms/mc/"
-        "RunIISummer20UL16NanoAODv9/GluGluHToWWTo2L2N_M-125"
-        "_TuneCP5_minloHJJ_13TeV-powheg-jhugen727-pythia8/"
-        "NANOAODSIM/106X_mcRun2_asymptotic_v17-v2/30000/"
-        "00B3B6E3-3D68-C048-A8C4-04EB699CCE5D.root"
+import uproot
+with uproot.open(
+    "root://eospublic.cern.ch//eos/opendata/cms/mc/"
+    "RunIISummer20UL16NanoAODv9/GluGluHToWWTo2L2N_M-125"
+    "_TuneCP5_minloHJJ_13TeV-powheg-jhugen727-pythia8/"
+    "NANOAODSIM/106X_mcRun2_asymptotic_v17-v2/30000/"
+    "00B3B6E3-3D68-C048-A8C4-04EB699CCE5D.root"
     ) as f:
-        print(f.keys())
+    print(f.keys())
 ```
 
 ---
@@ -147,20 +147,6 @@ All Monte Carlo samples correspond to the **CMS 2016 Ultra-Legacy (Summer20UL16)
 | --------------- | ------------------------------------------------------- |
 | **Signal**      | $ggH \to WW \to 2\ell2\nu $                             |
 | **Backgrounds** | Drell-Yan, $t\bar{t}$, $WW$, Dibsosn, $V\gamma$, W+jets |
-
----
-
-## Dependencies
-
-The analysis is built on the modern Python HEP stack:
-
-- **Data I/O:** `uproot`, `awkward`, `fsspec-xrootd`
-- **Analysis:** `hist`, `vector`, `scipy`
-- **Computing:** `numpy`, `pandas`, `dask`
-- **Visualisation:** `matplotlib`, `hist`, `mplhep`
-- **Environment:** `jupyterlab`, `ipywidgets`
-
-See [`requirements.txt`](requirements.txt) for the full pinned list.
 
 ---
 
