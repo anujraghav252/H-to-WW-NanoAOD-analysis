@@ -14,6 +14,7 @@ dask[complete]>=2024.0.0
 
 # Plotting
 matplotlib>=3.8
+mplhep>=0.3
 
 # Remote file access (XRootD)
 fsspec-xrootd>=0.2
