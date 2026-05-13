@@ -75,33 +75,52 @@ keywords:
   - "open science"
 
 references:
-  - type: conference-paper
-    title: "A comprehensive Pedagogical Pipeline for the H to WW Search Using CMS Open Data"
-    authors:
-      - family-names: Raghav
-        given-names: Anuj
-    collection-title: "Proceedings of the 26th International Conference on Computing in High Energy and Nuclear Physics (CHEP 2026)"
-    year: 2026
-    location:
-      name: "Bangkok, Thailand"
-    notes: "Contributed talk"
+  # - type: conference-paper
+  #   title: "A comprehensive Pedagogical Pipeline for the H to WW Search Using CMS Open Data"
+  #   authors:
+  #     - family-names: Raghav
+  #       given-names: Anuj
+  #   collection-title: "Proceedings of the 26th International Conference on Computing in High Energy and Nuclear Physics (CHEP 2026)"
+  #   year: 2026
+  #   location:
+  #     name: "Bangkok, Thailand"
+  #   notes: "Contributed talk"
 
-  - type: software
-    title: "Scikit-HEP"
-    authors:
-      - name: "Scikit-HEP community"
-    url: "https://scikit-hep.org"
+  references:
+    - type: article
+      authors:
+        - name: "CMS Collaboration"
+          alias: "Tumasyan, A. et al."
+      title:
+        "Measurements of the Higgs boson production cross section and couplings
+        in the W boson pair decay channel in proton-proton collisions at √s = 13 TeV"
+      journal: "European Physical Journal C"
+      volume: 83
+      issue: 667
+      year: 2023
+      doi: 10.1140/epjc/s10052-023-11632-6
+      url: https://doi.org/10.1140/epjc/s10052-023-11632-6
+      date-published: 2023-07-26
+      notes:
+        "The ggH production mode selection strategy and signal region definition
+        in this work follow the approach described in this work."
 
-  - type: software
-    title: "CMS HiggsAnalysis-CombinedLimit (Combine)"
-    authors:
-      - name: "CMS Collaboration"
-    url: "https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/"
+    - type: software
+      title: "Scikit-HEP"
+      authors:
+        - name: "Scikit-HEP community"
+      url: "https://scikit-hep.org"
 
-  - type: data
-    title: "CMS Open Data — RunIISummer20UL16 NanoAODv9"
-    authors:
-      - name: "CMS Collaboration"
-    url: "https://opendata.cern.ch"
-    institution:
-      name: "CERN Open Data Portal"
+    - type: software
+      title: "CMS HiggsAnalysis-CombinedLimit (Combine)"
+      authors:
+        - name: "CMS Collaboration"
+      url: "https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/"
+
+    - type: data
+      title: "CMS Open Data — RunIISummer20UL16 NanoAODv9"
+      authors:
+        - name: "CMS Collaboration"
+      url: "https://opendata.cern.ch"
+      institution:
+        name: "CERN Open Data Portal"
