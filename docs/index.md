@@ -14,8 +14,9 @@ to a pair of $W$ bosons in the opposite-flavour dilepton final state:
 
 $$gg \rightarrow H \rightarrow W^+W^{-*} \rightarrow e^\pm\,\nu_e\;+\;\mu^\mp\,\nu_\mu$$
 
-Working entirely within the **Scikit-HEP Python ecosystem** (Uproot, Awkward Array, Dask), it
-demonstrates a complete, modern HEP analysis workflow.
+The analysis strategy follows the approach described in the CMS H→WW measurement
+([Tumasyan et al., _Eur. Phys. J. C_ **83**, 667, 2023](https://doi.org/10.1140/epjc/s10052-023-11632-6)),
+adapted for CMS Open Data using the Scikit-HEP Python ecosystem.
 
 ---
 
@@ -23,25 +24,29 @@ demonstrates a complete, modern HEP analysis workflow.
 
 <div class="grid cards" markdown>
 
--   :material-lightning-bolt:{ .lg .middle } **Centre-of-mass energy**
+- :material-lightning-bolt:{ .lg .middle } **Centre-of-mass energy**
 
-    ---
-    $\sqrt{s} = 13\,\text{TeV}$
+  ***
 
--   :material-calendar:{ .lg .middle } **Data-taking period**
+  $\sqrt{s} = 13\,\text{TeV}$
 
-    ---
-    2016 Ultra-Legacy (Run periods G–H)
+- :material-calendar:{ .lg .middle } **Data-taking period**
 
--   :material-database:{ .lg .middle } **Integrated luminosity**
+  ***
 
-    ---
-    $\mathcal{L}_{\text{int}} \approx 16.39\,\text{fb}^{-1}$
+  2016 Ultra-Legacy (Run periods G–H)
 
--   :material-atom:{ .lg .middle } **Signal process**
+- :material-database:{ .lg .middle } **Integrated luminosity**
 
-    ---
-    $ggH \rightarrow W^+W^- \rightarrow e\nu\,\mu\nu$
+  ***
+
+  $\mathcal{L}_{\text{int}} \approx 16.39\,\text{fb}^{-1}$
+
+- :material-atom:{ .lg .middle } **Signal process**
+
+  ***
+
+  $ggH \rightarrow W^+W^- \rightarrow e\nu\,\mu\nu$
 
 <!-- -   :material-approximately-equal:{ .lg .middle } **Final state**
 
@@ -56,9 +61,12 @@ demonstrates a complete, modern HEP analysis workflow.
 </div>
 
 ---
-## Pre-Requisite 
-* This analysis assumes a basic working knowledge of `Python`, including familiarity with functions, dictionaries, lists, and arrays.
-* Readers are also expected to have prior exposure to undergraduate or graduate-level particle physics, along with an understanding of standard terminology related to fundamental particles.
+
+## Pre-Requisite
+
+- This analysis assumes a basic working knowledge of `Python`, including familiarity with functions, dictionaries, lists, and arrays.
+- Readers are also expected to have prior exposure to undergraduate or graduate-level particle physics, along with an understanding of standard terminology related to fundamental particles.
+
 ---
 
 ## Quick Start
@@ -85,33 +93,37 @@ jupyter lab HWW_analysis.ipynb
 
 <div class="grid cards" markdown>
 
--   :material-book-open-variant:{ .lg .middle } **Physics Background**
+- :material-book-open-variant:{ .lg .middle } **Physics Background**
 
-    ---
-    CMS Open Data, Higgs signal, and background processes.
+  ***
 
-    [:octicons-arrow-right-24: Theory](theory/higgs-physics.md)
+  CMS Open Data, Higgs signal, and background processes.
 
--   :material-database:{ .lg .middle } **Datasets**
+  [:octicons-arrow-right-24: Theory](theory/higgs-physics.md)
 
-    ---
-    Sample list, cross-sections, and MC normalisation.
+- :material-database:{ .lg .middle } **Datasets**
 
-    [:octicons-arrow-right-24: Datasets](datasets/data-and-mc.md)
+  ***
 
--   :material-wrench:{ .lg .middle } **Software Framework**
+  Sample list, cross-sections, and MC normalisation.
 
-    ---
-    The Scikit-HEP ecosystem explained.
+  [:octicons-arrow-right-24: Datasets](datasets/data-and-mc.md)
 
-    [:octicons-arrow-right-24: Framework](software/ecosystem.md)
+- :material-wrench:{ .lg .middle } **Software Framework**
 
--   :material-download:{ .lg .middle } **Installation & Setup**
+  ***
 
-    ---
-    Environment setup and verification.
+  The Scikit-HEP ecosystem explained.
 
-    [:octicons-arrow-right-24: Installation](getting-started/installation.md)
+  [:octicons-arrow-right-24: Framework](software/ecosystem.md)
+
+- :material-download:{ .lg .middle } **Installation & Setup**
+
+  ***
+
+  Environment setup and verification.
+
+  [:octicons-arrow-right-24: Installation](getting-started/installation.md)
 
 <!-- -   :material-folder-open:{ .lg .middle } **Repository Architecture**
 
@@ -120,12 +132,13 @@ jupyter lab HWW_analysis.ipynb
 
     [:octicons-arrow-right-24: Architecture](getting-started/repository-structure.md) -->
 
--   :material-chart-timeline-variant:{ .lg .middle } **Analysis Methodology**
+- :material-chart-timeline-variant:{ .lg .middle } **Analysis Methodology**
 
-    ---
-    Analysis Methodology and jupyter notebook.
+  ***
 
-    [:octicons-arrow-right-24: Methodology](analysis/methodology.md)
+  Analysis Methodology and jupyter notebook.
+
+  [:octicons-arrow-right-24: Methodology](analysis/methodology.md)
 
 <!-- -   :material-play-circle-outline:{ .lg .middle } **Execution Guide**
 
@@ -134,19 +147,29 @@ jupyter lab HWW_analysis.ipynb
 
     [:octicons-arrow-right-24: Execution](analysis/interactive-execution.md) -->
 
--   :material-chart-bar:{ .lg .middle } **Statistical Inference**
+- :material-chart-bar:{ .lg .middle } **Statistical Inference**
 
-    ---
-    CMS Combine: datacards, signal strength.
+  ***
 
-    [:octicons-arrow-right-24: Combine](combine/statistical-inference.md)
+  CMS Combine: datacards, signal strength.
+
+  [:octicons-arrow-right-24: Combine](combine/statistical-inference.md)
 
 </div>
 
 ---
 
+<!-- ## Acknowledgements -->
+
+<!-- This analysis is developed as part of the [**HSF-India project**](https://research-software-collaborations.org/). Datasets are sourced from the
+[CERN Open Data Portal](https://opendata.cern.ch). MC sample configurations follow
+[LatinoAnalysis](https://github.com/latinos/LatinoAnalysis) conventions for the Summer20UL16 campaign. -->
+
 ## Acknowledgements
 
-This analysis is developed as part of the [**HSF-India project**](https://research-software-collaborations.org/). Datasets are sourced from the
-[CERN Open Data Portal](https://opendata.cern.ch). MC sample configurations follow
-[LatinoAnalysis](https://github.com/latinos/LatinoAnalysis) conventions for the Summer20UL16 campaign.
+- This analysis is developed as part of the [**HSF-India project**](https://research-software-collaborations.org/).
+- Datasets are sourced from the [CERN Open Data Portal](https://opendata.cern.ch).
+- MC sample configurations follow [LatinoAnalysis](https://github.com/latinos/LatinoAnalysis)
+  conventions for the Summer20UL16 campaign. The ggH selection strategy is based on the
+- CMS H→WW measurement: A. Tumasyan et al. (CMS Collaboration),
+  [_Eur. Phys. J. C_ **83**, 667 (2023)](https://doi.org/10.1140/epjc/s10052-023-11632-6).
