@@ -152,6 +152,8 @@ outlined therein, adapted for CMS Open Data using the Scikit-HEP ecosystem.
   _Eur. Phys. J. C_ **83**, 667 (2023).
   [https://doi.org/10.1140/epjc/s10052-023-11632-6](https://doi.org/10.1140/epjc/s10052-023-11632-6)
 
+---
+
 ## Acknowledgements
 
 This analysis is developed as part of the **HSF-India project**, an initiative to foster research software collaborations between India and the international High Energy Physics community.
