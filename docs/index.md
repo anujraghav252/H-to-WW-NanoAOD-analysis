@@ -3,10 +3,6 @@ template: home.html
 title: H → WW NanoAOD Analysis
 ---
 
-<!-- !!! warning "Documentation in Progress"
-    This page is under active development — some sections may be incomplete or inconsistent.
-    The [repository](https://github.com/anrghv/H-to-WW-NanoAOD-analysis) is the authoritative reference in the meantime. -->
-
 ## What This Analysis Does
 
 This analysis searches for the **Standard Model Higgs boson** ($m_H = 125\,\text{GeV}$) decaying
@@ -47,16 +43,6 @@ adapted for CMS Open Data using the Scikit-HEP Python ecosystem.
   ***
 
   $ggH \rightarrow W^+W^- \rightarrow e\nu\,\mu\nu$
-
-<!-- -   :material-approximately-equal:{ .lg .middle } **Final state**
-
-    ---
-    Opposite-sign, opposite-flavour dilepton ($e\mu$)
-
--   :material-chart-bell-curve:{ .lg .middle } **Production mode**
-
-    ---
-    Gluon–gluon fusion ($ggH$) -->
 
 </div>
 
