@@ -48,7 +48,7 @@ H-to-WW-NanoAOD-analysis/
 ├── notebooks/
 │   ├── Combine/
 │   ├── Eff_txt_file_cleaning.ipynb
-│   ├── HWW_analysis.ipynb
+│   ├── HWW_analysis.ipynb          #You might want to start from here.
 │   ├── Muon_EFF.ipynb
 │   ├── Outputs/
 │   │   ├── Cutflow_Raw.csv
