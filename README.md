@@ -141,6 +141,17 @@ All Monte Carlo samples correspond to the **CMS 2016 Ultra-Legacy (Summer20UL16)
 
 ---
 
+## References
+
+This analysis is based in part on the methodology described in the following CMS publication.
+The ggH production mode selection strategy and signal region definition follow the approach
+outlined therein, adapted for CMS Open Data using the Scikit-HEP ecosystem.
+
+- A. Tumasyan et al. (CMS Collaboration), "Measurements of the Higgs boson production cross
+  section and couplings in the W boson pair decay channel in proton-proton collisions at √s = 13 TeV,"
+  _Eur. Phys. J. C_ **83**, 667 (2023).
+  [https://doi.org/10.1140/epjc/s10052-023-11632-6](https://doi.org/10.1140/epjc/s10052-023-11632-6)
+
 ## Acknowledgements
 
 This analysis is developed as part of the **HSF-India project**, an initiative to foster research software collaborations between India and the international High Energy Physics community.
